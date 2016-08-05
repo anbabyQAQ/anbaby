@@ -1,0 +1,37 @@
+//
+//  pchFile.pch
+//  YiJianBluetooth
+//
+//  Created by tyl on 16/8/3.
+//  Copyright © 2016年 LEI. All rights reserved.
+//
+
+#ifndef pchFile_pch
+#define pchFile_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "Utils.h"
+#import "DataUtil.h"
+#import "DimensionUtil.h"
+#import "CtsiColors.h"
+#import "DateUtil.h"
+#import "FileUtil.h"
+#import "EncodeUtil.h"
+#import "LogUtil.h"
+#import "GEOUtil.h"
+#import "VedioUtil.h"
+#import "TSFileCache.h"
+#import "AFNetworking.h"
+#import "TSFileCache.h"
+#import "NSObject+SBJson.h"
+#import "Constant.h"
+#import "AppDelegate.h"
+#import "BaseViewController.h"
+
+
+#endif /* pchFile_pch */

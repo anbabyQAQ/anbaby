@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TypeViewController">
+            <connections>
+                <outlet property="typeCollertion" destination="rKb-HM-euI" id="rnr-zK-SWl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rKb-HM-euI">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R0k-jM-4mf">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="oWv-dJ-SlE"/>
+                        <outlet property="delegate" destination="-1" id="XrO-Ax-OWC"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="rKb-HM-euI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6DP-bh-x54"/>
+                <constraint firstAttribute="bottom" secondItem="rKb-HM-euI" secondAttribute="bottom" id="9f4-S4-qEs"/>
+                <constraint firstAttribute="trailing" secondItem="rKb-HM-euI" secondAttribute="trailing" id="Ljw-wF-O7N"/>
+                <constraint firstItem="rKb-HM-euI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="u8G-Pe-Xdo"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="rKb-HM-euI"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="6DP-bh-x54"/>
+                    <exclude reference="9f4-S4-qEs"/>
+                    <exclude reference="Ljw-wF-O7N"/>
+                    <exclude reference="u8G-Pe-Xdo"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="rKb-HM-euI"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="6DP-bh-x54"/>
+                    <include reference="9f4-S4-qEs"/>
+                    <include reference="Ljw-wF-O7N"/>
+                    <include reference="u8G-Pe-Xdo"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="396" y="406"/>
+        </view>
+    </objects>
+</document>
