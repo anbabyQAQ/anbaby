@@ -11,21 +11,10 @@
 		1811455D1D50533F0077FC38 /* PresentationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1811455B1D50533F0077FC38 /* PresentationViewController.xib */; };
 		181145611D50568A0077FC38 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1811455F1D50568A0077FC38 /* MineViewController.m */; };
 		181145621D50568A0077FC38 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181145601D50568A0077FC38 /* MineViewController.xib */; };
-		181145671D5057870077FC38 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181145651D5057870077FC38 /* LoginViewController.m */; };
-		181145681D5057870077FC38 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181145661D5057870077FC38 /* LoginViewController.xib */; };
-		1811456C1D5057C20077FC38 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1811456A1D5057C20077FC38 /* RegisterViewController.m */; };
-		1811456D1D5057C20077FC38 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1811456B1D5057C20077FC38 /* RegisterViewController.xib */; };
-		181A068F1D49B86900C618B4 /* TemperatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A068D1D49B86900C618B4 /* TemperatureViewController.m */; };
-		181A06901D49B86900C618B4 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181A068E1D49B86900C618B4 /* TemperatureViewController.xib */; };
-		181A06971D49F35300C618B4 /* ScannedPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A06931D49F35300C618B4 /* ScannedPeripheral.m */; };
-		181A06981D49F35300C618B4 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181A06961D49F35300C618B4 /* ScannerViewController.m */; };
 		188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D3F041D4EF57600C01A94 /* AlarmViewController.m */; };
 		18A5167E1D499CE40032C549 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5167C1D499CE40032C549 /* TypeViewController.m */; };
 		18A5167F1D499CE40032C549 /* TypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A5167D1D499CE40032C549 /* TypeViewController.xib */; };
-		18A516831D499D910032C549 /* TypeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A516811D499D910032C549 /* TypeCollectionViewCell.m */; };
-		18A516841D499D910032C549 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A516821D499D910032C549 /* TypeCollectionViewCell.xib */; };
 		18B4C9FB1D47393A00E65C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4C9FA1D47393A00E65C63 /* main.m */; };
-		18B4C9FE1D47393A00E65C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4C9FD1D47393A00E65C63 /* AppDelegate.m */; };
 		18B4CA061D47393A00E65C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B4CA051D47393A00E65C63 /* Assets.xcassets */; };
 		18B4CA091D47393A00E65C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B4CA071D47393A00E65C63 /* LaunchScreen.storyboard */; };
 		18B4CA141D47393A00E65C63 /* YiJianBluetoothTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4CA131D47393A00E65C63 /* YiJianBluetoothTests.m */; };
@@ -126,6 +115,17 @@
 		3CC7A78A1D51F3B9003CAC87 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77C1D51F3B9003CAC87 /* SBJsonTokeniser.m */; };
 		3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77E1D51F3B9003CAC87 /* SBJsonUTF8Stream.m */; };
 		3CC7A78C1D51F3B9003CAC87 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7801D51F3B9003CAC87 /* SBJsonWriter.m */; };
+		3CF367EE1D548D6900726B20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF367ED1D548D6900726B20 /* AppDelegate.m */; };
+		3CF367FC1D548E6800726B20 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF367F31D548E6800726B20 /* LoginViewController.m */; };
+		3CF367FD1D548E6800726B20 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF367F41D548E6800726B20 /* LoginViewController.xib */; };
+		3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF367F61D548E6800726B20 /* RegisterViewController.m */; };
+		3CF367FF1D548E6800726B20 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF367F71D548E6800726B20 /* RegisterViewController.xib */; };
+		3CF368001D548E6800726B20 /* TemperatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF367FA1D548E6800726B20 /* TemperatureViewController.m */; };
+		3CF368011D548E6800726B20 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF367FB1D548E6800726B20 /* TemperatureViewController.xib */; };
+		3CF368081D548EBE00726B20 /* ScannedPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF368041D548EBE00726B20 /* ScannedPeripheral.m */; };
+		3CF368091D548EBE00726B20 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF368071D548EBE00726B20 /* ScannerViewController.m */; };
+		3CF3680E1D548EFB00726B20 /* TypeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3680C1D548EFB00726B20 /* TypeCollectionViewCell.m */; };
+		3CF3680F1D548EFB00726B20 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF3680D1D548EFB00726B20 /* TypeCollectionViewCell.xib */; };
 		74E55098675CA43F8CDC2F72 /* libPods-YiJianBluetoothTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6781C148780E9B66BCA3FD /* libPods-YiJianBluetoothTests.a */; };
 		8FAE3859BD4252ED2061B44E /* libPods-YiJianBluetooth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D0F40F3B6511B69B178152 /* libPods-YiJianBluetooth.a */; };
 		AC25D0CAF1FAF8C50B1481F5 /* libPods-YiJianBluetoothUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C8B96958F8D12F0475B8DC /* libPods-YiJianBluetoothUITests.a */; };
@@ -157,32 +157,13 @@
 		1811455E1D50568A0077FC38 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		1811455F1D50568A0077FC38 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		181145601D50568A0077FC38 /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
-		181145641D5057870077FC38 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		181145651D5057870077FC38 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		181145661D5057870077FC38 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		181145691D5057C20077FC38 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		1811456A1D5057C20077FC38 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		1811456B1D5057C20077FC38 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
-		181A068C1D49B86900C618B4 /* TemperatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureViewController.h; sourceTree = "<group>"; };
-		181A068D1D49B86900C618B4 /* TemperatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureViewController.m; sourceTree = "<group>"; };
-		181A068E1D49B86900C618B4 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
-		181A06921D49F35300C618B4 /* ScannedPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannedPeripheral.h; sourceTree = "<group>"; };
-		181A06931D49F35300C618B4 /* ScannedPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannedPeripheral.m; sourceTree = "<group>"; };
-		181A06941D49F35300C618B4 /* ScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerDelegate.h; sourceTree = "<group>"; };
-		181A06951D49F35300C618B4 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
-		181A06961D49F35300C618B4 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
 		188D3F031D4EF57600C01A94 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		188D3F041D4EF57600C01A94 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		18A5167B1D499CE40032C549 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
 		18A5167C1D499CE40032C549 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
 		18A5167D1D499CE40032C549 /* TypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeViewController.xib; sourceTree = "<group>"; };
-		18A516801D499D910032C549 /* TypeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypeCollectionViewCell.h; path = ../TypeCollectionViewCell.h; sourceTree = "<group>"; };
-		18A516811D499D910032C549 /* TypeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypeCollectionViewCell.m; path = ../TypeCollectionViewCell.m; sourceTree = "<group>"; };
-		18A516821D499D910032C549 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TypeCollectionViewCell.xib; path = ../TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		18B4C9F61D47393A00E65C63 /* YiJianBluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiJianBluetooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B4C9FA1D47393A00E65C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		18B4C9FC1D47393A00E65C63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
-		18B4C9FD1D47393A00E65C63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
 		18B4CA051D47393A00E65C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18B4CA081D47393A00E65C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18B4CA0A1D47393A00E65C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -342,6 +323,25 @@
 		3CC7A77E1D51F3B9003CAC87 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		3CC7A77F1D51F3B9003CAC87 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		3CC7A7801D51F3B9003CAC87 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		3CF367EC1D548D6900726B20 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3CF367ED1D548D6900726B20 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3CF367F21D548E6800726B20 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3CF367F31D548E6800726B20 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3CF367F41D548E6800726B20 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		3CF367F51D548E6800726B20 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		3CF367F61D548E6800726B20 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		3CF367F71D548E6800726B20 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		3CF367F91D548E6800726B20 /* TemperatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureViewController.h; sourceTree = "<group>"; };
+		3CF367FA1D548E6800726B20 /* TemperatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureViewController.m; sourceTree = "<group>"; };
+		3CF367FB1D548E6800726B20 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
+		3CF368031D548EBE00726B20 /* ScannedPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannedPeripheral.h; sourceTree = "<group>"; };
+		3CF368041D548EBE00726B20 /* ScannedPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannedPeripheral.m; sourceTree = "<group>"; };
+		3CF368051D548EBE00726B20 /* ScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerDelegate.h; sourceTree = "<group>"; };
+		3CF368061D548EBE00726B20 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
+		3CF368071D548EBE00726B20 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
+		3CF3680B1D548EFB00726B20 /* TypeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeCollectionViewCell.h; sourceTree = "<group>"; };
+		3CF3680C1D548EFB00726B20 /* TypeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeCollectionViewCell.m; sourceTree = "<group>"; };
+		3CF3680D1D548EFB00726B20 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		7FFDDD8544F33437EBB36581 /* Pods-YiJianBluetoothUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiJianBluetoothUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YiJianBluetoothUITests/Pods-YiJianBluetoothUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9A0F409539F06059B9FC2C40 /* Pods-YiJianBluetoothTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiJianBluetoothTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YiJianBluetoothTests/Pods-YiJianBluetoothTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB49DCBFE1B3EB581DC28D8B /* Pods-YiJianBluetoothTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiJianBluetoothTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YiJianBluetoothTests/Pods-YiJianBluetoothTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -380,33 +380,16 @@
 		0CD2D2131D4755350074D3D0 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				3CF367EB1D548D2900726B20 /* App delegate */,
 				3CC7A7451D51F162003CAC87 /* Res */,
 				3CC7A7271D51E17B003CAC87 /* Protocols */,
 				3CC7A6A71D51DF72003CAC87 /* Views */,
-				0CD2D2141D4755350074D3D0 /* Appdelegate */,
-				0CD2D2151D4755350074D3D0 /* Helpers */,
 				0CD2D2161D4755350074D3D0 /* Marco */,
+				3CF367F01D548DDD00726B20 /* Helpers */,
 				0CD2D2171D4755350074D3D0 /* Modules */,
 				0CD2D2181D4755350074D3D0 /* Resources */,
-				0CD2D2191D4755350074D3D0 /* Verdors */,
 			);
 			path = classes;
-			sourceTree = "<group>";
-		};
-		0CD2D2141D4755350074D3D0 /* Appdelegate */ = {
-			isa = PBXGroup;
-			children = (
-				18B4C9FC1D47393A00E65C63 /* AppDelegate.h */,
-				18B4C9FD1D47393A00E65C63 /* AppDelegate.m */,
-			);
-			path = Appdelegate;
-			sourceTree = "<group>";
-		};
-		0CD2D2151D4755350074D3D0 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		0CD2D2161D4755350074D3D0 /* Marco */ = {
@@ -439,13 +422,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		0CD2D2191D4755350074D3D0 /* Verdors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Verdors;
-			sourceTree = "<group>";
-		};
 		134979B4D90BBC66CB198B9E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,44 +451,6 @@
 				1811455B1D50533F0077FC38 /* PresentationViewController.xib */,
 			);
 			path = controller;
-			sourceTree = "<group>";
-		};
-		181145631D5057710077FC38 /* 登录 */ = {
-			isa = PBXGroup;
-			children = (
-				181145641D5057870077FC38 /* LoginViewController.h */,
-				181145651D5057870077FC38 /* LoginViewController.m */,
-				181145661D5057870077FC38 /* LoginViewController.xib */,
-				181145691D5057C20077FC38 /* RegisterViewController.h */,
-				1811456A1D5057C20077FC38 /* RegisterViewController.m */,
-				1811456B1D5057C20077FC38 /* RegisterViewController.xib */,
-			);
-			name = "登录";
-			path = "../登录";
-			sourceTree = "<group>";
-		};
-		181A06911D49F33E00C618B4 /* 扫描 */ = {
-			isa = PBXGroup;
-			children = (
-				181A06921D49F35300C618B4 /* ScannedPeripheral.h */,
-				181A06931D49F35300C618B4 /* ScannedPeripheral.m */,
-				181A06941D49F35300C618B4 /* ScannerDelegate.h */,
-				181A06951D49F35300C618B4 /* ScannerViewController.h */,
-				181A06961D49F35300C618B4 /* ScannerViewController.m */,
-			);
-			name = "扫描";
-			path = ..;
-			sourceTree = "<group>";
-		};
-		18A516851D49B2830032C549 /* 温度 */ = {
-			isa = PBXGroup;
-			children = (
-				181A068C1D49B86900C618B4 /* TemperatureViewController.h */,
-				181A068D1D49B86900C618B4 /* TemperatureViewController.m */,
-				181A068E1D49B86900C618B4 /* TemperatureViewController.xib */,
-			);
-			name = "温度";
-			path = "../温度";
 			sourceTree = "<group>";
 		};
 		18B4C9ED1D47393A00E65C63 = {
@@ -623,7 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				3CFA8E871D53245D00D3BC2E /* DetailController */,
-				3CFA8E881D53247400D3BC2E /* Views */,
+				3CF3680A1D548EFB00726B20 /* views */,
 				18A5167B1D499CE40032C549 /* TypeViewController.h */,
 				18A5167C1D499CE40032C549 /* TypeViewController.m */,
 				18A5167D1D499CE40032C549 /* TypeViewController.xib */,
@@ -1042,25 +980,78 @@
 			path = Json;
 			sourceTree = "<group>";
 		};
+		3CF367EB1D548D2900726B20 /* App delegate */ = {
+			isa = PBXGroup;
+			children = (
+				3CF367EC1D548D6900726B20 /* AppDelegate.h */,
+				3CF367ED1D548D6900726B20 /* AppDelegate.m */,
+			);
+			name = "App delegate";
+			path = Appdelegate;
+			sourceTree = "<group>";
+		};
+		3CF367F01D548DDD00726B20 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3CF367F11D548E6800726B20 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				3CF367F21D548E6800726B20 /* LoginViewController.h */,
+				3CF367F31D548E6800726B20 /* LoginViewController.m */,
+				3CF367F41D548E6800726B20 /* LoginViewController.xib */,
+				3CF367F51D548E6800726B20 /* RegisterViewController.h */,
+				3CF367F61D548E6800726B20 /* RegisterViewController.m */,
+				3CF367F71D548E6800726B20 /* RegisterViewController.xib */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
+		3CF367F81D548E6800726B20 /* 温度 */ = {
+			isa = PBXGroup;
+			children = (
+				3CF367F91D548E6800726B20 /* TemperatureViewController.h */,
+				3CF367FA1D548E6800726B20 /* TemperatureViewController.m */,
+				3CF367FB1D548E6800726B20 /* TemperatureViewController.xib */,
+			);
+			path = "温度";
+			sourceTree = "<group>";
+		};
+		3CF368021D548EBE00726B20 /* 扫描 */ = {
+			isa = PBXGroup;
+			children = (
+				3CF368031D548EBE00726B20 /* ScannedPeripheral.h */,
+				3CF368041D548EBE00726B20 /* ScannedPeripheral.m */,
+				3CF368051D548EBE00726B20 /* ScannerDelegate.h */,
+				3CF368061D548EBE00726B20 /* ScannerViewController.h */,
+				3CF368071D548EBE00726B20 /* ScannerViewController.m */,
+			);
+			path = "扫描";
+			sourceTree = "<group>";
+		};
+		3CF3680A1D548EFB00726B20 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				3CF3680B1D548EFB00726B20 /* TypeCollectionViewCell.h */,
+				3CF3680C1D548EFB00726B20 /* TypeCollectionViewCell.m */,
+				3CF3680D1D548EFB00726B20 /* TypeCollectionViewCell.xib */,
+			);
+			name = views;
+			path = YiJianBluetooth/classes/Modules/index/Controller/views;
+			sourceTree = SOURCE_ROOT;
+		};
 		3CFA8E871D53245D00D3BC2E /* DetailController */ = {
 			isa = PBXGroup;
 			children = (
+				3CF368021D548EBE00726B20 /* 扫描 */,
+				3CF367F11D548E6800726B20 /* 登录 */,
+				3CF367F81D548E6800726B20 /* 温度 */,
 				3C8D3B471D543A5F0061997F /* 心电 */,
-				181145631D5057710077FC38 /* 登录 */,
-				181A06911D49F33E00C618B4 /* 扫描 */,
-				18A516851D49B2830032C549 /* 温度 */,
 			);
 			path = DetailController;
-			sourceTree = "<group>";
-		};
-		3CFA8E881D53247400D3BC2E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				18A516801D499D910032C549 /* TypeCollectionViewCell.h */,
-				18A516811D499D910032C549 /* TypeCollectionViewCell.m */,
-				18A516821D499D910032C549 /* TypeCollectionViewCell.xib */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		8640F1D1BED2FE0355FFA9C1 /* Frameworks */ = {
@@ -1187,19 +1178,18 @@
 			files = (
 				3CC7A69F1D51DCC2003CAC87 /* Contents.json in Resources */,
 				3C8D3B451D5433D50061997F /* tabBar_cameraButton_ready_matte@2x.png in Resources */,
-				18A516841D499D910032C549 /* TypeCollectionViewCell.xib in Resources */,
 				3CC7A6A51D51DCC2003CAC87 /* tabBar_publish_icon@2x.png in Resources */,
 				3CC7A6A31D51DCC2003CAC87 /* Contents.json in Resources */,
-				1811456D1D5057C20077FC38 /* RegisterViewController.xib in Resources */,
+				3CF3680F1D548EFB00726B20 /* TypeCollectionViewCell.xib in Resources */,
 				3CC7A6961D51DCC2003CAC87 /* tabBar_me_icon@3x.png in Resources */,
 				3CC7A69C1D51DCC2003CAC87 /* tabBar_new_icon.png in Resources */,
+				3CF368011D548E6800726B20 /* TemperatureViewController.xib in Resources */,
 				3CC7A6941D51DCC2003CAC87 /* tabBar_me_icon.png in Resources */,
 				18B4CA091D47393A00E65C63 /* LaunchScreen.storyboard in Resources */,
 				3CC7A68F1D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A69B1D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A6951D51DCC2003CAC87 /* tabBar_me_icon@2x.png in Resources */,
 				3CC7A6A61D51DCC2003CAC87 /* tabBar_publish_icon@3x.png in Resources */,
-				181A06901D49B86900C618B4 /* TemperatureViewController.xib in Resources */,
 				3CC7A6911D51DCC2003CAC87 /* tabBar_me_click_icon@2x.png in Resources */,
 				3CC7A6F01D51E0B7003CAC87 /* close-button-2.png in Resources */,
 				3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */,
@@ -1219,6 +1209,7 @@
 				3CC7A6A11D51DCC2003CAC87 /* tabBar_publish_click_icon@2x.png in Resources */,
 				18A5167F1D499CE40032C549 /* TypeViewController.xib in Resources */,
 				3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */,
+				3CF367FD1D548E6800726B20 /* LoginViewController.xib in Resources */,
 				3CC7A6981D51DCC2003CAC87 /* tabBar_new_click_icon.png in Resources */,
 				3CC7A6A21D51DCC2003CAC87 /* tabBar_publish_click_icon@3x.png in Resources */,
 				181145621D50568A0077FC38 /* MineViewController.xib in Resources */,
@@ -1231,7 +1222,6 @@
 				3CC7A6A41D51DCC2003CAC87 /* tabBar_publish_icon.png in Resources */,
 				3CC7A68D1D51DCC2003CAC87 /* tabBar_friendTrends_icon@2x.png in Resources */,
 				3CC7A6901D51DCC2003CAC87 /* tabBar_me_click_icon.png in Resources */,
-				181145681D5057870077FC38 /* LoginViewController.xib in Resources */,
 				3CC7A6821D51DCC2003CAC87 /* tabBar_essence_click_icon@3x.png in Resources */,
 				3CC7A6871D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A68B1D51DCC2003CAC87 /* Contents.json in Resources */,
@@ -1241,6 +1231,7 @@
 				3CC7A6801D51DCC2003CAC87 /* tabBar_essence_click_icon.png in Resources */,
 				3CC7A67E1D51DCC2003CAC87 /* tabbar-light@2x.png in Resources */,
 				3CC7A6831D51DCC2003CAC87 /* Contents.json in Resources */,
+				3CF367FF1D548E6800726B20 /* RegisterViewController.xib in Resources */,
 				3CC7A6F11D51E0B7003CAC87 /* close-button-3.png in Resources */,
 				3CC7A6891D51DCC2003CAC87 /* tabBar_friendTrends_click_icon@2x.png in Resources */,
 				3CC7A69E1D51DCC2003CAC87 /* tabBar_new_icon@3x.png in Resources */,
@@ -1401,9 +1392,9 @@
 				3CC7A71D1D51E12E003CAC87 /* DataUtil.m in Sources */,
 				3CC7A6F81D51E0B7003CAC87 /* PutBodyHttpThread.m in Sources */,
 				3CC7A7871D51F3B9003CAC87 /* SBJsonStreamWriter.m in Sources */,
+				3CF367FC1D548E6800726B20 /* LoginViewController.m in Sources */,
 				3CC7A7251D51E12E003CAC87 /* VedioUtil.m in Sources */,
 				3CC7A6F91D51E0B7003CAC87 /* PutJsonHttpThread.m in Sources */,
-				18A516831D499D910032C549 /* TypeCollectionViewCell.m in Sources */,
 				3CC7A6F61D51E0B7003CAC87 /* PostHttpThread.m in Sources */,
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
 				3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */,
@@ -1420,30 +1411,30 @@
 				3CC7A7231D51E12E003CAC87 /* GEOUtil.m in Sources */,
 				3CC7A6F71D51E0B7003CAC87 /* PostJsonHttpThread.m in Sources */,
 				3CC7A6AF1D51DFB4003CAC87 /* BlockUIAlertView.m in Sources */,
-				181145671D5057870077FC38 /* LoginViewController.m in Sources */,
 				3C8D3B4A1D543AE80061997F /* ECGViewController.m in Sources */,
+				3CF368081D548EBE00726B20 /* ScannedPeripheral.m in Sources */,
 				18A5167E1D499CE40032C549 /* TypeViewController.m in Sources */,
-				181A06971D49F35300C618B4 /* ScannedPeripheral.m in Sources */,
 				3CC7A6B21D51DFCC003CAC87 /* UIViewExt.m in Sources */,
 				18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */,
-				181A06981D49F35300C618B4 /* ScannerViewController.m in Sources */,
 				3CC7A6EA1D51E0B7003CAC87 /* TSFileCache.m in Sources */,
 				3CC7A7201D51E12E003CAC87 /* DimensionUtil.m in Sources */,
-				18B4C9FE1D47393A00E65C63 /* AppDelegate.m in Sources */,
 				3CC7A71F1D51E12E003CAC87 /* DateUtil+StringCustom.m in Sources */,
 				3CC7A7821D51F3B9003CAC87 /* SBJsonParser.m in Sources */,
+				3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */,
 				3CC7A7831D51F3B9003CAC87 /* SBJsonStreamParser.m in Sources */,
+				3CF3680E1D548EFB00726B20 /* TypeCollectionViewCell.m in Sources */,
+				3CF368091D548EBE00726B20 /* ScannerViewController.m in Sources */,
 				3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */,
 				3CC7A6F31D51E0B7003CAC87 /* SimpleGUIFactory.m in Sources */,
 				3CC7A7191D51E12E003CAC87 /* AuthorityUtil.m in Sources */,
 				3CC7A6F41D51E0B7003CAC87 /* GetHttpThread.m in Sources */,
+				3CF368001D548E6800726B20 /* TemperatureViewController.m in Sources */,
 				3CC7A7241D51E12E003CAC87 /* LogUtil.m in Sources */,
-				1811456C1D5057C20077FC38 /* RegisterViewController.m in Sources */,
+				3CF367EE1D548D6900726B20 /* AppDelegate.m in Sources */,
 				3CC7A7851D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m in Sources */,
 				3CC7A6F51D51E0B7003CAC87 /* HttpBaseResponse.m in Sources */,
 				3CC7A7861D51F3B9003CAC87 /* SBJsonStreamParserState.m in Sources */,
 				3CC7A6BE1D51E019003CAC87 /* UIView+Toast.m in Sources */,
-				181A068F1D49B86900C618B4 /* TemperatureViewController.m in Sources */,
 				18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */,
 				18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */,
 				3CC7A6AB1D51DF86003CAC87 /* ApiBase.m in Sources */,
