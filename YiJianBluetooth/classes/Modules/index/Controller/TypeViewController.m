@@ -8,7 +8,7 @@
 
 #import "TypeViewController.h"
 #import "TypeCollectionViewCell.h"
-#import "TemperatureViewController.h"
+#import "TempViewController.h"
 #import "AlarmClockViewController.h"
 #import "AlarmViewController.h"
 #import "ECGViewController.h"
@@ -216,8 +216,10 @@ static NSString *cellInte = @"typeCell";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+     [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:1] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    
     if (indexPath.row == 0) {
-        AlarmClockViewController *temp = [[AlarmClockViewController alloc] init];
+        TempViewController *temp = [[TempViewController alloc] init];
         temp.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:temp animated:YES];
     }else if (indexPath.row == 1){
@@ -228,9 +230,9 @@ static NSString *cellInte = @"typeCell";
         
     }else{
     
-        TemperatureViewController *temperVC = [[TemperatureViewController alloc] init];
-        temperVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:temperVC animated:YES];
+//        TemperatureViewController *temperVC = [[TemperatureViewController alloc] init];
+//        temperVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:temperVC animated:YES];
     }
     
 }

@@ -30,6 +30,36 @@ typedef enum:NSUInteger{
 /** 屏幕高度 */
 #define SCR_H [UIScreen mainScreen].bounds.size.height
 
+/** 顶部导航栏高度 */
+#define NAVIGATION_HEIGHT 64.0f
+//tabbar高度
+#define TABBAR_HEIGHT 49.0f
+//segment的高度
+#define SEGMENT_HEIGHT 38.0f
+
+#define text_size_huge 22.0f
+#define text_size_large 18.0f
+#define text_size_between_largeAndNormal 17
+#define text_size_normal 16.0f
+#define text_size_between_normalAndSmall 15
+#define text_size_small 14.0f
+#define text_size_between_smallAndSmaller 13
+#define text_size_smaller 12.0f
+#define text_size_tiny 10.0f
+
+//iOS_fontsize * 72 / 96 = ps_size
+//用于导航标题
+#define text_size_36PX 14.0f
+//用于标签，列表等大部分重要标题 如标签，标题名称
+#define text_size_34PX 12.75f
+//用于大多数文字和按钮
+#define text_size_32PX 12.0f
+//用于辅助性文字， 如次级辅助文字
+#define text_size_30PX 11.25f
+//主界面模块标题
+#define text_size_28PX 10.5f
+//主界面低栏标题
+#define text_size_24PX 9.0f
 
 //16进制GRB值 ，转UIColor
 #define UIColorFromRGB(rgbValue) [UIColor \
