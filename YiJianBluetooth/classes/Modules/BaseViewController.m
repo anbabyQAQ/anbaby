@@ -42,6 +42,52 @@
     self.tabBarController.tabBar.translucent=NO;
 }
 
+#pragma mark - left
+-(void)initLeftBarButtonItem {
+    MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(0, 0, 60, 44)];
+    UIImage *image = [UIImage imageNamed:@"返回黑色"];
+    [button setImage:image forState:UIControlStateNormal];
+    [button setMyButtonImageFrame:CGRectMake(0, 15, image.size.width/2.5, image.size.height/2.5)];
+    [button addTarget:self action:@selector(backToSuper)forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+}
+
+- (void)backToSuper {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)setCustomNavigationLeftBar {
+    
+    [self initLeftBarButtonItem];
+}
+
+- (void)setExtraCellLineHidden: (UITableView *)tableView{
+    
+    UIView *view =[ [UIView alloc]init];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+}
+
+-(void)initrightBarButtonItem:(NSString*)title action:(SEL)action {
+    
+    
+    MyCustomButton *mapbutton = [MyCustomButton buttonWithType:UIButtonTypeCustom];
+    [mapbutton setFrame:CGRectMake(0, 0, 60, 44)];
+    
+    [mapbutton setTitle:title forState:(UIControlStateNormal)];
+    mapbutton.titleLabel.font = [UIFont systemFontOfSize:text_size_small];
+    
+    CGSize titleSize = [mapbutton.titleLabel sizeThatFits:CGSizeMake(60, 44)];
+    [mapbutton setTitleColor:UIColorFromRGB(0x0097ff) forState:(UIControlStateNormal)];
+    [mapbutton setMyButtonContentFrame:CGRectMake(60 - titleSize.width, 10, titleSize.width, 25)];
+    [mapbutton addTarget:self action:action forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:mapbutton];
+    
+    self.navigationItem.rightBarButtonItem = rightBtn;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

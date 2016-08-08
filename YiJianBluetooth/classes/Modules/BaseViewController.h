@@ -10,4 +10,9 @@
 
 @interface BaseViewController : UIViewController
 
+
+- (void)setExtraCellLineHidden:(UITableView *)tableView;
+
+-(void)initrightBarButtonItem:(NSString*)title action:(SEL)action;
+
 @end
