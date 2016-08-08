@@ -59,7 +59,7 @@
 
 - (void)startTimer {
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(autoNextPage) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(autoNextPage) userInfo:nil repeats:YES];
     
 }
 

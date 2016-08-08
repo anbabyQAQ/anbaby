@@ -30,6 +30,7 @@
 		3C113DFF1D586AEF004099BB /* Yosemite02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DF31D586AEF004099BB /* Yosemite02.jpg */; };
 		3C113E011D586AEF004099BB /* Yosemite03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DF61D586AEF004099BB /* Yosemite03.jpg */; };
 		3C113E031D586AEF004099BB /* Yosemite04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DF91D586AEF004099BB /* Yosemite04.jpg */; };
+		3C113E071D5871C8004099BB /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113E061D5871C8004099BB /* TempViewController.m */; };
 		3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3C1D5433110061997F /* TabbarExtension.m */; };
 		3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3E1D5433D50061997F /* camera_button_take.png */; };
 		3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3F1D5433D50061997F /* camera_button_take@2x.png */; };
@@ -198,6 +199,8 @@
 		3C113DF31D586AEF004099BB /* Yosemite02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite02.jpg; sourceTree = "<group>"; };
 		3C113DF61D586AEF004099BB /* Yosemite03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite03.jpg; sourceTree = "<group>"; };
 		3C113DF91D586AEF004099BB /* Yosemite04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite04.jpg; sourceTree = "<group>"; };
+		3C113E051D5871C8004099BB /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempViewController.h; sourceTree = "<group>"; };
+		3C113E061D5871C8004099BB /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempViewController.m; sourceTree = "<group>"; };
 		3C8D3B3B1D5433110061997F /* TabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarExtension.h; sourceTree = "<group>"; };
 		3C8D3B3C1D5433110061997F /* TabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarExtension.m; sourceTree = "<group>"; };
 		3C8D3B3E1D5433D50061997F /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
@@ -1102,6 +1105,8 @@
 				3CF367F91D548E6800726B20 /* TemperatureViewController.h */,
 				3CF367FA1D548E6800726B20 /* TemperatureViewController.m */,
 				3CF367FB1D548E6800726B20 /* TemperatureViewController.xib */,
+				3C113E051D5871C8004099BB /* TempViewController.h */,
+				3C113E061D5871C8004099BB /* TempViewController.m */,
 			);
 			path = "温度";
 			sourceTree = "<group>";
@@ -1533,6 +1538,7 @@
 				3CC7A6BE1D51E019003CAC87 /* UIView+Toast.m in Sources */,
 				18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */,
 				18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */,
+				3C113E071D5871C8004099BB /* TempViewController.m in Sources */,
 				3CC7A6AB1D51DF86003CAC87 /* ApiBase.m in Sources */,
 				3CC7A7811D51F3B9003CAC87 /* NSObject+SBJson.m in Sources */,
 				18B4C9FB1D47393A00E65C63 /* main.m in Sources */,
