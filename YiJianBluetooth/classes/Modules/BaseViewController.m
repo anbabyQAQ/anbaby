@@ -20,7 +20,28 @@
     
 //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
 //                                                         forBarMetrics:UIBarMetricsDefault];
+    
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+//        self.extendedLayoutIncludesOpaqueBars = NO;
+//        self.modalPresentationCapturesStatusBarAppearance = NO;
+    }
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    self.tabBarController.tabBar.hidden=YES;
+    self.navigationController.navigationBar.translucent=NO;
+    self.tabBarController.tabBar.translucent=NO;
+}
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+//    self.tabBarController.tabBar.hidden=YES;
+    self.navigationController.navigationBar.translucent=YES;
+    self.tabBarController.tabBar.translucent=NO;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

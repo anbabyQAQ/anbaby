@@ -23,6 +23,13 @@
 		18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13021D4AFFA700DC380B /* CharacteristicReader.m */; };
 		18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13061D4B467F00DC380B /* AlarmClockViewController.m */; };
 		18FF13091D4B467F00DC380B /* AlarmClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FF13071D4B467F00DC380B /* AlarmClockViewController.xib */; };
+		3C113DE81D5869DF004099BB /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113DE41D5869DF004099BB /* PGIndexBannerSubiew.m */; };
+		3C113DE91D5869DF004099BB /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113DE71D5869DF004099BB /* NewPagedFlowView.m */; };
+		3C113DFB1D586AEF004099BB /* Yosemite00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DED1D586AEF004099BB /* Yosemite00.jpg */; };
+		3C113DFD1D586AEF004099BB /* Yosemite01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DF01D586AEF004099BB /* Yosemite01.jpg */; };
+		3C113DFF1D586AEF004099BB /* Yosemite02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DF31D586AEF004099BB /* Yosemite02.jpg */; };
+		3C113E011D586AEF004099BB /* Yosemite03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DF61D586AEF004099BB /* Yosemite03.jpg */; };
+		3C113E031D586AEF004099BB /* Yosemite04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DF91D586AEF004099BB /* Yosemite04.jpg */; };
 		3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3C1D5433110061997F /* TabbarExtension.m */; };
 		3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3E1D5433D50061997F /* camera_button_take.png */; };
 		3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3F1D5433D50061997F /* camera_button_take@2x.png */; };
@@ -182,6 +189,15 @@
 		18FF13071D4B467F00DC380B /* AlarmClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmClockViewController.xib; sourceTree = "<group>"; };
 		36C8B96958F8D12F0475B8DC /* libPods-YiJianBluetoothUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YiJianBluetoothUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA64D84A97A4AD75C3C9880 /* Pods-YiJianBluetooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiJianBluetooth.release.xcconfig"; path = "Pods/Target Support Files/Pods-YiJianBluetooth/Pods-YiJianBluetooth.release.xcconfig"; sourceTree = "<group>"; };
+		3C113DE31D5869DF004099BB /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
+		3C113DE41D5869DF004099BB /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
+		3C113DE61D5869DF004099BB /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
+		3C113DE71D5869DF004099BB /* NewPagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPagedFlowView.m; sourceTree = "<group>"; };
+		3C113DED1D586AEF004099BB /* Yosemite00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite00.jpg; sourceTree = "<group>"; };
+		3C113DF01D586AEF004099BB /* Yosemite01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite01.jpg; sourceTree = "<group>"; };
+		3C113DF31D586AEF004099BB /* Yosemite02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite02.jpg; sourceTree = "<group>"; };
+		3C113DF61D586AEF004099BB /* Yosemite03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite03.jpg; sourceTree = "<group>"; };
+		3C113DF91D586AEF004099BB /* Yosemite04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Yosemite04.jpg; sourceTree = "<group>"; };
 		3C8D3B3B1D5433110061997F /* TabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarExtension.h; sourceTree = "<group>"; };
 		3C8D3B3C1D5433110061997F /* TabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarExtension.m; sourceTree = "<group>"; };
 		3C8D3B3E1D5433D50061997F /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
@@ -588,6 +604,76 @@
 				188D3F041D4EF57600C01A94 /* AlarmViewController.m */,
 			);
 			path = "闹钟";
+			sourceTree = "<group>";
+		};
+		3C113DE21D5869DF004099BB /* CustomeView */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DE31D5869DF004099BB /* PGIndexBannerSubiew.h */,
+				3C113DE41D5869DF004099BB /* PGIndexBannerSubiew.m */,
+			);
+			path = CustomeView;
+			sourceTree = "<group>";
+		};
+		3C113DE51D5869DF004099BB /* NewPagedFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DE61D5869DF004099BB /* NewPagedFlowView.h */,
+				3C113DE71D5869DF004099BB /* NewPagedFlowView.m */,
+			);
+			path = NewPagedFlowView;
+			sourceTree = "<group>";
+		};
+		3C113DEA1D586AD3004099BB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DEB1D586AEF004099BB /* Yosemite00.imageset */,
+				3C113DEE1D586AEF004099BB /* Yosemite01.imageset */,
+				3C113DF11D586AEF004099BB /* Yosemite02.imageset */,
+				3C113DF41D586AEF004099BB /* Yosemite03.imageset */,
+				3C113DF71D586AEF004099BB /* Yosemite04.imageset */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		3C113DEB1D586AEF004099BB /* Yosemite00.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DED1D586AEF004099BB /* Yosemite00.jpg */,
+			);
+			path = Yosemite00.imageset;
+			sourceTree = "<group>";
+		};
+		3C113DEE1D586AEF004099BB /* Yosemite01.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DF01D586AEF004099BB /* Yosemite01.jpg */,
+			);
+			path = Yosemite01.imageset;
+			sourceTree = "<group>";
+		};
+		3C113DF11D586AEF004099BB /* Yosemite02.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DF31D586AEF004099BB /* Yosemite02.jpg */,
+			);
+			path = Yosemite02.imageset;
+			sourceTree = "<group>";
+		};
+		3C113DF41D586AEF004099BB /* Yosemite03.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DF61D586AEF004099BB /* Yosemite03.jpg */,
+			);
+			path = Yosemite03.imageset;
+			sourceTree = "<group>";
+		};
+		3C113DF71D586AEF004099BB /* Yosemite04.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				3C113DF91D586AEF004099BB /* Yosemite04.jpg */,
+			);
+			path = Yosemite04.imageset;
 			sourceTree = "<group>";
 		};
 		3C8D3B471D543A5F0061997F /* 心电 */ = {
@@ -1035,6 +1121,9 @@
 		3CF3680A1D548EFB00726B20 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				3C113DEA1D586AD3004099BB /* Images */,
+				3C113DE21D5869DF004099BB /* CustomeView */,
+				3C113DE51D5869DF004099BB /* NewPagedFlowView */,
 				3CF3680B1D548EFB00726B20 /* TypeCollectionViewCell.h */,
 				3CF3680C1D548EFB00726B20 /* TypeCollectionViewCell.m */,
 				3CF3680D1D548EFB00726B20 /* TypeCollectionViewCell.xib */,
@@ -1180,6 +1269,7 @@
 				3C8D3B451D5433D50061997F /* tabBar_cameraButton_ready_matte@2x.png in Resources */,
 				3CC7A6A51D51DCC2003CAC87 /* tabBar_publish_icon@2x.png in Resources */,
 				3CC7A6A31D51DCC2003CAC87 /* Contents.json in Resources */,
+				3C113DFF1D586AEF004099BB /* Yosemite02.jpg in Resources */,
 				3CF3680F1D548EFB00726B20 /* TypeCollectionViewCell.xib in Resources */,
 				3CC7A6961D51DCC2003CAC87 /* tabBar_me_icon@3x.png in Resources */,
 				3CC7A69C1D51DCC2003CAC87 /* tabBar_new_icon.png in Resources */,
@@ -1194,6 +1284,7 @@
 				3CC7A6F01D51E0B7003CAC87 /* close-button-2.png in Resources */,
 				3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */,
 				3CC7A68E1D51DCC2003CAC87 /* tabBar_friendTrends_icon@3x.png in Resources */,
+				3C113E011D586AEF004099BB /* Yosemite03.jpg in Resources */,
 				18FF13091D4B467F00DC380B /* AlarmClockViewController.xib in Resources */,
 				3CC7A68A1D51DCC2003CAC87 /* tabBar_friendTrends_click_icon@3x.png in Resources */,
 				3CC7A69D1D51DCC2003CAC87 /* tabBar_new_icon@2x.png in Resources */,
@@ -1210,14 +1301,17 @@
 				18A5167F1D499CE40032C549 /* TypeViewController.xib in Resources */,
 				3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */,
 				3CF367FD1D548E6800726B20 /* LoginViewController.xib in Resources */,
+				3C113DFB1D586AEF004099BB /* Yosemite00.jpg in Resources */,
 				3CC7A6981D51DCC2003CAC87 /* tabBar_new_click_icon.png in Resources */,
 				3CC7A6A21D51DCC2003CAC87 /* tabBar_publish_click_icon@3x.png in Resources */,
 				181145621D50568A0077FC38 /* MineViewController.xib in Resources */,
 				3CC7A69A1D51DCC2003CAC87 /* tabBar_new_click_icon@3x.png in Resources */,
 				3CC7A67B1D51DCC2003CAC87 /* Contents.json in Resources */,
+				3C113E031D586AEF004099BB /* Yosemite04.jpg in Resources */,
 				3CC7A6931D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A6851D51DCC2003CAC87 /* tabBar_essence_icon@2x.png in Resources */,
 				3CC7A6921D51DCC2003CAC87 /* tabBar_me_click_icon@3x.png in Resources */,
+				3C113DFD1D586AEF004099BB /* Yosemite01.jpg in Resources */,
 				3C8D3B441D5433D50061997F /* tabBar_cameraButton_ready_matte.png in Resources */,
 				3CC7A6A41D51DCC2003CAC87 /* tabBar_publish_icon.png in Resources */,
 				3CC7A68D1D51DCC2003CAC87 /* tabBar_friendTrends_icon@2x.png in Resources */,
@@ -1395,6 +1489,7 @@
 				3CF367FC1D548E6800726B20 /* LoginViewController.m in Sources */,
 				3CC7A7251D51E12E003CAC87 /* VedioUtil.m in Sources */,
 				3CC7A6F91D51E0B7003CAC87 /* PutJsonHttpThread.m in Sources */,
+				3C113DE81D5869DF004099BB /* PGIndexBannerSubiew.m in Sources */,
 				3CC7A6F61D51E0B7003CAC87 /* PostHttpThread.m in Sources */,
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
 				3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */,
@@ -1429,6 +1524,7 @@
 				3CC7A7191D51E12E003CAC87 /* AuthorityUtil.m in Sources */,
 				3CC7A6F41D51E0B7003CAC87 /* GetHttpThread.m in Sources */,
 				3CF368001D548E6800726B20 /* TemperatureViewController.m in Sources */,
+				3C113DE91D5869DF004099BB /* NewPagedFlowView.m in Sources */,
 				3CC7A7241D51E12E003CAC87 /* LogUtil.m in Sources */,
 				3CF367EE1D548D6900726B20 /* AppDelegate.m in Sources */,
 				3CC7A7851D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m in Sources */,

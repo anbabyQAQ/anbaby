@@ -13,15 +13,30 @@
 #import "AlarmViewController.h"
 #import "ECGViewController.h"
 
+#import "NewPagedFlowView.h"
+#import "PGIndexBannerSubiew.h"
+
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
-@interface TypeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface TypeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,NewPagedFlowViewDelegate, NewPagedFlowViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *typeCollertion;
 
 
 @property(nonatomic, strong)NSArray *typeArray;
 @property(nonatomic, strong)NSArray *icon_imgarr;
+
+/**
+ *  无限轮播要使用的数组
+ */
+@property (nonatomic, strong) NSMutableArray *bannerImageArray;
+
+/**
+ *  真实数量的图片数组
+ */
+@property (nonatomic, strong) NSMutableArray *imageArray;
+
+@property (nonatomic, strong) NewPagedFlowView *pageFlowView;
 
 
 @end
@@ -31,19 +46,138 @@ static NSString *cellInte = @"typeCell";
 
 @implementation TypeViewController
 
+- (NSMutableArray *)imageArray {
+    if (_imageArray == nil) {
+        _imageArray = [[NSMutableArray alloc]init];
+    }
+    return _imageArray;
+}
+
+- (NSMutableArray *)bannerImageArray {
+    if (_bannerImageArray == nil) {
+        _bannerImageArray = [[NSMutableArray alloc]init];
+    }
+    return _bannerImageArray;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationItem.title = @"首页";
     
-    [self.typeCollertion registerNib:[UINib nibWithNibName:@"TypeCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellInte];
-    _typeCollertion.backgroundColor  = [UIColor whiteColor];
+    [self initCollertionview];
+
+    [self setCarrousel];
     
     self.typeArray   = @[@"体温",@"心电",@"心率",@"血糖",@"血压",@"血氧"];
     self.icon_imgarr = @[@"FeatureHTS",@"FeatureHRS",@"FeatureCSC",@"FeatureBGM",@"FeatureBPM",@"FeatureDFU"];
 }
 
+- (void)initCollertionview{
+    [self.typeCollertion registerNib:[UINib nibWithNibName:@"TypeCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellInte];
+    _typeCollertion.backgroundColor  = [UIColor whiteColor];
+    
+    //这个地方一定要写，不然会crash
+    [self.typeCollertion registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    
+    //代码控制header和footer的显示
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.typeCollertion.collectionViewLayout;
+    collectionViewLayout.headerReferenceSize = CGSizeMake(375, 150);
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.headerReferenceSize = CGSizeMake(SCR_W, 150.0f);  //设置head大小
+}
+
+-(void)setCarrousel{
+    for (int index = 0; index < 5; index++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite0%d.jpg",index]];
+        [self.imageArray addObject:image];
+    }
+    
+    
+    for (NSInteger imageIndex = 0; imageIndex < 3; imageIndex ++) {
+        [self.bannerImageArray addObjectsFromArray:self.imageArray];
+    }
+    
+    [self setupUI];
+
+}
+
+- (void)setupUI {
+    
+    
+    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 10, SCR_W, 120)];
+    _pageFlowView.backgroundColor = [UIColor whiteColor];
+    _pageFlowView.delegate = self;
+    _pageFlowView.dataSource = self;
+    _pageFlowView.minimumPageAlpha = 0.4;
+    _pageFlowView.minimumPageScale = 0.85;
+    _pageFlowView.orginPageCount = self.imageArray.count;
+    
+    //初始化pageControl
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _pageFlowView.frame.size.height - 14, SCR_W, 8)];
+    _pageFlowView.pageControl = pageControl;
+    [_pageFlowView addSubview:pageControl];
+    [_pageFlowView startTimer];
+    
+    [_typeCollertion addSubview:_pageFlowView];
+}
+
+#pragma mark NewPagedFlowView Delegate
+- (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
+    return CGSizeMake(SCR_W - 84, (SCR_W - 84) * 9 / 16);
+}
+
+#pragma mark NewPagedFlowView Datasource
+- (NSInteger)numberOfPagesInFlowView:(NewPagedFlowView *)flowView {
+    return [self.bannerImageArray count];
+}
+
+- (UIView *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
+    PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
+    if (!bannerView) {
+        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, SCR_W - 84, (SCR_W - 84) * 9 / 16)];
+        bannerView.layer.cornerRadius = 4;
+        bannerView.layer.masksToBounds = YES;
+    }
+    
+    //    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:hostUrlsImg,imageDict[@"img"]]] placeholderImage:[UIImage imageNamed:@""]];
+    bannerView.mainImageView.image = self.bannerImageArray[index];
+    bannerView.allCoverButton.tag = index;
+    [bannerView.allCoverButton addTarget:self action:@selector(didSelectBannerButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return bannerView;
+}
+
+#pragma mark --点击轮播图
+- (void)didSelectBannerButtonClick:(UIButton *) sender {
+    
+    NSInteger index = sender.tag % self.imageArray.count;
+    
+    NSLog(@"点击了第%ld张图",(long)index);
+    
+}
+
+
+
+
 #pragma maek -UICollectionViewDelegateFlowLayout
+- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader)
+    {
+        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        
+        reusableview = headerView;
+    }
+    
+    return reusableview;
+}
+
+
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
   
