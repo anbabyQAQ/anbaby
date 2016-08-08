@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"闹钟";
+    self.navigationItem.title = @"商城";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"更新" style:UIBarButtonItemStyleDone target:self action:@selector(dateChanged:)] ;
     
     self.timekDataPick.backgroundColor = [UIColor grayColor];

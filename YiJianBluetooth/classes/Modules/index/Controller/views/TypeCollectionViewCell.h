@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *icon_imgview;
 
 
 @end

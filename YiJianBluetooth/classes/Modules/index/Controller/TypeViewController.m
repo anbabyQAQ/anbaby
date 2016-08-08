@@ -21,6 +21,8 @@
 
 
 @property(nonatomic, strong)NSArray *typeArray;
+@property(nonatomic, strong)NSArray *icon_imgarr;
+
 
 @end
 
@@ -32,35 +34,36 @@ static NSString *cellInte = @"typeCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.title = @"首页";
+    self.navigationItem.title = @"首页";
     
     [self.typeCollertion registerNib:[UINib nibWithNibName:@"TypeCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellInte];
     _typeCollertion.backgroundColor  = [UIColor whiteColor];
     
-    self.typeArray = @[@"体温",@"心电",@"心率",@"血糖",@"血压",@"血氧"];
+    self.typeArray   = @[@"体温",@"心电",@"心率",@"血糖",@"血压",@"血氧"];
+    self.icon_imgarr = @[@"FeatureHTS",@"FeatureHRS",@"FeatureCSC",@"FeatureBGM",@"FeatureBPM",@"FeatureDFU"];
 }
 
 #pragma maek -UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
   
-    return CGSizeMake((KScreenWidth -60 - 60)/ 3.0, (KScreenWidth - 120)/ 3.0 + 35);
+    return CGSizeMake((KScreenWidth - 140)/ 3.0, (KScreenWidth - 100)/ 3.0 + 20);
 
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
     
-    return UIEdgeInsetsMake(15,30,0,30);
+    return UIEdgeInsetsMake(20,25,0,25);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 30;
+    return 25;
 }
 
 //列
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 15;
+    return 10;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -71,6 +74,9 @@ static NSString *cellInte = @"typeCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     TypeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellInte forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor whiteColor];
+    NSString *icon_img = self.icon_imgarr[indexPath.row];
+    cell.icon_imgview.image = [UIImage imageNamed:icon_img];
     cell.typeLabel.text = self.typeArray[indexPath.row];
     return cell;
 }

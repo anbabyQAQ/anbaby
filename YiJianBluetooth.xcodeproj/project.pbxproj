@@ -1139,7 +1139,7 @@
 				TargetAttributes = {
 					18B4C9F51D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = C3QXQ3HUWG;
+						DevelopmentTeam = DGKWFHS998;
 					};
 					18B4CA0E1D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1575,7 +1575,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YiJianBluetooth/pchFile.pch";
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LEI.YiJianBluetooth;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1589,7 +1589,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YiJianBluetooth/pchFile.pch";
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LEI.YiJianBluetooth;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -12,6 +12,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.icon_imgview.layer.masksToBounds = YES;
+    self.icon_imgview.layer.cornerRadius = 6.0;
+    self.icon_imgview.layer.borderWidth = 1.0;
+    self.icon_imgview.layer.borderColor = [[UIColor whiteColor] CGColor];
 }
 
 @end

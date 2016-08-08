@@ -1,55 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TypeCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="36" height="107"/>
+            <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="36" height="107"/>
+                <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bwt-Yu-cvg">
-                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="bwt-Yu-cvg" secondAttribute="height" multiplier="1:1" id="1yk-Oi-iFN"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDK-qe-Xf2">
-                        <rect key="frame" x="-3" y="46" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sDK-qe-Xf2">
+                        <rect key="frame" x="0.0" y="60" width="60" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H81-Jk-MDP">
-                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="H81-Jk-MDP" secondAttribute="height" multiplier="1:1" id="Ym7-ui-iQt"/>
-                        </constraints>
-                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bwt-Yu-cvg">
+                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.22352941179999999" green="0.66274509800000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" red="0.0" green="0.72156862749999995" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="bwt-Yu-cvg" secondAttribute="trailing" id="DWv-qc-gMf"/>
-                <constraint firstItem="H81-Jk-MDP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EXl-vm-sWl"/>
-                <constraint firstItem="sDK-qe-Xf2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="F5B-yd-gWt"/>
-                <constraint firstItem="bwt-Yu-cvg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X9S-NG-DN4"/>
-                <constraint firstAttribute="trailing" secondItem="H81-Jk-MDP" secondAttribute="trailing" id="c37-W7-odw"/>
-                <constraint firstItem="H81-Jk-MDP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jjj-10-RzK"/>
-                <constraint firstItem="bwt-Yu-cvg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="o3P-Zi-wCE"/>
-                <constraint firstItem="sDK-qe-Xf2" firstAttribute="top" secondItem="bwt-Yu-cvg" secondAttribute="bottom" constant="10" id="zTO-hK-NVs"/>
-            </constraints>
             <size key="customSize" width="36" height="107"/>
             <connections>
+                <outlet property="icon_imgview" destination="bwt-Yu-cvg" id="kWA-1G-wMN"/>
                 <outlet property="typeLabel" destination="sDK-qe-Xf2" id="7EY-KO-Djs"/>
             </connections>
             <point key="canvasLocation" x="476" y="243.5"/>

@@ -56,21 +56,21 @@
 -(void)addController{
 
     /*添加子控制器 */
-    /** 首页 */
-    [self setUpChildControllerWith:[[AlarmClockViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_essence_icon"] selImage:[UIImage imageNamed:@"tabBar_essence_click_icon"] title:@"闹钟"];
+    /** 商城 */
+    [self setUpChildControllerWith:[[AlarmClockViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"商城"];
     
     /** 报告 */
     [self setUpChildControllerWith:[[PresentationViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"报告"];
     
     
     /** 首页 */
-    [self setUpChildControllerWith:[[TypeViewController alloc]init] norImage:[UIImage imageNamed:@"camera_button_take"] selImage:[UIImage imageNamed:@"tabBar_cameraButton_ready_matte"] title:nil];
+    [self setUpChildControllerWith:[[TypeViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_essence_icon"] selImage:[UIImage imageNamed:@"tabBar_essence_click_icon"] title:@"首页"];
 
     /** 服务 */
     [self setUpChildControllerWith:[[ServiceViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageNamed:@"tabBar_friendTrends_click_icon"] title:@"服务"];
     
     /** 我的 */
-    [self setUpChildControllerWith:[[MineViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"我的"];
+    [self setUpChildControllerWith:[[MineViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageNamed:@"tabBar_friendTrends_click_icon"] title:@"我的"];
 
     
     //    /** 配置中间按钮 */
