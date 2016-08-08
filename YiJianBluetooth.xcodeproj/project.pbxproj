@@ -11,6 +11,8 @@
 		1811455D1D50533F0077FC38 /* PresentationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1811455B1D50533F0077FC38 /* PresentationViewController.xib */; };
 		181145611D50568A0077FC38 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1811455F1D50568A0077FC38 /* MineViewController.m */; };
 		181145621D50568A0077FC38 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181145601D50568A0077FC38 /* MineViewController.xib */; };
+		188BE8141D589C0000018E85 /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188BE8121D589C0000018E85 /* PersonalInformationViewController.m */; };
+		188BE8151D589C0000018E85 /* PersonalInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188BE8131D589C0000018E85 /* PersonalInformationViewController.xib */; };
 		188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D3F041D4EF57600C01A94 /* AlarmViewController.m */; };
 		18A5167E1D499CE40032C549 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5167C1D499CE40032C549 /* TypeViewController.m */; };
 		18A5167F1D499CE40032C549 /* TypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A5167D1D499CE40032C549 /* TypeViewController.xib */; };
@@ -164,6 +166,9 @@
 		1811455E1D50568A0077FC38 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		1811455F1D50568A0077FC38 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		181145601D50568A0077FC38 /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
+		188BE8111D589C0000018E85 /* PersonalInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInformationViewController.h; sourceTree = "<group>"; };
+		188BE8121D589C0000018E85 /* PersonalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationViewController.m; sourceTree = "<group>"; };
+		188BE8131D589C0000018E85 /* PersonalInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalInformationViewController.xib; sourceTree = "<group>"; };
 		188D3F031D4EF57600C01A94 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		188D3F041D4EF57600C01A94 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		18A5167B1D499CE40032C549 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
@@ -469,6 +474,16 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		188BE8101D589B1700018E85 /* 个人信息 */ = {
+			isa = PBXGroup;
+			children = (
+				188BE8111D589C0000018E85 /* PersonalInformationViewController.h */,
+				188BE8121D589C0000018E85 /* PersonalInformationViewController.m */,
+				188BE8131D589C0000018E85 /* PersonalInformationViewController.xib */,
+			);
+			name = "个人信息";
+			sourceTree = "<group>";
+		};
 		18B4C9ED1D47393A00E65C63 = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +576,7 @@
 				1811455E1D50568A0077FC38 /* MineViewController.h */,
 				1811455F1D50568A0077FC38 /* MineViewController.m */,
 				181145601D50568A0077FC38 /* MineViewController.xib */,
+				188BE8101D589B1700018E85 /* 个人信息 */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1228,7 +1244,7 @@
 				TargetAttributes = {
 					18B4C9F51D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = DGKWFHS998;
+						DevelopmentTeam = C3QXQ3HUWG;
 					};
 					18B4CA0E1D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1278,6 +1294,7 @@
 				18B4CA091D47393A00E65C63 /* LaunchScreen.storyboard in Resources */,
 				3CC7A68F1D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A69B1D51DCC2003CAC87 /* Contents.json in Resources */,
+				188BE8151D589C0000018E85 /* PersonalInformationViewController.xib in Resources */,
 				3CC7A6951D51DCC2003CAC87 /* tabBar_me_icon@2x.png in Resources */,
 				3CC7A6A61D51DCC2003CAC87 /* tabBar_publish_icon@3x.png in Resources */,
 				3CC7A6911D51DCC2003CAC87 /* tabBar_me_click_icon@2x.png in Resources */,
@@ -1496,6 +1513,7 @@
 				3CC7A6C41D51E065003CAC87 /* CtsiUserDefaults.m in Sources */,
 				181145611D50568A0077FC38 /* MineViewController.m in Sources */,
 				3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */,
+				188BE8141D589C0000018E85 /* PersonalInformationViewController.m in Sources */,
 				3CC7A71E1D51E12E003CAC87 /* DateUtil.m in Sources */,
 				3C8D3B4E1D543B730061997F /* BaseViewController.m in Sources */,
 				3CC7A7841D51F3B9003CAC87 /* SBJsonStreamParserAccumulator.m in Sources */,
@@ -1668,11 +1686,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YiJianBluetooth/pchFile.pch";
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1682,11 +1702,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YiJianBluetooth/pchFile.pch";
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
