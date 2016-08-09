@@ -33,6 +33,8 @@
     self.serviceTableView.delegate = self;
     self.serviceTableView.dataSource = self;
     [self.view addSubview:self.serviceTableView];
+    
+    [self setExtraCellLineHidden:self.serviceTableView];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -53,12 +55,18 @@
     }
     
     cell.textLabel.text = self.serviceArray[indexPath.row];
+    
+    cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 60;
+    return 58;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

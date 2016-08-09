@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ServiceViewController : UIViewController
+@interface ServiceViewController : BaseViewController
 
 @end
