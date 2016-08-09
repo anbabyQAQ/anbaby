@@ -38,6 +38,17 @@
 		3C113E101D587C05004099BB /* MAThermometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113E0D1D587C05004099BB /* MAThermometer.m */; };
 		3C113E111D587C05004099BB /* MAThermometerBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113E0F1D587C05004099BB /* MAThermometerBorder.m */; };
 		3C113E161D588440004099BB /* MyCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113E151D588440004099BB /* MyCustomButton.m */; };
+		3C221AF91D59B4C20000EE18 /* AuthorityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AE21D59B4C20000EE18 /* AuthorityUtil.m */; };
+		3C221AFA1D59B4C20000EE18 /* CTSIGlobalUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AE51D59B4C20000EE18 /* CTSIGlobalUserDefault.m */; };
+		3C221AFB1D59B4C20000EE18 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AE71D59B4C20000EE18 /* DataUtil.m */; };
+		3C221AFC1D59B4C20000EE18 /* DateUtil+StringCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AE91D59B4C20000EE18 /* DateUtil+StringCustom.m */; };
+		3C221AFD1D59B4C20000EE18 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AEB1D59B4C20000EE18 /* DateUtil.m */; };
+		3C221AFE1D59B4C20000EE18 /* DimensionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AED1D59B4C20000EE18 /* DimensionUtil.m */; };
+		3C221AFF1D59B4C20000EE18 /* EncodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AEF1D59B4C20000EE18 /* EncodeUtil.m */; };
+		3C221B001D59B4C20000EE18 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF11D59B4C20000EE18 /* FileUtil.m */; };
+		3C221B011D59B4C20000EE18 /* GEOUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF31D59B4C20000EE18 /* GEOUtil.m */; };
+		3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF51D59B4C20000EE18 /* LogUtil.m */; };
+		3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF81D59B4C20000EE18 /* VedioUtil.m */; };
 		3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3C1D5433110061997F /* TabbarExtension.m */; };
 		3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3E1D5433D50061997F /* camera_button_take.png */; };
 		3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3F1D5433D50061997F /* camera_button_take@2x.png */; };
@@ -122,30 +133,15 @@
 		3CC7A6F71D51E0B7003CAC87 /* PostJsonHttpThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6E51D51E0B7003CAC87 /* PostJsonHttpThread.m */; };
 		3CC7A6F81D51E0B7003CAC87 /* PutBodyHttpThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6E71D51E0B7003CAC87 /* PutBodyHttpThread.m */; };
 		3CC7A6F91D51E0B7003CAC87 /* PutJsonHttpThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6E91D51E0B7003CAC87 /* PutJsonHttpThread.m */; };
-		3CC7A7191D51E12E003CAC87 /* AuthorityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6FC1D51E12E003CAC87 /* AuthorityUtil.m */; };
-		3CC7A71A1D51E12E003CAC87 /* CTSIGlobalUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6FF1D51E12E003CAC87 /* CTSIGlobalUserDefault.m */; };
-		3CC7A71D1D51E12E003CAC87 /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7051D51E12E003CAC87 /* DataUtil.m */; };
-		3CC7A71E1D51E12E003CAC87 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7071D51E12E003CAC87 /* DateUtil.m */; };
-		3CC7A71F1D51E12E003CAC87 /* DateUtil+StringCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7091D51E12E003CAC87 /* DateUtil+StringCustom.m */; };
-		3CC7A7201D51E12E003CAC87 /* DimensionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A70B1D51E12E003CAC87 /* DimensionUtil.m */; };
-		3CC7A7211D51E12E003CAC87 /* EncodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A70D1D51E12E003CAC87 /* EncodeUtil.m */; };
-		3CC7A7221D51E12E003CAC87 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A70F1D51E12E003CAC87 /* FileUtil.m */; };
-		3CC7A7231D51E12E003CAC87 /* GEOUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7111D51E12E003CAC87 /* GEOUtil.m */; };
-		3CC7A7241D51E12E003CAC87 /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7131D51E12E003CAC87 /* LogUtil.m */; };
-		3CC7A7251D51E12E003CAC87 /* VedioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7161D51E12E003CAC87 /* VedioUtil.m */; };
-		3CC7A72B1D51E1C7003CAC87 /* PostLoginThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A72A1D51E1C7003CAC87 /* PostLoginThread.m */; };
-		3CC7A7811D51F3B9003CAC87 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7691D51F3B9003CAC87 /* NSObject+SBJson.m */; };
 		3CC7A7821D51F3B9003CAC87 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A76C1D51F3B9003CAC87 /* SBJsonParser.m */; };
 		3CC7A7831D51F3B9003CAC87 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A76E1D51F3B9003CAC87 /* SBJsonStreamParser.m */; };
 		3CC7A7841D51F3B9003CAC87 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7701D51F3B9003CAC87 /* SBJsonStreamParserAccumulator.m */; };
 		3CC7A7851D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7721D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m */; };
 		3CC7A7861D51F3B9003CAC87 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7741D51F3B9003CAC87 /* SBJsonStreamParserState.m */; };
 		3CC7A7871D51F3B9003CAC87 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7761D51F3B9003CAC87 /* SBJsonStreamWriter.m */; };
-		3CC7A7881D51F3B9003CAC87 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7781D51F3B9003CAC87 /* SBJsonStreamWriterAccumulator.m */; };
 		3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77A1D51F3B9003CAC87 /* SBJsonStreamWriterState.m */; };
 		3CC7A78A1D51F3B9003CAC87 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77C1D51F3B9003CAC87 /* SBJsonTokeniser.m */; };
 		3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77E1D51F3B9003CAC87 /* SBJsonUTF8Stream.m */; };
-		3CC7A78C1D51F3B9003CAC87 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A7801D51F3B9003CAC87 /* SBJsonWriter.m */; };
 		3CF2F6591D596CD7002D5682 /* JGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F64A1D596CD7002D5682 /* JGProgressHUD.m */; };
 		3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F64C1D596CD7002D5682 /* JGProgressHUDAnimation.m */; };
 		3CF2F65B1D596CD7002D5682 /* JGProgressHUDFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F64E1D596CD7002D5682 /* JGProgressHUDFadeAnimation.m */; };
@@ -247,6 +243,30 @@
 		3C113E0F1D587C05004099BB /* MAThermometerBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAThermometerBorder.m; sourceTree = "<group>"; };
 		3C113E141D588440004099BB /* MyCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomButton.h; sourceTree = "<group>"; };
 		3C113E151D588440004099BB /* MyCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomButton.m; sourceTree = "<group>"; };
+		3C221AE11D59B4C20000EE18 /* AuthorityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityUtil.h; sourceTree = "<group>"; };
+		3C221AE21D59B4C20000EE18 /* AuthorityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityUtil.m; sourceTree = "<group>"; };
+		3C221AE31D59B4C20000EE18 /* CtsiColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CtsiColors.h; sourceTree = "<group>"; };
+		3C221AE41D59B4C20000EE18 /* CTSIGlobalUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSIGlobalUserDefault.h; sourceTree = "<group>"; };
+		3C221AE51D59B4C20000EE18 /* CTSIGlobalUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSIGlobalUserDefault.m; sourceTree = "<group>"; };
+		3C221AE61D59B4C20000EE18 /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
+		3C221AE71D59B4C20000EE18 /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
+		3C221AE81D59B4C20000EE18 /* DateUtil+StringCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DateUtil+StringCustom.h"; sourceTree = "<group>"; };
+		3C221AE91D59B4C20000EE18 /* DateUtil+StringCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DateUtil+StringCustom.m"; sourceTree = "<group>"; };
+		3C221AEA1D59B4C20000EE18 /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
+		3C221AEB1D59B4C20000EE18 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
+		3C221AEC1D59B4C20000EE18 /* DimensionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimensionUtil.h; sourceTree = "<group>"; };
+		3C221AED1D59B4C20000EE18 /* DimensionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DimensionUtil.m; sourceTree = "<group>"; };
+		3C221AEE1D59B4C20000EE18 /* EncodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodeUtil.h; sourceTree = "<group>"; };
+		3C221AEF1D59B4C20000EE18 /* EncodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodeUtil.m; sourceTree = "<group>"; };
+		3C221AF01D59B4C20000EE18 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
+		3C221AF11D59B4C20000EE18 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
+		3C221AF21D59B4C20000EE18 /* GEOUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEOUtil.h; sourceTree = "<group>"; };
+		3C221AF31D59B4C20000EE18 /* GEOUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEOUtil.m; sourceTree = "<group>"; };
+		3C221AF41D59B4C20000EE18 /* LogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogUtil.h; sourceTree = "<group>"; };
+		3C221AF51D59B4C20000EE18 /* LogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogUtil.m; sourceTree = "<group>"; };
+		3C221AF61D59B4C20000EE18 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		3C221AF71D59B4C20000EE18 /* VedioUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioUtil.h; sourceTree = "<group>"; };
+		3C221AF81D59B4C20000EE18 /* VedioUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioUtil.m; sourceTree = "<group>"; };
 		3C8D3B3B1D5433110061997F /* TabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarExtension.h; sourceTree = "<group>"; };
 		3C8D3B3C1D5433110061997F /* TabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarExtension.m; sourceTree = "<group>"; };
 		3C8D3B3E1D5433D50061997F /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
@@ -357,30 +377,6 @@
 		3CC7A6E71D51E0B7003CAC87 /* PutBodyHttpThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PutBodyHttpThread.m; sourceTree = "<group>"; };
 		3CC7A6E81D51E0B7003CAC87 /* PutJsonHttpThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PutJsonHttpThread.h; sourceTree = "<group>"; };
 		3CC7A6E91D51E0B7003CAC87 /* PutJsonHttpThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PutJsonHttpThread.m; sourceTree = "<group>"; };
-		3CC7A6FB1D51E12E003CAC87 /* AuthorityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityUtil.h; sourceTree = "<group>"; };
-		3CC7A6FC1D51E12E003CAC87 /* AuthorityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityUtil.m; sourceTree = "<group>"; };
-		3CC7A6FD1D51E12E003CAC87 /* CtsiColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CtsiColors.h; sourceTree = "<group>"; };
-		3CC7A6FE1D51E12E003CAC87 /* CTSIGlobalUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSIGlobalUserDefault.h; sourceTree = "<group>"; };
-		3CC7A6FF1D51E12E003CAC87 /* CTSIGlobalUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSIGlobalUserDefault.m; sourceTree = "<group>"; };
-		3CC7A7041D51E12E003CAC87 /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
-		3CC7A7051D51E12E003CAC87 /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
-		3CC7A7061D51E12E003CAC87 /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
-		3CC7A7071D51E12E003CAC87 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
-		3CC7A7081D51E12E003CAC87 /* DateUtil+StringCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DateUtil+StringCustom.h"; sourceTree = "<group>"; };
-		3CC7A7091D51E12E003CAC87 /* DateUtil+StringCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DateUtil+StringCustom.m"; sourceTree = "<group>"; };
-		3CC7A70A1D51E12E003CAC87 /* DimensionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DimensionUtil.h; sourceTree = "<group>"; };
-		3CC7A70B1D51E12E003CAC87 /* DimensionUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DimensionUtil.m; sourceTree = "<group>"; };
-		3CC7A70C1D51E12E003CAC87 /* EncodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncodeUtil.h; sourceTree = "<group>"; };
-		3CC7A70D1D51E12E003CAC87 /* EncodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodeUtil.m; sourceTree = "<group>"; };
-		3CC7A70E1D51E12E003CAC87 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtil.h; sourceTree = "<group>"; };
-		3CC7A70F1D51E12E003CAC87 /* FileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtil.m; sourceTree = "<group>"; };
-		3CC7A7101D51E12E003CAC87 /* GEOUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEOUtil.h; sourceTree = "<group>"; };
-		3CC7A7111D51E12E003CAC87 /* GEOUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEOUtil.m; sourceTree = "<group>"; };
-		3CC7A7121D51E12E003CAC87 /* LogUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogUtil.h; sourceTree = "<group>"; };
-		3CC7A7131D51E12E003CAC87 /* LogUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogUtil.m; sourceTree = "<group>"; };
-		3CC7A7141D51E12E003CAC87 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		3CC7A7151D51E12E003CAC87 /* VedioUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioUtil.h; sourceTree = "<group>"; };
-		3CC7A7161D51E12E003CAC87 /* VedioUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioUtil.m; sourceTree = "<group>"; };
 		3CC7A7291D51E1C7003CAC87 /* PostLoginThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostLoginThread.h; sourceTree = "<group>"; };
 		3CC7A72A1D51E1C7003CAC87 /* PostLoginThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostLoginThread.m; sourceTree = "<group>"; };
 		3CC7A72F1D51E65A003CAC87 /* pchFile.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pchFile.pch; sourceTree = "<group>"; };
@@ -828,6 +824,37 @@
 			path = CustomerBtn;
 			sourceTree = "<group>";
 		};
+		3C221AE01D59B4C20000EE18 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				3C221AE11D59B4C20000EE18 /* AuthorityUtil.h */,
+				3C221AE21D59B4C20000EE18 /* AuthorityUtil.m */,
+				3C221AE31D59B4C20000EE18 /* CtsiColors.h */,
+				3C221AE41D59B4C20000EE18 /* CTSIGlobalUserDefault.h */,
+				3C221AE51D59B4C20000EE18 /* CTSIGlobalUserDefault.m */,
+				3C221AE61D59B4C20000EE18 /* DataUtil.h */,
+				3C221AE71D59B4C20000EE18 /* DataUtil.m */,
+				3C221AE81D59B4C20000EE18 /* DateUtil+StringCustom.h */,
+				3C221AE91D59B4C20000EE18 /* DateUtil+StringCustom.m */,
+				3C221AEA1D59B4C20000EE18 /* DateUtil.h */,
+				3C221AEB1D59B4C20000EE18 /* DateUtil.m */,
+				3C221AEC1D59B4C20000EE18 /* DimensionUtil.h */,
+				3C221AED1D59B4C20000EE18 /* DimensionUtil.m */,
+				3C221AEE1D59B4C20000EE18 /* EncodeUtil.h */,
+				3C221AEF1D59B4C20000EE18 /* EncodeUtil.m */,
+				3C221AF01D59B4C20000EE18 /* FileUtil.h */,
+				3C221AF11D59B4C20000EE18 /* FileUtil.m */,
+				3C221AF21D59B4C20000EE18 /* GEOUtil.h */,
+				3C221AF31D59B4C20000EE18 /* GEOUtil.m */,
+				3C221AF41D59B4C20000EE18 /* LogUtil.h */,
+				3C221AF51D59B4C20000EE18 /* LogUtil.m */,
+				3C221AF61D59B4C20000EE18 /* Utils.h */,
+				3C221AF71D59B4C20000EE18 /* VedioUtil.h */,
+				3C221AF81D59B4C20000EE18 /* VedioUtil.m */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		3C8D3B471D543A5F0061997F /* 心电 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1065,10 +1092,10 @@
 		3CC7A6A71D51DF72003CAC87 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3C221AE01D59B4C20000EE18 /* Global */,
 				3C9205931D59940A00781D3D /* LKDBHelper */,
 				3CF2F62D1D5967AC002D5682 /* ProgressHud */,
 				3C113E131D588433004099BB /* CustomerBtn */,
-				3CC7A6FA1D51E125003CAC87 /* Global */,
 				3CC7A6C61D51E0B7003CAC87 /* CtsiCache */,
 				3CC7A6C91D51E0B7003CAC87 /* HttpThreads */,
 				3CC7A6BF1D51E065003CAC87 /* UserDefaults */,
@@ -1167,37 +1194,6 @@
 				3CC7A6DC1D51E0B7003CAC87 /* SimpleGUIFactory.m */,
 			);
 			path = FileDownloader;
-			sourceTree = "<group>";
-		};
-		3CC7A6FA1D51E125003CAC87 /* Global */ = {
-			isa = PBXGroup;
-			children = (
-				3CC7A6FB1D51E12E003CAC87 /* AuthorityUtil.h */,
-				3CC7A6FC1D51E12E003CAC87 /* AuthorityUtil.m */,
-				3CC7A6FD1D51E12E003CAC87 /* CtsiColors.h */,
-				3CC7A6FE1D51E12E003CAC87 /* CTSIGlobalUserDefault.h */,
-				3CC7A6FF1D51E12E003CAC87 /* CTSIGlobalUserDefault.m */,
-				3CC7A7041D51E12E003CAC87 /* DataUtil.h */,
-				3CC7A7051D51E12E003CAC87 /* DataUtil.m */,
-				3CC7A7061D51E12E003CAC87 /* DateUtil.h */,
-				3CC7A7071D51E12E003CAC87 /* DateUtil.m */,
-				3CC7A7081D51E12E003CAC87 /* DateUtil+StringCustom.h */,
-				3CC7A7091D51E12E003CAC87 /* DateUtil+StringCustom.m */,
-				3CC7A70A1D51E12E003CAC87 /* DimensionUtil.h */,
-				3CC7A70B1D51E12E003CAC87 /* DimensionUtil.m */,
-				3CC7A70C1D51E12E003CAC87 /* EncodeUtil.h */,
-				3CC7A70D1D51E12E003CAC87 /* EncodeUtil.m */,
-				3CC7A70E1D51E12E003CAC87 /* FileUtil.h */,
-				3CC7A70F1D51E12E003CAC87 /* FileUtil.m */,
-				3CC7A7101D51E12E003CAC87 /* GEOUtil.h */,
-				3CC7A7111D51E12E003CAC87 /* GEOUtil.m */,
-				3CC7A7121D51E12E003CAC87 /* LogUtil.h */,
-				3CC7A7131D51E12E003CAC87 /* LogUtil.m */,
-				3CC7A7141D51E12E003CAC87 /* Utils.h */,
-				3CC7A7151D51E12E003CAC87 /* VedioUtil.h */,
-				3CC7A7161D51E12E003CAC87 /* VedioUtil.m */,
-			);
-			path = Global;
 			sourceTree = "<group>";
 		};
 		3CC7A7271D51E17B003CAC87 /* Protocols */ = {
@@ -1760,62 +1756,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C221B001D59B4C20000EE18 /* FileUtil.m in Sources */,
 				3CF2F66B1D597EE9002D5682 /* SegmentScroll.m in Sources */,
+				3C221AFB1D59B4C20000EE18 /* DataUtil.m in Sources */,
 				188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */,
-				3CC7A78C1D51F3B9003CAC87 /* SBJsonWriter.m in Sources */,
-				3CC7A71A1D51E12E003CAC87 /* CTSIGlobalUserDefault.m in Sources */,
-				3CC7A7221D51E12E003CAC87 /* FileUtil.m in Sources */,
 				3CC7A6ED1D51E0B7003CAC87 /* NewFile.m in Sources */,
 				3CC7A78A1D51F3B9003CAC87 /* SBJsonTokeniser.m in Sources */,
-				3CC7A71D1D51E12E003CAC87 /* DataUtil.m in Sources */,
 				3CC7A6F81D51E0B7003CAC87 /* PutBodyHttpThread.m in Sources */,
 				3CC7A7871D51F3B9003CAC87 /* SBJsonStreamWriter.m in Sources */,
+				3C221AFF1D59B4C20000EE18 /* EncodeUtil.m in Sources */,
 				3CF367FC1D548E6800726B20 /* LoginViewController.m in Sources */,
 				3C9205A11D59940A00781D3D /* NSObject+LKDBHelper.m in Sources */,
-				3CC7A7251D51E12E003CAC87 /* VedioUtil.m in Sources */,
 				3C113E101D587C05004099BB /* MAThermometer.m in Sources */,
 				3CC7A6F91D51E0B7003CAC87 /* PutJsonHttpThread.m in Sources */,
 				3CF2F65B1D596CD7002D5682 /* JGProgressHUDFadeAnimation.m in Sources */,
 				3C113DE81D5869DF004099BB /* PGIndexBannerSubiew.m in Sources */,
 				3CC7A6F61D51E0B7003CAC87 /* PostHttpThread.m in Sources */,
+				3C221AF91D59B4C20000EE18 /* AuthorityUtil.m in Sources */,
+				3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */,
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
 				3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */,
 				3CC7A6C41D51E065003CAC87 /* CtsiUserDefaults.m in Sources */,
 				181145611D50568A0077FC38 /* MineViewController.m in Sources */,
 				3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */,
-				3CC7A71E1D51E12E003CAC87 /* DateUtil.m in Sources */,
 				3C8D3B4E1D543B730061997F /* BaseViewController.m in Sources */,
 				3CC7A7841D51F3B9003CAC87 /* SBJsonStreamParserAccumulator.m in Sources */,
 				1811455C1D50533F0077FC38 /* PresentationViewController.m in Sources */,
-				3CC7A7211D51E12E003CAC87 /* EncodeUtil.m in Sources */,
-<<<<<<< HEAD
 				187406E81D598F1C0091C30C /* PersonalInformationViewController.m in Sources */,
-				3CC7A7881D51F3B9003CAC87 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				3CC7A72B1D51E1C7003CAC87 /* PostLoginThread.m in Sources */,
-				3CC7A7231D51E12E003CAC87 /* GEOUtil.m in Sources */,
 				187406ED1D598F460091C30C /* GuanYuWoMenViewController.m in Sources */,
-=======
 				3CF2F65F1D596CD7002D5682 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				3C92059F1D59940A00781D3D /* LKDBHelper.m in Sources */,
 				3CF2F6601D596CD7002D5682 /* JGProgressHUDRingIndicatorView.m in Sources */,
-				3CC7A7881D51F3B9003CAC87 /* SBJsonStreamWriterAccumulator.m in Sources */,
-				3CC7A72B1D51E1C7003CAC87 /* PostLoginThread.m in Sources */,
-				3CC7A7231D51E12E003CAC87 /* GEOUtil.m in Sources */,
 				3C113E161D588440004099BB /* MyCustomButton.m in Sources */,
->>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
 				3CC7A6F71D51E0B7003CAC87 /* PostJsonHttpThread.m in Sources */,
 				3CF2F65E1D596CD7002D5682 /* JGProgressHUDIndicatorView.m in Sources */,
 				3CC7A6AF1D51DFB4003CAC87 /* BlockUIAlertView.m in Sources */,
+				3C221AFC1D59B4C20000EE18 /* DateUtil+StringCustom.m in Sources */,
+				3C221AFD1D59B4C20000EE18 /* DateUtil.m in Sources */,
 				3C8D3B4A1D543AE80061997F /* ECGViewController.m in Sources */,
 				3CF368081D548EBE00726B20 /* ScannedPeripheral.m in Sources */,
 				3C113E111D587C05004099BB /* MAThermometerBorder.m in Sources */,
 				18A5167E1D499CE40032C549 /* TypeViewController.m in Sources */,
 				3C92059E1D59940A00781D3D /* LKDB+Mapping.m in Sources */,
 				3CC7A6B21D51DFCC003CAC87 /* UIViewExt.m in Sources */,
+				3C221AFA1D59B4C20000EE18 /* CTSIGlobalUserDefault.m in Sources */,
 				18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */,
 				3CC7A6EA1D51E0B7003CAC87 /* TSFileCache.m in Sources */,
-				3CC7A7201D51E12E003CAC87 /* DimensionUtil.m in Sources */,
-				3CC7A71F1D51E12E003CAC87 /* DateUtil+StringCustom.m in Sources */,
 				3CC7A7821D51F3B9003CAC87 /* SBJsonParser.m in Sources */,
 				3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */,
 				3CC7A7831D51F3B9003CAC87 /* SBJsonStreamParser.m in Sources */,
@@ -1826,19 +1812,20 @@
 				3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */,
 				3C9205A21D59940A00781D3D /* NSObject+LKModel.m in Sources */,
 				3CC7A6F31D51E0B7003CAC87 /* SimpleGUIFactory.m in Sources */,
-				3CC7A7191D51E12E003CAC87 /* AuthorityUtil.m in Sources */,
 				3CF2F65D1D596CD7002D5682 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				3CF2F6661D5972E3002D5682 /* TempDetailViewController.m in Sources */,
 				3CF2F65C1D596CD7002D5682 /* JGProgressHUDFadeZoomAnimation.m in Sources */,
 				3CC7A6F41D51E0B7003CAC87 /* GetHttpThread.m in Sources */,
 				3CF368001D548E6800726B20 /* TemperatureViewController.m in Sources */,
 				3C9205A01D59940A00781D3D /* LKDBUtils.m in Sources */,
+				3C221B011D59B4C20000EE18 /* GEOUtil.m in Sources */,
 				3C113DE91D5869DF004099BB /* NewPagedFlowView.m in Sources */,
-				3CC7A7241D51E12E003CAC87 /* LogUtil.m in Sources */,
 				3CF367EE1D548D6900726B20 /* AppDelegate.m in Sources */,
+				3C221AFE1D59B4C20000EE18 /* DimensionUtil.m in Sources */,
 				3CF2F6591D596CD7002D5682 /* JGProgressHUD.m in Sources */,
 				3CC7A7851D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m in Sources */,
 				3CC7A6F51D51E0B7003CAC87 /* HttpBaseResponse.m in Sources */,
+				3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */,
 				3CC7A7861D51F3B9003CAC87 /* SBJsonStreamParserState.m in Sources */,
 				3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */,
 				3CC7A6BE1D51E019003CAC87 /* UIView+Toast.m in Sources */,
@@ -1846,7 +1833,6 @@
 				18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */,
 				3C113E071D5871C8004099BB /* TempViewController.m in Sources */,
 				3CC7A6AB1D51DF86003CAC87 /* ApiBase.m in Sources */,
-				3CC7A7811D51F3B9003CAC87 /* NSObject+SBJson.m in Sources */,
 				18B4C9FB1D47393A00E65C63 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1930,7 +1916,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1967,7 +1953,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

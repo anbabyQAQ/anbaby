@@ -32,16 +32,13 @@
     
     self.view.backgroundColor = UIColorFromRGB(0x62828);
     
-<<<<<<< HEAD
-=======
+
     self.mineArray = @[@"个人信息",@"我的亲友",@"设置"];
->>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
+
     self.dropDownArray = @[@"我的",@"老爸",@"老妈"];
     self.dropDownTableView.separatorStyle =UITableViewCellSelectionStyleNone;
     self.dropDownTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    self.mineTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
-    [self setExtraCellLineHidden:self.mineTableView];
     [self setExtraCellLineHidden:self.dropDownTableView];
     [self addTitleButton];
     titleButtonInteger = 0;
@@ -122,26 +119,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-<<<<<<< HEAD
 
     cell.textLabel.text = self.dropDownArray[indexPath.row];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    
-=======
-    if ([tableView isEqual:self.dropDownTableView]) {
-       cell.textLabel.text = self.dropDownArray[indexPath.row];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_smallAndSmaller];
-        cell.textLabel.textColor = [UIColor darkTextColor];
-        
-    }else{
-       cell.textLabel.text = self.mineArray[indexPath.row];
-        cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-        cell.textLabel.textColor = [UIColor darkTextColor];
-        cell.textLabel.textAlignment = NSTextAlignmentLeft;
-        
-    }
->>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
+    cell.textLabel.textColor = [UIColor darkTextColor];
     
     return cell;
 }
@@ -160,18 +142,10 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-<<<<<<< HEAD
-   
+
     return 40;
     
-=======
-    if ([tableView isEqual:self.dropDownTableView]) {
-        return 25;
-    }else{
-    
-        return 44;
-    }
->>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
+
     
 }
 
