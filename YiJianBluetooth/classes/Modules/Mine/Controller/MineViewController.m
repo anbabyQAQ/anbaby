@@ -32,17 +32,27 @@
     
     self.view.backgroundColor = UIColorFromRGB(0x62828);
     
+<<<<<<< HEAD
+=======
+    self.mineArray = @[@"个人信息",@"我的亲友",@"设置"];
+>>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
     self.dropDownArray = @[@"我的",@"老爸",@"老妈"];
     self.dropDownTableView.separatorStyle =UITableViewCellSelectionStyleNone;
+    self.dropDownTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.mineTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    [self setExtraCellLineHidden:self.mineTableView];
+    [self setExtraCellLineHidden:self.dropDownTableView];
     [self addTitleButton];
     titleButtonInteger = 0;
 }
+
 -(void)addTitleButton{
 
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.titleButton.frame = CGRectMake(0, 0, 100, 44);
-    [self.titleButton setTitle:@"照片" forState:UIControlStateNormal];
+    [self.titleButton setTitle:@"用户" forState:UIControlStateNormal];
     [self.titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [[self.titleButton titleLabel] setFont:[UIFont systemFontOfSize:52/3]];
     [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -63,11 +73,9 @@
     }else{
         
         self.dropDownTableView.hidden = NO;
-        if (self.dropDownArray.count > 4) {
-            self.dropDownTableView.frame = CGRectMake(kScreenWidth / 2 - 50, 64, 100, 200);
-        }else{
-            self.dropDownTableView.frame = CGRectMake(kScreenWidth / 2 - 50, 64, 100, self.dropDownArray.count * 50);
-        }
+       
+            self.dropDownTableView.frame = CGRectMake(kScreenWidth / 2 - 50, 0, 100, self.dropDownArray.count * 25);
+        
     }
 }
 
@@ -114,16 +122,34 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
+<<<<<<< HEAD
 
     cell.textLabel.text = self.dropDownArray[indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     
+=======
+    if ([tableView isEqual:self.dropDownTableView]) {
+       cell.textLabel.text = self.dropDownArray[indexPath.row];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_smallAndSmaller];
+        cell.textLabel.textColor = [UIColor darkTextColor];
+        
+    }else{
+       cell.textLabel.text = self.mineArray[indexPath.row];
+        cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
+        cell.textLabel.textColor = [UIColor darkTextColor];
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        
+    }
+>>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
     if ([tableView isEqual:self.dropDownTableView]) {
         self.dropDownTableView.hidden = YES;
         titleButtonInteger++;
@@ -134,9 +160,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+<<<<<<< HEAD
    
     return 40;
     
+=======
+    if ([tableView isEqual:self.dropDownTableView]) {
+        return 25;
+    }else{
+    
+        return 44;
+    }
+>>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
     
 }
 
