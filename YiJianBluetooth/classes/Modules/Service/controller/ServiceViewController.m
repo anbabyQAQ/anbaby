@@ -8,8 +8,10 @@
 
 #import "ServiceViewController.h"
 
-@interface ServiceViewController ()
+@interface ServiceViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property(nonatomic, strong)UITableView *serviceTableView;
+@property(nonatomic, strong)NSArray *serviceArray;
 @end
 
 @implementation ServiceViewController
@@ -18,6 +20,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
         self.view.backgroundColor = [UIColor blackColor];
+    
+    self.serviceArray  = @[@"设备咨询",@"附近医生"];
+    
+    [self addTableView];
+    
+   
+}
+-(void)addTableView{
+
+     self.serviceTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:(UITableViewStylePlain)];
+    self.serviceTableView.delegate = self;
+    self.serviceTableView.dataSource = self;
+    [self.view addSubview:self.serviceTableView];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+    return self.serviceArray.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    
+    static NSString *cellID = @"cellID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    
+    cell.textLabel.text = self.serviceArray[indexPath.row];
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 60;
 }
 
 - (void)didReceiveMemoryWarning {

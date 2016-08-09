@@ -7,13 +7,13 @@
 //
 
 #import "MineViewController.h"
-
-@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "GuanYuWoMenViewController.h"
+#import "PersonalInformationViewController.h"
+@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
 
     NSInteger titleButtonInteger;//用来记录导航栏button点击次数
 }
-@property (weak, nonatomic) IBOutlet UITableView *mineTableView;
 //导航栏下拉弹出tableView
 @property (weak, nonatomic) IBOutlet UITableView *dropDownTableView;
 
@@ -30,11 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = UIColorFromRGB(0x62828);
     
-    self.mineArray = @[@"个人信息",@"我的亲友",@"退出登录"];
     self.dropDownArray = @[@"我的",@"老爸",@"老妈"];
-    self.mineTableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.dropDownTableView.separatorStyle =UITableViewCellSelectionStyleNone;
     [self addTitleButton];
     titleButtonInteger = 0;
@@ -77,9 +75,29 @@
 
     [super viewWillLayoutSubviews];
     
-    
+}
+#pragma mark =======点击个人信息
+- (IBAction)personButtonAction:(id)sender {
+    PersonalInformationViewController *person = [PersonalInformationViewController new];
+    [self.navigationController pushViewController:person animated:YES];
 }
 
+#pragma mark =======点击我的亲友
+- (IBAction)FamilyButtonAction:(id)sender {
+}
+
+#pragma mark ===========关于我们==============
+- (IBAction)guanYuWoMenButtonAction:(id)sender {
+    GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
+    [self.navigationController pushViewController:guanyuVC animated:YES];
+}
+#pragma mark =========退出登录============
+- (IBAction)tuiChuDengLuButtonAction:(id)sender {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
     return 1;
@@ -96,13 +114,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    if ([tableView isEqual:self.dropDownTableView]) {
-       cell.textLabel.text = self.dropDownArray[indexPath.row];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    }else{
-       cell.textLabel.text = self.mineArray[indexPath.row];
-        
-    }
+
+    cell.textLabel.text = self.dropDownArray[indexPath.row];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    
     
     return cell;
 }
@@ -119,12 +134,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    if ([tableView isEqual:self.dropDownTableView]) {
-        return 40;
-    }else{
+   
+    return 40;
     
-        return 80;
-    }
     
 }
 
