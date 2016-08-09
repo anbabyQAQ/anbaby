@@ -18,5 +18,6 @@ target 'YiJianBluetooth' do
   end
 
 pod 'AFNetworking'
+pod “FMDB”, "~> 2.6.2”
 
 end

@@ -8,6 +8,7 @@
 
 #import "TempViewController.h"
 #import "MAThermometer.h"
+#import "TempDetailViewController.h"
 
 @interface TempViewController ()<UITableViewDelegate,UITableViewDataSource>{
     
@@ -39,15 +40,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self initTempLayout];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
 
-    MyCustomButton *mapbutton = [MyCustomButton buttonWithType:UIButtonTypeSystem];
-    [mapbutton setFrame:CGRectMake(0, 0, 40 , 30)];
-    [mapbutton setBackgroundColor:[UIColor purpleColor]];
-    [mapbutton addTarget:self action:@selector(setRightBtn) forControlEvents:UIControlEventTouchDown];
-    [view addSubview:mapbutton];
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:view];
-    self.navigationItem.rightBarButtonItem = rightBtn;
+//    MyCustomButton *mapbutton = [MyCustomButton buttonWithType:UIButtonTypeSystem];
+//    [mapbutton setFrame:CGRectMake(0, 0, 60 , 30)];
+//    [mapbutton setTitle:@"连接设备" forState:(UIControlStateNormal)];
+//    [mapbutton setTintColor:[UIColor blueColor]];
+//    [mapbutton addTarget:self action:@selector(setRightBtn) forControlEvents:UIControlEventTouchDown];
+//    [view addSubview:mapbutton];
+//    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:view];
+//    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"连接设备" style:UIBarButtonItemStyleDone target:self action:@selector(setRightBtn)] ;
     
     [self addtableview];
     
@@ -83,7 +87,7 @@
     [self.view addSubview: self.temp_lab];
     
     
-    _temp_view = [[UIView alloc] initWithFrame:CGRectMake(110, 50, 100, 200)];
+    _temp_view = [[UIView alloc] initWithFrame:CGRectMake(110, 50, 100, 150)];
     _temp_view.backgroundColor = UIColorFromRGB(0xf3f3f3);
     self.temp_view.layer.masksToBounds = YES;
     self.temp_view.layer.cornerRadius = 6.0;
@@ -101,7 +105,7 @@
     _thermometer1.curValue = x+y*0.1;
     [_temp_view addSubview:_thermometer1];
     
-    UILabel *temp = [[UILabel alloc] initWithFrame:CGRectMake(220, 70, 80, 20)];
+    UILabel *temp = [[UILabel alloc] initWithFrame:CGRectMake(220, 150, 80, 20)];
     temp.textAlignment=NSTextAlignmentLeft;
     temp.text=[NSString stringWithFormat:@"%.2f℃",x+y*0.1];
     temp.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
@@ -123,6 +127,9 @@
 }
 
 - (void)clickbtn:(id)sender{
+    
+    TempDetailViewController *detailVC = [[TempDetailViewController alloc] init];
+    [self.navigationController pushViewController:detailVC animated:YES];
     
 }
 

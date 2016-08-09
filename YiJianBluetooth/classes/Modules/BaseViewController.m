@@ -8,11 +8,14 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
+@interface BaseViewController (){
+    JGProgressHUD *_HUD;
+}
 
 @end
 
 @implementation BaseViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -86,6 +89,177 @@
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:mapbutton];
     
     self.navigationItem.rightBarButtonItem = rightBtn;
+}
+
+
+#pragma mark - JGProgressHUDDelegate
+
+- (void)progressHUD:(JGProgressHUD *)progressHUD willPresentInView:(UIView *)view {
+    NSLog(@"HUD %p will present in view: %p", progressHUD, view);
+}
+
+- (void)progressHUD:(JGProgressHUD *)progressHUD didPresentInView:(UIView *)view {
+    NSLog(@"HUD %p did present in view: %p", progressHUD, view);
+}
+
+- (void)progressHUD:(JGProgressHUD *)progressHUD willDismissFromView:(UIView *)view {
+    NSLog(@"HUD %p will dismiss from view: %p", progressHUD, view);
+}
+
+- (void)progressHUD:(JGProgressHUD *)progressHUD didDismissFromView:(UIView *)view {
+    NSLog(@"HUD %p did dismiss from view: %p", progressHUD, view);
+}
+
+
+#pragma mark -
+
+
+- (void)showSuccessHud:(NSUInteger)section {
+    _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
+    _HUD.userInteractionEnabled = _blockUserInteraction;
+    _HUD.delegate = self;
+    
+    UIImageView *errorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jg_hud_success.png"]];
+    _HUD.textLabel.text = @"Success!";
+    JGProgressHUDIndicatorView *ind = [[JGProgressHUDIndicatorView alloc] initWithContentView:errorImageView];
+    _HUD.progressIndicatorView = ind;
+    
+    _HUD.square = YES;
+    
+    [_HUD showInView:self.navigationController.view];
+    
+}
+
+- (void)showErrorHud:(NSUInteger)section {
+    _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
+    _HUD.userInteractionEnabled = _blockUserInteraction;
+    _HUD.delegate = self;
+    
+    UIImageView *errorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jg_hud_error.png"]];
+    _HUD.textLabel.text = @"Error!";
+    JGProgressHUDIndicatorView *ind = [[JGProgressHUDIndicatorView alloc] initWithContentView:errorImageView];
+    _HUD.progressIndicatorView = ind;
+    
+    _HUD.square = YES;
+    
+    [_HUD showInView:self.navigationController.view];
+    
+}
+
+- (void)showSimpleHud:(NSUInteger)section {
+    _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
+    _HUD.userInteractionEnabled = _blockUserInteraction;
+    _HUD.delegate = self;
+    
+    [_HUD showInView:self.navigationController.view];
+    
+}
+
+- (void)showWithTextHud:(NSUInteger)section text:(NSString *)text done:(NSString *)text1{
+    _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
+    _HUD.textLabel.text = text;
+    _HUD.delegate = self;
+    _HUD.userInteractionEnabled = _blockUserInteraction;
+    [_HUD showInView:self.navigationController.view];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _HUD.useProgressIndicatorView = NO;
+        
+        _HUD.textLabel.font = [UIFont systemFontOfSize:30.0f];
+        
+        _HUD.textLabel.text = text1;
+        
+        _HUD.position = JGProgressHUDPositionBottomCenter;
+    });
+    
+    _HUD.marginInsets = UIEdgeInsetsMake(0.0f, 0.0f, 10.0f, 0.0f);
+    
+}
+
+- (void)showProgressHud:(NSUInteger)section text:(NSString *)text{
+    _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
+    _HUD.progressIndicatorView = [[JGProgressHUDPieIndicatorView alloc] initWithHUDStyle:_HUD.style];
+    _HUD.delegate = self;
+    _HUD.userInteractionEnabled = _blockUserInteraction;
+    _HUD.textLabel.text = text;
+    [_HUD showInView:self.navigationController.view];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:0.25 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:0.5 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:0.75 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:1.0 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD dismiss];
+    });
+}
+
+- (void)showZoomAnimationWithRing:(NSUInteger)section text:(NSString *)text{
+    _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
+    _HUD.progressIndicatorView = [[JGProgressHUDPieIndicatorView alloc] initWithHUDStyle:_HUD.style];
+    _HUD.userInteractionEnabled = _blockUserInteraction;
+    JGProgressHUDFadeZoomAnimation *an = [JGProgressHUDFadeZoomAnimation animation];
+    _HUD.animation = an;
+    _HUD.delegate = self;
+    _HUD.textLabel.text = text;
+    [_HUD showInView:self.navigationController.view];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:0.25 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:0.5 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:0.75 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD setProgress:1.0 animated:YES];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_HUD dismiss];
+    });
+}
+
+-(void)showTextOnlyHud:(NSUInteger)section text:(NSString *)text{
+    _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
+    _HUD.useProgressIndicatorView = NO;
+    _HUD.userInteractionEnabled = _blockUserInteraction;
+    _HUD.textLabel.text = text;
+    _HUD.delegate = self;
+    _HUD.position = JGProgressHUDPositionBottomCenter;
+    _HUD.marginInsets = (UIEdgeInsets) {
+        .top = 0.0f,
+        .bottom = 20.0f,
+        .left = 0.0f,
+        .right = 0.0f,
+    };
+    
+    [_HUD showInView:self.navigationController.view];
+    
+}
+
+- (void)dismissAnimated:(BOOL)animated{
+    [_HUD dismissAnimated:animated];
+}
+
+- (void)dismissAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated{
+    [_HUD dismissAfterDelay:delay animated:animated];
 }
 
 
