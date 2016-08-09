@@ -7,13 +7,13 @@
 //
 
 #import "MineViewController.h"
-
-@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "GuanYuWoMenViewController.h"
+#import "PersonalInformationViewController.h"
+@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
 
     NSInteger titleButtonInteger;//用来记录导航栏button点击次数
 }
-@property (weak, nonatomic) IBOutlet UITableView *mineTableView;
 //导航栏下拉弹出tableView
 @property (weak, nonatomic) IBOutlet UITableView *dropDownTableView;
 
@@ -30,11 +30,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = UIColorFromRGB(0x62828);
     
+<<<<<<< HEAD
+=======
     self.mineArray = @[@"个人信息",@"我的亲友",@"设置"];
+>>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
     self.dropDownArray = @[@"我的",@"老爸",@"老妈"];
-    self.mineTableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.dropDownTableView.separatorStyle =UITableViewCellSelectionStyleNone;
     self.dropDownTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.mineTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -81,9 +83,29 @@
 
     [super viewWillLayoutSubviews];
     
-    
+}
+#pragma mark =======点击个人信息
+- (IBAction)personButtonAction:(id)sender {
+    PersonalInformationViewController *person = [PersonalInformationViewController new];
+    [self.navigationController pushViewController:person animated:YES];
 }
 
+#pragma mark =======点击我的亲友
+- (IBAction)FamilyButtonAction:(id)sender {
+}
+
+#pragma mark ===========关于我们==============
+- (IBAction)guanYuWoMenButtonAction:(id)sender {
+    GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
+    [self.navigationController pushViewController:guanyuVC animated:YES];
+}
+#pragma mark =========退出登录============
+- (IBAction)tuiChuDengLuButtonAction:(id)sender {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
     return 1;
@@ -100,6 +122,12 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
+<<<<<<< HEAD
+
+    cell.textLabel.text = self.dropDownArray[indexPath.row];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    
+=======
     if ([tableView isEqual:self.dropDownTableView]) {
        cell.textLabel.text = self.dropDownArray[indexPath.row];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -113,6 +141,7 @@
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
         
     }
+>>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
     
     return cell;
 }
@@ -131,12 +160,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+<<<<<<< HEAD
+   
+    return 40;
+    
+=======
     if ([tableView isEqual:self.dropDownTableView]) {
         return 25;
     }else{
     
         return 44;
     }
+>>>>>>> 302f2500436364bd93716c387af2256f21a1da4e
     
 }
 
