@@ -7,10 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SegmentScroll;
+
+@protocol userScrollDelegate <NSObject>
+
+-(void)callBackIndex:(NSInteger)index;
+
+@end
+
 
 @interface SegmentScroll : UIScrollView{
     NSMutableArray *_array;
 }
 
+@property (nonatomic, assign) id<userScrollDelegate> user_delegate;
+
+
+- (void)setWithUserInfo:(NSArray *)users;
 
 @end

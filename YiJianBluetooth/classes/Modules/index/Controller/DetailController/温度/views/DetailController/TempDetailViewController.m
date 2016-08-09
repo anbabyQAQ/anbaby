@@ -10,9 +10,10 @@
 #import "MAThermometer.h"
 #import "User.h"
 #import "UsersDao.h"
+#import "SegmentScroll.h"
 
 #define Kuser_imgW 60;
-@interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate>{
+@interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,userScrollDelegate>{
     UILabel *_temp;
 }
 @property (nonatomic, strong) UILabel  *temp_lab;
@@ -27,7 +28,7 @@
 @property (nonatomic, strong) MAThermometer * thermometer1;
 
 
-@property (nonatomic, strong) UIScrollView *scroll;
+@property (nonatomic, strong) SegmentScroll *scroll;
 @property (nonatomic, strong) NSMutableArray *users;
 @end
 
@@ -65,70 +66,21 @@
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
     
     
-    _scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
-    _scroll.delegate = self;
-    _scroll.backgroundColor = UIColorFromRGB(0xf3f3f3);
-    _scroll.layer.masksToBounds = YES;
-    _scroll.layer.cornerRadius = 6.0;
-    _scroll.layer.borderWidth = 1.0;
-    _scroll.layer.borderColor = [[UIColor whiteColor] CGColor];
-    _scroll.pagingEnabled = YES;
-    _scroll.contentSize = CGSizeMake(60*(_users.count+1), 80);
+    _scroll = [[SegmentScroll alloc] initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
+    [_scroll setWithUserInfo:_users];
+    _scroll.user_delegate = self;
     
-    
-    for (int i=0; i<_users.count+1; i++) {
-        UIView *userView = [[UIView alloc] initWithFrame:CGRectMake(60*i, 0, 60, 80)];
-        userView.userInteractionEnabled=YES;
-    
-        
-      
-        if (i<_users.count) {
-            
-            userView.tag = 100+i;
-            
-            UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
-            User *user = _users[i];
-            imageview.image = user.headIcon;
-            [userView addSubview:imageview];
-            
-            UILabel    *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, 60, 20)];
-            lable.font = [UIFont systemFontOfSize:text_size_between_smallAndSmaller];
-            lable.textAlignment = NSTextAlignmentCenter;
-            lable.textColor = [UIColor grayColor];
-            lable.text=user.name;
-            [userView addSubview:lable];
-        }else{
-            
-            userView.tag = 100+i;
-            
-            UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(0, 15, 50, 50)];
-            imageview.image = [UIImage imageNamed:@"tabBar_publish_icon"];
-            imageview.userInteractionEnabled=YES;
-            [userView addSubview:imageview];
- 
-        }
-        
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Actiondo:)];
-        [userView addGestureRecognizer:tapGesture];
-        
-        [self.scroll addSubview:userView];
-
-    }
     [self.view addSubview:_scroll];
     
 }
 
--(void)Actiondo:(id)sender{
-    
-    UIView *view = (UIView *)sender;
-    if (view.tag-100 == _users.count) {
+- (void)callBackIndex:(NSInteger)index {
+    if (index-100 == _users.count) {
         //添加用户信息；
     }else{
         //选取用户添加记录
     }
-
 }
-
 
 - (void)keyboardWasShown:(NSNotification *) notif{
     NSDictionary *info = [notif userInfo];
