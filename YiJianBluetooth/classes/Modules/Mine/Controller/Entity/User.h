@@ -45,6 +45,11 @@ typedef enum
 @property (nonatomic,assign) NSInteger age;
 @property (nonatomic,assign) Gender_t gender;
 
+
+
+@property (nonatomic, copy) NSString *sex;
+@property (nonatomic, copy) NSString *phone;
+
 /**
  *   array contains the items which is the subclass of 'DailyCheckItem'
  */

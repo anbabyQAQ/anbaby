@@ -7,8 +7,8 @@
 //
 
 #import "PersonalInformationViewController.h"
-
-@interface PersonalInformationViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
+#import "User.h"
+@interface PersonalInformationViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate>
 {
 
     UIPickerView *_PickerView;
@@ -63,6 +63,7 @@
     [super viewDidLoad];
     
 
+    self.title = @"个人信息";
     self.sexView.hidden = YES;
     sexString = @"";
     self.nextButton.layer.cornerRadius = 20;
@@ -70,8 +71,39 @@
     self.nextButton.layer.borderWidth = 1;
     pickInterger = 0;
     [self addArray];
+    
+    
+    [self addTextField:self.nameTextField];
+    [self addTextField:self.phoneTextField];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回黑色"] style:(UIBarButtonItemStylePlain) target:self action:@selector(BackAc)];
+    
 }
 
+-(void)BackAc{
+
+    
+    if ([self.nameTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"名字为空将无法为您保存" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    User *user = [User new];
+    user.name = self.nameTextField.text;
+    user.weight = [self.weightButton.titleLabel.text doubleValue];
+    user.height = [self.heightButton.titleLabel.text doubleValue];
+    user.age = [self.ageButton.titleLabel.text integerValue];
+    user.sex = self.sexButton.titleLabel.text;
+    user.phone = self.phoneTextField.text;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)addTextField:(UITextField *)textField{
+
+    textField.delegate = self;
+    textField.returnKeyType = UIReturnKeyDone;
+    
+}
 
 -(void)viewWillLayoutSubviews{
     
@@ -105,6 +137,7 @@
 - (IBAction)sexButtonAction:(id)sender {
 
     self.navigationController.navigationBarHidden = YES;
+    [self.view endEditing:YES];
     self.sexView.hidden = NO;
 }
 
@@ -167,7 +200,7 @@
 
 }
 -(void)addPickView{
-    
+    [self.view endEditing:YES];
     self.navigationController.navigationBarHidden = YES;
     _toumingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     _toumingView.backgroundColor = UIColorFromRGB(0x777777);
@@ -180,6 +213,20 @@
     _writeView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 220, [UIScreen mainScreen].bounds.size.width, 220)];
     _writeView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_writeView];
+    
+    
+    UILabel *danweiLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth / 2 - 40, 5, 80, 30)];
+    danweiLabel.textColor = UIColorFromRGB(0x777777);
+    if (pickInterger == 1) {
+        danweiLabel.text = @"单位：cm";
+    }else if (pickInterger == 2){
+    
+        danweiLabel.text = @"单位：kg";
+    }else if (pickInterger == 3){
+    
+        danweiLabel.hidden = YES;
+    }
+    [_writeView addSubview:danweiLabel];
     
     //添加取消按钮
     UIButton *quxiaoButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 40, 30)];
@@ -298,6 +345,15 @@
     
     pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;
+}
+
+
+#pragma mark -==========textFieldDelegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    [self.nameTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+    return YES;
 }
 
 

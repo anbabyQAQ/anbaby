@@ -9,6 +9,7 @@
 #import "MineViewController.h"
 #import "GuanYuWoMenViewController.h"
 #import "PersonalInformationViewController.h"
+#import "FamilyViewController.h"
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
 
@@ -90,11 +91,15 @@
 
 #pragma mark =======点击我的亲友
 - (IBAction)FamilyButtonAction:(id)sender {
+    FamilyViewController *family = [FamilyViewController new];
+    family.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:family animated:YES];
 }
 
 #pragma mark ===========关于我们==============
 - (IBAction)guanYuWoMenButtonAction:(id)sender {
     GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
+    guanyuVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:guanyuVC animated:YES];
 }
 #pragma mark =========退出登录============

@@ -24,6 +24,10 @@
 		18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CC4F751D47597100A9FCC3 /* MainTabBarController.m */; };
 		18E94B341D5AB3CF00F865FF /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E94B321D5AB3CF00F865FF /* PersonalInformationViewController.m */; };
 		18E94B351D5AB3CF00F865FF /* PersonalInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E94B331D5AB3CF00F865FF /* PersonalInformationViewController.xib */; };
+		18E94B3A1D5ACE7F00F865FF /* FamilyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E94B381D5ACE7F00F865FF /* FamilyViewController.m */; };
+		18E94B3B1D5ACE7F00F865FF /* FamilyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E94B391D5ACE7F00F865FF /* FamilyViewController.xib */; };
+		18E94B3F1D5AD20300F865FF /* ShoppingMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E94B3D1D5AD20300F865FF /* ShoppingMallViewController.m */; };
+		18E94B401D5AD20300F865FF /* ShoppingMallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E94B3E1D5AD20300F865FF /* ShoppingMallViewController.xib */; };
 		18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13021D4AFFA700DC380B /* CharacteristicReader.m */; };
 		18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13061D4B467F00DC380B /* AlarmClockViewController.m */; };
 		18FF13091D4B467F00DC380B /* AlarmClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FF13071D4B467F00DC380B /* AlarmClockViewController.xib */; };
@@ -219,6 +223,12 @@
 		18E94B311D5AB3CF00F865FF /* PersonalInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInformationViewController.h; sourceTree = "<group>"; };
 		18E94B321D5AB3CF00F865FF /* PersonalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationViewController.m; sourceTree = "<group>"; };
 		18E94B331D5AB3CF00F865FF /* PersonalInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalInformationViewController.xib; sourceTree = "<group>"; };
+		18E94B371D5ACE7F00F865FF /* FamilyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyViewController.h; sourceTree = "<group>"; };
+		18E94B381D5ACE7F00F865FF /* FamilyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyViewController.m; sourceTree = "<group>"; };
+		18E94B391D5ACE7F00F865FF /* FamilyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FamilyViewController.xib; sourceTree = "<group>"; };
+		18E94B3C1D5AD20300F865FF /* ShoppingMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingMallViewController.h; sourceTree = "<group>"; };
+		18E94B3D1D5AD20300F865FF /* ShoppingMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingMallViewController.m; sourceTree = "<group>"; };
+		18E94B3E1D5AD20300F865FF /* ShoppingMallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingMallViewController.xib; sourceTree = "<group>"; };
 		18FF13011D4AFFA700DC380B /* CharacteristicReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacteristicReader.h; sourceTree = "<group>"; };
 		18FF13021D4AFFA700DC380B /* CharacteristicReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacteristicReader.m; sourceTree = "<group>"; };
 		18FF13051D4B467F00DC380B /* AlarmClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClockViewController.h; sourceTree = "<group>"; };
@@ -678,6 +688,7 @@
 				1811455E1D50568A0077FC38 /* MineViewController.h */,
 				1811455F1D50568A0077FC38 /* MineViewController.m */,
 				181145601D50568A0077FC38 /* MineViewController.xib */,
+				18E94B361D5ACE4C00F865FF /* 我的亲友 */,
 				187406E31D598F1C0091C30C /* 个人信息 */,
 				187406E71D598F1C0091C30C /* 关于我们 */,
 			);
@@ -687,6 +698,9 @@
 		18CC4F7A1D475AA400A9FCC3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18E94B3C1D5AD20300F865FF /* ShoppingMallViewController.h */,
+				18E94B3D1D5AD20300F865FF /* ShoppingMallViewController.m */,
+				18E94B3E1D5AD20300F865FF /* ShoppingMallViewController.xib */,
 				18FF13041D4B453E00DC380B /* 闹钟 */,
 			);
 			path = Controller;
@@ -702,6 +716,16 @@
 				18A5167D1D499CE40032C549 /* TypeViewController.xib */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		18E94B361D5ACE4C00F865FF /* 我的亲友 */ = {
+			isa = PBXGroup;
+			children = (
+				18E94B371D5ACE7F00F865FF /* FamilyViewController.h */,
+				18E94B381D5ACE7F00F865FF /* FamilyViewController.m */,
+				18E94B391D5ACE7F00F865FF /* FamilyViewController.xib */,
+			);
+			path = "我的亲友";
 			sourceTree = "<group>";
 		};
 		18FF13001D4AFF9300DC380B /* Utilities */ = {
@@ -1556,6 +1580,7 @@
 				3CC7A6A61D51DCC2003CAC87 /* tabBar_publish_icon@3x.png in Resources */,
 				3CC7A6911D51DCC2003CAC87 /* tabBar_me_click_icon@2x.png in Resources */,
 				3C9205AE1D59988A00781D3D /* tabBar_publish_icon@2x.png in Resources */,
+				18E94B3B1D5ACE7F00F865FF /* FamilyViewController.xib in Resources */,
 				3CC7A6F01D51E0B7003CAC87 /* close-button-2.png in Resources */,
 				3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */,
 				3CC7A68E1D51DCC2003CAC87 /* tabBar_friendTrends_icon@3x.png in Resources */,
@@ -1566,6 +1591,7 @@
 				3CC7A69D1D51DCC2003CAC87 /* tabBar_new_icon@2x.png in Resources */,
 				3CC7A67F1D51DCC2003CAC87 /* Contents.json in Resources */,
 				18B4CA061D47393A00E65C63 /* Assets.xcassets in Resources */,
+				18E94B401D5AD20300F865FF /* ShoppingMallViewController.xib in Resources */,
 				3CC7A67D1D51DCC2003CAC87 /* tabbar-light.png in Resources */,
 				1811455D1D50533F0077FC38 /* PresentationViewController.xib in Resources */,
 				3CC7A68C1D51DCC2003CAC87 /* tabBar_friendTrends_icon.png in Resources */,
@@ -1824,10 +1850,12 @@
 				3C221AFE1D59B4C20000EE18 /* DimensionUtil.m in Sources */,
 				3CF2F6591D596CD7002D5682 /* JGProgressHUD.m in Sources */,
 				3CC7A7851D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m in Sources */,
+				18E94B3F1D5AD20300F865FF /* ShoppingMallViewController.m in Sources */,
 				3CC7A6F51D51E0B7003CAC87 /* HttpBaseResponse.m in Sources */,
 				3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */,
 				3CC7A7861D51F3B9003CAC87 /* SBJsonStreamParserState.m in Sources */,
 				3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */,
+				18E94B3A1D5ACE7F00F865FF /* FamilyViewController.m in Sources */,
 				3CC7A6BE1D51E019003CAC87 /* UIView+Toast.m in Sources */,
 				18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */,
 				18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */,

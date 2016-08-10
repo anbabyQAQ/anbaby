@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDW-LU-A9c">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDW-LU-A9c">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OiS-M5-xNf">
@@ -60,11 +60,15 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9t-KS-f7M">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dayu.png" translatesAutoresizingMaskIntoConstraints="NO" id="LBp-2t-Op3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightImage" translatesAutoresizingMaskIntoConstraints="NO" id="LBp-2t-Op3">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="21" id="MYw-rg-6M7"/>
-                                                        <constraint firstAttribute="height" constant="21" id="hEn-Tc-umO"/>
+                                                        <constraint firstAttribute="width" constant="21" id="MYw-rg-6M7">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                                        </constraint>
+                                                        <constraint firstAttribute="height" constant="21" id="hEn-Tc-umO">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                                        </constraint>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -144,11 +148,15 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3l-xN-s6E">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dayu.png" translatesAutoresizingMaskIntoConstraints="NO" id="CoP-NK-VdH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightImage" translatesAutoresizingMaskIntoConstraints="NO" id="CoP-NK-VdH">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="G6d-Un-nBO"/>
-                                                        <constraint firstAttribute="width" constant="21" id="v0I-Qy-NbA"/>
+                                                        <constraint firstAttribute="height" constant="21" id="G6d-Un-nBO">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                                        </constraint>
+                                                        <constraint firstAttribute="width" constant="21" id="v0I-Qy-NbA">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                                        </constraint>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -221,11 +229,15 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWf-Fz-EnZ">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dayu.png" translatesAutoresizingMaskIntoConstraints="NO" id="q8p-FE-Xhj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightImage" translatesAutoresizingMaskIntoConstraints="NO" id="q8p-FE-Xhj">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="GeU-12-kAL"/>
-                                                        <constraint firstAttribute="width" constant="21" id="zMK-3P-hzn"/>
+                                                        <constraint firstAttribute="height" constant="21" id="GeU-12-kAL">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                                        </constraint>
+                                                        <constraint firstAttribute="width" constant="21" id="zMK-3P-hzn">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="15"/>
+                                                        </constraint>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -465,7 +477,7 @@
                                 <constraint firstAttribute="trailing" secondItem="laA-qy-OP7" secondAttribute="trailing" id="p36-3u-38z"/>
                                 <constraint firstItem="AYy-AD-Z6c" firstAttribute="leading" secondItem="OiS-M5-xNf" secondAttribute="leading" id="qgt-37-mU9"/>
                                 <constraint firstAttribute="height" constant="800" id="wM9-Ug-Tn5">
-                                    <variation key="heightClass=regular-widthClass=compact" constant="760"/>
+                                    <variation key="heightClass=regular-widthClass=compact" constant="480"/>
                                 </constraint>
                             </constraints>
                             <variation key="default">
@@ -624,7 +636,7 @@
         </view>
     </objects>
     <resources>
-        <image name="dayu.png" width="50" height="50"/>
         <image name="icon60@2.png" width="50" height="50"/>
+        <image name="rightImage" width="23" height="23"/>
     </resources>
 </document>

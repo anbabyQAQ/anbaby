@@ -18,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  
+    self.title = @"服务";
         self.view.backgroundColor = [UIColor blackColor];
     
     self.serviceArray  = @[@"设备咨询",@"附近医生"];
