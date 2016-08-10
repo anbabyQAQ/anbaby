@@ -10,6 +10,7 @@
 #import "GuanYuWoMenViewController.h"
 #import "PersonalInformationViewController.h"
 #import "FamilyViewController.h"
+#import "LoginViewController.h"
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
 
@@ -106,8 +107,19 @@
 - (IBAction)tuiChuDengLuButtonAction:(id)sender {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = 1006;
     [alert show];
     
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+
+    if (alertView.tag == 1006) {
+        if (buttonIndex == 1) {
+            LoginViewController *login = [LoginViewController new];
+            login.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:login animated:YES];
+        }
+    }
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
