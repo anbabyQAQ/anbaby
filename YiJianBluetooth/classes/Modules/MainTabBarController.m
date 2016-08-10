@@ -8,7 +8,7 @@
 
 #import "MainTabBarController.h"
 #import "TypeViewController.h"
-#import "PresentationViewController.h"
+#import "ReportViewController.h"
 #import "ServiceViewController.h"
 #import "MineViewController.h"
 #import "AlarmClockViewController.h"
@@ -60,7 +60,7 @@
     [self setUpChildControllerWith:[[AlarmClockViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"商城"];
     
     /** 报告 */
-    [self setUpChildControllerWith:[[PresentationViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"报告"];
+    [self setUpChildControllerWith:[[ReportViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"报告"];
     
     
     /** 首页 */

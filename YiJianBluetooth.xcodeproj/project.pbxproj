@@ -49,6 +49,7 @@
 		3C221B011D59B4C20000EE18 /* GEOUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF31D59B4C20000EE18 /* GEOUtil.m */; };
 		3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF51D59B4C20000EE18 /* LogUtil.m */; };
 		3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF81D59B4C20000EE18 /* VedioUtil.m */; };
+		3C221B081D59B9480000EE18 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221B071D59B9480000EE18 /* ReportViewController.m */; };
 		3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3C1D5433110061997F /* TabbarExtension.m */; };
 		3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3E1D5433D50061997F /* camera_button_take.png */; };
 		3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3F1D5433D50061997F /* camera_button_take@2x.png */; };
@@ -267,6 +268,8 @@
 		3C221AF61D59B4C20000EE18 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		3C221AF71D59B4C20000EE18 /* VedioUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VedioUtil.h; sourceTree = "<group>"; };
 		3C221AF81D59B4C20000EE18 /* VedioUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioUtil.m; sourceTree = "<group>"; };
+		3C221B061D59B9480000EE18 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		3C221B071D59B9480000EE18 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		3C8D3B3B1D5433110061997F /* TabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarExtension.h; sourceTree = "<group>"; };
 		3C8D3B3C1D5433110061997F /* TabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarExtension.m; sourceTree = "<group>"; };
 		3C8D3B3E1D5433D50061997F /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
@@ -518,6 +521,7 @@
 				18CC4F771D475A3000A9FCC3 /* index */,
 				18CC4F781D475A3000A9FCC3 /* Orther */,
 				181145571D5050350077FC38 /* Presentation */,
+				3C221B041D59B8990000EE18 /* Report */,
 				3CC7A63D1D51DB72003CAC87 /* Service */,
 				18CC4F731D4758E400A9FCC3 /* Mine */,
 				3C8D3B4C1D543B730061997F /* BaseViewController.h */,
@@ -853,6 +857,23 @@
 				3C221AF81D59B4C20000EE18 /* VedioUtil.m */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		3C221B041D59B8990000EE18 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				3C221B051D59B8AB0000EE18 /* controller */,
+				3C221B061D59B9480000EE18 /* ReportViewController.h */,
+				3C221B071D59B9480000EE18 /* ReportViewController.m */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		3C221B051D59B8AB0000EE18 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		3C8D3B471D543A5F0061997F /* 心电 */ = {
@@ -1801,6 +1822,7 @@
 				3CC7A6B21D51DFCC003CAC87 /* UIViewExt.m in Sources */,
 				3C221AFA1D59B4C20000EE18 /* CTSIGlobalUserDefault.m in Sources */,
 				18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */,
+				3C221B081D59B9480000EE18 /* ReportViewController.m in Sources */,
 				3CC7A6EA1D51E0B7003CAC87 /* TSFileCache.m in Sources */,
 				3CC7A7821D51F3B9003CAC87 /* SBJsonParser.m in Sources */,
 				3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */,
@@ -1971,7 +1993,7 @@
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.tyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1988,7 +2010,7 @@
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.tyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
