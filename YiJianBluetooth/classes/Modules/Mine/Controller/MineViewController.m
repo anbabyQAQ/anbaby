@@ -84,6 +84,7 @@
 #pragma mark =======点击个人信息
 - (IBAction)personButtonAction:(id)sender {
     PersonalInformationViewController *person = [PersonalInformationViewController new];
+    person.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:person animated:YES];
 }
 
