@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingMallViewController">
+            <connections>
+                <outlet property="shoppingMallTableView" destination="uO7-7i-Vcs" id="RRg-jd-y73"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uO7-7i-Vcs">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="F8y-Nv-0Cz"/>
+                        <outlet property="delegate" destination="-1" id="ADe-pt-JJS"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="uO7-7i-Vcs" secondAttribute="bottom" id="AAu-Oa-Sll"/>
+                <constraint firstItem="uO7-7i-Vcs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HzG-a7-WjN"/>
+                <constraint firstItem="uO7-7i-Vcs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JcZ-YL-zJb"/>
+                <constraint firstAttribute="trailing" secondItem="uO7-7i-Vcs" secondAttribute="trailing" id="Uvk-Bi-znp"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="uO7-7i-Vcs"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="AAu-Oa-Sll"/>
+                    <exclude reference="HzG-a7-WjN"/>
+                    <exclude reference="JcZ-YL-zJb"/>
+                    <exclude reference="Uvk-Bi-znp"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="uO7-7i-Vcs"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="AAu-Oa-Sll"/>
+                    <include reference="HzG-a7-WjN"/>
+                    <include reference="JcZ-YL-zJb"/>
+                    <include reference="Uvk-Bi-znp"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

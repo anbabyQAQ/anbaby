@@ -11,6 +11,8 @@
 #import "ReportViewController.h"
 #import "ServiceViewController.h"
 #import "MineViewController.h"
+#import "ShoppingMallViewController.h"
+
 #import "AlarmClockViewController.h"
 
 @interface MainTabBarController ()
@@ -57,7 +59,7 @@
 
     /*添加子控制器 */
     /** 商城 */
-    [self setUpChildControllerWith:[[AlarmClockViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"商城"];
+    [self setUpChildControllerWith:[[ShoppingMallViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"商城"];
     
     /** 报告 */
     [self setUpChildControllerWith:[[ReportViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"报告"];

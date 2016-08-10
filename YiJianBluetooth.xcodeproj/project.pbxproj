@@ -11,8 +11,6 @@
 		1811455D1D50533F0077FC38 /* PresentationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1811455B1D50533F0077FC38 /* PresentationViewController.xib */; };
 		181145611D50568A0077FC38 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1811455F1D50568A0077FC38 /* MineViewController.m */; };
 		181145621D50568A0077FC38 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181145601D50568A0077FC38 /* MineViewController.xib */; };
-		187406E81D598F1C0091C30C /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187406E51D598F1C0091C30C /* PersonalInformationViewController.m */; };
-		187406E91D598F1C0091C30C /* PersonalInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187406E61D598F1C0091C30C /* PersonalInformationViewController.xib */; };
 		187406ED1D598F460091C30C /* GuanYuWoMenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187406EB1D598F460091C30C /* GuanYuWoMenViewController.m */; };
 		187406EE1D598F460091C30C /* GuanYuWoMenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187406EC1D598F460091C30C /* GuanYuWoMenViewController.xib */; };
 		188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D3F041D4EF57600C01A94 /* AlarmViewController.m */; };
@@ -24,6 +22,12 @@
 		18B4CA141D47393A00E65C63 /* YiJianBluetoothTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4CA131D47393A00E65C63 /* YiJianBluetoothTests.m */; };
 		18B4CA1F1D47393A00E65C63 /* YiJianBluetoothUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4CA1E1D47393A00E65C63 /* YiJianBluetoothUITests.m */; };
 		18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CC4F751D47597100A9FCC3 /* MainTabBarController.m */; };
+		18E94B341D5AB3CF00F865FF /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E94B321D5AB3CF00F865FF /* PersonalInformationViewController.m */; };
+		18E94B351D5AB3CF00F865FF /* PersonalInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E94B331D5AB3CF00F865FF /* PersonalInformationViewController.xib */; };
+		18E94B3A1D5ACE7F00F865FF /* FamilyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E94B381D5ACE7F00F865FF /* FamilyViewController.m */; };
+		18E94B3B1D5ACE7F00F865FF /* FamilyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E94B391D5ACE7F00F865FF /* FamilyViewController.xib */; };
+		18E94B3F1D5AD20300F865FF /* ShoppingMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E94B3D1D5AD20300F865FF /* ShoppingMallViewController.m */; };
+		18E94B401D5AD20300F865FF /* ShoppingMallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E94B3E1D5AD20300F865FF /* ShoppingMallViewController.xib */; };
 		18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13021D4AFFA700DC380B /* CharacteristicReader.m */; };
 		18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13061D4B467F00DC380B /* AlarmClockViewController.m */; };
 		18FF13091D4B467F00DC380B /* AlarmClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FF13071D4B467F00DC380B /* AlarmClockViewController.xib */; };
@@ -196,9 +200,6 @@
 		1811455E1D50568A0077FC38 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		1811455F1D50568A0077FC38 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		181145601D50568A0077FC38 /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
-		187406E41D598F1C0091C30C /* PersonalInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInformationViewController.h; sourceTree = "<group>"; };
-		187406E51D598F1C0091C30C /* PersonalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationViewController.m; sourceTree = "<group>"; };
-		187406E61D598F1C0091C30C /* PersonalInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalInformationViewController.xib; sourceTree = "<group>"; };
 		187406EA1D598F460091C30C /* GuanYuWoMenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuanYuWoMenViewController.h; sourceTree = "<group>"; };
 		187406EB1D598F460091C30C /* GuanYuWoMenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuanYuWoMenViewController.m; sourceTree = "<group>"; };
 		187406EC1D598F460091C30C /* GuanYuWoMenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuanYuWoMenViewController.xib; sourceTree = "<group>"; };
@@ -220,6 +221,15 @@
 		18B4CA201D47393A00E65C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18CC4F741D47597100A9FCC3 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabBarController.h; path = ../MainTabBarController.h; sourceTree = "<group>"; };
 		18CC4F751D47597100A9FCC3 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabBarController.m; path = ../MainTabBarController.m; sourceTree = "<group>"; };
+		18E94B311D5AB3CF00F865FF /* PersonalInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInformationViewController.h; sourceTree = "<group>"; };
+		18E94B321D5AB3CF00F865FF /* PersonalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationViewController.m; sourceTree = "<group>"; };
+		18E94B331D5AB3CF00F865FF /* PersonalInformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalInformationViewController.xib; sourceTree = "<group>"; };
+		18E94B371D5ACE7F00F865FF /* FamilyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FamilyViewController.h; sourceTree = "<group>"; };
+		18E94B381D5ACE7F00F865FF /* FamilyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FamilyViewController.m; sourceTree = "<group>"; };
+		18E94B391D5ACE7F00F865FF /* FamilyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FamilyViewController.xib; sourceTree = "<group>"; };
+		18E94B3C1D5AD20300F865FF /* ShoppingMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingMallViewController.h; sourceTree = "<group>"; };
+		18E94B3D1D5AD20300F865FF /* ShoppingMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingMallViewController.m; sourceTree = "<group>"; };
+		18E94B3E1D5AD20300F865FF /* ShoppingMallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingMallViewController.xib; sourceTree = "<group>"; };
 		18FF13011D4AFFA700DC380B /* CharacteristicReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacteristicReader.h; sourceTree = "<group>"; };
 		18FF13021D4AFFA700DC380B /* CharacteristicReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacteristicReader.m; sourceTree = "<group>"; };
 		18FF13051D4B467F00DC380B /* AlarmClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClockViewController.h; sourceTree = "<group>"; };
@@ -572,9 +582,9 @@
 		187406E31D598F1C0091C30C /* 个人信息 */ = {
 			isa = PBXGroup;
 			children = (
-				187406E41D598F1C0091C30C /* PersonalInformationViewController.h */,
-				187406E51D598F1C0091C30C /* PersonalInformationViewController.m */,
-				187406E61D598F1C0091C30C /* PersonalInformationViewController.xib */,
+				18E94B311D5AB3CF00F865FF /* PersonalInformationViewController.h */,
+				18E94B321D5AB3CF00F865FF /* PersonalInformationViewController.m */,
+				18E94B331D5AB3CF00F865FF /* PersonalInformationViewController.xib */,
 			);
 			path = "个人信息";
 			sourceTree = "<group>";
@@ -682,6 +692,7 @@
 				1811455E1D50568A0077FC38 /* MineViewController.h */,
 				1811455F1D50568A0077FC38 /* MineViewController.m */,
 				181145601D50568A0077FC38 /* MineViewController.xib */,
+				18E94B361D5ACE4C00F865FF /* 我的亲友 */,
 				187406E31D598F1C0091C30C /* 个人信息 */,
 				187406E71D598F1C0091C30C /* 关于我们 */,
 			);
@@ -691,6 +702,9 @@
 		18CC4F7A1D475AA400A9FCC3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				18E94B3C1D5AD20300F865FF /* ShoppingMallViewController.h */,
+				18E94B3D1D5AD20300F865FF /* ShoppingMallViewController.m */,
+				18E94B3E1D5AD20300F865FF /* ShoppingMallViewController.xib */,
 				18FF13041D4B453E00DC380B /* 闹钟 */,
 			);
 			path = Controller;
@@ -706,6 +720,16 @@
 				18A5167D1D499CE40032C549 /* TypeViewController.xib */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		18E94B361D5ACE4C00F865FF /* 我的亲友 */ = {
+			isa = PBXGroup;
+			children = (
+				18E94B371D5ACE7F00F865FF /* FamilyViewController.h */,
+				18E94B381D5ACE7F00F865FF /* FamilyViewController.m */,
+				18E94B391D5ACE7F00F865FF /* FamilyViewController.xib */,
+			);
+			path = "我的亲友";
 			sourceTree = "<group>";
 		};
 		18FF13001D4AFF9300DC380B /* Utilities */ = {
@@ -1574,19 +1598,21 @@
 				3CC7A68F1D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A69B1D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A6951D51DCC2003CAC87 /* tabBar_me_icon@2x.png in Resources */,
-				187406E91D598F1C0091C30C /* PersonalInformationViewController.xib in Resources */,
 				3CC7A6A61D51DCC2003CAC87 /* tabBar_publish_icon@3x.png in Resources */,
 				3CC7A6911D51DCC2003CAC87 /* tabBar_me_click_icon@2x.png in Resources */,
 				3C9205AE1D59988A00781D3D /* tabBar_publish_icon@2x.png in Resources */,
+				18E94B3B1D5ACE7F00F865FF /* FamilyViewController.xib in Resources */,
 				3CC7A6F01D51E0B7003CAC87 /* close-button-2.png in Resources */,
 				3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */,
 				3CC7A68E1D51DCC2003CAC87 /* tabBar_friendTrends_icon@3x.png in Resources */,
 				3C113E011D586AEF004099BB /* Yosemite03.jpg in Resources */,
 				18FF13091D4B467F00DC380B /* AlarmClockViewController.xib in Resources */,
+				18E94B351D5AB3CF00F865FF /* PersonalInformationViewController.xib in Resources */,
 				3CC7A68A1D51DCC2003CAC87 /* tabBar_friendTrends_click_icon@3x.png in Resources */,
 				3CC7A69D1D51DCC2003CAC87 /* tabBar_new_icon@2x.png in Resources */,
 				3CC7A67F1D51DCC2003CAC87 /* Contents.json in Resources */,
 				18B4CA061D47393A00E65C63 /* Assets.xcassets in Resources */,
+				18E94B401D5AD20300F865FF /* ShoppingMallViewController.xib in Resources */,
 				3CC7A67D1D51DCC2003CAC87 /* tabbar-light.png in Resources */,
 				1811455D1D50533F0077FC38 /* PresentationViewController.xib in Resources */,
 				3CC7A68C1D51DCC2003CAC87 /* tabBar_friendTrends_icon.png in Resources */,
@@ -1790,6 +1816,7 @@
 				3C9205A11D59940A00781D3D /* NSObject+LKDBHelper.m in Sources */,
 				3C113E101D587C05004099BB /* MAThermometer.m in Sources */,
 				3CC7A6F91D51E0B7003CAC87 /* PutJsonHttpThread.m in Sources */,
+				18E94B341D5AB3CF00F865FF /* PersonalInformationViewController.m in Sources */,
 				3CF2F65B1D596CD7002D5682 /* JGProgressHUDFadeAnimation.m in Sources */,
 				3C113DE81D5869DF004099BB /* PGIndexBannerSubiew.m in Sources */,
 				3CC7A6F61D51E0B7003CAC87 /* PostHttpThread.m in Sources */,
@@ -1803,7 +1830,6 @@
 				3C8D3B4E1D543B730061997F /* BaseViewController.m in Sources */,
 				3CC7A7841D51F3B9003CAC87 /* SBJsonStreamParserAccumulator.m in Sources */,
 				1811455C1D50533F0077FC38 /* PresentationViewController.m in Sources */,
-				187406E81D598F1C0091C30C /* PersonalInformationViewController.m in Sources */,
 				187406ED1D598F460091C30C /* GuanYuWoMenViewController.m in Sources */,
 				3CF2F65F1D596CD7002D5682 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				3C92059F1D59940A00781D3D /* LKDBHelper.m in Sources */,
@@ -1846,10 +1872,12 @@
 				3C221AFE1D59B4C20000EE18 /* DimensionUtil.m in Sources */,
 				3CF2F6591D596CD7002D5682 /* JGProgressHUD.m in Sources */,
 				3CC7A7851D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m in Sources */,
+				18E94B3F1D5AD20300F865FF /* ShoppingMallViewController.m in Sources */,
 				3CC7A6F51D51E0B7003CAC87 /* HttpBaseResponse.m in Sources */,
 				3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */,
 				3CC7A7861D51F3B9003CAC87 /* SBJsonStreamParserState.m in Sources */,
 				3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */,
+				18E94B3A1D5ACE7F00F865FF /* FamilyViewController.m in Sources */,
 				3CC7A6BE1D51E019003CAC87 /* UIView+Toast.m in Sources */,
 				18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */,
 				18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */,
