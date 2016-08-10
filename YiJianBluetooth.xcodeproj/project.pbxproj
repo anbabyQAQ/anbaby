@@ -147,6 +147,12 @@
 		3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77A1D51F3B9003CAC87 /* SBJsonStreamWriterState.m */; };
 		3CC7A78A1D51F3B9003CAC87 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77C1D51F3B9003CAC87 /* SBJsonTokeniser.m */; };
 		3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77E1D51F3B9003CAC87 /* SBJsonUTF8Stream.m */; };
+		3CCEBC311D5B0857007A852D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CCEBC2A1D5B07FA007A852D /* Charts.framework */; };
+		3CCEBC321D5B0857007A852D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CCEBC2A1D5B07FA007A852D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3CCEBC381D5B08D5007A852D /* Bridge ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEBC371D5B08D5007A852D /* Bridge ViewController.swift */; };
+		3CCEBC3E1D5B1124007A852D /* TempChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEBC3D1D5B1124007A852D /* TempChartViewController.m */; };
+		3CCEBC421D5B17E5007A852D /* ECGChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEBC411D5B17E5007A852D /* ECGChartViewController.m */; };
+		3CCEBC451D5B1BC7007A852D /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEBC441D5B1BC7007A852D /* HeartRateViewController.m */; };
 		3CF2F6591D596CD7002D5682 /* JGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F64A1D596CD7002D5682 /* JGProgressHUD.m */; };
 		3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F64C1D596CD7002D5682 /* JGProgressHUDAnimation.m */; };
 		3CF2F65B1D596CD7002D5682 /* JGProgressHUDFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F64E1D596CD7002D5682 /* JGProgressHUDFadeAnimation.m */; };
@@ -189,7 +195,56 @@
 			remoteGlobalIDString = 18B4C9F51D47393A00E65C63;
 			remoteInfo = YiJianBluetooth;
 		};
+		3CCEBC291D5B07FA007A852D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		3CCEBC2B1D5B07FA007A852D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		3CCEBC2D1D5B07FA007A852D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		3CCEBC2F1D5B07FA007A852D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		3CCEBC331D5B0857007A852D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3CCEBC351D5B0858007A852D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3CCEBC321D5B0857007A852D /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E317043B7F91F34C949F4A4 /* Pods-YiJianBluetooth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiJianBluetooth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YiJianBluetooth/Pods-YiJianBluetooth.debug.xcconfig"; sourceTree = "<group>"; };
@@ -419,6 +474,15 @@
 		3CC7A77E1D51F3B9003CAC87 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		3CC7A77F1D51F3B9003CAC87 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		3CC7A7801D51F3B9003CAC87 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3CCEBC361D5B08D5007A852D /* YiJianBluetooth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YiJianBluetooth-Bridging-Header.h"; sourceTree = "<group>"; };
+		3CCEBC371D5B08D5007A852D /* Bridge ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bridge ViewController.swift"; sourceTree = "<group>"; };
+		3CCEBC3C1D5B1124007A852D /* TempChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempChartViewController.h; sourceTree = "<group>"; };
+		3CCEBC3D1D5B1124007A852D /* TempChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempChartViewController.m; sourceTree = "<group>"; };
+		3CCEBC401D5B17E5007A852D /* ECGChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGChartViewController.h; sourceTree = "<group>"; };
+		3CCEBC411D5B17E5007A852D /* ECGChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECGChartViewController.m; sourceTree = "<group>"; };
+		3CCEBC431D5B1BC7007A852D /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateViewController.h; sourceTree = "<group>"; };
+		3CCEBC441D5B1BC7007A852D /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateViewController.m; sourceTree = "<group>"; };
 		3CF2F6491D596CD7002D5682 /* JGProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUD.h; sourceTree = "<group>"; };
 		3CF2F64A1D596CD7002D5682 /* JGProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUD.m; sourceTree = "<group>"; };
 		3CF2F64B1D596CD7002D5682 /* JGProgressHUDAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGProgressHUDAnimation.h; sourceTree = "<group>"; };
@@ -473,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C9205BA1D599DEB00781D3D /* libsqlite3.dylib in Frameworks */,
+				3CCEBC311D5B0857007A852D /* Charts.framework in Frameworks */,
 				3C9205BB1D599DEB00781D3D /* libz.1.dylib in Frameworks */,
 				3C9205B71D599CC500781D3D /* libsqlite3.0.tbd in Frameworks */,
 				3C9205B51D599C7400781D3D /* Foundation.framework in Frameworks */,
@@ -536,6 +601,8 @@
 				18CC4F731D4758E400A9FCC3 /* Mine */,
 				3C8D3B4C1D543B730061997F /* BaseViewController.h */,
 				3C8D3B4D1D543B730061997F /* BaseViewController.m */,
+				3CCEBC371D5B08D5007A852D /* Bridge ViewController.swift */,
+				3CCEBC361D5B08D5007A852D /* YiJianBluetooth-Bridging-Header.h */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -624,6 +691,7 @@
 		18B4C9F81D47393A00E65C63 /* YiJianBluetooth */ = {
 			isa = PBXGroup;
 			children = (
+				3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */,
 				0CD2D2131D4755350074D3D0 /* classes */,
 				18B4CA051D47393A00E65C63 /* Assets.xcassets */,
 				18B4CA071D47393A00E65C63 /* LaunchScreen.storyboard */,
@@ -896,6 +964,12 @@
 		3C221B051D59B8AB0000EE18 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				3CCEBC3C1D5B1124007A852D /* TempChartViewController.h */,
+				3CCEBC3D1D5B1124007A852D /* TempChartViewController.m */,
+				3CCEBC401D5B17E5007A852D /* ECGChartViewController.h */,
+				3CCEBC411D5B17E5007A852D /* ECGChartViewController.m */,
+				3CCEBC431D5B1BC7007A852D /* HeartRateViewController.h */,
+				3CCEBC441D5B1BC7007A852D /* HeartRateViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1298,6 +1372,17 @@
 			path = Json;
 			sourceTree = "<group>";
 		};
+		3CCEBC231D5B07FA007A852D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3CCEBC2A1D5B07FA007A852D /* Charts.framework */,
+				3CCEBC2C1D5B07FA007A852D /* Charts.framework */,
+				3CCEBC2E1D5B07FA007A852D /* Charts.framework */,
+				3CCEBC301D5B07FA007A852D /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3CF2F62D1D5967AC002D5682 /* ProgressHud */ = {
 			isa = PBXGroup;
 			children = (
@@ -1484,10 +1569,12 @@
 				18B4C9F41D47393A00E65C63 /* Resources */,
 				1A864556C78B64481142549E /* [CP] Embed Pods Frameworks */,
 				AE5EB42C4B60CB36FE44697A /* [CP] Copy Pods Resources */,
+				3CCEBC351D5B0858007A852D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3CCEBC341D5B0857007A852D /* PBXTargetDependency */,
 			);
 			name = YiJianBluetooth;
 			productName = YiJianBluetooth;
@@ -1541,6 +1628,7 @@
 		18B4C9EE1D47393A00E65C63 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = LEI;
 				TargetAttributes = {
@@ -1569,6 +1657,12 @@
 			mainGroup = 18B4C9ED1D47393A00E65C63;
 			productRefGroup = 18B4C9F71D47393A00E65C63 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3CCEBC231D5B07FA007A852D /* Products */;
+					ProjectRef = 3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				18B4C9F51D47393A00E65C63 /* YiJianBluetooth */,
@@ -1577,6 +1671,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3CCEBC2A1D5B07FA007A852D /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 3CCEBC291D5B07FA007A852D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3CCEBC2C1D5B07FA007A852D /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 3CCEBC2B1D5B07FA007A852D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3CCEBC2E1D5B07FA007A852D /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 3CCEBC2D1D5B07FA007A852D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3CCEBC301D5B07FA007A852D /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 3CCEBC2F1D5B07FA007A852D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		18B4C9F41D47393A00E65C63 /* Resources */ = {
@@ -1824,6 +1949,7 @@
 				3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */,
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
 				3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */,
+				3CCEBC3E1D5B1124007A852D /* TempChartViewController.m in Sources */,
 				3CC7A6C41D51E065003CAC87 /* CtsiUserDefaults.m in Sources */,
 				181145611D50568A0077FC38 /* MineViewController.m in Sources */,
 				3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */,
@@ -1841,6 +1967,7 @@
 				3C221AFC1D59B4C20000EE18 /* DateUtil+StringCustom.m in Sources */,
 				3C221AFD1D59B4C20000EE18 /* DateUtil.m in Sources */,
 				3C8D3B4A1D543AE80061997F /* ECGViewController.m in Sources */,
+				3CCEBC421D5B17E5007A852D /* ECGChartViewController.m in Sources */,
 				3CF368081D548EBE00726B20 /* ScannedPeripheral.m in Sources */,
 				3C113E111D587C05004099BB /* MAThermometerBorder.m in Sources */,
 				18A5167E1D499CE40032C549 /* TypeViewController.m in Sources */,
@@ -1858,6 +1985,7 @@
 				3CF2F66F1D597F86002D5682 /* User.m in Sources */,
 				3CF368091D548EBE00726B20 /* ScannerViewController.m in Sources */,
 				3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */,
+				3CCEBC451D5B1BC7007A852D /* HeartRateViewController.m in Sources */,
 				3C9205A21D59940A00781D3D /* NSObject+LKModel.m in Sources */,
 				3CC7A6F31D51E0B7003CAC87 /* SimpleGUIFactory.m in Sources */,
 				3CF2F65D1D596CD7002D5682 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
@@ -1879,6 +2007,7 @@
 				3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */,
 				18E94B3A1D5ACE7F00F865FF /* FamilyViewController.m in Sources */,
 				3CC7A6BE1D51E019003CAC87 /* UIView+Toast.m in Sources */,
+				3CCEBC381D5B08D5007A852D /* Bridge ViewController.swift in Sources */,
 				18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */,
 				18CC4F761D47597100A9FCC3 /* MainTabBarController.m in Sources */,
 				3C113E071D5871C8004099BB /* TempViewController.m in Sources */,
@@ -1915,6 +2044,11 @@
 			isa = PBXTargetDependency;
 			target = 18B4C9F51D47393A00E65C63 /* YiJianBluetooth */;
 			targetProxy = 18B4CA1B1D47393A00E65C63 /* PBXContainerItemProxy */;
+		};
+		3CCEBC341D5B0857007A852D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 3CCEBC331D5B0857007A852D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2015,15 +2149,19 @@
 			baseConfigurationReference = 0E317043B7F91F34C949F4A4 /* Pods-YiJianBluetooth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YiJianBluetooth/pchFile.pch";
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.tyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "YiJianBluetooth/classes/Modules/YiJianBluetooth-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -2032,15 +2170,18 @@
 			baseConfigurationReference = 3AA64D84A97A4AD75C3C9880 /* Pods-YiJianBluetooth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/YiJianBluetooth/pchFile.pch";
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.tyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "YiJianBluetooth/classes/Modules/YiJianBluetooth-Bridging-Header.h";
 			};
 			name = Release;
 		};

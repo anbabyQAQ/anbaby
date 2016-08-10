@@ -8,4 +8,4 @@
 
 
 #define hintColor UIColorFromRGB(0x0097ff)//19ADF0
-#define lineColor  [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]
+//#define lineColor  [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]
