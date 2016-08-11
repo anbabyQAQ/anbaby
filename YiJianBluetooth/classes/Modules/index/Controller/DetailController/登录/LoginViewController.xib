@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1909" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -323,15 +323,15 @@
                             <exclude reference="ar9-5P-dkA"/>
                         </mask>
                         <mask key="constraints">
-                            <exclude reference="nN0-8O-biG"/>
-                            <exclude reference="xvS-1T-tiM"/>
                             <exclude reference="74i-fZ-ebW"/>
                             <exclude reference="7Vp-QG-VsX"/>
-                            <exclude reference="fTQ-h6-tcd"/>
-                            <exclude reference="jBL-Vv-Dsx"/>
                             <exclude reference="Gyk-9Q-y8A"/>
                             <exclude reference="Iwe-Rx-upp"/>
                             <exclude reference="e2U-JG-cfa"/>
+                            <exclude reference="fTQ-h6-tcd"/>
+                            <exclude reference="jBL-Vv-Dsx"/>
+                            <exclude reference="nN0-8O-biG"/>
+                            <exclude reference="xvS-1T-tiM"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=compact">
@@ -342,15 +342,15 @@
                             <include reference="ar9-5P-dkA"/>
                         </mask>
                         <mask key="constraints">
-                            <include reference="nN0-8O-biG"/>
-                            <include reference="xvS-1T-tiM"/>
                             <include reference="74i-fZ-ebW"/>
                             <include reference="7Vp-QG-VsX"/>
-                            <include reference="fTQ-h6-tcd"/>
-                            <include reference="jBL-Vv-Dsx"/>
                             <include reference="Gyk-9Q-y8A"/>
                             <include reference="Iwe-Rx-upp"/>
                             <include reference="e2U-JG-cfa"/>
+                            <include reference="fTQ-h6-tcd"/>
+                            <include reference="jBL-Vv-Dsx"/>
+                            <include reference="nN0-8O-biG"/>
+                            <include reference="xvS-1T-tiM"/>
                         </mask>
                     </variation>
                 </view>
@@ -386,21 +386,21 @@
                     <exclude reference="kWr-qt-Dbq"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="S46-rl-7em"/>
-                    <exclude reference="WRD-Dr-H9z"/>
-                    <exclude reference="Xh1-kP-kXf"/>
-                    <exclude reference="jCa-VW-iDD"/>
-                    <exclude reference="1gv-KU-BBg"/>
-                    <exclude reference="DRg-vv-dY4"/>
-                    <exclude reference="FAg-dh-4gi"/>
-                    <exclude reference="bcM-OJ-6RN"/>
+                    <exclude reference="3wH-dS-YlE"/>
+                    <exclude reference="Iuk-Tn-Wxr"/>
+                    <exclude reference="zhB-yl-3cq"/>
                     <exclude reference="8jf-42-IvE"/>
                     <exclude reference="OaO-3l-PFA"/>
                     <exclude reference="cjI-ut-hz7"/>
                     <exclude reference="pBA-Dm-hE5"/>
-                    <exclude reference="3wH-dS-YlE"/>
-                    <exclude reference="Iuk-Tn-Wxr"/>
-                    <exclude reference="zhB-yl-3cq"/>
+                    <exclude reference="1gv-KU-BBg"/>
+                    <exclude reference="DRg-vv-dY4"/>
+                    <exclude reference="FAg-dh-4gi"/>
+                    <exclude reference="bcM-OJ-6RN"/>
+                    <exclude reference="S46-rl-7em"/>
+                    <exclude reference="WRD-Dr-H9z"/>
+                    <exclude reference="Xh1-kP-kXf"/>
+                    <exclude reference="jCa-VW-iDD"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -412,21 +412,21 @@
                     <include reference="kWr-qt-Dbq"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="S46-rl-7em"/>
-                    <include reference="WRD-Dr-H9z"/>
-                    <include reference="Xh1-kP-kXf"/>
-                    <include reference="jCa-VW-iDD"/>
-                    <include reference="1gv-KU-BBg"/>
-                    <include reference="DRg-vv-dY4"/>
-                    <include reference="FAg-dh-4gi"/>
-                    <include reference="bcM-OJ-6RN"/>
+                    <include reference="3wH-dS-YlE"/>
+                    <include reference="Iuk-Tn-Wxr"/>
+                    <include reference="zhB-yl-3cq"/>
                     <include reference="8jf-42-IvE"/>
                     <include reference="OaO-3l-PFA"/>
                     <include reference="cjI-ut-hz7"/>
                     <include reference="pBA-Dm-hE5"/>
-                    <include reference="3wH-dS-YlE"/>
-                    <include reference="Iuk-Tn-Wxr"/>
-                    <include reference="zhB-yl-3cq"/>
+                    <include reference="1gv-KU-BBg"/>
+                    <include reference="DRg-vv-dY4"/>
+                    <include reference="FAg-dh-4gi"/>
+                    <include reference="bcM-OJ-6RN"/>
+                    <include reference="S46-rl-7em"/>
+                    <include reference="WRD-Dr-H9z"/>
+                    <include reference="Xh1-kP-kXf"/>
+                    <include reference="jCa-VW-iDD"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="509" y="457"/>
