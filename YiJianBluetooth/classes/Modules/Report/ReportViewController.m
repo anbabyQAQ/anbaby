@@ -11,6 +11,10 @@
 #import "YiJianBluetooth-Swift.h"
 #import "TempChartViewController.h"
 #import "HeartRateViewController.h"
+#import "ECGChartViewController.h"
+#import "BloodSugarViewController.h"
+#import "BloodPressureViewController.h"
+#import "BloodOxygenViewController.h"
 
 @interface ReportViewController ()<ChartViewDelegate,ChartXAxisValueFormatter>
 
@@ -62,8 +66,8 @@
     //设置 xAxi
     ChartXAxis *xAxis = self.radarChartView.xAxis;
     xAxis.labelFont = [UIFont systemFontOfSize:15];//字体
-//    xAxis.labelTextColor = [self colorWithHexString:@"#057748"];//颜色
-    xAxis.labelTextColor = [UIColor blackColor];//颜色
+    xAxis.labelTextColor = [self colorWithHexString:@"#057748"];//颜色
+//    xAxis.labelTextColor = [UIColor blackColor];//颜色
 
     xAxis.enabled=YES;
     xAxis.valueFormatter=self;
@@ -74,7 +78,7 @@
     ChartYAxis *yAxis = self.radarChartView.yAxis;
     yAxis.axisMinValue = 0.0;//最小值
     yAxis.axisMaxValue = 150.0;//最大值
-    yAxis.drawLabelsEnabled = YES;//是否显示 label
+    yAxis.drawLabelsEnabled = NO;//是否显示 label
     yAxis.labelCount = 6;// label 个数
     yAxis.labelFont = [UIFont systemFontOfSize:9];// label 字体
     yAxis.labelTextColor = [UIColor lightGrayColor];// label 颜色
@@ -100,48 +104,48 @@
     
     
     _btn1 =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_btn1 setBackgroundColor:[UIColor darkTextColor]];
-    _btn1.layer.cornerRadius = 5;
+    [_btn1 setBackgroundColor:[UIColor clearColor]];
+//    _btn1.layer.cornerRadius = 5;
     _btn1.tag = 100;
     _btn1.alpha=0.05;
 
     [_btn1 addTarget:self action:@selector(pushBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     _btn2 =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_btn2 setBackgroundColor:[UIColor darkTextColor]];
-    _btn2.layer.cornerRadius = 5;
+    [_btn2 setBackgroundColor:[UIColor clearColor]];
+//    _btn2.layer.cornerRadius = 5;
     _btn2.tag = 101;
     _btn2.alpha=0.05;
 
     [_btn2 addTarget:self action:@selector(pushBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     _btn3 =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_btn3 setBackgroundColor:[UIColor darkTextColor]];
-    _btn3.layer.cornerRadius = 5;
+    [_btn3 setBackgroundColor:[UIColor clearColor]];
+//    _btn3.layer.cornerRadius = 5;
     _btn3 .tag = 102;
     _btn3.alpha=0.05;
 
     [_btn3 addTarget:self action:@selector(pushBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     _btn4 =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_btn4 setBackgroundColor:[UIColor darkTextColor]];
-    _btn4.layer.cornerRadius = 5;
+    [_btn4 setBackgroundColor:[UIColor clearColor]];
+//    _btn4.layer.cornerRadius = 5;
     _btn4.tag = 103;
     _btn4.alpha=0.05;
 
     [_btn4 addTarget:self action:@selector(pushBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     _btn5 =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_btn5 setBackgroundColor:[UIColor darkTextColor]];
-    _btn5.layer.cornerRadius = 5;
+    [_btn5 setBackgroundColor:[UIColor clearColor]];
+//    _btn5.layer.cornerRadius = 5;
     _btn5.tag = 104;
     _btn5.alpha=0.05;
 
     [_btn5 addTarget:self action:@selector(pushBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     _btn6 =[UIButton buttonWithType:UIButtonTypeCustom];
-    [_btn6 setBackgroundColor:[UIColor darkTextColor]];
-    _btn6.layer.cornerRadius = 5;
+    [_btn6 setBackgroundColor:[UIColor clearColor]];
+//    _btn6.layer.cornerRadius = 5;
     _btn6.alpha=0.05;
     _btn6.tag = 105;
     [_btn6 addTarget:self action:@selector(pushBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -170,6 +174,10 @@
             break;
         case 101:
         {
+            
+            ECGChartViewController *ECG = [[ECGChartViewController alloc] init];
+            ECG.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:ECG animated:YES];
         }
             break;
         case 102:
@@ -181,14 +189,27 @@
             break;
         case 103:
         {
+            
+            BloodSugarViewController *BloodSugar = [[BloodSugarViewController alloc] init];
+            BloodSugar.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:BloodSugar animated:YES];
         }
             break;
         case 104:
         {
+            
+            BloodPressureViewController *BloodPressure = [[BloodPressureViewController alloc] init];
+            
+            BloodPressure.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:BloodPressure animated:YES];
         }
             break;
         case 105:
         {
+            
+            BloodOxygenViewController *BloodOxygen = [[BloodOxygenViewController alloc] init];
+            BloodOxygen.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:BloodOxygen animated:YES];
         }
             break;
   
@@ -240,7 +261,7 @@
     
     NSMutableArray *yVals2 = [[NSMutableArray alloc] init];
     for (int i = 0; i < count; i++) {
-        double randomVal = arc4random_uniform(mult/2) + mult / 2/2;//产生 50~150 的随机数
+        double randomVal = arc4random_uniform(mult) + mult / 2;//产生 50~150 的随机数
         ChartDataEntry *entry = [[ChartDataEntry alloc] initWithValue:randomVal xIndex:i];
         [yVals2 addObject:entry];
     }

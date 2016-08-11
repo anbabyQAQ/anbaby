@@ -54,6 +54,13 @@
 		3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF51D59B4C20000EE18 /* LogUtil.m */; };
 		3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF81D59B4C20000EE18 /* VedioUtil.m */; };
 		3C221B081D59B9480000EE18 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221B071D59B9480000EE18 /* ReportViewController.m */; };
+		3C796B951D5C188800862460 /* LeadPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B941D5C188800862460 /* LeadPlayer.m */; };
+		3C796B991D5C19DC00862460 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B981D5C19DC00862460 /* Helper.mm */; };
+		3C796B9D1D5C223700862460 /* PieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B9C1D5C223700862460 /* PieChart.m */; };
+		3C796BA01D5C39CF00862460 /* BloodSugarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B9F1D5C39CF00862460 /* BloodSugarViewController.m */; };
+		3C796BA41D5C3C2E00862460 /* BrokenLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BA31D5C3C2E00862460 /* BrokenLine.m */; };
+		3C796BA81D5C44C800862460 /* BloodPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BA71D5C44C800862460 /* BloodPressureViewController.m */; };
+		3C796BAB1D5C466800862460 /* BloodOxygenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BAA1D5C466800862460 /* BloodOxygenViewController.m */; };
 		3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3C1D5433110061997F /* TabbarExtension.m */; };
 		3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3E1D5433D50061997F /* camera_button_take.png */; };
 		3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3F1D5433D50061997F /* camera_button_take@2x.png */; };
@@ -335,6 +342,20 @@
 		3C221AF81D59B4C20000EE18 /* VedioUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioUtil.m; sourceTree = "<group>"; };
 		3C221B061D59B9480000EE18 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		3C221B071D59B9480000EE18 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		3C796B931D5C188800862460 /* LeadPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeadPlayer.h; sourceTree = "<group>"; };
+		3C796B941D5C188800862460 /* LeadPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeadPlayer.m; sourceTree = "<group>"; };
+		3C796B971D5C19DC00862460 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		3C796B981D5C19DC00862460 /* Helper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Helper.mm; sourceTree = "<group>"; };
+		3C796B9B1D5C223700862460 /* PieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChart.h; sourceTree = "<group>"; };
+		3C796B9C1D5C223700862460 /* PieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChart.m; sourceTree = "<group>"; };
+		3C796B9E1D5C39CF00862460 /* BloodSugarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodSugarViewController.h; sourceTree = "<group>"; };
+		3C796B9F1D5C39CF00862460 /* BloodSugarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodSugarViewController.m; sourceTree = "<group>"; };
+		3C796BA21D5C3C2E00862460 /* BrokenLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrokenLine.h; sourceTree = "<group>"; };
+		3C796BA31D5C3C2E00862460 /* BrokenLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrokenLine.m; sourceTree = "<group>"; };
+		3C796BA61D5C44C800862460 /* BloodPressureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodPressureViewController.h; sourceTree = "<group>"; };
+		3C796BA71D5C44C800862460 /* BloodPressureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodPressureViewController.m; sourceTree = "<group>"; };
+		3C796BA91D5C466800862460 /* BloodOxygenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodOxygenViewController.h; sourceTree = "<group>"; };
+		3C796BAA1D5C466800862460 /* BloodOxygenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodOxygenViewController.m; sourceTree = "<group>"; };
 		3C8D3B3B1D5433110061997F /* TabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarExtension.h; sourceTree = "<group>"; };
 		3C8D3B3C1D5433110061997F /* TabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarExtension.m; sourceTree = "<group>"; };
 		3C8D3B3E1D5433D50061997F /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
@@ -964,14 +985,60 @@
 		3C221B051D59B8AB0000EE18 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				3C796B8F1D5C187400862460 /* Views */,
 				3CCEBC3C1D5B1124007A852D /* TempChartViewController.h */,
 				3CCEBC3D1D5B1124007A852D /* TempChartViewController.m */,
 				3CCEBC401D5B17E5007A852D /* ECGChartViewController.h */,
 				3CCEBC411D5B17E5007A852D /* ECGChartViewController.m */,
 				3CCEBC431D5B1BC7007A852D /* HeartRateViewController.h */,
 				3CCEBC441D5B1BC7007A852D /* HeartRateViewController.m */,
+				3C796B9E1D5C39CF00862460 /* BloodSugarViewController.h */,
+				3C796B9F1D5C39CF00862460 /* BloodSugarViewController.m */,
+				3C796BA61D5C44C800862460 /* BloodPressureViewController.h */,
+				3C796BA71D5C44C800862460 /* BloodPressureViewController.m */,
+				3C796BA91D5C466800862460 /* BloodOxygenViewController.h */,
+				3C796BAA1D5C466800862460 /* BloodOxygenViewController.m */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		3C796B8F1D5C187400862460 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3C796BA11D5C3C1A00862460 /* Broken-line */,
+				3C796B9A1D5C21FF00862460 /* PieCharts */,
+				3C796B961D5C19C000862460 /* HeartRateHelper */,
+				3C796B931D5C188800862460 /* LeadPlayer.h */,
+				3C796B941D5C188800862460 /* LeadPlayer.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3C796B961D5C19C000862460 /* HeartRateHelper */ = {
+			isa = PBXGroup;
+			children = (
+				3C796B971D5C19DC00862460 /* Helper.h */,
+				3C796B981D5C19DC00862460 /* Helper.mm */,
+			);
+			path = HeartRateHelper;
+			sourceTree = "<group>";
+		};
+		3C796B9A1D5C21FF00862460 /* PieCharts */ = {
+			isa = PBXGroup;
+			children = (
+				3C796B9B1D5C223700862460 /* PieChart.h */,
+				3C796B9C1D5C223700862460 /* PieChart.m */,
+			);
+			path = PieCharts;
+			sourceTree = "<group>";
+		};
+		3C796BA11D5C3C1A00862460 /* Broken-line */ = {
+			isa = PBXGroup;
+			children = (
+				3C796BA21D5C3C2E00862460 /* BrokenLine.h */,
+				3C796BA31D5C3C2E00862460 /* BrokenLine.m */,
+			);
+			path = "Broken-line";
 			sourceTree = "<group>";
 		};
 		3C8D3B471D543A5F0061997F /* 心电 */ = {
@@ -1937,6 +2004,7 @@
 				3CC7A6F81D51E0B7003CAC87 /* PutBodyHttpThread.m in Sources */,
 				3CC7A7871D51F3B9003CAC87 /* SBJsonStreamWriter.m in Sources */,
 				3C221AFF1D59B4C20000EE18 /* EncodeUtil.m in Sources */,
+				3C796BA81D5C44C800862460 /* BloodPressureViewController.m in Sources */,
 				3CF367FC1D548E6800726B20 /* LoginViewController.m in Sources */,
 				3C9205A11D59940A00781D3D /* NSObject+LKDBHelper.m in Sources */,
 				3C113E101D587C05004099BB /* MAThermometer.m in Sources */,
@@ -1962,9 +2030,12 @@
 				3CF2F6601D596CD7002D5682 /* JGProgressHUDRingIndicatorView.m in Sources */,
 				3C113E161D588440004099BB /* MyCustomButton.m in Sources */,
 				3CC7A6F71D51E0B7003CAC87 /* PostJsonHttpThread.m in Sources */,
+				3C796BAB1D5C466800862460 /* BloodOxygenViewController.m in Sources */,
+				3C796BA41D5C3C2E00862460 /* BrokenLine.m in Sources */,
 				3CF2F65E1D596CD7002D5682 /* JGProgressHUDIndicatorView.m in Sources */,
 				3CC7A6AF1D51DFB4003CAC87 /* BlockUIAlertView.m in Sources */,
 				3C221AFC1D59B4C20000EE18 /* DateUtil+StringCustom.m in Sources */,
+				3C796B9D1D5C223700862460 /* PieChart.m in Sources */,
 				3C221AFD1D59B4C20000EE18 /* DateUtil.m in Sources */,
 				3C8D3B4A1D543AE80061997F /* ECGViewController.m in Sources */,
 				3CCEBC421D5B17E5007A852D /* ECGChartViewController.m in Sources */,
@@ -1996,12 +2067,15 @@
 				3C9205A01D59940A00781D3D /* LKDBUtils.m in Sources */,
 				3C221B011D59B4C20000EE18 /* GEOUtil.m in Sources */,
 				3C113DE91D5869DF004099BB /* NewPagedFlowView.m in Sources */,
+				3C796B951D5C188800862460 /* LeadPlayer.m in Sources */,
 				3CF367EE1D548D6900726B20 /* AppDelegate.m in Sources */,
 				3C221AFE1D59B4C20000EE18 /* DimensionUtil.m in Sources */,
 				3CF2F6591D596CD7002D5682 /* JGProgressHUD.m in Sources */,
 				3CC7A7851D51F3B9003CAC87 /* SBJsonStreamParserAdapter.m in Sources */,
+				3C796B991D5C19DC00862460 /* Helper.mm in Sources */,
 				18E94B3F1D5AD20300F865FF /* ShoppingMallViewController.m in Sources */,
 				3CC7A6F51D51E0B7003CAC87 /* HttpBaseResponse.m in Sources */,
+				3C796BA01D5C39CF00862460 /* BloodSugarViewController.m in Sources */,
 				3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */,
 				3CC7A7861D51F3B9003CAC87 /* SBJsonStreamParserState.m in Sources */,
 				3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */,

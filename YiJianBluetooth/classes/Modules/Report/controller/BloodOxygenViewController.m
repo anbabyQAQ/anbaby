@@ -1,22 +1,22 @@
 //
-//  HeartRateViewController.m
+//  BloodOxygenViewController.m
 //  YiJianBluetooth
 //
-//  Created by tyl on 16/8/10.
+//  Created by tyl on 16/8/11.
 //  Copyright © 2016年 LEI. All rights reserved.
 //
 
-#import "HeartRateViewController.h"
+#import "BloodOxygenViewController.h"
 #import "YiJianBluetooth-Bridging-Header.h"
 #import "YiJianBluetooth-Swift.h"
 #import "PieChart.h"
 
-@interface HeartRateViewController ()<ChartViewDelegate>{
+@interface BloodOxygenViewController ()<ChartViewDelegate>{
     
-        PieChart *_pieChart1;
-        PieChart *_pieChart2;
-        PieChart *_pieChart3;
-        PieChart *_pieChart4;
+    PieChart *_pieChart1;
+    PieChart *_pieChart2;
+    PieChart *_pieChart3;
+    PieChart *_pieChart4;
     
 }
 
@@ -27,19 +27,18 @@
 
 @end
 
-@implementation HeartRateViewController
+@implementation BloodOxygenViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self addScrollview];
-
-    self.view.backgroundColor = [UIColor whiteColor];
- 
-    [self setHeartchart];
     
+    [self addScrollview];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setHeartchart];
 }
-
 
 - (void)setHeartchart{
     
@@ -94,13 +93,13 @@
     leftAxis.gridColor = [UIColor colorWithRed:200/255.0f green:200/255.0f blue:200/255.0f alpha:1];//网格线颜色
     leftAxis.gridAntialiasEnabled = YES;//开启抗锯齿
     //添加限制线
-    ChartLimitLine *limitLine = [[ChartLimitLine alloc] initWithLimit:37.5 label:@"标准心率"];
+    ChartLimitLine *limitLine = [[ChartLimitLine alloc] initWithLimit:37.5 label:@"标准血氧"];
     limitLine.lineWidth = 2;
     limitLine.lineColor = [UIColor greenColor];
     limitLine.lineDashLengths = @[@5.0f, @5.0f];//虚线样式
     limitLine.labelPosition = ChartLimitLabelPositionRightTop;//位置
     [leftAxis addLimitLine:limitLine];//添加到Y轴上
-    leftAxis.drawLimitLinesBehindDataEnabled = YES;//设置限制线绘制在柱形图的后面
+    leftAxis.drawLimitLinesBehindDataEnabled = NO;//设置限制线绘制在柱形图的后面
     
     //图例说明样式
     self.barChartView.legend.enabled = NO;//不显示图例说明
@@ -108,7 +107,7 @@
     
     //右下角的description文字样式
     self.barChartView.descriptionText = @"";//不显示，就设为空字符串即可
-    self.barChartView.descriptionText = @"心率图";
+    self.barChartView.descriptionText = @"血氧图";
     
     self.data = [self setData];
     
@@ -126,8 +125,8 @@
     [self.view addSubview:_scrollView];
     
     // 隐藏水平滚动条
-       _scrollView.showsHorizontalScrollIndicator = NO;
-       _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.showsVerticalScrollIndicator = NO;
     
     
     
@@ -143,17 +142,17 @@
     [self.scrollView addSubview:_pieChart4];
     
     //富文本
-    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:@"心率"];
+    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:@"血氧"];
     [centerText setAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:16],NSForegroundColorAttributeName: [UIColor orangeColor]} range:NSMakeRange(0, centerText.length)];
     _pieChart1.pieChartView.centerAttributedText = centerText;
     _pieChart2.pieChartView.centerAttributedText = centerText;
     _pieChart3.pieChartView.centerAttributedText = centerText;
     _pieChart4.pieChartView.centerAttributedText = centerText;
     
-    _pieChart1.pieChartView.descriptionText=@"日-心率饼状图";
-    _pieChart2.pieChartView.descriptionText=@"周-心率饼状图";
-    _pieChart3.pieChartView.descriptionText=@"月-心率饼状图";
-    _pieChart4.pieChartView.descriptionText=@"季度-心率饼状图";
+    _pieChart1.pieChartView.descriptionText=@"日-血氧饼状图";
+    _pieChart2.pieChartView.descriptionText=@"周-血氧饼状图";
+    _pieChart3.pieChartView.descriptionText=@"月-血氧饼状图";
+    _pieChart4.pieChartView.descriptionText=@"季度-血氧饼状图";
     
     
     float bottom = 20.0;
@@ -225,37 +224,10 @@
     return data;
 }
 
--(void)updateDataBtnClick{
-    //数据改变时，刷新数据
-    self.data = [self setData];
-    self.barChartView.data = self.data;
-    [self.barChartView notifyDataSetChanged];
-}
-
-#pragma mark - ChartViewDelegate
-
-//点击选中柱形时回调
-- (void)chartValueSelected:(ChartViewBase * _Nonnull)chartView entry:(ChartDataEntry * _Nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * _Nonnull)highlight{
-    //    NSLog(@"---chartValueSelected---value: %g", entry.value);
-}
-//没有选中柱形图时回调，当选中一个柱形图后，在空白处双击，就可以取消选择，此时会回调此方法
-- (void)chartValueNothingSelected:(ChartViewBase * _Nonnull)chartView{
-    //    NSLog(@"---chartValueNothingSelected---");
-}
-//放大图表时回调
-- (void)chartScaled:(ChartViewBase * _Nonnull)chartView scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY{
-    //    NSLog(@"---chartScaled---scaleX:%g, scaleY:%g", scaleX, scaleY);
-}
-//拖拽图表时回调
-- (void)chartTranslated:(ChartViewBase * _Nonnull)chartView dX:(CGFloat)dX dY:(CGFloat)dY{
-    //    NSLog(@"---chartTranslated---dX:%g, dY:%g", dX, dY);
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation
