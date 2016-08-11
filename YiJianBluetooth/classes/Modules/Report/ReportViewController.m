@@ -265,7 +265,7 @@
         ChartDataEntry *entry = [[ChartDataEntry alloc] initWithValue:randomVal xIndex:i];
         [yVals2 addObject:entry];
     }
-    RadarChartDataSet *set2 = [[RadarChartDataSet alloc] initWithYVals:yVals2 label:@"测量"];
+    RadarChartDataSet *set2 = [[RadarChartDataSet alloc] initWithYVals:yVals2 label:@"测量(高压)"];
     set2.lineWidth = 0.5;//数据折线线宽
     set2.drawFilledEnabled = YES;//是否填充颜色
     [set2 setColor:[UIColor greenColor]];
@@ -299,7 +299,7 @@
             
         }
     }
-    RadarChartDataSet *set3 = [[RadarChartDataSet alloc] initWithYVals:yVals3 label:@"测量"];
+    RadarChartDataSet *set3 = [[RadarChartDataSet alloc] initWithYVals:yVals3 label:@"(低压)"];
     set3.lineWidth = 0.5;//数据折线线宽
     set3.drawFilledEnabled = YES;//是否填充颜色
     [set3 setColor:[UIColor orangeColor]];
