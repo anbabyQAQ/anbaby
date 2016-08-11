@@ -62,6 +62,9 @@
 		3C796BA81D5C44C800862460 /* BloodPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BA71D5C44C800862460 /* BloodPressureViewController.m */; };
 		3C796BAB1D5C466800862460 /* BloodOxygenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BAA1D5C466800862460 /* BloodOxygenViewController.m */; };
 		3C796BB01D5C50AD00862460 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BAF1D5C50AD00862460 /* UIViewController+BackButtonHandler.m */; };
+		3C796BBD1D5C6A0300862460 /* ECGDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BBC1D5C6A0300862460 /* ECGDetailViewController.m */; };
+		3C796BCA1D5C6D2000862460 /* HeartRateSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BC91D5C6D2000862460 /* HeartRateSetViewController.m */; };
+		3C796BCD1D5C6D3200862460 /* HeartRateSetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796BCC1D5C6D3200862460 /* HeartRateSetDetailViewController.m */; };
 		3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3C1D5433110061997F /* TabbarExtension.m */; };
 		3C8D3B421D5433D50061997F /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3E1D5433D50061997F /* camera_button_take.png */; };
 		3C8D3B431D5433D50061997F /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C8D3B3F1D5433D50061997F /* camera_button_take@2x.png */; };
@@ -357,6 +360,12 @@
 		3C796BAA1D5C466800862460 /* BloodOxygenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodOxygenViewController.m; sourceTree = "<group>"; };
 		3C796BAE1D5C50AD00862460 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		3C796BAF1D5C50AD00862460 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		3C796BBB1D5C6A0300862460 /* ECGDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGDetailViewController.h; sourceTree = "<group>"; };
+		3C796BBC1D5C6A0300862460 /* ECGDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECGDetailViewController.m; sourceTree = "<group>"; };
+		3C796BC81D5C6D2000862460 /* HeartRateSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateSetViewController.h; sourceTree = "<group>"; };
+		3C796BC91D5C6D2000862460 /* HeartRateSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateSetViewController.m; sourceTree = "<group>"; };
+		3C796BCB1D5C6D3200862460 /* HeartRateSetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateSetDetailViewController.h; sourceTree = "<group>"; };
+		3C796BCC1D5C6D3200862460 /* HeartRateSetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateSetDetailViewController.m; sourceTree = "<group>"; };
 		3C8D3B3B1D5433110061997F /* TabbarExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarExtension.h; sourceTree = "<group>"; };
 		3C8D3B3C1D5433110061997F /* TabbarExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarExtension.m; sourceTree = "<group>"; };
 		3C8D3B3E1D5433D50061997F /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
@@ -1003,6 +1012,7 @@
 		3C796B8F1D5C187400862460 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3C796BBE1D5C6B3400862460 /* ecg */,
 				3C796BA11D5C3C1A00862460 /* Broken-line */,
 				3C796B9A1D5C21FF00862460 /* PieCharts */,
 				3C796B961D5C19C000862460 /* HeartRateHelper */,
@@ -1048,9 +1058,45 @@
 			path = "UIViewController+BackButtonHandler";
 			sourceTree = "<group>";
 		};
+		3C796BB71D5C69F200862460 /* DetailController */ = {
+			isa = PBXGroup;
+			children = (
+				3C796BBB1D5C6A0300862460 /* ECGDetailViewController.h */,
+				3C796BBC1D5C6A0300862460 /* ECGDetailViewController.m */,
+			);
+			path = DetailController;
+			sourceTree = "<group>";
+		};
+		3C796BBE1D5C6B3400862460 /* ecg */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ecg;
+			sourceTree = "<group>";
+		};
+		3C796BC01D5C6BEC00862460 /* 心率 */ = {
+			isa = PBXGroup;
+			children = (
+				3C796BC41D5C6C1C00862460 /* DetailController */,
+				3C796BC81D5C6D2000862460 /* HeartRateSetViewController.h */,
+				3C796BC91D5C6D2000862460 /* HeartRateSetViewController.m */,
+			);
+			path = "心率";
+			sourceTree = "<group>";
+		};
+		3C796BC41D5C6C1C00862460 /* DetailController */ = {
+			isa = PBXGroup;
+			children = (
+				3C796BCB1D5C6D3200862460 /* HeartRateSetDetailViewController.h */,
+				3C796BCC1D5C6D3200862460 /* HeartRateSetDetailViewController.m */,
+			);
+			path = DetailController;
+			sourceTree = "<group>";
+		};
 		3C8D3B471D543A5F0061997F /* 心电 */ = {
 			isa = PBXGroup;
 			children = (
+				3C796BB71D5C69F200862460 /* DetailController */,
 				3C8D3B481D543AE80061997F /* ECGViewController.h */,
 				3C8D3B491D543AE80061997F /* ECGViewController.m */,
 			);
@@ -1604,6 +1650,7 @@
 		3CFA8E871D53245D00D3BC2E /* DetailController */ = {
 			isa = PBXGroup;
 			children = (
+				3C796BC01D5C6BEC00862460 /* 心率 */,
 				3CF368021D548EBE00726B20 /* 扫描 */,
 				3CF367F11D548E6800726B20 /* 登录 */,
 				3CF367F81D548E6800726B20 /* 温度 */,
@@ -2001,6 +2048,7 @@
 			files = (
 				3C221B001D59B4C20000EE18 /* FileUtil.m in Sources */,
 				3CF2F66B1D597EE9002D5682 /* SegmentScroll.m in Sources */,
+				3C796BCD1D5C6D3200862460 /* HeartRateSetDetailViewController.m in Sources */,
 				3C221AFB1D59B4C20000EE18 /* DataUtil.m in Sources */,
 				188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */,
 				3CC7A6ED1D51E0B7003CAC87 /* NewFile.m in Sources */,
@@ -2026,6 +2074,7 @@
 				181145611D50568A0077FC38 /* MineViewController.m in Sources */,
 				3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */,
 				3C8D3B4E1D543B730061997F /* BaseViewController.m in Sources */,
+				3C796BBD1D5C6A0300862460 /* ECGDetailViewController.m in Sources */,
 				3CC7A7841D51F3B9003CAC87 /* SBJsonStreamParserAccumulator.m in Sources */,
 				1811455C1D50533F0077FC38 /* PresentationViewController.m in Sources */,
 				187406ED1D598F460091C30C /* GuanYuWoMenViewController.m in Sources */,
@@ -2080,6 +2129,7 @@
 				18E94B3F1D5AD20300F865FF /* ShoppingMallViewController.m in Sources */,
 				3CC7A6F51D51E0B7003CAC87 /* HttpBaseResponse.m in Sources */,
 				3C796BA01D5C39CF00862460 /* BloodSugarViewController.m in Sources */,
+				3C796BCA1D5C6D2000862460 /* HeartRateSetViewController.m in Sources */,
 				3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */,
 				3CC7A7861D51F3B9003CAC87 /* SBJsonStreamParserState.m in Sources */,
 				3CF2F65A1D596CD7002D5682 /* JGProgressHUDAnimation.m in Sources */,

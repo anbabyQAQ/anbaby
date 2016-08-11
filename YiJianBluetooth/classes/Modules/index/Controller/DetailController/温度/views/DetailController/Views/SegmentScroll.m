@@ -91,7 +91,7 @@
         }else{
             
             userView.tag = 100+i;
-            UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 60, 60)];
+            UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 50, 50)];
             imageview.image = [UIImage imageNamed:@"tabBar_publish_icon"];
             imageview.userInteractionEnabled=YES;
             [userView addSubview:imageview];

@@ -15,6 +15,10 @@
 #import "UsersDao.h"
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
+#import "HeartRateSetViewController.h"
+
+
+
 
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -231,11 +235,11 @@ static NSString *cellInte = @"typeCell";
         ECG.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:ECG animated:YES];
         
-    }else{
+    }else if (indexPath.row == 2){
     
-//        TemperatureViewController *temperVC = [[TemperatureViewController alloc] init];
-//        temperVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:temperVC animated:YES];
+        HeartRateSetViewController *rateVC = [[HeartRateSetViewController alloc] init];
+        rateVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:rateVC animated:YES];
     }
     
 }
