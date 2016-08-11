@@ -11,7 +11,7 @@
 
 @interface UsersDao : NSObject
 
-+(BOOL) saveUserInfo:(User*) user;
++(BOOL)saveUserInfo:(User*) user;
 
 +(User *)getUserInfoByName:(NSString *)name;
 

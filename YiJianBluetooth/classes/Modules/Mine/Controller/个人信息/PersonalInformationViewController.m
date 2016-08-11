@@ -8,6 +8,8 @@
 
 #import "PersonalInformationViewController.h"
 #import "User.h"
+#import "UsersDao.h"
+
 @interface PersonalInformationViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate>
 {
 
@@ -76,27 +78,44 @@
     [self addTextField:self.nameTextField];
     [self addTextField:self.phoneTextField];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回黑色"] style:(UIBarButtonItemStylePlain) target:self action:@selector(BackAc)];
+
     
 }
 
--(void)BackAc{
-
+- (BOOL)navigationShouldPopOnBackButton {
     
-    if ([self.nameTextField.text isEqualToString:@""]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"名字为空将无法为您保存" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
-        [alert show];
-        return;
-    }
+    
+//    if ([self.nameTextField.text isEqualToString:@""]) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"名字为空将无法为您保存" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles: nil];
+//        [alert show];
+//    }
     User *user = [User new];
     user.name = self.nameTextField.text;
     user.weight = [self.weightButton.titleLabel.text doubleValue];
     user.height = [self.heightButton.titleLabel.text doubleValue];
     user.age = [self.ageButton.titleLabel.text integerValue];
-    user.sex = self.sexButton.titleLabel.text;
     user.phone = self.phoneTextField.text;
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    user.gender = kGender_FeMale;
+    user.headIcon=[UIImage imageNamed:@"person_gril2"];
+    
+    if ([self.sexButton.titleLabel.text isEqualToString:@"男"]) {
+        user.gender=kGender_Male;
+        user.headIcon=[UIImage imageNamed:@"person_boy4"];
+
+    }
+    
+    if (![DataUtil isEmptyString:user.name] ) {
+        if ([UsersDao getUserInfoByName:user.name]) {
+            [UsersDao clearUserInfoByName:user.name];
+        }
+        [UsersDao saveUserInfo:user];
+    }
+    
+    
+    return YES;
 }
+
 
 -(void)addTextField:(UITextField *)textField{
 
@@ -266,9 +285,9 @@
         [self.heightButton setTitle:heightString forState:(UIControlStateNormal)] ;
     }else if (pickInterger == 2){
         
-        [self.heightButton setTitle:weightString forState:(UIControlStateNormal)] ;
+        [self.weightButton setTitle:weightString forState:(UIControlStateNormal)] ;
     }else{
-        [self.heightButton setTitle:ageString forState:(UIControlStateNormal)] ;
+        [self.ageButton setTitle:ageString forState:(UIControlStateNormal)] ;
     }
 
     [_toumingView removeFromSuperview];

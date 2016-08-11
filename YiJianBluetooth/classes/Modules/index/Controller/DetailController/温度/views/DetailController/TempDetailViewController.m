@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UsersDao.h"
 #import "SegmentScroll.h"
+#import "PersonalInformationViewController.h"
 
 #define Kuser_imgW 60;
 @interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,userScrollDelegate>{
@@ -41,6 +42,13 @@
     return _users;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self initwithScroll];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -58,15 +66,14 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     [self registerForKeyboardNotifications];
     
-    [self initwithScroll];
+//    [self initwithScroll];
 }
 
 - (void)initwithScroll{
     
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-    
-    
-    _scroll = [[SegmentScroll alloc] initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
+
+    _scroll = [[SegmentScroll alloc] initWithFrame:CGRectMake(0, 270, SCR_W, 90)];
     [_scroll setWithUserInfo:_users];
     _scroll.user_delegate = self;
     
@@ -77,8 +84,12 @@
 - (void)callBackIndex:(NSInteger)index {
     if (index-100 == _users.count) {
         //添加用户信息；
+
+        PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
+        [self.navigationController pushViewController:pserson animated:YES];
     }else{
         //选取用户添加记录
+        
     }
 }
 
@@ -166,7 +177,8 @@
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickBtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    _startTest_btn.backgroundColor = [UIColor blueColor];
+    _startTest_btn.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [_startTest_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
     [_startTest_btn setTitle:@"保存记录" forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;
     self.startTest_btn.layer.cornerRadius = 6.0;
@@ -179,6 +191,10 @@
 }
 
 -(void)clickBtn:(id)sender{
+   //缓存
+    
+    [self.navigationController popViewControllerAnimated:YES];
+
     
 }
 

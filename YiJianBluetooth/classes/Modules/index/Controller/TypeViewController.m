@@ -12,7 +12,7 @@
 #import "AlarmClockViewController.h"
 #import "AlarmViewController.h"
 #import "ECGViewController.h"
-
+#import "UsersDao.h"
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
 
@@ -60,6 +60,9 @@ static NSString *cellInte = @"typeCell";
     return _bannerImageArray;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

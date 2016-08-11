@@ -116,8 +116,9 @@
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    _startTest_btn.backgroundColor = [UIColor blueColor];
+    _startTest_btn.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [_startTest_btn setTitle:@"开始测体温" forState:(UIControlStateNormal)];
+    [_startTest_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;
     self.startTest_btn.layer.cornerRadius = 6.0;
     self.startTest_btn.layer.borderWidth = 1.0;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -211,12 +211,12 @@
                         </mask>
                         <mask key="constraints">
                             <exclude reference="qUJ-r4-o2g"/>
-                            <exclude reference="a4b-6G-Bxg"/>
-                            <exclude reference="qtB-Qd-bbP"/>
                             <exclude reference="9kI-mA-BsR"/>
                             <exclude reference="R69-sU-7Rg"/>
                             <exclude reference="bVK-iL-OH2"/>
                             <exclude reference="h2N-al-08p"/>
+                            <exclude reference="a4b-6G-Bxg"/>
+                            <exclude reference="qtB-Qd-bbP"/>
                             <exclude reference="4TV-qI-5VI"/>
                             <exclude reference="wa3-8E-Ikw"/>
                         </mask>
@@ -229,12 +229,12 @@
                         </mask>
                         <mask key="constraints">
                             <include reference="qUJ-r4-o2g"/>
-                            <include reference="a4b-6G-Bxg"/>
-                            <include reference="qtB-Qd-bbP"/>
                             <include reference="9kI-mA-BsR"/>
                             <include reference="R69-sU-7Rg"/>
                             <include reference="bVK-iL-OH2"/>
                             <include reference="h2N-al-08p"/>
+                            <include reference="a4b-6G-Bxg"/>
+                            <include reference="qtB-Qd-bbP"/>
                             <include reference="4TV-qI-5VI"/>
                             <include reference="wa3-8E-Ikw"/>
                         </mask>
@@ -302,12 +302,12 @@
                         </mask>
                         <mask key="constraints">
                             <exclude reference="X7W-9w-wTQ"/>
-                            <exclude reference="3rm-rT-rGj"/>
-                            <exclude reference="mpo-VQ-neE"/>
                             <exclude reference="RJ0-Bn-m9G"/>
                             <exclude reference="SSC-Wl-ZX1"/>
                             <exclude reference="U8V-90-UcG"/>
                             <exclude reference="gMp-be-MnR"/>
+                            <exclude reference="3rm-rT-rGj"/>
+                            <exclude reference="mpo-VQ-neE"/>
                             <exclude reference="QNm-IW-DMz"/>
                             <exclude reference="VWi-UD-FMz"/>
                         </mask>
@@ -320,12 +320,12 @@
                         </mask>
                         <mask key="constraints">
                             <include reference="X7W-9w-wTQ"/>
-                            <include reference="3rm-rT-rGj"/>
-                            <include reference="mpo-VQ-neE"/>
                             <include reference="RJ0-Bn-m9G"/>
                             <include reference="SSC-Wl-ZX1"/>
                             <include reference="U8V-90-UcG"/>
                             <include reference="gMp-be-MnR"/>
+                            <include reference="3rm-rT-rGj"/>
+                            <include reference="mpo-VQ-neE"/>
                             <include reference="QNm-IW-DMz"/>
                             <include reference="VWi-UD-FMz"/>
                         </mask>
@@ -393,12 +393,12 @@
                         </mask>
                         <mask key="constraints">
                             <exclude reference="3U2-xG-dh8"/>
-                            <exclude reference="LXM-3P-ilH"/>
-                            <exclude reference="lxs-Sm-aDG"/>
                             <exclude reference="1s5-CQ-69u"/>
                             <exclude reference="Dcb-42-TRf"/>
                             <exclude reference="Dly-Rh-CGM"/>
                             <exclude reference="Zmx-b7-Jki"/>
+                            <exclude reference="LXM-3P-ilH"/>
+                            <exclude reference="lxs-Sm-aDG"/>
                             <exclude reference="Oym-B1-vEg"/>
                             <exclude reference="d6m-xT-6Ol"/>
                         </mask>
@@ -411,12 +411,12 @@
                         </mask>
                         <mask key="constraints">
                             <include reference="3U2-xG-dh8"/>
-                            <include reference="LXM-3P-ilH"/>
-                            <include reference="lxs-Sm-aDG"/>
                             <include reference="1s5-CQ-69u"/>
                             <include reference="Dcb-42-TRf"/>
                             <include reference="Dly-Rh-CGM"/>
                             <include reference="Zmx-b7-Jki"/>
+                            <include reference="LXM-3P-ilH"/>
+                            <include reference="lxs-Sm-aDG"/>
                             <include reference="Oym-B1-vEg"/>
                             <include reference="d6m-xT-6Ol"/>
                         </mask>
@@ -484,12 +484,12 @@
                         </mask>
                         <mask key="constraints">
                             <exclude reference="282-Qk-r68"/>
-                            <exclude reference="BRr-vP-abA"/>
-                            <exclude reference="xHp-kb-bQe"/>
                             <exclude reference="Hkd-cI-IMf"/>
                             <exclude reference="SwV-w2-f35"/>
                             <exclude reference="fCU-db-Una"/>
                             <exclude reference="z0B-3J-0Dn"/>
+                            <exclude reference="BRr-vP-abA"/>
+                            <exclude reference="xHp-kb-bQe"/>
                             <exclude reference="BMz-7B-1Iz"/>
                             <exclude reference="ZUD-Hx-3HW"/>
                         </mask>
@@ -502,12 +502,12 @@
                         </mask>
                         <mask key="constraints">
                             <include reference="282-Qk-r68"/>
-                            <include reference="BRr-vP-abA"/>
-                            <include reference="xHp-kb-bQe"/>
                             <include reference="Hkd-cI-IMf"/>
                             <include reference="SwV-w2-f35"/>
                             <include reference="fCU-db-Una"/>
                             <include reference="z0B-3J-0Dn"/>
+                            <include reference="BRr-vP-abA"/>
+                            <include reference="xHp-kb-bQe"/>
                             <include reference="BMz-7B-1Iz"/>
                             <include reference="ZUD-Hx-3HW"/>
                         </mask>

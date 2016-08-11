@@ -96,8 +96,8 @@
     UIButton *updateDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     updateDataBtn.frame = CGRectMake(20, 330, SCR_W-40, 40);
     [updateDataBtn setTitle:@"改变数据" forState:UIControlStateNormal];
-    [updateDataBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [updateDataBtn setBackgroundColor:[UIColor cyanColor]];
+    [updateDataBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [updateDataBtn setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     updateDataBtn.layer.cornerRadius = 5;
     [self.view addSubview:updateDataBtn];
     [updateDataBtn addTarget:self action:@selector(updateDataBtnClick) forControlEvents:UIControlEventTouchUpInside];

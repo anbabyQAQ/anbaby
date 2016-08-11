@@ -26,7 +26,7 @@ typedef enum
 /**
  *  ID
  */
-@property (nonatomic,assign) unsigned char ID;
+//@property (nonatomic,assign) unsigned char ID;
 /**
  *  ID for icon
  */
@@ -46,8 +46,6 @@ typedef enum
 @property (nonatomic,assign) Gender_t gender;
 
 
-
-@property (nonatomic, copy) NSString *sex;
 @property (nonatomic, copy) NSString *phone;
 
 /**

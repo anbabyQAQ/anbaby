@@ -24,6 +24,7 @@
     self.shoppingMallArray = @[@"商品",@"血压仪",@"血糖仪",@"温度计"];
     
     [self setExtraCellLineHidden:self.shoppingMallTableView];
+    
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     

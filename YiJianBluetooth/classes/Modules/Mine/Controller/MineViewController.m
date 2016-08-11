@@ -11,6 +11,9 @@
 #import "PersonalInformationViewController.h"
 #import "FamilyViewController.h"
 #import "LoginViewController.h"
+#import "UsersDao.h"
+#import "User.h"
+
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
 
@@ -20,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *dropDownTableView;
 
 @property(nonatomic, strong)NSArray *mineArray;
-@property(nonatomic, strong)NSArray *dropDownArray;
+@property(nonatomic, strong)NSMutableArray *dropDownArray;
 @property(nonatomic, strong)UIButton *titleButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropDownTopView;
@@ -29,6 +32,19 @@
 
 @implementation MineViewController
 
+-(NSMutableArray *)dropDownArray{
+    if (_dropDownArray==nil) {
+        _dropDownArray = [[NSMutableArray alloc] init];
+    }
+    return _dropDownArray;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -37,7 +53,7 @@
 
     self.mineArray = @[@"个人信息",@"我的亲友",@"设置"];
 
-    self.dropDownArray = @[@"我的",@"老爸",@"老妈"];
+    
     self.dropDownTableView.separatorStyle =UITableViewCellSelectionStyleNone;
     self.dropDownTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
@@ -128,7 +144,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return 3;
+    return _dropDownArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -137,8 +153,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-
-    cell.textLabel.text = self.dropDownArray[indexPath.row];
+    User *user = self.dropDownArray[indexPath.row];
+    cell.textLabel.text = user.name;
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
     cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
     cell.textLabel.textColor = [UIColor darkTextColor];
