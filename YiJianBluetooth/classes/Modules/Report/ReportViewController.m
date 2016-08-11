@@ -275,7 +275,41 @@
     set2.valueFont = [UIFont systemFontOfSize:9];//字体
     set2.valueTextColor = [UIColor grayColor];//颜色
     
-    RadarChartData *data = [[RadarChartData alloc] initWithXVals:xVals dataSets:@[set1,set2]];
+    
+    //高压低压 type  处理
+    
+    NSMutableArray *yVals3 = [[NSMutableArray alloc] init];
+    for (int i = 0; i < count; i++) {
+        if (i==4) {
+            
+            double randomVal = arc4random_uniform(mult) + mult / 2;//产生 50~150 的随机数
+            ChartDataEntry *entry = [[ChartDataEntry alloc] initWithValue:randomVal xIndex:i];
+            [yVals3 addObject:entry];
+        }else{
+            if (i==3 || i==5) {
+                double randomVal = 100;//产生 50~150 的随机数
+                ChartDataEntry *entry = [[ChartDataEntry alloc] initWithValue:randomVal xIndex:i];
+                [yVals3 addObject:entry];
+            }else{
+                
+                double randomVal = 0;//产生 50~150 的随机数
+                ChartDataEntry *entry = [[ChartDataEntry alloc] initWithValue:randomVal xIndex:i];
+                [yVals3 addObject:entry];
+            }
+            
+        }
+    }
+    RadarChartDataSet *set3 = [[RadarChartDataSet alloc] initWithYVals:yVals3 label:@"测量"];
+    set3.lineWidth = 0.5;//数据折线线宽
+    set3.drawFilledEnabled = YES;//是否填充颜色
+    [set3 setColor:[UIColor orangeColor]];
+    set3.fillColor = [UIColor orangeColor];
+    set3.fillAlpha = 0.25;//填充透明度
+    set3.drawValuesEnabled = NO;//是否绘制显示数据
+    set3.valueFont = [UIFont systemFontOfSize:9];//字体
+    set3.valueTextColor = [UIColor grayColor];//颜色
+    
+    RadarChartData *data = [[RadarChartData alloc] initWithXVals:xVals dataSets:@[set1,set2,set3]];
     
     return data;
 }
