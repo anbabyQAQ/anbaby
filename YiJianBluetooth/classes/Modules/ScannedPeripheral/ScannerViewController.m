@@ -22,14 +22,8 @@
 
 #import "ScannerViewController.h"
 #import "ScannedPeripheral.h"
-//#import "Utility.h"
+#import "Utility.h"
 
-
-#define KScreenHeight [UIScreen mainScreen].bounds.size.height
-#define KScreenWidth [UIScreen mainScreen].bounds.size.width
-
-NSString * const dfuServiceUUIDString  = @"00001530-1212-EFDE-1523-785FEABCD123";
-NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0";
 @interface ScannerViewController ()
 
 /*!
@@ -42,17 +36,15 @@ NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0"
  */
 @property (strong, nonatomic) NSTimer *timer;
 
-@property (weak, nonatomic) IBOutlet UIView *emptyView;
+@property (weak, nonatomic)  UIView *emptyView;
 
 - (void)timerFireMethod:(NSTimer *)timer;
-
-
-
 
 @end
 
 @implementation ScannerViewController
 @synthesize bluetoothManager;
+@synthesize devicesTable;
 @synthesize emptyView;
 @synthesize filterUUID;
 @synthesize peripherals;
@@ -61,12 +53,18 @@ NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0"
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"扫描设备";
-    self.view.backgroundColor = [UIColor whiteColor];
-    peripherals = [NSMutableArray arrayWithCapacity:8];
-    self.devicesTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight) style:(UITableViewStyleGrouped)];
-    self.devicesTable.delegate = self;
-    self.devicesTable.dataSource = self;
+    // Do any additional setup after loading the view.
+    peripherals = [[NSMutableArray alloc]init];
+    
+    devicesTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCR_W, SCR_H)];
+    devicesTable.delegate=self;
+    devicesTable.dataSource=self;
+    [devicesTable setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [self setExtraCellLineHidden:devicesTable];
+    devicesTable.backgroundColor=UIColorFromRGB(0xf3f3f3);
+    [self.view addSubview:devicesTable];
+    devicesTable.delegate = self;
+    devicesTable.dataSource = self;
     
     // Display an activity indicator in the Navigation bar
     UIActivityIndicatorView* uiBusy = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -74,32 +72,27 @@ NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0"
     [uiBusy startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:uiBusy];
     
-    
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:nil style:(UIBarButtonItemStylePlain) target:self action:@selector(BackAc)];
     // We want the scanner to scan with dupliate keys (to refresh RRSI every second) so it has to be done using non-main queue
     dispatch_queue_t centralQueue = dispatch_queue_create("no.nordicsemi.ios.nrftoolbox", DISPATCH_QUEUE_SERIAL);
     bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue];
 }
--(void)BackAc{
 
-    [self.navigationController popViewControllerAnimated:YES];
-}
 -(void)viewDidAppear:(BOOL)animated
 {
-    
-    
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [super viewWillDisappear:animated];
     [self scanForPeripherals:NO];
 }
 
-
+- (void)didCancelClicked:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)getConnectedPeripherals
 {
@@ -162,7 +155,7 @@ NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0"
             NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerScanOptionAllowDuplicatesKey, nil];
             if (filterUUID != nil)
             {
-                [bluetoothManager scanForPeripheralsWithServices:@[ filterUUID ] options:options];
+                [bluetoothManager scanForPeripheralsWithServices:nil options:options];
             }
             else
             {
@@ -190,8 +183,8 @@ NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0"
 {
     if ([peripherals count] > 0)
     {
-        emptyView.hidden = YES;
-        [self.devicesTable reloadData];
+//        emptyView.hidden = YES;
+        [devicesTable reloadData];
     }
 }
 
@@ -224,7 +217,12 @@ NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0"
     [self dismissViewControllerAnimated:YES completion:nil];
     
     // Call delegate method
-    [self.delegate centralManager:bluetoothManager didPeripheralSelected:[[peripherals objectAtIndex:indexPath.row] peripheral]];
+    if ([self.delegate respondsToSelector:@selector(centralManager:didPeripheralSelected:)]) {
+        
+        [self.delegate centralManager:bluetoothManager didPeripheralSelected:[[peripherals objectAtIndex:indexPath.row] peripheral]];
+    }
+    
+    [self popoverPresentationController];
 }
 
 #pragma mark Table View Data Source delegate methods
@@ -236,7 +234,12 @@ NSString * const ANCSServiceUUIDString = @"7905F431-B5CE-4E99-A40F-4B1E122D00D0"
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    static NSString *NailCellIdentifier = @"NailCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NailCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NailCellIdentifier];
+    }
     
     // Update sensor name
     ScannedPeripheral *peripheral = [peripherals objectAtIndex:indexPath.row];

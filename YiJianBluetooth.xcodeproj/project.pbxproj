@@ -54,6 +54,10 @@
 		3C221B021D59B4C20000EE18 /* LogUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF51D59B4C20000EE18 /* LogUtil.m */; };
 		3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221AF81D59B4C20000EE18 /* VedioUtil.m */; };
 		3C221B081D59B9480000EE18 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221B071D59B9480000EE18 /* ReportViewController.m */; };
+		3C4817101D5DA79A001BCB8F /* ScannedPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C48170C1D5DA79A001BCB8F /* ScannedPeripheral.m */; };
+		3C4817111D5DA79A001BCB8F /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C48170F1D5DA79A001BCB8F /* ScannerViewController.m */; };
+		3C4817151D5DA7E9001BCB8F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4817141D5DA7E9001BCB8F /* Utility.m */; };
+		3C4817171D5DABEE001BCB8F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4817161D5DABEE001BCB8F /* CoreBluetooth.framework */; };
 		3C796B951D5C188800862460 /* LeadPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B941D5C188800862460 /* LeadPlayer.m */; };
 		3C796B991D5C19DC00862460 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B981D5C19DC00862460 /* Helper.mm */; };
 		3C796B9D1D5C223700862460 /* PieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B9C1D5C223700862460 /* PieChart.m */; };
@@ -180,8 +184,6 @@
 		3CF367FD1D548E6800726B20 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF367F41D548E6800726B20 /* LoginViewController.xib */; };
 		3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF367F61D548E6800726B20 /* RegisterViewController.m */; };
 		3CF367FF1D548E6800726B20 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF367F71D548E6800726B20 /* RegisterViewController.xib */; };
-		3CF368081D548EBE00726B20 /* ScannedPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF368041D548EBE00726B20 /* ScannedPeripheral.m */; };
-		3CF368091D548EBE00726B20 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF368071D548EBE00726B20 /* ScannerViewController.m */; };
 		3CF3680E1D548EFB00726B20 /* TypeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF3680C1D548EFB00726B20 /* TypeCollectionViewCell.m */; };
 		3CF3680F1D548EFB00726B20 /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF3680D1D548EFB00726B20 /* TypeCollectionViewCell.xib */; };
 		74E55098675CA43F8CDC2F72 /* libPods-YiJianBluetoothTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6781C148780E9B66BCA3FD /* libPods-YiJianBluetoothTests.a */; };
@@ -344,6 +346,14 @@
 		3C221AF81D59B4C20000EE18 /* VedioUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VedioUtil.m; sourceTree = "<group>"; };
 		3C221B061D59B9480000EE18 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		3C221B071D59B9480000EE18 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		3C48170B1D5DA79A001BCB8F /* ScannedPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannedPeripheral.h; sourceTree = "<group>"; };
+		3C48170C1D5DA79A001BCB8F /* ScannedPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannedPeripheral.m; sourceTree = "<group>"; };
+		3C48170D1D5DA79A001BCB8F /* ScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerDelegate.h; sourceTree = "<group>"; };
+		3C48170E1D5DA79A001BCB8F /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
+		3C48170F1D5DA79A001BCB8F /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
+		3C4817131D5DA7E9001BCB8F /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		3C4817141D5DA7E9001BCB8F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		3C4817161D5DABEE001BCB8F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		3C796B931D5C188800862460 /* LeadPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeadPlayer.h; sourceTree = "<group>"; };
 		3C796B941D5C188800862460 /* LeadPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeadPlayer.m; sourceTree = "<group>"; };
 		3C796B971D5C19DC00862460 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -544,11 +554,6 @@
 		3CF367F51D548E6800726B20 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		3CF367F61D548E6800726B20 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		3CF367F71D548E6800726B20 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
-		3CF368031D548EBE00726B20 /* ScannedPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannedPeripheral.h; sourceTree = "<group>"; };
-		3CF368041D548EBE00726B20 /* ScannedPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannedPeripheral.m; sourceTree = "<group>"; };
-		3CF368051D548EBE00726B20 /* ScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerDelegate.h; sourceTree = "<group>"; };
-		3CF368061D548EBE00726B20 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
-		3CF368071D548EBE00726B20 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
 		3CF3680B1D548EFB00726B20 /* TypeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeCollectionViewCell.h; sourceTree = "<group>"; };
 		3CF3680C1D548EFB00726B20 /* TypeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeCollectionViewCell.m; sourceTree = "<group>"; };
 		3CF3680D1D548EFB00726B20 /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -564,6 +569,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C4817171D5DABEE001BCB8F /* CoreBluetooth.framework in Frameworks */,
 				3C9205BA1D599DEB00781D3D /* libsqlite3.dylib in Frameworks */,
 				3CCEBC311D5B0857007A852D /* Charts.framework in Frameworks */,
 				3C9205BB1D599DEB00781D3D /* libz.1.dylib in Frameworks */,
@@ -620,6 +626,7 @@
 		0CD2D2171D4755350074D3D0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3C4817071D5DA749001BCB8F /* ScannedPeripheral */,
 				3CB4A5871D52E65B00683FF7 /* Tabbar */,
 				18CC4F771D475A3000A9FCC3 /* index */,
 				18CC4F781D475A3000A9FCC3 /* Orther */,
@@ -1007,6 +1014,28 @@
 				3C796BAA1D5C466800862460 /* BloodOxygenViewController.m */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		3C4817071D5DA749001BCB8F /* ScannedPeripheral */ = {
+			isa = PBXGroup;
+			children = (
+				3C4817121D5DA7E9001BCB8F /* Constants */,
+				3C48170B1D5DA79A001BCB8F /* ScannedPeripheral.h */,
+				3C48170C1D5DA79A001BCB8F /* ScannedPeripheral.m */,
+				3C48170D1D5DA79A001BCB8F /* ScannerDelegate.h */,
+				3C48170E1D5DA79A001BCB8F /* ScannerViewController.h */,
+				3C48170F1D5DA79A001BCB8F /* ScannerViewController.m */,
+			);
+			path = ScannedPeripheral;
+			sourceTree = "<group>";
+		};
+		3C4817121D5DA7E9001BCB8F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				3C4817131D5DA7E9001BCB8F /* Utility.h */,
+				3C4817141D5DA7E9001BCB8F /* Utility.m */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		3C796B8F1D5C187400862460 /* Views */ = {
@@ -1621,18 +1650,6 @@
 			path = "温度";
 			sourceTree = "<group>";
 		};
-		3CF368021D548EBE00726B20 /* 扫描 */ = {
-			isa = PBXGroup;
-			children = (
-				3CF368031D548EBE00726B20 /* ScannedPeripheral.h */,
-				3CF368041D548EBE00726B20 /* ScannedPeripheral.m */,
-				3CF368051D548EBE00726B20 /* ScannerDelegate.h */,
-				3CF368061D548EBE00726B20 /* ScannerViewController.h */,
-				3CF368071D548EBE00726B20 /* ScannerViewController.m */,
-			);
-			path = "扫描";
-			sourceTree = "<group>";
-		};
 		3CF3680A1D548EFB00726B20 /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1651,7 +1668,6 @@
 			isa = PBXGroup;
 			children = (
 				3C796BC01D5C6BEC00862460 /* 心率 */,
-				3CF368021D548EBE00726B20 /* 扫描 */,
 				3CF367F11D548E6800726B20 /* 登录 */,
 				3CF367F81D548E6800726B20 /* 温度 */,
 				3C8D3B471D543A5F0061997F /* 心电 */,
@@ -1662,6 +1678,7 @@
 		8640F1D1BED2FE0355FFA9C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C4817161D5DABEE001BCB8F /* CoreBluetooth.framework */,
 				3C9205B81D599DEB00781D3D /* libsqlite3.dylib */,
 				3C9205B91D599DEB00781D3D /* libz.1.dylib */,
 				3C9205B61D599CC500781D3D /* libsqlite3.0.tbd */,
@@ -1753,7 +1770,7 @@
 				TargetAttributes = {
 					18B4C9F51D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = C3QXQ3HUWG;
+						DevelopmentTeam = DGKWFHS998;
 					};
 					18B4CA0E1D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -2068,6 +2085,7 @@
 				3C221AF91D59B4C20000EE18 /* AuthorityUtil.m in Sources */,
 				3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */,
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
+				3C4817101D5DA79A001BCB8F /* ScannedPeripheral.m in Sources */,
 				3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */,
 				3CCEBC3E1D5B1124007A852D /* TempChartViewController.m in Sources */,
 				3CC7A6C41D51E065003CAC87 /* CtsiUserDefaults.m in Sources */,
@@ -2077,6 +2095,7 @@
 				3C796BBD1D5C6A0300862460 /* ECGDetailViewController.m in Sources */,
 				3CC7A7841D51F3B9003CAC87 /* SBJsonStreamParserAccumulator.m in Sources */,
 				1811455C1D50533F0077FC38 /* PresentationViewController.m in Sources */,
+				3C4817151D5DA7E9001BCB8F /* Utility.m in Sources */,
 				187406ED1D598F460091C30C /* GuanYuWoMenViewController.m in Sources */,
 				3CF2F65F1D596CD7002D5682 /* JGProgressHUDPieIndicatorView.m in Sources */,
 				3C92059F1D59940A00781D3D /* LKDBHelper.m in Sources */,
@@ -2092,7 +2111,6 @@
 				3C221AFD1D59B4C20000EE18 /* DateUtil.m in Sources */,
 				3C8D3B4A1D543AE80061997F /* ECGViewController.m in Sources */,
 				3CCEBC421D5B17E5007A852D /* ECGChartViewController.m in Sources */,
-				3CF368081D548EBE00726B20 /* ScannedPeripheral.m in Sources */,
 				3C113E111D587C05004099BB /* MAThermometerBorder.m in Sources */,
 				18A5167E1D499CE40032C549 /* TypeViewController.m in Sources */,
 				3C92059E1D59940A00781D3D /* LKDB+Mapping.m in Sources */,
@@ -2104,10 +2122,10 @@
 				3CC7A7821D51F3B9003CAC87 /* SBJsonParser.m in Sources */,
 				3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */,
 				3CC7A7831D51F3B9003CAC87 /* SBJsonStreamParser.m in Sources */,
+				3C4817111D5DA79A001BCB8F /* ScannerViewController.m in Sources */,
 				3CF3680E1D548EFB00726B20 /* TypeCollectionViewCell.m in Sources */,
 				3C9205A51D5994DE00781D3D /* UsersDao.m in Sources */,
 				3CF2F66F1D597F86002D5682 /* User.m in Sources */,
-				3CF368091D548EBE00726B20 /* ScannerViewController.m in Sources */,
 				3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */,
 				3CCEBC451D5B1BC7007A852D /* HeartRateViewController.m in Sources */,
 				3C9205A21D59940A00781D3D /* NSObject+LKModel.m in Sources */,

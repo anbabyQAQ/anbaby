@@ -48,7 +48,7 @@
     self.radarChartView = [[RadarChartView alloc] initWithFrame:CGRectMake(20, 10, SCR_W-40, 300)];
     [self.view addSubview:self.radarChartView];
     self.radarChartView.delegate = self;
-    self.radarChartView.descriptionText = @"123";//描述
+    self.radarChartView.descriptionText = @"各项雷达图";//描述
     self.radarChartView.rotationEnabled = YES;//是否允许转动
     self.radarChartView.highlightPerTapEnabled = YES;//是否能被选中
     

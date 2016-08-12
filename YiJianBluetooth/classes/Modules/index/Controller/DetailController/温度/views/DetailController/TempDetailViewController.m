@@ -144,7 +144,7 @@
     
     
     _thermometer1 = [[MAThermometer alloc] initWithFrame:_temp_view.bounds];
-    [_thermometer1 setMaxValue:42];
+    [_thermometer1 setMaxValue:40];
     [_thermometer1 setMinValue:35];
     _thermometer1.glassEffect = YES;
 //    int x = arc4random() % 8+35;
@@ -177,7 +177,7 @@
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickBtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    _startTest_btn.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _startTest_btn.backgroundColor = [UIColor purpleColor];
     [_startTest_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
     [_startTest_btn setTitle:@"保存记录" forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;

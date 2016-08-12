@@ -23,7 +23,7 @@
     
 //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
 //                                                         forBarMetrics:UIBarMetricsDefault];
-    
+    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(0xc62828);
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;

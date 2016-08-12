@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "ScannerDelegate.h"
 
-@interface TempViewController : BaseViewController
+@interface TempViewController : BaseViewController<CBCentralManagerDelegate, CBPeripheralDelegate, ScannerDelegate>
 
 @end

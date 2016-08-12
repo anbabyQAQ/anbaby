@@ -24,13 +24,16 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #include "ScannerDelegate.h"
 
-@interface ScannerViewController : UIViewController <CBCentralManagerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ScannerViewController : BaseViewController <CBCentralManagerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) CBCentralManager *bluetoothManager;
-@property(nonatomic, strong)UITableView *devicesTable;
+@property (strong, nonatomic)  UITableView *devicesTable;
 @property (strong, nonatomic) id <ScannerDelegate> delegate;
 @property (strong, nonatomic) CBUUID *filterUUID;
 
-
+/*!
+ * Cancel button has been clicked
+ */
+- (void)didCancelClicked:(id)sender;
 
 @end

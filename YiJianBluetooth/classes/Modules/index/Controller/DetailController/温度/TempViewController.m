@@ -9,6 +9,8 @@
 #import "TempViewController.h"
 #import "MAThermometer.h"
 #import "TempDetailViewController.h"
+#import "TempChartViewController.h"
+#import "ScannerViewController.h"
 
 @interface TempViewController ()<UITableViewDelegate,UITableViewDataSource>{
     
@@ -35,7 +37,7 @@
     // Do any additional setup after loading the view.
     
     
-    self.navigationItem.title = @"温度";
+    self.navigationItem.title = @"体温";
     
     self.view.backgroundColor = [UIColor whiteColor];
     [self initTempLayout];
@@ -51,14 +53,14 @@
 //    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:view];
 //    self.navigationItem.rightBarButtonItem = rightBtn;
     
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"连接设备" style:UIBarButtonItemStyleDone target:self action:@selector(setRightBtn)] ;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设备管理" style:UIBarButtonItemStyleDone target:self action:@selector(setRightBtn)] ;
     
     [self addtableview];
     
 }
 
 - (void)addtableview{
-    _peripheral_arr = [[NSMutableArray alloc] initWithObjects:@"1111",@"2222", nil];
+    _peripheral_arr = [[NSMutableArray alloc] initWithObjects:@"设备选择",@"查看记录", nil];
 
     _tempTableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, _peripheral_arr.count*40)];
     _tempTableview.delegate=self;
@@ -116,7 +118,7 @@
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    _startTest_btn.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _startTest_btn.backgroundColor = [UIColor purpleColor];
     [_startTest_btn setTitle:@"开始测体温" forState:(UIControlStateNormal)];
     [_startTest_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;
@@ -173,6 +175,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    if (indexPath.row==0) {
+        //设备选择
+        
+        ScannerViewController *scan = [[ScannerViewController alloc] init];
+        scan.delegate = self;
+        [self.navigationController pushViewController:scan animated:YES];
+        [self setRightBtn];
+
+    }
+    if (indexPath.row==1) {
+        //查看记录
+        
+        TempChartViewController * temp = [[TempChartViewController alloc]init];
+        [self.navigationController pushViewController:temp animated:YES];
+    }
    
 }
 
