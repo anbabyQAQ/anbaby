@@ -25,6 +25,9 @@
 @property (nonatomic, strong) MAThermometer * thermometer1;
 
 
+@property (strong, nonatomic) CBPeripheral* connectedPeripheral;
+
+
 //设备数组
 @property (nonatomic, strong) NSMutableArray *peripheral_arr;
 
@@ -126,6 +129,232 @@
     self.startTest_btn.layer.borderWidth = 1.0;
     self.startTest_btn.layer.borderColor = [[UIColor whiteColor] CGColor];
     [self.view addSubview:_startTest_btn];
+    
+}
+
+- (void) centralManager:(CBCentralManager*) manager didPeripheralSelected:(CBPeripheral*) peripheral{
+    
+    
+    _bluetoothManager = manager;
+    _bluetoothManager.delegate = self;
+    
+    // The sensor has been selected, connect to it
+    peripheral.delegate = self;
+    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBConnectPeripheralOptionNotifyOnNotificationKey];
+    [_bluetoothManager connectPeripheral:peripheral options:options];
+}
+
+
+
+- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+{
+    // Scanner uses other queue to send events. We must edit UI in the main queue
+   
+
+    
+    // Peripheral has connected. Discover required services
+    _connectedPeripheral = peripheral;
+    _connectedPeripheral.delegate=self;
+    //    [peripheral discoverServices:@[htsServiceUUID, batteryServiceUUID]];
+    [peripheral discoverServices:nil];
+    
+}
+
+-(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    // Scanner uses other queue to send events. We must edit UI in the main queue
+    dispatch_async(dispatch_get_main_queue(), ^{
+//        [AppUtilities showAlert:@"Error" alertMessage:@"Connecting to the peripheral failed. Try again"];
+//        [connectButton setTitle:@"CONNECT" forState:UIControlStateNormal];
+//        connectedPeripheral = nil;
+//        
+//        [self clearUI];
+    });
+}
+
+
+#pragma mark Peripheral delegate methods
+
+-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
+{
+    if (error)
+    {
+        NSLog(@"Error discovering service: %@", [error localizedDescription]);
+        [_bluetoothManager cancelPeripheralConnection:_connectedPeripheral];
+        return;
+    }
+    
+    for (CBService *service in peripheral.services)
+    {
+        // Discovers the characteristics for a given service
+        NSLog(@"%@",service.UUID);
+            [_connectedPeripheral discoverCharacteristics:nil forService:service];
+      
+    }
+}
+
+-(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+{
+    // Characteristics for one of those services has been found
+//    if ([service.UUID isEqual:htsServiceUUID])
+    {
+        for (CBCharacteristic *characteristic in service.characteristics)
+        {
+//            if ([characteristic.UUID isEqual:htsMeasurementCharacteristicUUID])
+//            {
+                // Enable notification on data characteristic
+                [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+                break;
+//            }
+        }
+    }
+//    }
+ 
+}
+
+
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(nonnull CBCharacteristic *)characteristic error:(nullable NSError *)error{
+    
+    
+    if (error) {
+        NSLog(@"Error discovering characteristics: %@", [error localizedDescription]);
+        return;
+    }
+    NSString *newString = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
+    NSLog(@"Receive -> %@",newString);
+    
+    
+}
+
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+{
+    // Scanner uses other queue to send events. We must edit UI in the main queue
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Decode the characteristic data
+        //        NSData *data = characteristic.value;
+        //        uint8_t *array = (uint8_t*) data.bytes;
+        
+        if (error==nil) {
+            //调用下面的方法后 会调用到代理的- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+            [peripheral readValueForCharacteristic:characteristic];
+        }
+        
+        
+        //        if ([characteristic.UUID isEqual:batteryLevelCharacteristicUUID])
+        //        {
+        //            uint8_t batteryLevel = [CharacteristicReader readUInt8Value:&array];
+        //            NSString* text = [[NSString alloc] initWithFormat:@"%d%%", batteryLevel];
+        //            [battery setTitle:text forState:UIControlStateDisabled];
+        //
+        //            if (battery.tag == 0)
+        //            {
+        //                // If battery level notifications are available, enable them
+        //                if (([characteristic properties] & CBCharacteristicPropertyNotify) > 0)
+        //                {
+        //                    battery.tag = 1; // mark that we have enabled notifications
+        //
+        //                    // Enable notification on data characteristic
+        //                    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+        //                }
+        //            }
+        //        }
+        //        else if ([characteristic.UUID isEqual:htsMeasurementCharacteristicUUID])
+        //        {
+        //            int flags = [CharacteristicReader readUInt8Value:&array];
+        //            BOOL tempInFahrenheit = (flags & 0x01) > 0;
+        //            BOOL timestampPresent = (flags & 0x02) > 0;
+        //            BOOL typePresent = (flags & 0x04) > 0;
+        //
+        //            float tempValue = [CharacteristicReader readFloatValue:&array];
+        //            if (!tempInFahrenheit && fahrenheit)
+        //                tempValue = tempValue * 9.0f / 5.0f + 32.0f;
+        //            if (tempInFahrenheit && !fahrenheit)
+        //                tempValue = (tempValue - 32.0f) * 5.0f / 9.0f;
+        //            temperatureValue = tempValue;
+        //            self.temperature.text = [NSString stringWithFormat:@"%.2f", tempValue];
+        //
+        //            if (timestampPresent)
+        //            {
+        //                NSDate* date = [CharacteristicReader readDateTime:&array];
+        //
+        //                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        //                [dateFormat setDateFormat:@"dd.MM.yyyy, hh:mm"];
+        //                NSString* dateFormattedString = [dateFormat stringFromDate:date];
+        //
+        //                self.timestamp.text = dateFormattedString;
+        //            }
+        //            else
+        //            {
+        //                self.timestamp.text = @"Date n/a";
+        //            }
+        //
+        //            /* temperature type */
+        //            if (typePresent)
+        //            {
+        //                uint8_t type = [CharacteristicReader readUInt8Value:&array];
+        //                NSString* location = nil;
+        //
+        //                switch (type)
+        //                {
+        //                    case 0x01:
+        //                        location = @"Armpit";
+        //                        break;
+        //                    case 0x02:
+        //                        location = @"Body - general";
+        //                        break;
+        //                    case 0x03:
+        //                        location = @"Ear";
+        //                        break;
+        //                    case 0x04:
+        //                        location = @"Finger";
+        //                        break;
+        //                    case 0x05:
+        //                        location = @"Gastro-intenstinal Tract";
+        //                        break;
+        //                    case 0x06:
+        //                        location = @"Mouth";
+        //                        break;
+        //                    case 0x07:
+        //                        location = @"Rectum";
+        //                        break;
+        //                    case 0x08:
+        //                        location = @"Toe";
+        //                        break;
+        //                    case 0x09:
+        //                        location = @"Tympanum - ear drum";
+        //                        break;
+        //                    default:
+        //                        location = @"Unknown";
+        //                        break;
+        //                }
+        //                if (location)
+        //                {
+        //                    self.type.text = [NSString stringWithFormat:@"Location: %@", location];
+        //                }
+        //            }
+        //            else
+        //            {
+        //                self.type.text = @"Location: n/a";
+        //            }
+        //            
+        //            if ([AppUtilities isApplicationStateInactiveORBackground])
+        //            {
+        //                NSString *message;
+        //                if (fahrenheit)
+        //                {
+        //                    message = [NSString stringWithFormat:@"New temperature reading: %.2f°F", tempValue];
+        //                }
+        //                else
+        //                {
+        //                    message = [NSString stringWithFormat:@"New temperature reading: %.2f°C", tempValue];
+        //                }
+        //                [AppUtilities showBackgroundNotification:message];
+        //            }
+        //        }
+    });
+}
+
+- (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error{
     
 }
 

@@ -11,4 +11,7 @@
 
 @interface TempViewController : BaseViewController<CBCentralManagerDelegate, CBPeripheralDelegate, ScannerDelegate>
 
+
+@property (strong, nonatomic) CBCentralManager *bluetoothManager;
+
 @end

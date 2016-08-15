@@ -24,7 +24,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #include "ScannerDelegate.h"
 
-@interface ScannerViewController : BaseViewController <CBCentralManagerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ScannerViewController : BaseViewController <CBCentralManagerDelegate, UITableViewDelegate, UITableViewDataSource,CBPeripheralDelegate>
 
 @property (strong, nonatomic) CBCentralManager *bluetoothManager;
 @property (strong, nonatomic)  UITableView *devicesTable;

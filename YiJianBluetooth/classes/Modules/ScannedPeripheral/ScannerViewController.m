@@ -75,6 +75,7 @@
     // We want the scanner to scan with dupliate keys (to refresh RRSI every second) so it has to be done using non-main queue
     dispatch_queue_t centralQueue = dispatch_queue_create("no.nordicsemi.ios.nrftoolbox", DISPATCH_QUEUE_SERIAL);
     bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue];
+    bluetoothManager.delegate=self;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -131,7 +132,7 @@
     if (central.state == CBCentralManagerStatePoweredOn)
     {
         //TODO Retrieve already connected/paired devices
-        [self getConnectedPeripherals];
+//        [self getConnectedPeripherals];
         [self scanForPeripherals:YES];
     }
 }
@@ -152,7 +153,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         if (enable)
         {
-            NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerScanOptionAllowDuplicatesKey, nil];
+            NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO], CBCentralManagerScanOptionAllowDuplicatesKey, nil];
             if (filterUUID != nil)
             {
                 [bluetoothManager scanForPeripheralsWithServices:nil options:options];
@@ -162,6 +163,8 @@
                 [bluetoothManager scanForPeripheralsWithServices:nil options:options];
             }
             
+            
+            //记录目前是扫描状态
             timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
         }
         else
@@ -191,8 +194,12 @@
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
     // Scanner uses other queue to send events. We must edit UI in the main queue
-    if ([[advertisementData objectForKey:CBAdvertisementDataIsConnectable] boolValue])
+    if (peripheral == nil||peripheral.identifier == nil/*||peripheral.name == nil*/)
     {
+        return;
+    }
+//    if ([[advertisementData objectForKey:CBAdvertisementDataIsConnectable] boolValue])
+//    {
         dispatch_async(dispatch_get_main_queue(), ^{
             // Add the sensor to the list and reload deta set
             ScannedPeripheral* sensor = [ScannedPeripheral initWithPeripheral:peripheral rssi:RSSI.intValue isPeripheralConnected:NO];
@@ -206,7 +213,7 @@
                 sensor.RSSI = RSSI.intValue;
             }
         });
-    }
+//    }
 }
 
 #pragma mark Table View delegate methods
