@@ -12,6 +12,7 @@
 #import "UsersDao.h"
 #import "SegmentScroll.h"
 #import "PersonalInformationViewController.h"
+#import "ChooseUser.h"
 
 #define Kuser_imgW 60;
 @interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,userScrollDelegate>{
@@ -67,15 +68,20 @@
     [self registerForKeyboardNotifications];
     
 //    [self initwithScroll];
+    
+    [self initLeftBarButtonItem];
 }
 
 - (void)initwithScroll{
     
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
 
-    _scroll = [[SegmentScroll alloc] initWithFrame:CGRectMake(0, 270, SCR_W, 90)];
+    _scroll = [[SegmentScroll alloc] initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
     [_scroll setWithUserInfo:_users];
     _scroll.user_delegate = self;
+    
+//    ChooseUser *view = [[ChooseUser alloc]initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
+//    [self.view addSubview:view];
     
     [self.view addSubview:_scroll];
     
@@ -130,11 +136,11 @@
     self.temp_lab.textAlignment=NSTextAlignmentLeft;
     self.temp_lab.text=@"体温";
     self.temp_lab.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    self.temp_lab.textColor = [UIColor grayColor];
+    self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
     
     
-    _temp_view = [[UIView alloc] initWithFrame:CGRectMake(110, 50, 100, 150)];
+    _temp_view = [[UIView alloc] initWithFrame:CGRectMake(SCR_W/2-30, 50, 60, 150)];
     _temp_view.backgroundColor = UIColorFromRGB(0xf3f3f3);
     self.temp_view.layer.masksToBounds = YES;
     self.temp_view.layer.cornerRadius = 6.0;
@@ -143,13 +149,14 @@
     [self.view addSubview:_temp_view];
     
     
-    _thermometer1 = [[MAThermometer alloc] initWithFrame:_temp_view.bounds];
+    _thermometer1 = [[MAThermometer alloc] initWithFrame:CGRectMake(10, 0, 40, 150)];
     [_thermometer1 setMaxValue:40];
-    [_thermometer1 setMinValue:35];
+    [_thermometer1 setMinValue:30];
     _thermometer1.glassEffect = YES;
 //    int x = arc4random() % 8+35;
 //    int y = arc4random()%10;
 //    _thermometer1.curValue = x+y*0.1;
+    _thermometer1.arrayColors = @[UIColorFromRGB(0xc62828)];
     [_temp_view addSubview:_thermometer1];
     
     _temp = [[UILabel alloc] initWithFrame:CGRectMake(220, 150, 80, 20)];
@@ -160,16 +167,21 @@
     [self.view addSubview: _temp];
     
     
-    _right_btn = [[UITextField alloc] initWithFrame:CGRectMake(SCR_W-70, 20, 65, 20)];
+    _right_btn = [[UITextField alloc] initWithFrame:CGRectMake(SCR_W-80, 23, 75, 20)];
+    UIImageView *passwordImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
+    passwordImage.image = [UIImage imageNamed:@"pencil_edit"];
+    
+    _right_btn.leftView = passwordImage;
+    _right_btn.leftViewMode = UITextFieldViewModeAlways;
     _right_btn.placeholder = @"手动录入";
     _right_btn.delegate =self;
-    _right_btn.textColor = [UIColor grayColor];
-    _right_btn.textAlignment = NSTextAlignmentCenter;
-    _right_btn.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];;
+    _right_btn.textColor = [UIColor blackColor];
+    _right_btn.textAlignment = NSTextAlignmentLeft;
+    _right_btn.font = [UIFont systemFontOfSize:text_size_smaller];;
     _right_btn.layer.masksToBounds = YES;
     _right_btn.layer.cornerRadius = 3.0;
     _right_btn.layer.borderWidth = 1.0;
-    _right_btn.layer.borderColor = [[UIColor grayColor] CGColor];
+    _right_btn.layer.borderColor = [UIColorFromRGB(0xf3f3f3) CGColor];
     _right_btn.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     [self.view addSubview:_right_btn];
     
@@ -177,8 +189,8 @@
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickBtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    _startTest_btn.backgroundColor = [UIColor purpleColor];
-    [_startTest_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+    _startTest_btn.backgroundColor = UIColorFromRGB(0xc62828);
+    [_startTest_btn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [_startTest_btn setTitle:@"保存记录" forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;
     self.startTest_btn.layer.cornerRadius = 6.0;

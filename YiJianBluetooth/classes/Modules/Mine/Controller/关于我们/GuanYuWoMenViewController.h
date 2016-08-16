@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GuanYuWoMenViewController : UIViewController<UITextFieldDelegate>{
+@interface GuanYuWoMenViewController : BaseViewController<UITextFieldDelegate>{
 
 }
 

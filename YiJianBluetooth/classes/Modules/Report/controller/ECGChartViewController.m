@@ -37,6 +37,8 @@ float pixelPerUV = 5 * 10.0 / 1000;
     self.view.backgroundColor = [UIColor whiteColor];
     [self addViews];
     [self initialMonitor];
+    [self initLeftBarButtonItem];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated

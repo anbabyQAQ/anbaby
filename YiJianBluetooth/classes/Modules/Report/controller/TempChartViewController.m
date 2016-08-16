@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self initLeftBarButtonItem];
     self.view.backgroundColor = [UIColor whiteColor];
     
     //添加barChartView

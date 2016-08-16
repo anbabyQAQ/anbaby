@@ -76,6 +76,8 @@
     dispatch_queue_t centralQueue = dispatch_queue_create("no.nordicsemi.ios.nrftoolbox", DISPATCH_QUEUE_SERIAL);
     bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue];
     bluetoothManager.delegate=self;
+    
+    [self initLeftBarButtonItem];
 }
 
 -(void)viewDidAppear:(BOOL)animated

@@ -23,6 +23,8 @@
     self.familyArray = @[@"我",@"老爸",@"老妈"];
     
     [self setExtraCellLineHidden:self.familyTableView];
+    [self initLeftBarButtonItem];
+
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

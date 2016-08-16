@@ -63,7 +63,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self initLeftBarButtonItem];
+
 
     self.title = @"个人信息";
     self.sexView.hidden = YES;

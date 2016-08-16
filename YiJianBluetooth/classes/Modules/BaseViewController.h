@@ -16,7 +16,7 @@
 @interface BaseViewController : UIViewController<JGProgressHUDDelegate>{
     BOOL _blockUserInteraction;
 }
-
+-(void)initLeftBarButtonItem ;
 
 - (void)setExtraCellLineHidden:(UITableView *)tableView;
 

@@ -8,8 +8,10 @@
 
 #import "ECGViewController.h"
 #import "ECGDetailViewController.h"
+#import "ScannerViewController.h"
+#import "ECGChartViewController.h"
 
-@interface ECGViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface ECGViewController ()<UITableViewDataSource,UITableViewDelegate,ScannerDelegate>{
     
     
 }
@@ -31,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initLeftBarButtonItem];
+    [self initRightBarButtonItem];
     
     self.navigationItem.title = @"心电";
     
@@ -48,14 +52,25 @@
     //    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:view];
     //    self.navigationItem.rightBarButtonItem = rightBtn;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"连接设备" style:UIBarButtonItemStyleDone target:self action:@selector(setRightBtn)] ;
     
     [self addtableview];
     
 }
 
+-(void)initRightBarButtonItem {
+    MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(0, 0, 60, 44)];
+    UIImage *image = [UIImage imageNamed:@"bag"];
+    [button setImage:image forState:UIControlStateNormal];
+    [button setMyButtonImageFrame:CGRectMake(35, 12, image.size.width-10, image.size.height-10)];
+    [button addTarget:self action:@selector(setRightBtn)forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = leftBtn;
+}
+
+
 - (void)addtableview{
-    _peripheral_arr = [[NSMutableArray alloc] initWithObjects:@"1111",@"2222", nil];
+    _peripheral_arr = [[NSMutableArray alloc] initWithObjects:@"设备选择",@"查看记录", nil];
     
     _ECGTableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, _peripheral_arr.count*40)];
     _ECGTableview.delegate=self;
@@ -101,9 +116,9 @@
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    _startTest_btn.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    [_startTest_btn setTitle:@"开始测体温" forState:(UIControlStateNormal)];
-    [_startTest_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+    _startTest_btn.backgroundColor = normolColor;
+    [_startTest_btn setTitle:@"开始测心电" forState:(UIControlStateNormal)];
+    [_startTest_btn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;
     self.startTest_btn.layer.cornerRadius = 6.0;
     self.startTest_btn.layer.borderWidth = 1.0;
@@ -159,6 +174,21 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
+    if (indexPath.row==0) {
+        //设备选择
+        
+        ScannerViewController *scan = [[ScannerViewController alloc] init];
+        scan.delegate = self;
+        [self.navigationController pushViewController:scan animated:YES];
+        [self setRightBtn];
+        
+    }
+    if (indexPath.row==1) {
+        //查看记录
+        
+        ECGChartViewController * ECG = [[ECGChartViewController alloc]init];
+        [self.navigationController pushViewController:ECG animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -91,7 +91,7 @@ static NSString *AssociatedButtonKey;
             if (index == 2) {
                 //                index++;
                 
-                //                chidView.frame = CGRectMake(buttonX-10, -10, buttonW+20, buttonH+20);
+                                chidView.frame = CGRectMake(buttonX, 5, buttonW, buttonH);
             }
             index++;
             

@@ -30,6 +30,7 @@
 //        self.extendedLayoutIncludesOpaqueBars = NO;
 //        self.modalPresentationCapturesStatusBarAppearance = NO;
     }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -49,9 +50,9 @@
 -(void)initLeftBarButtonItem {
     MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(0, 0, 60, 44)];
-    UIImage *image = [UIImage imageNamed:@"返回黑色"];
+    UIImage *image = [UIImage imageNamed:@"arrow_left"];
     [button setImage:image forState:UIControlStateNormal];
-    [button setMyButtonImageFrame:CGRectMake(0, 15, image.size.width/2.5, image.size.height/2.5)];
+    [button setMyButtonImageFrame:CGRectMake(0, 12, image.size.width-10, image.size.height-10)];
     [button addTarget:self action:@selector(backToSuper)forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = leftBtn;

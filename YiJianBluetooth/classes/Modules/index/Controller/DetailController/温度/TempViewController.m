@@ -56,11 +56,24 @@
 //    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:view];
 //    self.navigationItem.rightBarButtonItem = rightBtn;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设备管理" style:UIBarButtonItemStyleDone target:self action:@selector(setRightBtn)] ;
-    
+    [self initRightBarButtonItem];
+    [self initLeftBarButtonItem];
+
     [self addtableview];
     
 }
+
+-(void)initRightBarButtonItem {
+    MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(0, 0, 60, 44)];
+    UIImage *image = [UIImage imageNamed:@"bag"];
+    [button setImage:image forState:UIControlStateNormal];
+    [button setMyButtonImageFrame:CGRectMake(35, 12, image.size.width-10, image.size.height-10)];
+    [button addTarget:self action:@selector(setRightBtn)forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = leftBtn;
+}
+
 
 - (void)addtableview{
     _peripheral_arr = [[NSMutableArray alloc] initWithObjects:@"设备选择",@"查看记录", nil];
@@ -88,11 +101,11 @@
     self.temp_lab.textAlignment=NSTextAlignmentLeft;
     self.temp_lab.text=@"体温";
     self.temp_lab.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    self.temp_lab.textColor = [UIColor grayColor];
+    self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
     
     
-    _temp_view = [[UIView alloc] initWithFrame:CGRectMake(110, 50, 100, 150)];
+    _temp_view = [[UIView alloc] initWithFrame:CGRectMake(SCR_W/2-30, 50, 60, 150)];
     _temp_view.backgroundColor = UIColorFromRGB(0xf3f3f3);
     self.temp_view.layer.masksToBounds = YES;
     self.temp_view.layer.cornerRadius = 6.0;
@@ -101,10 +114,11 @@
     [self.view addSubview:_temp_view];
 
     
-    _thermometer1 = [[MAThermometer alloc] initWithFrame:_temp_view.bounds];
+    _thermometer1 = [[MAThermometer alloc] initWithFrame:CGRectMake(10, 0, 40, 150)];
     [_thermometer1 setMaxValue:42];
-    [_thermometer1 setMinValue:35];
+    [_thermometer1 setMinValue:30];
     _thermometer1.glassEffect = YES;
+    _thermometer1.arrayColors = @[UIColorFromRGB(0xc62828)];
     int x = arc4random() % 8+35;
     int y = arc4random()%10;
     _thermometer1.curValue = x+y*0.1;
@@ -112,7 +126,7 @@
     
     UILabel *temp = [[UILabel alloc] initWithFrame:CGRectMake(220, 150, 80, 20)];
     temp.textAlignment=NSTextAlignmentLeft;
-    temp.text=[NSString stringWithFormat:@"%.2f℃",x+y*0.1];
+    temp.text=[NSString stringWithFormat:@"_ _℃"];
     temp.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
     temp.textColor = [UIColor grayColor];
     [self.view addSubview: temp];
@@ -121,9 +135,9 @@
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    _startTest_btn.backgroundColor = [UIColor purpleColor];
-    [_startTest_btn setTitle:@"开始测体温" forState:(UIControlStateNormal)];
-    [_startTest_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+    _startTest_btn.backgroundColor = UIColorFromRGB(0xc62828);
+    [_startTest_btn setTitle:@"连接设备" forState:(UIControlStateNormal)];
+    [_startTest_btn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;
     self.startTest_btn.layer.cornerRadius = 6.0;
     self.startTest_btn.layer.borderWidth = 1.0;

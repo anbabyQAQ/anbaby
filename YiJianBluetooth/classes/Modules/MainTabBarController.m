@@ -32,26 +32,28 @@
 }
 + (void)initialize
 {
-    // 通过appearance统一设置所有UITabBarItem的文字属性
-    UITabBarItem *tabBarItem = [UITabBarItem appearance];
-    
-    /** 设置默认状态 */
-    NSMutableDictionary *norDict = @{}.mutableCopy;
-    norDict[NSFontAttributeName] = [UIFont systemFontOfSize:14];
-    norDict[NSForegroundColorAttributeName] = [UIColor grayColor];
-    [tabBarItem setTitleTextAttributes:norDict forState:UIControlStateNormal];
-    
-    /** 设置选中状态 */
-    NSMutableDictionary *selDict = @{}.mutableCopy;
-    selDict[NSFontAttributeName] = norDict[NSFontAttributeName];
-    selDict[NSForegroundColorAttributeName] = [UIColor blackColor];
-    [tabBarItem setTitleTextAttributes:selDict forState:UIControlStateSelected];
+//    // 通过appearance统一设置所有UITabBarItem的文字属性
+//    UITabBarItem *tabBarItem = [UITabBarItem appearance];
+//    
+//    /** 设置默认状态 */
+//    NSMutableDictionary *norDict = @{}.mutableCopy;
+//    norDict[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+//    norDict[NSForegroundColorAttributeName] = [UIColor grayColor];
+//    [tabBarItem setTitleTextAttributes:norDict forState:UIControlStateNormal];
+//    
+//    /** 设置选中状态 */
+//    NSMutableDictionary *selDict = @{}.mutableCopy;
+//    selDict[NSFontAttributeName] = norDict[NSFontAttributeName];
+//    selDict[NSForegroundColorAttributeName] = [UIColor blackColor];
+//    [tabBarItem setTitleTextAttributes:selDict forState:UIControlStateSelected];
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
  
+    self.tabBar.tintColor = UIColorFromRGB(0xc62828);
+    
     [self addController];
 }
 
@@ -59,20 +61,20 @@
 
     /*添加子控制器 */
     /** 商城 */
-    [self setUpChildControllerWith:[[ShoppingMallViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"商城"];
+    [self setUpChildControllerWith:[[ShoppingMallViewController alloc]init] norImage:[UIImage imageNamed:@"shopping_1"] selImage:[UIImage imageNamed:@"shopping_2"] title:@"商城"];
     
     /** 报告 */
-    [self setUpChildControllerWith:[[ReportViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"报告"];
+    [self setUpChildControllerWith:[[ReportViewController alloc] init] norImage:[UIImage imageNamed:@"report_1"] selImage:[UIImage imageNamed:@"report_2"]title:@"报告"];
     
     
     /** 首页 */
-    [self setUpChildControllerWith:[[TypeViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_essence_icon"] selImage:[UIImage imageNamed:@"tabBar_essence_click_icon"] title:@"首页"];
+    [self setUpChildControllerWith:[[TypeViewController alloc]init] norImage:[UIImage imageNamed:@"home"] selImage:[UIImage imageNamed:@"home"] title:nil];
 
     /** 服务 */
-    [self setUpChildControllerWith:[[ServiceViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageNamed:@"tabBar_friendTrends_click_icon"] title:@"服务"];
+    [self setUpChildControllerWith:[[ServiceViewController alloc] init] norImage:[UIImage imageNamed:@"other_1"] selImage:[UIImage imageNamed:@"other_2"] title:@"服务"];
     
     /** 我的 */
-    [self setUpChildControllerWith:[[MineViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageNamed:@"tabBar_friendTrends_click_icon"] title:@"我的"];
+    [self setUpChildControllerWith:[[MineViewController alloc] init] norImage:[UIImage imageNamed:@"mine_1"] selImage:[UIImage imageNamed:@"mine_2"] title:@"我的"];
 
     
     //    /** 配置中间按钮 */
@@ -88,7 +90,7 @@
     //    self.tabBar.items = self.itemArray;
     //    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar-light"]];
     
-    [self.tabBar setBackgroundColor:[UIColor clearColor]];
+//    [self.tabBar setBackgroundColor:[UIColor whiteColor]];
     
     //    UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar-light.png"]; //需要的图片
     //
@@ -106,10 +108,7 @@
 {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:childVc];
     nav.title=title;
-    //    childVc.title = title;
-    //
-    //    childVc.tabBarItem.image = norImage;
-    //    childVc.tabBarItem.selectedImage = selImage;
+
     
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] init];
     tabBarItem.image = norImage;

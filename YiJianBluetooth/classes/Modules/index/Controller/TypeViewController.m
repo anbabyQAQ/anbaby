@@ -78,7 +78,7 @@ static NSString *cellInte = @"typeCell";
     [self setCarrousel];
     
     self.typeArray   = @[@"体温",@"心电",@"心率",@"血糖",@"血压",@"血氧"];
-    self.icon_imgarr = @[@"FeatureHTS",@"FeatureHRS",@"FeatureCSC",@"FeatureBGM",@"FeatureBPM",@"FeatureDFU"];
+    self.icon_imgarr = @[@"体温",@"心电",@"心率",@"血糖",@"血压",@"血氧"];
 }
 
 - (void)initCollertionview{
@@ -90,7 +90,7 @@ static NSString *cellInte = @"typeCell";
     
     //代码控制header和footer的显示
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.typeCollertion.collectionViewLayout;
-    collectionViewLayout.headerReferenceSize = CGSizeMake(375, 150);
+    collectionViewLayout.headerReferenceSize = CGSizeMake(SCR_W, 150);
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.headerReferenceSize = CGSizeMake(SCR_W, 150.0f);  //设置head大小
@@ -114,7 +114,7 @@ static NSString *cellInte = @"typeCell";
 - (void)setupUI {
     
     
-    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 10, SCR_W, 120)];
+    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 0, SCR_W, 150)];
     _pageFlowView.backgroundColor = [UIColor whiteColor];
     _pageFlowView.delegate = self;
     _pageFlowView.dataSource = self;
@@ -122,8 +122,9 @@ static NSString *cellInte = @"typeCell";
     _pageFlowView.minimumPageScale = 0.85;
     _pageFlowView.orginPageCount = self.imageArray.count;
     
+    
     //初始化pageControl
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _pageFlowView.frame.size.height - 14, SCR_W, 8)];
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, _pageFlowView.frame.size.height - 20, SCR_W, 8)];
     _pageFlowView.pageControl = pageControl;
     [_pageFlowView addSubview:pageControl];
     [_pageFlowView startTimer];
@@ -133,7 +134,7 @@ static NSString *cellInte = @"typeCell";
 
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
-    return CGSizeMake(SCR_W - 84, (SCR_W - 84) * 9 / 16);
+    return CGSizeMake(SCR_W -50, (SCR_W - 84) * 9 / 16);
 }
 
 #pragma mark NewPagedFlowView Datasource
@@ -144,7 +145,7 @@ static NSString *cellInte = @"typeCell";
 - (UIView *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
     if (!bannerView) {
-        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, SCR_W - 84, (SCR_W - 84) * 9 / 16)];
+        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, SCR_W - 50, (SCR_W - 84) * 9 / 16)];
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
@@ -188,14 +189,14 @@ static NSString *cellInte = @"typeCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
   
-    return CGSizeMake((KScreenWidth - 140)/ 3.0, (KScreenWidth - 100)/ 3.0 + 20);
+    return CGSizeMake((KScreenWidth - 170)/ 3.0, (KScreenWidth - 110)/ 3.0 +5);
 
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
     
-    return UIEdgeInsetsMake(20,25,0,25);
+    return UIEdgeInsetsMake(0,28,0,28);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{

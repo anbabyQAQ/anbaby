@@ -38,6 +38,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setHeartchart];
+    [self initLeftBarButtonItem];
+
 }
 
 - (void)setHeartchart{

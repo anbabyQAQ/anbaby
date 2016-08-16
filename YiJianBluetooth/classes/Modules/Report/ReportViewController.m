@@ -66,8 +66,8 @@
     //设置 xAxi
     ChartXAxis *xAxis = self.radarChartView.xAxis;
     xAxis.labelFont = [UIFont systemFontOfSize:15];//字体
-    xAxis.labelTextColor = [self colorWithHexString:@"#057748"];//颜色
-//    xAxis.labelTextColor = [UIColor blackColor];//颜色
+//    xAxis.labelTextColor = [self colorWithHexString:@"#057748"];//颜色
+    xAxis.labelTextColor = normolColor;//颜色
 
     xAxis.enabled=YES;
     xAxis.valueFormatter=self;
@@ -96,8 +96,8 @@
     UIButton *updateDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     updateDataBtn.frame = CGRectMake(20, 330, SCR_W-40, 40);
     [updateDataBtn setTitle:@"改变数据" forState:UIControlStateNormal];
-    [updateDataBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [updateDataBtn setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    [updateDataBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [updateDataBtn setBackgroundColor:normolColor];
     updateDataBtn.layer.cornerRadius = 5;
     [self.view addSubview:updateDataBtn];
     [updateDataBtn addTarget:self action:@selector(updateDataBtnClick) forControlEvents:UIControlEventTouchUpInside];

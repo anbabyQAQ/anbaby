@@ -25,7 +25,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.meLabel.text = @"优秀的团队";
-    
+    [self initLeftBarButtonItem];
+
 }
 
 - (void)BackAc{

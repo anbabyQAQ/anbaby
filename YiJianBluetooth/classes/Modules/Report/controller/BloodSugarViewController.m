@@ -37,6 +37,8 @@
     // Do any additional setup after loading the view.
     
     [self addScrollview];
+    [self initLeftBarButtonItem];
+
     
     self.view.backgroundColor = [UIColor whiteColor];
 }
