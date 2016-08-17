@@ -10,6 +10,7 @@
 #import "ChooseUser.h"
 #import "Cell.h"
 #import "LineLayout.h"
+#import "AddCell.h"
 
 @implementation ChooseUser{
     UICollectionView *_collectionView;
@@ -26,21 +27,23 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-             //先实例化一个层
+        self.backgroundColor = UIColorFromRGB(0xf3f3f3);
+        self.layer.masksToBounds = YES;
+        self.layer.cornerRadius = 6.0;
+        self.layer.borderWidth = 1.0;
+        self.layer.borderColor = [[UIColor whiteColor] CGColor];
+        
         
         LineLayout *layout=[[ LineLayout alloc ] init];
-        
-        
-        
+
         //创建一屏的视图大小
         
-        _collectionView=[[ UICollectionView alloc ] initWithFrame : self.bounds collectionViewLayout:layout];
-        
-        
-        
+        _collectionView=[[ UICollectionView alloc ] initWithFrame:self.bounds collectionViewLayout:layout];
+
         [_collectionView registerClass :[Cell class ] forCellWithReuseIdentifier : @"cell"];
-        
-        _collectionView. backgroundColor =[ UIColor whiteColor ];
+        [_collectionView registerClass :[AddCell class ] forCellWithReuseIdentifier : @"addcell"];
+
+        _collectionView. backgroundColor =[UIColor clearColor];
         
         _collectionView. delegate = self ;
         
@@ -60,22 +63,68 @@
 - (void)setWithUserInfo:(NSArray *)users{
     _array = [NSMutableArray arrayWithArray:users];
     
+    [_collectionView reloadData];
+    
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return CGSizeMake(60, 80);
+    
 }
 
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    
+    
+    return UIEdgeInsetsMake(5,5,0,0);
+}
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
-    return 10;
+    return _array.count+1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    Cell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.label.text = [NSString stringWithFormat:@"%ld",(long)indexPath.item];
-    return cell;
+    if (indexPath.row>=_array.count) {
+        AddCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"addcell" forIndexPath:indexPath];
+        return cell;
+    }else{
+        
+        Cell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+        if (_array) {
+            cell.user = _array[indexPath.row];
+        }
+        return cell;
+
+    }
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    Cell *cell = (Cell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
+//    [self updateCollectionViewCellStatus:cell selected:YES];
+    if (indexPath.row>=_array.count) {
+        if ([self.user_delegate respondsToSelector:@selector(callBaceAddUser)]) {
+            [self.user_delegate callBaceAddUser];
+        }
+    }else{
+        if ([self.user_delegate respondsToSelector:@selector(callBackUser:)]) {
+            [self.user_delegate callBackUser:_array[indexPath.row]];
+        }
+    }
+}
+
+
+-(void)updateCollectionViewCellStatus:(Cell *)myCollectionCell selected:(BOOL)selected
+{
+
+    myCollectionCell.backgroundColor = selected ? UIColorFromRGB(0xc62828):[UIColor clearColor];
+    
 }
 
 @end

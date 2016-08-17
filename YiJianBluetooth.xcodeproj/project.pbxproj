@@ -79,6 +79,7 @@
 		3C5675921D62F09B008B964D /* ChooseUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5675911D62F09B008B964D /* ChooseUser.m */; };
 		3C56759A1D62F1B6008B964D /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5675971D62F1B6008B964D /* Cell.m */; };
 		3C56759B1D62F1B6008B964D /* LineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5675991D62F1B6008B964D /* LineLayout.m */; };
+		3C56759F1D630B4D008B964D /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C56759E1D630B4D008B964D /* AddCell.m */; };
 		3C796B951D5C188800862460 /* LeadPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B941D5C188800862460 /* LeadPlayer.m */; };
 		3C796B991D5C19DC00862460 /* Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B981D5C19DC00862460 /* Helper.mm */; };
 		3C796B9D1D5C223700862460 /* PieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C796B9C1D5C223700862460 /* PieChart.m */; };
@@ -198,7 +199,6 @@
 		3CF2F65F1D596CD7002D5682 /* JGProgressHUDPieIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F6561D596CD7002D5682 /* JGProgressHUDPieIndicatorView.m */; };
 		3CF2F6601D596CD7002D5682 /* JGProgressHUDRingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F6581D596CD7002D5682 /* JGProgressHUDRingIndicatorView.m */; };
 		3CF2F6661D5972E3002D5682 /* TempDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F6651D5972E3002D5682 /* TempDetailViewController.m */; };
-		3CF2F66B1D597EE9002D5682 /* SegmentScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F66A1D597EE9002D5682 /* SegmentScroll.m */; };
 		3CF2F66F1D597F86002D5682 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2F66E1D597F86002D5682 /* User.m */; };
 		3CF367EE1D548D6900726B20 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF367ED1D548D6900726B20 /* AppDelegate.m */; };
 		3CF367FC1D548E6800726B20 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF367F31D548E6800726B20 /* LoginViewController.m */; };
@@ -399,6 +399,8 @@
 		3C5675971D62F1B6008B964D /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
 		3C5675981D62F1B6008B964D /* LineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineLayout.h; sourceTree = "<group>"; };
 		3C5675991D62F1B6008B964D /* LineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineLayout.m; sourceTree = "<group>"; };
+		3C56759D1D630B4D008B964D /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCell.h; sourceTree = "<group>"; };
+		3C56759E1D630B4D008B964D /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCell.m; sourceTree = "<group>"; };
 		3C796B931D5C188800862460 /* LeadPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeadPlayer.h; sourceTree = "<group>"; };
 		3C796B941D5C188800862460 /* LeadPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeadPlayer.m; sourceTree = "<group>"; };
 		3C796B971D5C19DC00862460 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -587,8 +589,6 @@
 		3CF2F6581D596CD7002D5682 /* JGProgressHUDRingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGProgressHUDRingIndicatorView.m; sourceTree = "<group>"; };
 		3CF2F6641D5972E3002D5682 /* TempDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempDetailViewController.h; sourceTree = "<group>"; };
 		3CF2F6651D5972E3002D5682 /* TempDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempDetailViewController.m; sourceTree = "<group>"; };
-		3CF2F6691D597EE9002D5682 /* SegmentScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentScroll.h; sourceTree = "<group>"; };
-		3CF2F66A1D597EE9002D5682 /* SegmentScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentScroll.m; sourceTree = "<group>"; };
 		3CF2F66D1D597F86002D5682 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		3CF2F66E1D597F86002D5682 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		3CF367EC1D548D6900726B20 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1665,12 +1665,12 @@
 		3CF2F6681D597EA0002D5682 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3CF2F6691D597EE9002D5682 /* SegmentScroll.h */,
-				3CF2F66A1D597EE9002D5682 /* SegmentScroll.m */,
 				3C5675901D62F09B008B964D /* ChooseUser.h */,
 				3C5675911D62F09B008B964D /* ChooseUser.m */,
 				3C5675961D62F1B6008B964D /* Cell.h */,
 				3C5675971D62F1B6008B964D /* Cell.m */,
+				3C56759D1D630B4D008B964D /* AddCell.h */,
+				3C56759E1D630B4D008B964D /* AddCell.m */,
 				3C5675981D62F1B6008B964D /* LineLayout.h */,
 				3C5675991D62F1B6008B964D /* LineLayout.m */,
 			);
@@ -2175,7 +2175,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C221B001D59B4C20000EE18 /* FileUtil.m in Sources */,
-				3CF2F66B1D597EE9002D5682 /* SegmentScroll.m in Sources */,
 				3C796BCD1D5C6D3200862460 /* HeartRateSetDetailViewController.m in Sources */,
 				3C221AFB1D59B4C20000EE18 /* DataUtil.m in Sources */,
 				188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */,
@@ -2195,6 +2194,7 @@
 				3CC7A6F61D51E0B7003CAC87 /* PostHttpThread.m in Sources */,
 				3C221AF91D59B4C20000EE18 /* AuthorityUtil.m in Sources */,
 				3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */,
+				3C56759F1D630B4D008B964D /* AddCell.m in Sources */,
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
 				3C4817101D5DA79A001BCB8F /* ScannedPeripheral.m in Sources */,
 				3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */,
@@ -2341,7 +2341,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2360,7 +2361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2384,7 +2385,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2397,7 +2399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -2417,7 +2419,7 @@
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.tyl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YiJianBluetooth/classes/Modules/YiJianBluetooth-Bridging-Header.h";
@@ -2438,7 +2440,7 @@
 				INFOPLIST_FILE = YiJianBluetooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.tyl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "YiJianBluetooth/classes/Modules/YiJianBluetooth-Bridging-Header.h";

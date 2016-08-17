@@ -94,41 +94,49 @@
 
 #import "Cell.h"
 
-@implementation Cell
+@implementation Cell{
+    UIImageView *_imageview;
+    UILabel    *_lable;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        self.label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, frame.size.width, frame.size.height)];
-//        self.label.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-//        self.label.textAlignment = NSTextAlignmentCenter;
-//        self.label.font = [UIFont boldSystemFontOfSize:50.0];
-//        self.label.backgroundColor = [UIColor underPageBackgroundColor];
-//        self.label.textColor = [UIColor blackColor];
-//        [self.contentView addSubview:self.label];;
-//        self.contentView.layer.borderWidth = 1.0f;
-//        self.contentView.layer.borderColor = [UIColor whiteColor].CGColor;
+        UIView *selectedBackgroundView = [[UIView alloc] init];
+        selectedBackgroundView.backgroundColor = [UIColor lightGrayColor];
+        selectedBackgroundView.alpha=0.2;
+        selectedBackgroundView.layer.cornerRadius=8;
+        self.selectedBackgroundView = selectedBackgroundView;
+
+        UIView *BackgroundView = [[UIView alloc] init];
+        BackgroundView.backgroundColor = [UIColor lightGrayColor];
+        BackgroundView.alpha=0.2;
+        BackgroundView.layer.cornerRadius=8;
+        self.backgroundView = BackgroundView;
         
-        self.contentView.backgroundColor = [UIColor redColor];
         
-        UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 50, 50)];
-        imageview.layer.cornerRadius = 25;
-        imageview.layer.borderColor = [[UIColor grayColor] CGColor];
-        imageview.layer.borderWidth = 0.5;
-        imageview.clipsToBounds = YES;
+        _imageview = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, 50, 50)];
+        _imageview.layer.cornerRadius = 25;
+        _imageview.layer.borderColor = [[UIColor grayColor] CGColor];
+        _imageview.layer.borderWidth = 0.5;
+        _imageview.clipsToBounds = YES;
 //        User *user = users[i];
-//        imageview.image = user.headIcon;
-        [self.contentView addSubview:imageview];
+        [self.contentView addSubview:_imageview];
         
-        UILabel    *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 52, 60, 18)];
-        lable.font = [UIFont systemFontOfSize:text_size_smaller];
-        lable.textAlignment = NSTextAlignmentCenter;
-        lable.textColor = [UIColor blackColor];
-//        lable.text=user.name;
-        [self.contentView addSubview:lable];
+        _lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 52, 60, 18)];
+        _lable.font = [UIFont systemFontOfSize:text_size_smaller];
+        _lable.textAlignment = NSTextAlignmentCenter;
+        _lable.textColor = [UIColor blackColor];
+        [self.contentView addSubview:_lable];
     }
     return self;
+}
+
+- (void)setUser:(User *)user{
+    _imageview.image = user.headIcon;
+    _lable.text=user.name;
+
 }
 
 @end

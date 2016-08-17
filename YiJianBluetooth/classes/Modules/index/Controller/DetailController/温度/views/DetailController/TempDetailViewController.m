@@ -10,12 +10,11 @@
 #import "MAThermometer.h"
 #import "User.h"
 #import "UsersDao.h"
-#import "SegmentScroll.h"
 #import "PersonalInformationViewController.h"
 #import "ChooseUser.h"
 
 #define Kuser_imgW 60;
-@interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,userScrollDelegate>{
+@interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,chooseUserDelegate>{
     UILabel *_temp;
 }
 @property (nonatomic, strong) UILabel  *temp_lab;
@@ -30,7 +29,6 @@
 @property (nonatomic, strong) MAThermometer * thermometer1;
 
 
-@property (nonatomic, strong) SegmentScroll *scroll;
 @property (nonatomic, strong) NSMutableArray *users;
 @end
 
@@ -75,28 +73,25 @@
 - (void)initwithScroll{
     
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-
-    _scroll = [[SegmentScroll alloc] initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
-    [_scroll setWithUserInfo:_users];
-    _scroll.user_delegate = self;
     
-//    ChooseUser *view = [[ChooseUser alloc]initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
-//    [self.view addSubview:view];
+    ChooseUser *view = [[ChooseUser alloc]initWithFrame:CGRectMake(0, 270, SCR_W, 80)];
+    view.user_delegate =self;
+    [view setWithUserInfo:_users];
+    [self.view addSubview:view];
     
-    [self.view addSubview:_scroll];
     
 }
+#pragma mark ChooseUser代理
 
-- (void)callBackIndex:(NSInteger)index {
-    if (index-100 == _users.count) {
-        //添加用户信息；
+- (void)callBaceAddUser{
+    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
+    [self.navigationController pushViewController:pserson animated:YES];
+}
 
-        PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
-        [self.navigationController pushViewController:pserson animated:YES];
-    }else{
-        //选取用户添加记录
-        
-    }
+-(void)callBackUser:(User *)user{
+    //选取用户添加记录
+    
+    
 }
 
 - (void)keyboardWasShown:(NSNotification *) notif{

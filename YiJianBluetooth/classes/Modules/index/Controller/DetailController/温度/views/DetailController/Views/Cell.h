@@ -93,9 +93,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface Cell : UICollectionViewCell
 
-@property (strong, nonatomic) UILabel* label;
+@property (strong, nonatomic) User * user;
 
 @end

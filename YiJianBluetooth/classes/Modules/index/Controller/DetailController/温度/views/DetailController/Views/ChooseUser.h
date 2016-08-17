@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @class ChooseUser;
 
 @protocol chooseUserDelegate <NSObject>
 
--(void)callBackIndex:(NSInteger)index;
+-(void)callBackUser:(User *)user;
+-(void)callBaceAddUser;
 
 @end
 
