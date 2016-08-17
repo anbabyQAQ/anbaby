@@ -16,6 +16,7 @@
 		188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D3F041D4EF57600C01A94 /* AlarmViewController.m */; };
 		18A5167E1D499CE40032C549 /* TypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A5167C1D499CE40032C549 /* TypeViewController.m */; };
 		18A5167F1D499CE40032C549 /* TypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A5167D1D499CE40032C549 /* TypeViewController.xib */; };
+		18AAE1AD1D646BE00034C3D7 /* BSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AAE1AC1D646BE00034C3D7 /* BSViewController.m */; };
 		18B4C9FB1D47393A00E65C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4C9FA1D47393A00E65C63 /* main.m */; };
 		18B4CA061D47393A00E65C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18B4CA051D47393A00E65C63 /* Assets.xcassets */; };
 		18B4CA091D47393A00E65C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B4CA071D47393A00E65C63 /* LaunchScreen.storyboard */; };
@@ -295,6 +296,8 @@
 		18A5167B1D499CE40032C549 /* TypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeViewController.h; sourceTree = "<group>"; };
 		18A5167C1D499CE40032C549 /* TypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeViewController.m; sourceTree = "<group>"; };
 		18A5167D1D499CE40032C549 /* TypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypeViewController.xib; sourceTree = "<group>"; };
+		18AAE1AB1D646BE00034C3D7 /* BSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSViewController.h; sourceTree = "<group>"; };
+		18AAE1AC1D646BE00034C3D7 /* BSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSViewController.m; sourceTree = "<group>"; };
 		18B4C9F61D47393A00E65C63 /* YiJianBluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YiJianBluetooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B4C9FA1D47393A00E65C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18B4CA051D47393A00E65C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -745,6 +748,23 @@
 				187406EC1D598F460091C30C /* GuanYuWoMenViewController.xib */,
 			);
 			path = "关于我们";
+			sourceTree = "<group>";
+		};
+		18AAE1A61D646B450034C3D7 /* 血糖 */ = {
+			isa = PBXGroup;
+			children = (
+				18AAE1A71D646B450034C3D7 /* DetailController */,
+				18AAE1AB1D646BE00034C3D7 /* BSViewController.h */,
+				18AAE1AC1D646BE00034C3D7 /* BSViewController.m */,
+			);
+			path = "血糖";
+			sourceTree = "<group>";
+		};
+		18AAE1A71D646B450034C3D7 /* DetailController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailController;
 			sourceTree = "<group>";
 		};
 		18B4C9ED1D47393A00E65C63 = {
@@ -1760,6 +1780,7 @@
 		3CFA8E871D53245D00D3BC2E /* DetailController */ = {
 			isa = PBXGroup;
 			children = (
+				18AAE1A61D646B450034C3D7 /* 血糖 */,
 				3C796BC01D5C6BEC00862460 /* 心率 */,
 				3CF367F11D548E6800726B20 /* 登录 */,
 				3CF367F81D548E6800726B20 /* 温度 */,
@@ -1863,7 +1884,7 @@
 				TargetAttributes = {
 					18B4C9F51D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = DGKWFHS998;
+						DevelopmentTeam = VMP22QHMQ4;
 					};
 					18B4CA0E1D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -2191,6 +2212,7 @@
 				18E94B341D5AB3CF00F865FF /* PersonalInformationViewController.m in Sources */,
 				3CF2F65B1D596CD7002D5682 /* JGProgressHUDFadeAnimation.m in Sources */,
 				3C113DE81D5869DF004099BB /* PGIndexBannerSubiew.m in Sources */,
+				18AAE1AD1D646BE00034C3D7 /* BSViewController.m in Sources */,
 				3CC7A6F61D51E0B7003CAC87 /* PostHttpThread.m in Sources */,
 				3C221AF91D59B4C20000EE18 /* AuthorityUtil.m in Sources */,
 				3C221B031D59B4C20000EE18 /* VedioUtil.m in Sources */,
