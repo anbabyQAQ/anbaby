@@ -2461,6 +2461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "YiJianBluetooth/classes/Modules/YiJianBluetooth-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -2487,6 +2488,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ctsi.mts.iphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "YiJianBluetooth/classes/Modules/YiJianBluetooth-Bridging-Header.h";
 			};
 			name = Release;

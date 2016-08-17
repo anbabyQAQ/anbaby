@@ -32,6 +32,9 @@
 //设备数组
 @property (nonatomic, strong) NSMutableArray *peripheral_arr;
 
+
+@property (nonatomic, strong) NSDictionary *linktopPeripheral;
+
 @end
 
 @implementation TempViewController
@@ -62,6 +65,14 @@
 
     [self addtableview];
     
+}
+
+- (void)backToSuper{
+    CBPeripheral *per = [_linktopPeripheral objectForKey:@"peripheral"];
+    if (per)
+    {
+        [_linktopManager disconnectBlueTooth:per];
+    }
 }
 
 -(void)initRightBarButtonItem {
@@ -161,6 +172,7 @@
 
 - (void)linktopManger:(SDKHealthMoniter *)manager didperiphralSelected:(NSDictionary *)dic_peripheral{
     _scantype=scan_linkTop;
+    _linktopPeripheral = dic_peripheral;
     
     _linktopManager = manager;
     if (manager) {
@@ -196,6 +208,8 @@
 //        
 //        [self clearUI];
     });
+    
+    //连接失败提示 。
 }
 
 
@@ -264,119 +278,7 @@
             //调用下面的方法后 会调用到代理的- (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
             [peripheral readValueForCharacteristic:characteristic];
         }
-        
-        
-        //        if ([characteristic.UUID isEqual:batteryLevelCharacteristicUUID])
-        //        {
-        //            uint8_t batteryLevel = [CharacteristicReader readUInt8Value:&array];
-        //            NSString* text = [[NSString alloc] initWithFormat:@"%d%%", batteryLevel];
-        //            [battery setTitle:text forState:UIControlStateDisabled];
-        //
-        //            if (battery.tag == 0)
-        //            {
-        //                // If battery level notifications are available, enable them
-        //                if (([characteristic properties] & CBCharacteristicPropertyNotify) > 0)
-        //                {
-        //                    battery.tag = 1; // mark that we have enabled notifications
-        //
-        //                    // Enable notification on data characteristic
-        //                    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-        //                }
-        //            }
-        //        }
-        //        else if ([characteristic.UUID isEqual:htsMeasurementCharacteristicUUID])
-        //        {
-        //            int flags = [CharacteristicReader readUInt8Value:&array];
-        //            BOOL tempInFahrenheit = (flags & 0x01) > 0;
-        //            BOOL timestampPresent = (flags & 0x02) > 0;
-        //            BOOL typePresent = (flags & 0x04) > 0;
-        //
-        //            float tempValue = [CharacteristicReader readFloatValue:&array];
-        //            if (!tempInFahrenheit && fahrenheit)
-        //                tempValue = tempValue * 9.0f / 5.0f + 32.0f;
-        //            if (tempInFahrenheit && !fahrenheit)
-        //                tempValue = (tempValue - 32.0f) * 5.0f / 9.0f;
-        //            temperatureValue = tempValue;
-        //            self.temperature.text = [NSString stringWithFormat:@"%.2f", tempValue];
-        //
-        //            if (timestampPresent)
-        //            {
-        //                NSDate* date = [CharacteristicReader readDateTime:&array];
-        //
-        //                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        //                [dateFormat setDateFormat:@"dd.MM.yyyy, hh:mm"];
-        //                NSString* dateFormattedString = [dateFormat stringFromDate:date];
-        //
-        //                self.timestamp.text = dateFormattedString;
-        //            }
-        //            else
-        //            {
-        //                self.timestamp.text = @"Date n/a";
-        //            }
-        //
-        //            /* temperature type */
-        //            if (typePresent)
-        //            {
-        //                uint8_t type = [CharacteristicReader readUInt8Value:&array];
-        //                NSString* location = nil;
-        //
-        //                switch (type)
-        //                {
-        //                    case 0x01:
-        //                        location = @"Armpit";
-        //                        break;
-        //                    case 0x02:
-        //                        location = @"Body - general";
-        //                        break;
-        //                    case 0x03:
-        //                        location = @"Ear";
-        //                        break;
-        //                    case 0x04:
-        //                        location = @"Finger";
-        //                        break;
-        //                    case 0x05:
-        //                        location = @"Gastro-intenstinal Tract";
-        //                        break;
-        //                    case 0x06:
-        //                        location = @"Mouth";
-        //                        break;
-        //                    case 0x07:
-        //                        location = @"Rectum";
-        //                        break;
-        //                    case 0x08:
-        //                        location = @"Toe";
-        //                        break;
-        //                    case 0x09:
-        //                        location = @"Tympanum - ear drum";
-        //                        break;
-        //                    default:
-        //                        location = @"Unknown";
-        //                        break;
-        //                }
-        //                if (location)
-        //                {
-        //                    self.type.text = [NSString stringWithFormat:@"Location: %@", location];
-        //                }
-        //            }
-        //            else
-        //            {
-        //                self.type.text = @"Location: n/a";
-        //            }
-        //            
-        //            if ([AppUtilities isApplicationStateInactiveORBackground])
-        //            {
-        //                NSString *message;
-        //                if (fahrenheit)
-        //                {
-        //                    message = [NSString stringWithFormat:@"New temperature reading: %.2f°F", tempValue];
-        //                }
-        //                else
-        //                {
-        //                    message = [NSString stringWithFormat:@"New temperature reading: %.2f°C", tempValue];
-        //                }
-        //                [AppUtilities showBackgroundNotification:message];
-        //            }
-        //        }
+       
     });
 }
 
@@ -439,8 +341,9 @@
     scan.delegate = self;
     scan.scan_Type=index+1;
     
+    
+    _tempTableview.hidden=YES;
     [self.navigationController pushViewController:scan animated:YES];
-    [self setRightBtn];
     
 }
 
