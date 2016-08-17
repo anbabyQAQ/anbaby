@@ -32,6 +32,8 @@
     return nil;
 }
 
+
+
 +(NSArray *)getAllUsers{
     NSMutableArray *data_array = [User searchWithWhere:nil orderBy:nil offset:0 count:9999];
     return data_array;

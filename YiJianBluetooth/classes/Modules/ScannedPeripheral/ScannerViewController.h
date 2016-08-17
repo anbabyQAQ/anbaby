@@ -23,14 +23,27 @@
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #include "ScannerDelegate.h"
+#import "SDKHealthMoniter.h"
 
-@interface ScannerViewController : BaseViewController <CBCentralManagerDelegate, UITableViewDelegate, UITableViewDataSource,CBPeripheralDelegate>
+
+typedef enum : NSUInteger {
+    scan_Checkme=1,
+    scan_linkTop,
+    scan_Health,
+} Scan_type;
+
+@interface ScannerViewController : BaseViewController <CBCentralManagerDelegate, UITableViewDelegate, UITableViewDataSource,CBPeripheralDelegate,sdkHealthMoniterDelegate>
 
 @property (strong, nonatomic) CBCentralManager *bluetoothManager;
 @property (strong, nonatomic)  UITableView *devicesTable;
 @property (strong, nonatomic) id <ScannerDelegate> delegate;
 @property (strong, nonatomic) CBUUID *filterUUID;
 
+
+@property (strong, nonatomic) SDKHealthMoniter  *sdkHealth ;
+
+
+@property (nonatomic, assign) Scan_type scan_Type;
 /*!
  * Cancel button has been clicked
  */

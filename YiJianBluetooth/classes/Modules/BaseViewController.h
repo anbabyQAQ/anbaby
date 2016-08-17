@@ -17,6 +17,7 @@
     BOOL _blockUserInteraction;
 }
 -(void)initLeftBarButtonItem ;
+- (void)backToSuper ;
 
 - (void)setExtraCellLineHidden:(UITableView *)tableView;
 
@@ -39,5 +40,10 @@
 - (void)dismissAfterDelay:(NSTimeInterval)delay animated:(BOOL)animated;
 
 - (void)dismissAnimated:(BOOL)animated;
+
+
+
+
+-(void)showToast:(NSString*) toast;
 
 @end

@@ -31,7 +31,7 @@ typedef enum
  *  ID for icon
  */
 @property (nonatomic,assign) unsigned char ICO_ID;
-@property (nonatomic,retain) NSDateComponents *dtcBirthday;
+@property (nonatomic,retain) NSDate *date;
 @property (nonatomic,retain) UIImage *headIcon;
 
 @property (nonatomic,assign) double weight;
@@ -51,47 +51,47 @@ typedef enum
 /**
  *   array contains the items which is the subclass of 'DailyCheckItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrDlc;
+@property (nonatomic,retain) NSMutableDictionary *dicDlc;
 
 /**
  *   array contains the items which is the subclass of 'ECGInfoItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrECG;
+@property (nonatomic,retain) NSMutableDictionary *dicECG;
 
 /**
  *   array contains the items which is the subclass of 'SLMItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrSLM;
+@property (nonatomic,retain) NSMutableDictionary *dicSLM;
 
 /**
  *   array contains the items which is the subclass of 'SPO2InfoItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrSPO2;
+@property (nonatomic,retain) NSMutableDictionary *dicSPO2;
 
 /**
  *   array contains the items which is the subclass of 'TempInfoItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrTemp;
+@property (nonatomic,retain) NSMutableDictionary *dicTemp;
 
 /**
  *   array contains the items which is the subclass of 'GlucoseInfoItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrGlucose;
+@property (nonatomic,retain) NSMutableDictionary *dicGlucose;
 
 /**
  *   array contains the items which is the subclass of 'BPI'
  */
-@property (nonatomic,retain) NSMutableArray *arrBPI;
+@property (nonatomic,retain) NSMutableDictionary *dicBPI;
 
 /**
  *   array contains the items which is the subclass of 'BPCheckItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrBPCheck;
+@property (nonatomic,retain) NSMutableDictionary *dicBPCheck;
 
 /**
  *   array contains the items which is the subclass of 'PedInfoItem'
  */
-@property (nonatomic,retain) NSMutableArray *arrPed;
+@property (nonatomic,retain) NSMutableDictionary *dicPed;
 
 /**
  *  Unknown
