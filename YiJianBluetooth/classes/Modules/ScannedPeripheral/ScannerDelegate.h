@@ -22,9 +22,12 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "SDKHealthMoniter.h"
 
 @protocol ScannerDelegate <NSObject>
 
 - (void) centralManager:(CBCentralManager*) manager didPeripheralSelected:(CBPeripheral*) peripheral;
+
+- (void) linktopManger:(SDKHealthMoniter*)manager didperiphralSelected:(NSDictionary *)dic_peripheral;
 
 @end

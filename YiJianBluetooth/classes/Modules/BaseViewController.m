@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "UIView+Toast.h"
 
 @interface BaseViewController (){
     JGProgressHUD *_HUD;
@@ -113,7 +114,13 @@
 
 
 #pragma mark -
-
+-(void)showToast:(NSString*) toast{
+    
+    
+    [[UIApplication sharedApplication].keyWindow makeToast:toast duration:1.0 position:CSToastPositionCenter];
+    
+    
+}
 
 - (void)showSuccessHud:(NSUInteger)section {
     _HUD = [[JGProgressHUD alloc] initWithStyle:(JGProgressHUDStyle)section];
@@ -243,13 +250,13 @@
     _HUD.userInteractionEnabled = _blockUserInteraction;
     _HUD.textLabel.text = text;
     _HUD.delegate = self;
-    _HUD.position = JGProgressHUDPositionBottomCenter;
-    _HUD.marginInsets = (UIEdgeInsets) {
-        .top = 0.0f,
-        .bottom = 20.0f,
-        .left = 0.0f,
-        .right = 0.0f,
-    };
+    _HUD.position = JGProgressHUDPositionCenter;
+//    _HUD.marginInsets = (UIEdgeInsets) {
+//        .top = 0.0f,
+//        .bottom = 20.0f,
+//        .left = 0.0f,
+//        .right = 0.0f,
+//    };
     
     [_HUD showInView:self.navigationController.view];
     

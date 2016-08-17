@@ -23,20 +23,28 @@
 #import "ScannerViewController.h"
 #import "ScannedPeripheral.h"
 #import "Utility.h"
+#import "CBPeripheral+category.h"
 
-@interface ScannerViewController ()
+@interface ScannerViewController (){
+    Scan_type _scantype;
+}
 
 /*!
  * List of the peripherals shown on the table view. Peripheral are added to this list when it's discovered.
  * Only peripherals with bridgeServiceUUID in the advertisement packets are being displayed.
  */
 @property (strong, nonatomic) NSMutableArray *peripherals;
+
+
+
 /*!
  * The timer is used to periodically reload table
  */
 @property (strong, nonatomic) NSTimer *timer;
 
 @property (weak, nonatomic)  UIView *emptyView;
+
+
 
 - (void)timerFireMethod:(NSTimer *)timer;
 
@@ -54,7 +62,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self initLeftBarButtonItem];
+
+    
     peripherals = [[NSMutableArray alloc]init];
+
     
     devicesTable=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCR_W, SCR_H)];
     devicesTable.delegate=self;
@@ -73,12 +86,79 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:uiBusy];
     
     // We want the scanner to scan with dupliate keys (to refresh RRSI every second) so it has to be done using non-main queue
-    dispatch_queue_t centralQueue = dispatch_queue_create("no.nordicsemi.ios.nrftoolbox", DISPATCH_QUEUE_SERIAL);
-    bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue];
-    bluetoothManager.delegate=self;
+
     
-    [self initLeftBarButtonItem];
+    
+
 }
+
+- (void)setScan_Type:(Scan_type)scan_Type{
+    _scantype = scan_Type;
+    switch (scan_Type) {
+        case scan_Checkme:
+        {
+            dispatch_queue_t centralQueue = dispatch_queue_create("ios.checkme", DISPATCH_QUEUE_SERIAL);
+            bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue];
+            bluetoothManager.delegate=self;
+        }
+            break;
+        case scan_linkTop:
+        {
+            self.sdkHealth = [[SDKHealthMoniter alloc]init];
+            self.sdkHealth.sdkHealthMoniterdelegate=self;
+            
+            //搜索linktop蓝牙设备
+            [self.sdkHealth scanStart];
+        }
+            break;
+        case scan_Health:
+        {
+            dispatch_queue_t centralQueue = dispatch_queue_create("ios.health", DISPATCH_QUEUE_SERIAL);
+            bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:centralQueue];
+            bluetoothManager.delegate=self;
+        }
+            break;
+        default:
+            break;
+    }
+    
+}
+#pragma mark --sdkHealthMoniter的代理
+
+-(void)didScanedPeripherals:(NSMutableArray *)foundPeripherals
+{
+    for (NSDictionary *per in foundPeripherals) {
+        if (![peripherals containsObject:per]) {
+            [peripherals addObject:per];
+        }
+    }
+   
+    [devicesTable reloadData];
+    
+}
+
+-(void)didConnectPeripheral:(CBPeripheral *)peripheral
+{
+    
+    NSLog(@"Connection Successful");
+    [self dismissAnimated:NO];
+    [self performSelector:@selector(pop) withObject:nil/*可传任意类型参数*/ afterDelay:0.5];
+    
+}
+
+-(void)pop{
+    [self showToast:@"配对成功"];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+-(void)disconnectPeripheral:(CBPeripheral *)peripheral
+{
+    NSLog(@"DisconnectPeripheral");
+    
+}
+
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -226,13 +306,49 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     // Call delegate method
-    if ([self.delegate respondsToSelector:@selector(centralManager:didPeripheralSelected:)]) {
-        
-        [self.delegate centralManager:bluetoothManager didPeripheralSelected:[[peripherals objectAtIndex:indexPath.row] peripheral]];
+    switch (_scantype) {
+        case scan_Checkme:
+        {
+            if ([self.delegate respondsToSelector:@selector(centralManager:didPeripheralSelected:)]) {
+                
+                [self.delegate centralManager:bluetoothManager didPeripheralSelected:[[peripherals objectAtIndex:indexPath.row] peripheral]];
+            }
+           
+        }
+            break;
+        case scan_linkTop:
+        {
+            NSDictionary *dic = [peripherals objectAtIndex:indexPath.row];
+            //外设
+            CBPeripheral * peripheral = [dic objectForKey:@"peripheral"];
+            if (peripheral)
+            {
+                [self showTextOnlyHud:2 text:@"正在配对.."];
+
+                //连接蓝牙设备
+                [self.sdkHealth connectBlueTooth:peripheral];
+                //停止扫描蓝牙
+                [self.sdkHealth scanStop];
+            }
+            if ([self.delegate respondsToSelector:@selector(linktopManger:didperiphralSelected:)]) {
+                [self.delegate linktopManger:self.sdkHealth didperiphralSelected:dic];
+            }
+        }
+            break;
+        case scan_Health:
+        {
+            if ([self.delegate respondsToSelector:@selector(centralManager:didPeripheralSelected:)]) {
+                
+                [self.delegate centralManager:bluetoothManager didPeripheralSelected:[[peripherals objectAtIndex:indexPath.row] peripheral]];
+            }
+        }
+            break;
+        default:
+            break;
     }
-    
-    [self popoverPresentationController];
+
 }
+
 
 #pragma mark Table View Data Source delegate methods
 
@@ -251,17 +367,57 @@
     }
     
     // Update sensor name
-    ScannedPeripheral *peripheral = [peripherals objectAtIndex:indexPath.row];
-    cell.textLabel.text = [peripheral name];
-    if (peripheral.isConnected)
-    {
-        cell.imageView.image = [UIImage imageNamed:@"Connected"];
+    
+    switch (_scantype) {
+        case scan_Checkme:
+        {
+            ScannedPeripheral *peripheral = [peripherals objectAtIndex:indexPath.row];
+            cell.textLabel.text = [peripheral name];
+            if (peripheral.isConnected)
+            {
+                cell.imageView.image = [UIImage imageNamed:@"Connected"];
+            }
+            else
+            {
+                cell.imageView.image = [self getRSSIImage:peripheral.RSSI];
+            }
+            return cell;
+            
+        }
+            break;
+        case scan_linkTop:
+        {
+            NSDictionary *dic = [peripherals objectAtIndex:indexPath.row];
+            //外设
+            if ([dic isKindOfClass:[NSDictionary class]])
+            {
+                cell.textLabel.text = [dic objectForKey:@"LocalName"];
+            }
+            CBPeripheral *per = [dic objectForKey:@"peripheral"] ;
+            cell.imageView.image = [self getRSSIImage:per.RSSI];
+            return cell;
+
+        }
+            break;
+        case scan_Health:
+        {
+            ScannedPeripheral *peripheral = [peripherals objectAtIndex:indexPath.row];
+            cell.textLabel.text = [peripheral name];
+            if (peripheral.isConnected)
+            {
+                cell.imageView.image = [UIImage imageNamed:@"Connected"];
+            }
+            else
+            {
+                cell.imageView.image = [self getRSSIImage:peripheral.RSSI];
+            }
+            return cell;
+        }
+            break;
+        default:
+            break;
     }
-    else
-    {
-        cell.imageView.image = [self getRSSIImage:peripheral.RSSI];
-    }
-    return cell;
+    return nil;
 }
 
 -(UIImage *) getRSSIImage:(int)rssi {

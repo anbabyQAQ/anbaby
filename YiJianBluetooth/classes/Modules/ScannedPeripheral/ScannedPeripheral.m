@@ -38,7 +38,7 @@
 
 -(NSString*) name
 {
-    NSString* name = [peripheral name];
+    NSString* name = peripheral.name;
     if (name == nil)
     {
         return @"No name";

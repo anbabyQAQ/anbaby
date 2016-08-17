@@ -16,6 +16,8 @@
 #define Kuser_imgW 60;
 @interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,chooseUserDelegate>{
     UILabel *_temp;
+    NSInteger _type;
+    User *_user;
 }
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
@@ -68,6 +70,39 @@
 //    [self initwithScroll];
     
     [self initLeftBarButtonItem];
+    [self initrightBarButtonItem:@"重新测量" action:@selector(measureTemp)];
+}
+
+
+-(void)initrightBarButtonItem:(NSString*)title action:(SEL)action {
+    
+    
+    MyCustomButton *mapbutton = [MyCustomButton buttonWithType:UIButtonTypeCustom];
+    [mapbutton setFrame:CGRectMake(0, 0, 60, 44)];
+    
+    [mapbutton setTitle:title forState:(UIControlStateNormal)];
+    mapbutton.titleLabel.font = [UIFont systemFontOfSize:text_size_small];
+    
+    CGSize titleSize = [mapbutton.titleLabel sizeThatFits:CGSizeMake(60, 44)];
+    [mapbutton setTitleColor:UIColorFromRGB(0x0097ff) forState:(UIControlStateNormal)];
+    [mapbutton setMyButtonContentFrame:CGRectMake(60 - titleSize.width, 10, titleSize.width, 25)];
+    [mapbutton addTarget:self action:action forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:mapbutton];
+    
+    self.navigationItem.rightBarButtonItem = rightBtn;
+}
+
+- (void)measureTemp{
+    if (_type==2) {
+        [_linktopManager startThermometerTest];
+        
+    }
+}
+
+- (void)backToSuper{
+    [_linktopManager endThermometerTest];
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)initwithScroll{
@@ -81,6 +116,26 @@
     
     
 }
+
+- (void)setScantype:(NSInteger)scantype{
+    _type = scantype;
+    if (scantype==2) {
+        _linktopManager.sdkHealthMoniterdelegate = self;
+        [_linktopManager startThermometerTest];
+
+    }
+}
+
+-(void)receiveThermometerData:(double)temperature
+{
+  
+    NSString *temperaturestr =[NSString stringWithFormat:@"%.1f℃",temperature];
+    NSLog(@"%@",temperaturestr);
+    _thermometer1.curValue = temperaturestr.floatValue;
+    _temp.text = temperaturestr;
+    
+}
+
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
@@ -90,7 +145,7 @@
 
 -(void)callBackUser:(User *)user{
     //选取用户添加记录
-    
+    _user = user;
     
 }
 
@@ -200,6 +255,7 @@
 -(void)clickBtn:(id)sender{
    //缓存
     
+//    [_user.dicTemp  obj]
     [self.navigationController popViewControllerAnimated:YES];
 
     
