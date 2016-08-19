@@ -1,15 +1,16 @@
 //
-//  BSViewController.m
+//  BPViewController.m
 //  YiJianBluetooth
 //
-//  Created by 孙程雷Mac on 16/8/17.
+//  Created by 孙程雷Mac on 16/8/18.
 //  Copyright © 2016年 LEI. All rights reserved.
 //
 
-#import "BSViewController.h"
+#import "BPViewController.h"
 #import "ScannerViewController.h"
-#import "BSDetailViewController.h"
-@interface BSViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "BPDetailViewController.h"
+@interface BPViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
 
@@ -26,19 +27,18 @@
 
 @end
 
-@implementation BSViewController
+@implementation BPViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"血糖";
+    self.navigationItem.title = @"血压";
     
     self.view.backgroundColor = [UIColor whiteColor];
-
+    
     [self initTempLayout];
     [self initLeftBarButtonItem];
     [self initRightBarButtonItem];
     [self addtableview];
-    
 }
 -(void)initRightBarButtonItem {
     MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
@@ -50,12 +50,11 @@
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = leftBtn;
 }
-
 -(void)setRightBtn{
     
     _tempTableview.hidden = !_tempTableview.hidden;
-    BSDetailViewController *tempVC = [[BSDetailViewController alloc] init];
-    [self.navigationController pushViewController:tempVC animated:YES];
+    BPDetailViewController *BPVC = [[BPDetailViewController alloc] init];
+    [self.navigationController pushViewController:BPVC animated:YES];
 }
 
 - (void)addtableview{
@@ -72,22 +71,19 @@
     _tempTableview.hidden= YES;
     
 }
+
 - (void) initTempLayout{
     self.temp_lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 100, 20)];
     self.temp_lab.textAlignment=NSTextAlignmentLeft;
-    self.temp_lab.text=@"血糖";
+    self.temp_lab.text=@"血压";
     self.temp_lab.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
     self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
     
-    
-
-    
-    
     self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
-    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite00.jpg"];
+    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite01.jpg"];
     [self.view addSubview:self.pictureImageView];
-   
+    
     
     
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -143,16 +139,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-//    NSInteger index = indexPath.row;
-//    ScannerViewController *scan = [[ScannerViewController alloc] init];
-//    scan.delegate = self;
-//    scan.scan_Type=index+1;
-//    
+    //    NSInteger index = indexPath.row;
+    //    ScannerViewController *scan = [[ScannerViewController alloc] init];
+    //    scan.delegate = self;
+    //    scan.scan_Type=index+1;
+    //
     
     _tempTableview.hidden=YES;
-   // [self.navigationController pushViewController:scan animated:YES];
+    // [self.navigationController pushViewController:scan animated:YES];
     
 }
+
 
 
 - (void)didReceiveMemoryWarning {

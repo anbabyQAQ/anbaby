@@ -16,9 +16,9 @@
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
 #import "HeartRateSetViewController.h"
-
-
-
+#import "BSViewController.h"//血糖
+#import "BPViewController.h"//血压
+#import "BOViewController.h"//血氧
 
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -196,7 +196,7 @@ static NSString *cellInte = @"typeCell";
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     
     
-    return UIEdgeInsetsMake(0,28,0,28);
+    return UIEdgeInsetsMake(30,28,0,28);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
@@ -241,6 +241,21 @@ static NSString *cellInte = @"typeCell";
         HeartRateSetViewController *rateVC = [[HeartRateSetViewController alloc] init];
         rateVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:rateVC animated:YES];
+    }else if (indexPath.row == 3){
+    
+        BSViewController *bsVC = [[BSViewController alloc] init];
+        bsVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:bsVC animated:YES];
+    }else if (indexPath.row == 4){
+    
+        BPViewController *bpVC = [[BPViewController alloc] init];
+        bpVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:bpVC animated:YES];
+    }else if (indexPath.row == 5){
+    
+        BOViewController *boVC = [[BOViewController alloc] init];
+        boVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:boVC animated:YES];
     }
     
 }

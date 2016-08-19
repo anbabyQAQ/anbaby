@@ -15,16 +15,16 @@
     
     
 }
-
+@property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
-@property (nonatomic, strong) UIView   *temp_view;
+
 
 @property (nonatomic, strong) UITableView *ECGTableview;
 
 
 //设备数组
 @property (nonatomic, strong) NSMutableArray *peripheral_arr;
-
+@property (nonatomic, strong) UIImageView *pictureImageView;
 
 @end
 
@@ -40,18 +40,6 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     [self initTempLayout];
-    
-    //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
-    
-    //    MyCustomButton *mapbutton = [MyCustomButton buttonWithType:UIButtonTypeSystem];
-    //    [mapbutton setFrame:CGRectMake(0, 0, 60 , 30)];
-    //    [mapbutton setTitle:@"连接设备" forState:(UIControlStateNormal)];
-    //    [mapbutton setTintColor:[UIColor blueColor]];
-    //    [mapbutton addTarget:self action:@selector(setRightBtn) forControlEvents:UIControlEventTouchDown];
-    //    [view addSubview:mapbutton];
-    //    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:view];
-    //    self.navigationItem.rightBarButtonItem = rightBtn;
-    
     
     [self addtableview];
     
@@ -70,7 +58,7 @@
 
 
 - (void)addtableview{
-    _peripheral_arr = [[NSMutableArray alloc] initWithObjects:@"设备选择",@"查看记录", nil];
+     _peripheral_arr = [[NSMutableArray alloc] initWithObjects:@"Checkme",@"linkTop",@"Health", nil];
     
     _ECGTableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, _peripheral_arr.count*40)];
     _ECGTableview.delegate=self;
@@ -91,33 +79,24 @@
 }
 
 - (void) initTempLayout{
-    
-    _temp_view = [[UIView alloc] initWithFrame:CGRectMake(110, 50, 100, 150)];
-    _temp_view.backgroundColor = UIColorFromRGB(0xf3f3f3);
-    self.temp_view.layer.masksToBounds = YES;
-    self.temp_view.layer.cornerRadius = 6.0;
-    self.temp_view.layer.borderWidth = 1.0;
-    self.temp_view.layer.borderColor = [[UIColor whiteColor] CGColor];
-    [self.view addSubview:_temp_view];
-    
-    
-//    _thermometer1 = [[MAThermometer alloc] initWithFrame:_temp_view.bounds];
-//    [_thermometer1 setMaxValue:42];
-//    [_thermometer1 setMinValue:35];
-//    _thermometer1.glassEffect = YES;
-//    int x = arc4random() % 8+35;
-//    int y = arc4random()%10;
-//    _thermometer1.curValue = x+y*0.1;
-//    [_temp_view addSubview:_thermometer1];
-//    
+    self.temp_lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 100, 20)];
+    self.temp_lab.textAlignment=NSTextAlignmentLeft;
+    self.temp_lab.text=@"心率";
+    self.temp_lab.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
+    self.temp_lab.textColor = [UIColor blackColor];
+    [self.view addSubview: self.temp_lab];
 
+
+    self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
+    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite04.jpg"];
+    [self.view addSubview:self.pictureImageView];
     
     
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
     [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
     _startTest_btn.backgroundColor = normolColor;
-    [_startTest_btn setTitle:@"开始测心电" forState:(UIControlStateNormal)];
+    [_startTest_btn setTitle:@"连接设备" forState:(UIControlStateNormal)];
     [_startTest_btn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     self.startTest_btn.layer.masksToBounds = YES;
     self.startTest_btn.layer.cornerRadius = 6.0;
@@ -174,21 +153,21 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    if (indexPath.row==0) {
-        //设备选择
-        
-        ScannerViewController *scan = [[ScannerViewController alloc] init];
-        scan.delegate = self;
-        [self.navigationController pushViewController:scan animated:YES];
-        [self setRightBtn];
-        
-    }
-    if (indexPath.row==1) {
-        //查看记录
-        
-        ECGChartViewController * ECG = [[ECGChartViewController alloc]init];
-        [self.navigationController pushViewController:ECG animated:YES];
-    }
+//    if (indexPath.row==0) {
+//        //设备选择
+//        
+//        ScannerViewController *scan = [[ScannerViewController alloc] init];
+//        scan.delegate = self;
+//        [self.navigationController pushViewController:scan animated:YES];
+//        [self setRightBtn];
+//        
+//    }
+//    if (indexPath.row==1) {
+//        //查看记录
+//        
+//        ECGChartViewController * ECG = [[ECGChartViewController alloc]init];
+//        [self.navigationController pushViewController:ECG animated:YES];
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

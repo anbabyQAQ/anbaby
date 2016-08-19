@@ -73,6 +73,7 @@
     {
         [_linktopManager disconnectBlueTooth:per];
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)initRightBarButtonItem {
