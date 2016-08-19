@@ -89,7 +89,7 @@
         
         self.dropDownTableView.hidden = NO;
        
-            self.dropDownTableView.frame = CGRectMake(kScreenWidth / 2 - 50, 0, 100, self.dropDownArray.count * 25);
+        self.dropDownTableView.frame = CGRectMake(kScreenWidth / 2 - 50, 0, 100, self.dropDownArray.count * 40);
         
     }
 }
@@ -175,12 +175,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-
     return 40;
-    
-
-    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,21 +10,38 @@
 #import "YiJianBluetooth-Bridging-Header.h"
 #import "YiJianBluetooth-Swift.h"
 
-@interface TempChartViewController ()<ChartViewDelegate>
+#import "UsersDao.h"
+#import "User.h"
+@interface TempChartViewController ()<ChartViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) BarChartView *barChartView;
 @property (nonatomic, strong) BarChartData *data;
 
+
+
+@property(nonatomic, strong)UIButton *titleButton;
+@property(nonatomic, strong)UITableView *dropDownTableView;
+@property(nonatomic, strong)NSMutableArray *dropDownArray;
 @end
 
 @implementation TempChartViewController
-
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initLeftBarButtonItem];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self addchartView];
+    //添加tableView
+    [self addTablView];
+    [self addTitleButton];
+}
+-(void)addchartView{
+
     //添加barChartView
     self.barChartView = [[BarChartView alloc] initWithFrame:CGRectMake(20, 10, SCR_W-40, 300)];
     self.barChartView.delegate = self;//设置代理
@@ -101,15 +118,16 @@
     [self.barChartView animateWithYAxisDuration:1.0f];
     
     //改变数据button
-//    UIButton *updateDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    updateDataBtn.frame = CGRectMake(20, 340, SCR_W-40, 40);
-//    [updateDataBtn setTitle:@"改变数据" forState:UIControlStateNormal];
-//    [updateDataBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//    [updateDataBtn setBackgroundColor:[UIColor cyanColor]];
-//    updateDataBtn.layer.cornerRadius = 5;
-//    [self.view addSubview:updateDataBtn];
-//    [updateDataBtn addTarget:self action:@selector(updateDataBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    //    UIButton *updateDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    updateDataBtn.frame = CGRectMake(20, 340, SCR_W-40, 40);
+    //    [updateDataBtn setTitle:@"改变数据" forState:UIControlStateNormal];
+    //    [updateDataBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    //    [updateDataBtn setBackgroundColor:[UIColor cyanColor]];
+    //    updateDataBtn.layer.cornerRadius = 5;
+    //    [self.view addSubview:updateDataBtn];
+    //    [updateDataBtn addTarget:self action:@selector(updateDataBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
+
 }
 
 //为柱形图设置数据
@@ -200,6 +218,93 @@
 - (void)chartTranslated:(ChartViewBase * _Nonnull)chartView dX:(CGFloat)dX dY:(CGFloat)dY{
     //    NSLog(@"---chartTranslated---dX:%g, dY:%g", dX, dY);
 }
+
+
+
+#pragma mark ===========导航栏中间title按钮
+-(void)addTitleButton{
+    
+    self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.titleButton.frame = CGRectMake(0, 0, 100, 44);
+    [self.titleButton setTitle:@"我的" forState:UIControlStateNormal];
+    [self.titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [[self.titleButton titleLabel] setFont:[UIFont systemFontOfSize:52/3]];
+    [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.titleButton setImage:[UIImage imageNamed:@"xialaImage"] forState:UIControlStateNormal];
+    [self.titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
+    [self.titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, 60, 0, 0)];
+    self.navigationItem.titleView = _titleButton;
+}
+
+-(void)titleButtonClick:(UIButton *)sender{
+    
+    
+    if (self.titleButton.selected) {
+        self.dropDownTableView.hidden = YES;
+        self.titleButton.selected = NO;
+    }else{
+        self.titleButton.selected = YES;
+        self.dropDownTableView.hidden = NO;
+        self.dropDownTableView.frame =CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40);
+    }
+}
+
+-(void)addTablView{
+    
+    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+    self.dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40) style:(UITableViewStylePlain)];
+    self.dropDownTableView.showsVerticalScrollIndicator = NO;
+    self.dropDownTableView.delegate =self;
+    self.dropDownTableView.dataSource = self;
+    [self.view addSubview:self.dropDownTableView];
+    self.dropDownTableView.hidden = YES;
+}
+-(NSMutableArray *)dropDownArray{
+    if (_dropDownArray==nil) {
+        _dropDownArray = [[NSMutableArray alloc] init];
+    }
+    return _dropDownArray;
+}
+
+
+#pragma mark =============tableView代理
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return _dropDownArray.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *cellID = @"cellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    User *user = self.dropDownArray[indexPath.row];
+    cell.textLabel.text = user.name;
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
+    cell.textLabel.textColor = [UIColor darkTextColor];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    self.dropDownTableView.hidden = YES;
+    self.titleButton.selected = NO;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

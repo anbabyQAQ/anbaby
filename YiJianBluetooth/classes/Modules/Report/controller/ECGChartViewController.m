@@ -9,13 +9,19 @@
 #import "ECGChartViewController.h"
 #import "Helper.h"
 #import "PieChart.h"
-
-@interface ECGChartViewController (){
+#import "UsersDao.h"
+#import "User.h"
+@interface ECGChartViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
     PieChart *_pieChart1;
     PieChart *_pieChart2;
     PieChart *_pieChart3;
     PieChart *_pieChart4;
 }
+
+@property(nonatomic, strong)UIButton *titleButton;
+@property(nonatomic, strong)UITableView *dropDownTableView;
+@property(nonatomic, strong)NSMutableArray *dropDownArray;
 
 @end
 
@@ -39,12 +45,16 @@ float pixelPerUV = 5 * 10.0 / 1000;
     [self initialMonitor];
     [self initLeftBarButtonItem];
 
+    //添加tableView
+    [self addTablView];
+    [self addTitleButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self setLeadsLayout:self.interfaceOrientation];
+    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -313,16 +323,95 @@ float pixelPerUV = 5 * 10.0 / 1000;
 
 - (void)dealloc {
     
-    
-    
-    
-    
     drawingTimer = nil;
     readDataTimer = nil;
     popDataTimer = nil;
     
 }
 
+#pragma mark ===========导航栏中间title按钮
+-(void)addTitleButton{
+    
+    self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.titleButton.frame = CGRectMake(0, 0, 100, 44);
+    [self.titleButton setTitle:@"我的" forState:UIControlStateNormal];
+    [self.titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [[self.titleButton titleLabel] setFont:[UIFont systemFontOfSize:52/3]];
+    [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.titleButton setImage:[UIImage imageNamed:@"xialaImage"] forState:UIControlStateNormal];
+    [self.titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
+    [self.titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, 60, 0, 0)];
+    self.navigationItem.titleView = _titleButton;
+}
+
+-(void)titleButtonClick:(UIButton *)sender{
+    
+    
+    if (self.titleButton.selected) {
+        self.dropDownTableView.hidden = YES;
+        self.titleButton.selected = NO;
+    }else{
+        self.titleButton.selected = YES;
+        self.dropDownTableView.hidden = NO;
+        self.dropDownTableView.frame =CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40);
+    }
+}
+
+-(void)addTablView{
+    
+    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+    self.dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40) style:(UITableViewStylePlain)];
+    self.dropDownTableView.showsVerticalScrollIndicator = NO;
+    self.dropDownTableView.delegate =self;
+    self.dropDownTableView.dataSource = self;
+    [self.view addSubview:self.dropDownTableView];
+    self.dropDownTableView.hidden = YES;
+}
+-(NSMutableArray *)dropDownArray{
+    if (_dropDownArray==nil) {
+        _dropDownArray = [[NSMutableArray alloc] init];
+    }
+    return _dropDownArray;
+}
+
+
+#pragma mark =============tableView代理
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return _dropDownArray.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *cellID = @"cellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    User *user = self.dropDownArray[indexPath.row];
+    cell.textLabel.text = user.name;
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
+    cell.textLabel.textColor = [UIColor darkTextColor];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    self.dropDownTableView.hidden = YES;
+    self.titleButton.selected = NO;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
 
 
 /*
