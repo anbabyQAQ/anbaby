@@ -77,8 +77,8 @@ static NSString *cellInte = @"typeCell";
 
     [self setCarrousel];
     
-    self.typeArray   = @[@"体温",@"心电",@"心率",@"血糖",@"血压",@"血氧"];
-    self.icon_imgarr = @[@"体温",@"心电",@"心率",@"血糖",@"血压",@"血氧"];
+    self.typeArray   = @[@"体温",@"血压",@"血糖",@"血氧",@"心率",@"心电"];
+    self.icon_imgarr = @[@"体温",@"血压",@"血糖",@"血氧",@"心率",@"心电"];
 }
 
 - (void)initCollertionview{
@@ -232,30 +232,34 @@ static NSString *cellInte = @"typeCell";
         [self.navigationController pushViewController:temp animated:YES];
     }else if (indexPath.row == 1){
     
-        ECGViewController *ECG = [[ECGViewController alloc] init];
-        ECG.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:ECG animated:YES];
+        BPViewController *bpVC = [[BPViewController alloc] init];
+        bpVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:bpVC animated:YES];
+        
         
     }else if (indexPath.row == 2){
-    
-        HeartRateSetViewController *rateVC = [[HeartRateSetViewController alloc] init];
-        rateVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:rateVC animated:YES];
-    }else if (indexPath.row == 3){
     
         BSViewController *bsVC = [[BSViewController alloc] init];
         bsVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:bsVC animated:YES];
-    }else if (indexPath.row == 4){
-    
-        BPViewController *bpVC = [[BPViewController alloc] init];
-        bpVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:bpVC animated:YES];
-    }else if (indexPath.row == 5){
+        
+    }else if (indexPath.row == 3){
     
         BOViewController *boVC = [[BOViewController alloc] init];
         boVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:boVC animated:YES];
+    }else if (indexPath.row == 4){
+    
+        HeartRateSetViewController *rateVC = [[HeartRateSetViewController alloc] init];
+        rateVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:rateVC animated:YES];
+        
+    }else if (indexPath.row == 5){
+    
+        ECGViewController *ECG = [[ECGViewController alloc] init];
+        ECG.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:ECG animated:YES];
+
     }
     
 }

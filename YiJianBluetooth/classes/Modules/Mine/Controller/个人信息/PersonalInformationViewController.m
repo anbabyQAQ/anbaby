@@ -196,8 +196,8 @@
         [self.sexButton setTitle:sexString forState:(UIControlStateNormal)];
         
         self.sexView.hidden = YES;
-        [self.grilButton setImage:[UIImage imageNamed:@"gril2.png"] forState:(UIControlStateNormal)];
-        [self.boyButton setImage:[UIImage imageNamed:@"boy4.png"] forState:(UIControlStateNormal)];
+        [self.grilButton setImage:[UIImage imageNamed:@"person_gril2.png"] forState:(UIControlStateNormal)];
+        [self.boyButton setImage:[UIImage imageNamed:@"person_boy4.png"] forState:(UIControlStateNormal)];
         sexString = @"";
         
         self.navigationController.navigationBarHidden = NO;
