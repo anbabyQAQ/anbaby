@@ -12,7 +12,11 @@
 #import "User.h"
 #import "UsersDao.h"
 
-@interface BSDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>
+@interface BSDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>{
+    User *_user;
+    NSInteger _type;
+
+}
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
 
@@ -106,16 +110,34 @@
     [self.view addSubview:_startTest_btn];
 }
 -(void)clickBtn:(id)sender{
+    //缓存
     
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_user) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if (_users.count>0) {
+            [self showToast:@"请选择测量人"];
+        }else{
+            [self showToast:@"请添加测量人"];
+        }
+    }
+    
+    
 }
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
-    
     PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
     [self.navigationController pushViewController:pserson animated:YES];
 }
+
+-(void)callBackUser:(User *)user{
+    //选取用户添加记录
+    _user = user;
+    
+}
+
+
 - (NSMutableArray *)users {
     if (_users == nil) {
         _users = [[NSMutableArray alloc]init];

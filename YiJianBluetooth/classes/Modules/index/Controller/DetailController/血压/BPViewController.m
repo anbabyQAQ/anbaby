@@ -22,6 +22,9 @@
 
 
 
+
+
+@property (nonatomic, strong) NSDictionary *linktopPeripheral;
 //设备数组
 @property (nonatomic, strong) NSMutableArray *peripheral_arr;
 @property (nonatomic, strong) UIImageView *pictureImageView;
@@ -41,6 +44,15 @@
     [self initRightBarButtonItem];
     [self addtableview];
 }
+- (void)backToSuper{
+    CBPeripheral *per = [_linktopPeripheral objectForKey:@"peripheral"];
+    if (per)
+    {
+        [_linktopManager disconnectBlueTooth:per];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)initRightBarButtonItem {
     MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(0, 0, 40, 44)];
@@ -70,8 +82,8 @@
 -(void)setRightBtn{
     
     _tempTableview.hidden = !_tempTableview.hidden;
-    BPDetailViewController *BPVC = [[BPDetailViewController alloc] init];
-    [self.navigationController pushViewController:BPVC animated:YES];
+//    BPDetailViewController *BPVC = [[BPDetailViewController alloc] init];
+//    [self.navigationController pushViewController:BPVC animated:YES];
 }
 
 - (void)addtableview{
@@ -156,17 +168,47 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    //    NSInteger index = indexPath.row;
-    //    ScannerViewController *scan = [[ScannerViewController alloc] init];
-    //    scan.delegate = self;
-    //    scan.scan_Type=index+1;
-    //
+    
+    NSInteger index = indexPath.row;
+    ScannerViewController *scan = [[ScannerViewController alloc] init];
+    scan.delegate = self;
+    scan.scan_Type=index+1;
     
     _tempTableview.hidden=YES;
-    // [self.navigationController pushViewController:scan animated:YES];
+    
+    [self.navigationController pushViewController:scan animated:YES];
     
 }
 
+
+- (void)linktopManger:(SDKHealthMoniter *)manager didperiphralSelected:(NSDictionary *)dic_peripheral{
+    _scantype=scan_linkTop;
+    _linktopPeripheral = dic_peripheral;
+    
+    _linktopManager = manager;
+    if (manager) {
+        [_startTest_btn respondsToSelector:@selector(setRightBtn)];
+        [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
+        [_startTest_btn setTitle:@"开始测血压" forState:(UIControlStateNormal)];
+    }
+    
+    
+}
+
+- (void)clickbtn:(id)sender{
+    
+    BPDetailViewController *detailVC = [[BPDetailViewController alloc] init];
+    detailVC.linktopManager = _linktopManager;
+    detailVC.bluetoothManager = _bluetoothManager;
+    detailVC.scantype = self.scantype;
+    
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    
+    _tempTableview.hidden=YES;
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

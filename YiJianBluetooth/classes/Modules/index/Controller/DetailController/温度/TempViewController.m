@@ -309,8 +309,12 @@
     detailVC.bluetoothManager = _bluetoothManager;
     detailVC.scantype = self.scantype;
 
+    
     [self.navigationController pushViewController:detailVC animated:YES];
     
+    
+    _tempTableview.hidden=YES;
+
 }
 
 

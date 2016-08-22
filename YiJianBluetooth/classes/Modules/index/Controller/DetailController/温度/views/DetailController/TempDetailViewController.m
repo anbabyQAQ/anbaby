@@ -12,6 +12,7 @@
 #import "UsersDao.h"
 #import "PersonalInformationViewController.h"
 #import "ChooseUser.h"
+#import "BlockUIAlertView.h"
 
 #define Kuser_imgW 60;
 @interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,chooseUserDelegate>{
@@ -256,9 +257,17 @@
    //缓存
     
 //    [_user.dicTemp  obj]
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_user) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if (_users.count>0) {
+            [self showToast:@"请选择测量人"];
+        }else{
+            [self showToast:@"请添加测量人"];
+        }
+    }
 
-    
+   
 }
 
 

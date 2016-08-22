@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YiJianBluetooth/classes/Modules/ScannedPeripheral/ScannerViewController.m"
-            timestampString = "493111255.094372"
+            timestampString = "493525895.007609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-addConnectedPeripheral:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YiJianBluetooth/classes/Modules/ScannedPeripheral/ScannerViewController.m"
-            timestampString = "493112237.449673"
+            timestampString = "493525895.007609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YiJianBluetooth/classes/Modules/ScannedPeripheral/ScannerViewController.m"
-            timestampString = "493111255.094372"
+            timestampString = "493525895.007609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-getConnectedPeripherals"
             landmarkType = "5">
          </BreakpointContent>
@@ -89,7 +89,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "-centralManager:didFailToConnectPeripheral:error:"
+            landmarkName = "-centralManager:didConnectPeripheral:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -100,12 +100,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YiJianBluetooth/classes/Modules/ScannedPeripheral/ScannerViewController.m"
-            timestampString = "493111255.094372"
+            timestampString = "493525895.007609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-disconnectPeripheral:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YiJianBluetooth/classes/Modules/index/Controller/DetailController/&#x8840;&#x538b;/DetailController/BPDetailViewController.m"
+            timestampString = "493528239.605256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-receiveBloodPressure:andDiastolic_pressure:andHeart_beat:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -114,7 +114,7 @@ static NSString *cellInte = @"typeCell";
 - (void)setupUI {
     
     
-    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 10, SCR_W, 150)];
+    _pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 0, SCR_W, 160)];
     _pageFlowView.backgroundColor = [UIColor whiteColor];
     _pageFlowView.delegate = self;
     _pageFlowView.dataSource = self;
@@ -134,7 +134,7 @@ static NSString *cellInte = @"typeCell";
 
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
-    return CGSizeMake(SCR_W -84, (SCR_W - 84) * 9 / 16);
+    return CGSizeMake(SCR_W, (SCR_W ) * 9 / 16);
 }
 
 #pragma mark NewPagedFlowView Datasource
@@ -145,7 +145,7 @@ static NSString *cellInte = @"typeCell";
 - (UIView *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
     if (!bannerView) {
-        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, SCR_W - 84, (SCR_W - 84) * 9 / 16)];
+        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, SCR_W, (SCR_W ) * 9 / 16)];
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
