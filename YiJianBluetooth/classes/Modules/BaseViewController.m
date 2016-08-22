@@ -85,7 +85,7 @@
     mapbutton.titleLabel.font = [UIFont systemFontOfSize:text_size_small];
     
     CGSize titleSize = [mapbutton.titleLabel sizeThatFits:CGSizeMake(60, 44)];
-    [mapbutton setTitleColor:UIColorFromRGB(0x0097ff) forState:(UIControlStateNormal)];
+    [mapbutton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     [mapbutton setMyButtonContentFrame:CGRectMake(60 - titleSize.width, 10, titleSize.width, 25)];
     [mapbutton addTarget:self action:action forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]initWithCustomView:mapbutton];

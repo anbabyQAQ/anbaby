@@ -16,4 +16,5 @@
 @property (strong, nonatomic) SDKHealthMoniter *linktopManager;
 @property (strong, nonatomic) CBCentralManager *bluetoothManager;
 
+
 @end
