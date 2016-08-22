@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) UITableView *ECGTableview;
 
+@property (nonatomic, strong) NSDictionary *linktopPeripheral;
 
 //设备数组
 @property (nonatomic, strong) NSMutableArray *peripheral_arr;
@@ -45,6 +46,17 @@
     
 }
 
+- (void)backToSuper{
+    CBPeripheral *per = [_linktopPeripheral objectForKey:@"peripheral"];
+    if (per)
+    {
+        [_linktopManager disconnectBlueTooth:per];
+    }
+    [_startTest_btn removeTarget:nil action:nil forControlEvents:(UIControlEventTouchUpInside)];
+    [_startTest_btn addTarget:self action:@selector(setRightBtn) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)initRightBarButtonItem {
     MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(0, 0, 40, 44)];
@@ -58,7 +70,7 @@
     
     MyCustomButton *rightTwoButton = [MyCustomButton buttonWithType:UIButtonTypeCustom];
     [rightTwoButton setFrame:CGRectMake(0, 0, 40, 44)];
-    UIImage *image2 = [UIImage imageNamed:@"bag"];
+    UIImage *image2 = [UIImage imageNamed:@"printer"];
     [rightTwoButton setImage:image2 forState:UIControlStateNormal];
     [rightTwoButton setMyButtonImageFrame:CGRectMake(25, 12, image2.size.width-10, image2.size.height-10)];
     [rightTwoButton addTarget:self action:@selector(setRight2Btn)forControlEvents:UIControlEventTouchDown];
@@ -121,14 +133,6 @@
     
 }
 
-- (void)clickbtn:(id)sender{
-    
-    ECGDetailViewController *detailVC = [[ECGDetailViewController alloc] init];
-    [self.navigationController pushViewController:detailVC animated:YES];
-    
-}
-
-
 #pragma mark - Table view data source
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -168,22 +172,48 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-//    if (indexPath.row==0) {
-//        //设备选择
-//        
-//        ScannerViewController *scan = [[ScannerViewController alloc] init];
-//        scan.delegate = self;
-//        [self.navigationController pushViewController:scan animated:YES];
-//        [self setRightBtn];
-//        
-//    }
-//    if (indexPath.row==1) {
-//        //查看记录
-//        
-//        ECGChartViewController * ECG = [[ECGChartViewController alloc]init];
-//        [self.navigationController pushViewController:ECG animated:YES];
-//    }
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    NSInteger index = indexPath.row;
+    ScannerViewController *scan = [[ScannerViewController alloc] init];
+    scan.delegate = self;
+    scan.scan_Type=index+1;
+    
+    
+    _ECGTableview.hidden=YES;
+    [self.navigationController pushViewController:scan animated:YES];
 }
+
+- (void)linktopManger:(SDKHealthMoniter *)manager didperiphralSelected:(NSDictionary *)dic_peripheral{
+    _scantype=scan_linkTop;
+    _linktopPeripheral = dic_peripheral;
+    
+    _linktopManager = manager;
+    if (manager) {
+        [_startTest_btn removeTarget:nil action:nil forControlEvents:(UIControlEventTouchUpInside)];
+
+        [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
+        [_startTest_btn setTitle:@"开始测心电" forState:(UIControlStateNormal)];
+    }
+    
+    
+}
+
+- (void)clickbtn:(id)sender{
+    
+    ECGDetailViewController *detailVC = [[ECGDetailViewController alloc] init];
+    detailVC.linktopManager = _linktopManager;
+    detailVC.bluetoothManager = _bluetoothManager;
+    detailVC.scantype = self.scantype;
+    
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    
+    _ECGTableview.hidden=YES;
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

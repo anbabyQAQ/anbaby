@@ -240,6 +240,7 @@ int pointPerDraw = 500.0f * 0.04f;
     //	NSLog(@"Lead dealloced");
     
     self.liveMonitor = nil;
+    self.liveMonitorDetail = nil;
     
 }
 

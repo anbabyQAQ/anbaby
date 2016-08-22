@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class ECGChartViewController;
+@class ECGDetailViewController;
 
 @interface LeadPlayer : UIView <UIGestureRecognizerDelegate> {
     CGPoint drawingPoints[1000];
@@ -31,6 +32,9 @@
 @property (nonatomic, strong) UIView *lightSpot;
 @property (nonatomic, strong) NSString *label;
 @property (nonatomic, unsafe_unretained) ECGChartViewController *liveMonitor;
+
+@property (nonatomic, unsafe_unretained) ECGDetailViewController *liveMonitorDetail;
+
 
 @property (nonatomic) int index;
 @property (nonatomic) int currentPoint;

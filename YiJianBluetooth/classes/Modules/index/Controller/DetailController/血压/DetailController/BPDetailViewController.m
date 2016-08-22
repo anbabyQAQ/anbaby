@@ -58,13 +58,13 @@
 }
 - (void)measureTemp{
     if (_type==2) {
-        [_linktopManager startBloodPressure];
+        [_linktopManager startOximetryTest];
         
     }
 }
 
 - (void)backToSuper{
-    [_linktopManager endBloodPressure];
+    [_linktopManager endOximetryTest];
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -85,10 +85,11 @@
     _type = scantype;
     if (scantype==2) {
         _linktopManager.sdkHealthMoniterdelegate = self;
-        [_linktopManager startBloodPressure];
+        [_linktopManager startOximetryTest];
         
     }
 }
+
 
 
 -(void)receiveBloodPressure:(int)Systolic_pressure andDiastolic_pressure:(int)Diastolic_pressure andHeart_beat:(int)Heart_beat

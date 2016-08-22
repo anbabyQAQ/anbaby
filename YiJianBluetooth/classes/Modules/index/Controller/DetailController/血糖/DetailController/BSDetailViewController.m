@@ -40,12 +40,25 @@
     [self initTempLayout];
 
     [self initLeftBarButtonItem];
+    [self initrightBarButtonItem:@"重新测量" action:@selector(measureTemp)];
+
 }
-
 -(void)viewWillAppear:(BOOL)animated{
-
+    
     [super viewWillAppear:animated];
     [self initwithScroll];
+}
+- (void)measureTemp{
+    if (_type==2) {
+        [_linktopManager startBloodSugar];
+        
+    }
+}
+
+- (void)backToSuper{
+    [_linktopManager endBloodSugar];
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 - (void)initwithScroll{
     
@@ -109,6 +122,15 @@
     self.startTest_btn.layer.borderColor = [[UIColor whiteColor] CGColor];
     [self.view addSubview:_startTest_btn];
 }
+
+- (void)setScantype:(NSInteger)scantype{
+    _type = scantype;
+    if (scantype==2) {
+        _linktopManager.sdkHealthMoniterdelegate = self;
+        [_linktopManager startBloodSugar];
+        
+    }
+}
 -(void)clickBtn:(id)sender{
     //缓存
     
@@ -124,6 +146,48 @@
     
     
 }
+
+
+-(void)receiveBloodSugar:(MSGTYPE)msgtype andRow:(NSNumber *)row
+{
+    
+    //    if (msgtype==MSGTYPE_BLOODDETECTEDCOMPLATED) {
+    //        int rowIndex = row.intValue;
+    //        double bloodSugar = [self.sdkHealth getBloodSugarInRow:rowIndex andPaperType:@"C20"];
+    //        NSLog(@"blood sugar is %f",bloodSugar);
+    //    }
+    NSString *alertTips ;
+    NSArray *paperTypeList = [_linktopManager getAllPaperType];
+    switch (msgtype) {
+        case MSGTYPE_PAPEROUT:
+            alertTips = @"paper out";
+            break;
+        case MSGTYPE_PAPERISUSED:
+            alertTips = @"paper is used";
+            break;
+        case MSGTYPE_PAPERISREADY:
+            alertTips = @"paper is ready";
+            break;
+        case MSGTYPE_BLOODINDETECTED:
+            alertTips = @"blood detected";
+            break;
+        case MSGTYPE_BLOODDETECTEDCOMPLATED:
+        {
+            
+            NSString *paperType  = @"C20";
+            double bloodsugar = [_linktopManager getBloodSugarInRow:row.intValue andPaperType:paperType];
+            self.resultLabel.text = [NSString stringWithFormat:@"血糖：%.2f",bloodsugar];
+            break;
+        }
+        case MSGTYPE_TIMEOUT:
+            alertTips = @"blood timeout";
+            break;
+        default:
+            break;
+    }
+    [self showToast:alertTips];
+}
+
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{

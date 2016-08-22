@@ -11,7 +11,11 @@
 #import "ChooseUser.h"
 #import "User.h"
 #import "UsersDao.h"
-@interface BODetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>
+@interface BODetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>{
+    NSInteger _type;
+    User *_user;
+}
+
 
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
@@ -37,12 +41,28 @@
     [self initTempLayout];
     
     [self initLeftBarButtonItem];
+    [self initrightBarButtonItem:@"重新测量" action:@selector(measureTemp)];
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
     [self initwithScroll];
 }
+
+- (void)measureTemp{
+    if (_type==2) {
+        [_linktopManager startOximetryTest];
+        
+    }
+}
+
+- (void)backToSuper{
+    [_linktopManager endOximetryTest];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 - (void)initwithScroll{
     
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
@@ -105,16 +125,51 @@
     self.startTest_btn.layer.borderColor = [[UIColor whiteColor] CGColor];
     [self.view addSubview:_startTest_btn];
 }
--(void)clickBtn:(id)sender{
+- (void)setScantype:(NSInteger)scantype{
+    _type = scantype;
+    if (scantype==2) {
+        _linktopManager.sdkHealthMoniterdelegate = self;
+        [_linktopManager startOximetryTest];
+        
+    }
+}
+
+-(void)receiveOximetryData:(double)oxy andHeartRate:(int)heartRate
+{
     
-    [self.navigationController popViewControllerAnimated:YES];
+    self.resultLabel.text = [NSString stringWithFormat:@"血氧：%.1f％",oxy];
+    
+//    self.oxyHeartRate.text = [NSString stringWithFormat:@"%d",heartRate];
+    
+}
+
+-(void)clickBtn:(id)sender{
+    //缓存
+    
+    //    [_user.dicTemp  obj]
+    if (_user) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if (_users.count>0) {
+            [self showToast:@"请选择测量人"];
+        }else{
+            [self showToast:@"请添加测量人"];
+        }
+    }
+    
+    
 }
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
-    
     PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
     [self.navigationController pushViewController:pserson animated:YES];
+}
+
+-(void)callBackUser:(User *)user{
+    //选取用户添加记录
+    _user = user;
+    
 }
 - (NSMutableArray *)users {
     if (_users == nil) {

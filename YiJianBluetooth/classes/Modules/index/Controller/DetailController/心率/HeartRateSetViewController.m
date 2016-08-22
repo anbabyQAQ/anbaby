@@ -69,7 +69,7 @@
     
     MyCustomButton *rightTwoButton = [MyCustomButton buttonWithType:UIButtonTypeCustom];
     [rightTwoButton setFrame:CGRectMake(0, 0, 40, 44)];
-    UIImage *image2 = [UIImage imageNamed:@"bag"];
+    UIImage *image2 = [UIImage imageNamed:@"printer"];
     [rightTwoButton setImage:image2 forState:UIControlStateNormal];
     [rightTwoButton setMyButtonImageFrame:CGRectMake(25, 12, image2.size.width-10, image2.size.height-10)];
     [rightTwoButton addTarget:self action:@selector(setRight2Btn)forControlEvents:UIControlEventTouchDown];
@@ -193,7 +193,7 @@
     
     _linktopManager = manager;
     if (manager) {
-        [_startTest_btn respondsToSelector:@selector(setRightBtn)];
+        [_startTest_btn removeTarget:nil action:nil forControlEvents:(UIControlEventTouchUpInside)];
         [_startTest_btn addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
         [_startTest_btn setTitle:@"开始测心率" forState:(UIControlStateNormal)];
     }

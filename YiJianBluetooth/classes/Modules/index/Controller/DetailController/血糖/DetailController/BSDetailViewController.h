@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScannerDelegate.h"
+#import "SDKHealthMoniter.h"
+@interface BSDetailViewController : BaseViewController<CBCentralManagerDelegate, CBPeripheralDelegate, ScannerDelegate,sdkHealthMoniterDelegate>
 
-@interface BSDetailViewController : BaseViewController
-
+@property (nonatomic, assign) NSInteger scantype;
+@property (strong, nonatomic) SDKHealthMoniter *linktopManager;
+@property (strong, nonatomic) CBCentralManager *bluetoothManager;
 @end
