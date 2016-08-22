@@ -9,6 +9,7 @@
 #import "BOViewController.h"
 #import "ScannerViewController.h"
 #import "BODetailViewController.h"
+#import "BloodOxygenViewController.h"
 @interface BOViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UILabel  *temp_lab;
@@ -40,13 +41,29 @@
 }
 -(void)initRightBarButtonItem {
     MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
-    [button setFrame:CGRectMake(0, 0, 60, 44)];
+    [button setFrame:CGRectMake(0, 0, 40, 44)];
     UIImage *image = [UIImage imageNamed:@"bag"];
     [button setImage:image forState:UIControlStateNormal];
-    [button setMyButtonImageFrame:CGRectMake(35, 12, image.size.width-10, image.size.height-10)];
+    [button setMyButtonImageFrame:CGRectMake(25, 12, image.size.width-10, image.size.height-10)];
     [button addTarget:self action:@selector(setRightBtn)forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = leftBtn;
+    //self.navigationItem.rightBarButtonItem = leftBtn;
+    
+    
+    MyCustomButton *rightTwoButton = [MyCustomButton buttonWithType:UIButtonTypeCustom];
+    [rightTwoButton setFrame:CGRectMake(0, 0, 40, 44)];
+    UIImage *image2 = [UIImage imageNamed:@"bag"];
+    [rightTwoButton setImage:image2 forState:UIControlStateNormal];
+    [rightTwoButton setMyButtonImageFrame:CGRectMake(25, 12, image2.size.width-10, image2.size.height-10)];
+    [rightTwoButton addTarget:self action:@selector(setRight2Btn)forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *rightTwoBtn = [[UIBarButtonItem alloc]initWithCustomView:rightTwoButton];
+    self.navigationItem.rightBarButtonItems = @[leftBtn,rightTwoBtn];
+
+}
+-(void)setRight2Btn{
+
+    BloodOxygenViewController *boVC = [[BloodOxygenViewController alloc] init];
+    [self.navigationController pushViewController:boVC animated:YES];
 }
 -(void)setRightBtn{
     
