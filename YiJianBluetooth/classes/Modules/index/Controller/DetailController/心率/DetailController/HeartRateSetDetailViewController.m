@@ -12,7 +12,10 @@
 #import "User.h"
 #import "UsersDao.h"
 @interface HeartRateSetDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>
-
+{
+    NSInteger _type;
+    User *_user;
+}
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
 
@@ -37,12 +40,28 @@
     [self initTempLayout];
     
     [self initLeftBarButtonItem];
+    [self initrightBarButtonItem:@"重新测量" action:@selector(measureTemp)];
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
     [self initwithScroll];
 }
+
+- (void)measureTemp{
+    if (_type==2) {
+        [_linktopManager startBloodPressure];
+        
+    }
+}
+
+- (void)backToSuper{
+    [_linktopManager endBloodPressure];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 - (void)initwithScroll{
     
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
@@ -105,9 +124,44 @@
     self.startTest_btn.layer.borderColor = [[UIColor whiteColor] CGColor];
     [self.view addSubview:_startTest_btn];
 }
--(void)clickBtn:(id)sender{
+
+- (void)setScantype:(NSInteger)scantype{
+    _type = scantype;
+    if (scantype==2) {
+        _linktopManager.sdkHealthMoniterdelegate = self;
+        [_linktopManager startBloodPressure];
+        
+    }
+}
+
+
+-(void)receiveBloodPressure:(int)Systolic_pressure andDiastolic_pressure:(int)Diastolic_pressure andHeart_beat:(int)Heart_beat
+{
     
-    [self.navigationController popViewControllerAnimated:YES];
+    self.resultLabel.text = [NSString stringWithFormat:@"心率：%d",Heart_beat];
+    //    self.sysLab.text = [NSString stringWithFormat:@"收缩压%d",Systolic_pressure];
+    //    self.diaLab.text = [NSString stringWithFormat:@"舒张压%d",Diastolic_pressure];
+    //    self.heartLab.text = [NSString stringWithFormat:@"心率%d",Heart_beat];
+    
+    
+}
+
+
+-(void)clickBtn:(id)sender{
+    //缓存
+    
+    //    [_user.dicTemp  obj]
+    if (_user) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if (_users.count>0) {
+            [self showToast:@"请选择测量人"];
+        }else{
+            [self showToast:@"请添加测量人"];
+        }
+    }
+    
+    
 }
 #pragma mark ChooseUser代理
 

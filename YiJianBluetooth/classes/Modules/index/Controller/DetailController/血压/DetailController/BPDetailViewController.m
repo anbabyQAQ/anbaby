@@ -11,10 +11,22 @@
 #import "ChooseUser.h"
 #import "User.h"
 #import "UsersDao.h"
-@interface BPDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>
-
+@interface BPDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>{
+    NSInteger _type;
+    User *_user;
+}
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
+@property (nonatomic, strong) UIView   *temp_view;
+
+@property (nonatomic, strong) UITextField *right_btn;
+
+
+@property (nonatomic, strong) UITableView *tempTableview;
+
+
+
+
 
 @property (nonatomic, strong) UILabel *stateLabel;//状态
 @property (nonatomic, strong) UILabel *electricityLabel;//电量
@@ -37,13 +49,26 @@
     [self initTempLayout];
     
     [self initLeftBarButtonItem];
-
+    [self initrightBarButtonItem:@"重新测量" action:@selector(measureTemp)];
 }
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
     [self initwithScroll];
 }
+- (void)measureTemp{
+    if (_type==2) {
+        [_linktopManager startBloodPressure];
+        
+    }
+}
+
+- (void)backToSuper{
+    [_linktopManager endBloodPressure];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 - (void)initwithScroll{
     
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
@@ -55,6 +80,28 @@
     
     
 }
+
+- (void)setScantype:(NSInteger)scantype{
+    _type = scantype;
+    if (scantype==2) {
+        _linktopManager.sdkHealthMoniterdelegate = self;
+        [_linktopManager startBloodPressure];
+        
+    }
+}
+
+
+-(void)receiveBloodPressure:(int)Systolic_pressure andDiastolic_pressure:(int)Diastolic_pressure andHeart_beat:(int)Heart_beat
+{
+    
+    self.highPressureLabel.text = [NSString stringWithFormat:@"血压：%d/%d",Systolic_pressure,Diastolic_pressure];
+//    self.sysLab.text = [NSString stringWithFormat:@"收缩压%d",Systolic_pressure];
+//    self.diaLab.text = [NSString stringWithFormat:@"舒张压%d",Diastolic_pressure];
+//    self.heartLab.text = [NSString stringWithFormat:@"心率%d",Heart_beat];
+    
+    
+}
+
 -(void)initTempLayout{
     
     self.temp_lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 20, 100, 20)];
@@ -88,18 +135,18 @@
     
     self.highPressureLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.pictureImageView.frame.origin.y + self.pictureImageView.frame.size.height + 20, 150, 20)];
     self.highPressureLabel.textAlignment=NSTextAlignmentLeft;
-    self.highPressureLabel.text=@"高压：";
+    self.highPressureLabel.text=@"血压：";
     self.highPressureLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
     self.highPressureLabel.textColor = [UIColor blackColor];
     [self.view addSubview: self.highPressureLabel];
     
     
-    self.lowPressureLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCR_W - 165, self.highPressureLabel.frame.origin.y, 150, 20)];
-    self.lowPressureLabel.textAlignment=NSTextAlignmentCenter;
-    self.lowPressureLabel.text=@"低压：";
-    self.lowPressureLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    self.lowPressureLabel.textColor = [UIColor blackColor];
-    [self.view addSubview: self.lowPressureLabel];
+//    self.lowPressureLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCR_W - 165, self.highPressureLabel.frame.origin.y, 150, 20)];
+//    self.lowPressureLabel.textAlignment=NSTextAlignmentCenter;
+//    self.lowPressureLabel.text=@"低压：";
+//    self.lowPressureLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
+//    self.lowPressureLabel.textColor = [UIColor blackColor];
+//    [self.view addSubview: self.lowPressureLabel];
     
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
@@ -114,16 +161,34 @@
     [self.view addSubview:_startTest_btn];
 }
 -(void)clickBtn:(id)sender{
+    //缓存
     
-    [self.navigationController popViewControllerAnimated:YES];
+    //    [_user.dicTemp  obj]
+    if (_user) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if (_users.count>0) {
+            [self showToast:@"请选择测量人"];
+        }else{
+            [self showToast:@"请添加测量人"];
+        }
+    }
+    
+    
 }
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
-    
     PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
     [self.navigationController pushViewController:pserson animated:YES];
 }
+
+-(void)callBackUser:(User *)user{
+    //选取用户添加记录
+    _user = user;
+    
+}
+
 - (NSMutableArray *)users {
     if (_users == nil) {
         _users = [[NSMutableArray alloc]init];
