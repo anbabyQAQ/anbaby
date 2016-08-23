@@ -109,7 +109,7 @@
         return;
     }
     MainTabBarController *main = [MainTabBarController new];
-    [self.navigationController pushViewController:main animated:YES];
+    [[UIApplication sharedApplication].keyWindow setRootViewController:main];
 }
 
 -(void)addAlert:(NSString *)alert{

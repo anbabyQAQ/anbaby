@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "NewFeatureViewController.h"
+#import "LoginViewController.h"
 @interface AppDelegate ()
 {
     SystemSoundID soundID;
@@ -20,7 +22,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
     UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
     UIUserNotificationTypeSound |
     UIUserNotificationTypeAlert;
@@ -29,10 +30,27 @@
     application.applicationIconBadgeNumber = 0;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    MainTabBarController *main = [[MainTabBarController alloc] init];
+
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"first"]) {
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Login"] isEqualToString:@"yes"]) {
+        
+            MainTabBarController *main = [[MainTabBarController alloc] init];
+            //重新制定根控制器
+            self.window.rootViewController = main;
+        }else{
+        
+            LoginViewController *login = [[LoginViewController alloc] init];
+            self.window.rootViewController = login;
+        }
+    }else{
+        NewFeatureViewController *new = [[NewFeatureViewController alloc] init];
+        self.window.rootViewController = new;
     
-    //重新制定根控制器
-    self.window.rootViewController = main;
+    }
+    
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -46,8 +64,6 @@
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         AudioServicesPlaySystemSound(1008);
     }else{
-    
-  
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:notification.alertBody delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
         

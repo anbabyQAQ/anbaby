@@ -101,14 +101,16 @@
 
 #pragma mark ======登录按钮点击事件
 - (IBAction)loginButtonAction:(id)sender {
-    if ([self.NumberTextField.text isEqualToString:@"1"] && [self.passwordTextField.text isEqualToString:@"1"]) {
+    //if ([self.NumberTextField.text isEqualToString:@"1"] && [self.passwordTextField.text isEqualToString:@"1"]) {
+       [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
         MainTabBarController *main = [MainTabBarController new];
-        [self.navigationController pushViewController:main animated:YES];
-    }else{
+        [[UIApplication sharedApplication].keyWindow setRootViewController:main];
     
-        self.navigationController.navigationBarHidden = YES;
-        self.chongshiView.hidden = NO;
-    }
+//    }else{
+//    
+//        self.navigationController.navigationBarHidden = YES;
+//        self.chongshiView.hidden = NO;
+//    }
     
 }
 
