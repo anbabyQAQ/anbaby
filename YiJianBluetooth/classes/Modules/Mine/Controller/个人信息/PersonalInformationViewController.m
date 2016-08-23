@@ -20,6 +20,8 @@
     NSString *weightString;
     NSString *ageString;
     NSString *sexString;
+    
+    User *_singleuser;
 }
 
 @property(nonatomic, strong)UIView *writeView;
@@ -79,22 +81,28 @@
     [self addTextField:self.nameTextField];
     [self addTextField:self.phoneTextField];
     
+    [self initrightBarButtonItem:@"保存" action:@selector(navigationShouldPopOnBackButton)];
 
+    if (_singleuser) {
+        self.nameTextField.text=_singleuser.name;
+        self.weightButton.titleLabel.text=[NSString stringWithFormat:@"%ld",_singleuser.weight];
+        self.heightButton.titleLabel.text=[NSString stringWithFormat:@"%ld",_singleuser.height];
+        self.ageButton.titleLabel.text   =[NSString stringWithFormat:@"%d",_singleuser.age];
+        self.phoneTextField.text         =_singleuser.phone;
+        
+        if (_singleuser.gender) {
+            sexString=@"女";
+        }else{
+            sexString=@"男";
+        }
+    }
     
 }
 
-#pragma mark - left
--(void)initLeftBarButtonItem {
-    MyCustomButton *button = [MyCustomButton buttonWithType:UIButtonTypeCustom];
-    [button setFrame:CGRectMake(0, 0, 60, 44)];
-    UIImage *image = [UIImage imageNamed:@"arrow_left"];
-    [button setImage:image forState:UIControlStateNormal];
-    [button setMyButtonImageFrame:CGRectMake(0, 12, image.size.width-10, image.size.height-10)];
-    [button addTarget:self action:@selector(navigationShouldPopOnBackButton)forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc]initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = leftBtn;
+- (void)setUser:(User *)user{
+    _singleuser = user;
+    
 }
-
 - (void)navigationShouldPopOnBackButton {
     
     

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface PersonalInformationViewController : BaseViewController
 
+@property (strong , nonatomic) User *user;
 @end

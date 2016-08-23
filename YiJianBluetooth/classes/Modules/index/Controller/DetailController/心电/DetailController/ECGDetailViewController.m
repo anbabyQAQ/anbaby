@@ -11,7 +11,12 @@
 #import "ChooseUser.h"
 #import "User.h"
 #import "UsersDao.h"
-@interface ECGDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>
+#import "Helper.h"
+
+@interface ECGDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>{
+    NSInteger _type;
+    User *_user;
+}
 
 @property(nonatomic, strong)UIScrollView *scrollerView;
 
@@ -33,9 +38,23 @@
 @property (nonatomic, strong) UILabel *HRVLabel;
 @property (nonatomic, strong) UILabel *MoodLabel;
 
+@property (nonatomic, strong) NSMutableArray *ECGdata;
+
+
 @end
 
 @implementation ECGDetailViewController
+
+@synthesize leads, btnStart, labelProfileId, labelProfileName, btnDismiss;
+@synthesize liveMode, labelRate, statusInfo, startRecordingIndex, HR, stopTheTimer;
+@synthesize buffer, DEMO, labelMsg, photoView, btnRefresh, newBornMode;
+
+int leadCountDetail = 1;
+int sampleRateDetail = 500;
+float uVpb = 0.9;
+float drawingIntervalDetail = 0.04; // the interval is greater, the drawing is faster, but more choppy, smaller -> slower and smoother
+int bufferSecondDetail = 300;
+float pixelPerUV = 5 * 10.0 / 1000;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,16 +66,35 @@
     self.scrollerView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.scrollerView];
     
-     [self initTempLayout];
-    [self initLeftBarButtonItem];
+    [self addChartViews];
     
+    [self initTempLayout];
+    [self initLeftBarButtonItem];
+    [self initrightBarButtonItem:@"重新测量" action:@selector(measureTemp)];
+
 
 }
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
     [self initwithScroll];
+    [self setLeadsLayout:self.interfaceOrientation];
+
 }
+
+- (void)measureTemp{
+    if (_type==2) {
+        [_linktopManager startECG];
+        
+    }
+}
+
+- (void)backToSuper{
+    [_linktopManager endECG];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 - (void)initwithScroll{
     
     _users = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
@@ -89,7 +127,7 @@
     
     
     self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
-    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite04.jpg"];
+//    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite04.jpg"];
     [self.scrollerView addSubview:self.pictureImageView];
     
     
@@ -134,14 +172,43 @@
     [self.scrollerView addSubview: label];
 }
 
--(void)clickBtn:(id)sender{
-    
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)setScantype:(NSInteger)scantype{
+    _type = scantype;
+    if (scantype==2) {
+        _linktopManager.sdkHealthMoniterdelegate = self;
+        [_linktopManager startECG];
+        
+    }
 }
-- (void)callBaceAddUser{
+
+
+-(void)clickBtn:(id)sender{
+    //缓存
     
+    //    [_user.dicTemp  obj]
+    if (_user) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        if (_users.count>0) {
+            [self showToast:@"请选择测量人"];
+        }else{
+            [self showToast:@"请添加测量人"];
+        }
+    }
+    
+    
+}
+#pragma mark ChooseUser代理
+
+- (void)callBaceAddUser{
     PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
     [self.navigationController pushViewController:pserson animated:YES];
+}
+
+-(void)callBackUser:(User *)user{
+    //选取用户添加记录
+    _user = user;
+    
 }
 - (NSMutableArray *)users {
     if (_users == nil) {
@@ -150,9 +217,236 @@
     return _users;
 }
 
+- (NSMutableArray *)ECGdata{
+    if (_ECGdata == nil) {
+        _ECGdata = [[NSMutableArray alloc] init];
+    }
+    return _ECGdata;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)receiveECGDataRRmax:(int)rrMax
+{
+   self.RRMAXLabel.text =  [NSString stringWithFormat:@"rrMax:%d",rrMax];
+    
+}
+
+-(void)receiveECGDataRRMin:(int)rrMin
+{
+   self.RRMINLabel.text =  [NSString stringWithFormat:@"rrMin:%d",rrMin];
+    
+}
+
+-(void)receiveECGDataHRV:(int)hrv
+{
+  self.HRVLabel.text = [NSString stringWithFormat:@"HRV:%d",hrv];
+
+    
+}
+
+-(void)receiveECGDataMood:(int)mood
+{
+    self.MoodLabel.text =  [NSString stringWithFormat:@"mood:%d",mood];
+    
+}
+
+-(void)receiveECGDataSmoothedWave:(int)smoothedWave
+{
+    //心电图数据
+    NSLog(@"ECG LineView Data:%d",smoothedWave);
+    NSNumber *num = [NSNumber numberWithInt:smoothedWave];
+    [self.ECGdata addObject:num];
+    
+}
+
+-(void)receiveECGDataHeartRate:(int)heartRate
+{
+   self.HRLabel.text = [NSString stringWithFormat:@"heartRate:%d",heartRate];
+    
+    
+}
+
+
+
+
+
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self startLiveMonitoring];
+}
+
+- (void)startLiveMonitoring
+{
+    monitoring = YES;
+    stopTheTimer = NO;
+    
+    [self startTimer_popDataFromBuffer];
+    [self startTimer_drawing];
+}
+- (void)startTimer_popDataFromBuffer
+{
+    CGFloat popDataInterval = 420.0f / sampleRateDetail;
+    
+    popDataTimer = [NSTimer scheduledTimerWithTimeInterval:popDataInterval
+                                                    target:self
+                                                  selector:@selector(timerEvent_popData)
+                                                  userInfo:NULL
+                                                   repeats:YES];
+}
+
+- (void)startTimer_drawing
+{
+    drawingTimer = [NSTimer scheduledTimerWithTimeInterval:drawingIntervalDetail
+                                                    target:self
+                                                  selector:@selector(timerEvent_drawing)
+                                                  userInfo:NULL
+                                                   repeats:YES];
+}
+
+
+- (void)timerEvent_drawing
+{
+    [self drawRealTime];
+}
+
+- (void)timerEvent_popData
+{
+    [self popDemoDataAndPushToLeads];
+}
+- (void)popDemoDataAndPushToLeads
+{
+    int length = 440;
+//    short **data = [Helper getDemoData:length];
+    
+    NSArray *data12Arrays = [self convertDemoData:self.ECGdata dataLength:length doWilsonConvert:NO];
+    
+//    for (int i=0; i<leadCountDetail; i++)
+//    {
+//        NSArray *data = [data12Arrays objectAtIndex:i];
+        [self pushPoints:data12Arrays data12Index:0];
+//    }
+    
+}
+
+- (void)pushPoints:(NSArray *)_pointsArray data12Index:(NSInteger)data12Index;
+{
+    LeadPlayer *lead = [self.leads objectAtIndex:data12Index];
+    
+    if (lead.pointsArray.count > bufferSecondDetail * sampleRateDetail)
+    {
+        [lead resetBuffer];
+    }
+    
+    if (lead.pointsArray.count - lead.currentPoint <= 2000)
+    {
+        [lead.pointsArray addObjectsFromArray:_pointsArray];
+    }
+    
+    if (data12Index==0)
+    {
+        countOfPointsInQueue = lead.pointsArray.count;
+        currentDrawingPoint = lead.currentPoint;
+    }
+}
+
+- (NSArray *)convertDemoData:(NSMutableArray*)rawdata dataLength:(int)length doWilsonConvert:(BOOL)wilsonConvert
+{
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+//    for (int i=0; i<12; i++)
+//    {
+//        NSMutableArray *array = [[NSMutableArray alloc] init];
+//        [data addObject:array];
+//    }
+    
+    for (int i=0; i<length; i++)
+    {
+//        for (int j=0; j<12; j++)
+//        {
+//            NSMutableArray *array = [data objectAtIndex:j];
+            if (rawdata.count>i ) {
+//                NSNumber *number = [NSNumber numberWithInt:rawdata[i]];
+                [data insertObject:rawdata[i] atIndex:i];
+
+            }
+//        }
+    }
+    
+    return data;
+}
+
+- (void)drawRealTime
+{
+    LeadPlayer *l = [self.leads objectAtIndex:0];
+    
+    if (l.pointsArray.count > l.currentPoint)
+    {
+        for (LeadPlayer *lead in self.leads)
+        {
+            [lead fireDrawing];
+        }
+    }
+}
+- (void)addChartViews
+{
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<leadCountDetail; i++) {
+        LeadPlayer *leadDetail = [[LeadPlayer alloc] init];
+        
+        leadDetail.layer.cornerRadius = 8;
+        leadDetail.layer.borderColor = [[UIColor grayColor] CGColor];
+        leadDetail.layer.borderWidth = 1;
+        leadDetail.clipsToBounds = YES;
+        
+        leadDetail.index = i;
+        leadDetail.pointsArray = [[NSMutableArray alloc] init];
+        
+        leadDetail.liveMonitorDetail = self;
+		      
+        [array insertObject:leadDetail atIndex:i];
+        
+        [self.scrollerView addSubview:leadDetail];
+    }
+    
+    self.leads = array;
+    
+    
+}
+
+- (void)setLeadsLayout:(UIInterfaceOrientation)orientation
+{
+    float margin = 5;
+    NSInteger leadHeight = SCR_H/667 *150;
+    NSInteger leadWidth = self.scrollerView.frame.size.width-20;
+    
+    for (int i=0; i<leadCountDetail; i++)
+    {
+        LeadPlayer *lead = [self.leads objectAtIndex:i];
+        float pos_y = i * (margin + leadHeight)+60;
+        
+        
+        [lead setFrame:CGRectMake(10., pos_y, leadWidth, leadHeight)];
+        lead.pos_x_offset = lead.currentPoint;
+        lead.alpha = 0;
+        [lead setNeedsDisplay];
+    }
+    
+    [UIView animateWithDuration:0.6f animations:^{
+        for (int i=0; i<leadCountDetail; i++)
+        {
+            LeadPlayer *lead = [self.leads objectAtIndex:i];
+            lead.alpha = 1;
+        }
+    }];
+    
 }
 
 /*

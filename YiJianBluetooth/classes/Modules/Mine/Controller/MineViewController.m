@@ -16,7 +16,7 @@
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
-
+    User *_user;
     NSInteger titleButtonInteger;//用来记录导航栏button点击次数
 }
 //导航栏下拉弹出tableView
@@ -43,6 +43,11 @@
     [super viewWillAppear:animated];
     
     self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+    
+    if (!_user && self.dropDownArray.count>0) {
+        _user = [self.dropDownArray objectAtIndex:0];
+    }
+    [self.dropDownTableView reloadData];
     
 }
 - (void)viewDidLoad {
@@ -102,6 +107,8 @@
 #pragma mark =======点击个人信息
 - (IBAction)personButtonAction:(id)sender {
     PersonalInformationViewController *person = [PersonalInformationViewController new];
+    person.user = _user;
+    
     person.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:person animated:YES];
 }
@@ -169,6 +176,9 @@
     if ([tableView isEqual:self.dropDownTableView]) {
         self.dropDownTableView.hidden = YES;
         titleButtonInteger++;
+        
+        _user = self.dropDownArray[indexPath.row];
+        
     }else{
         
     }

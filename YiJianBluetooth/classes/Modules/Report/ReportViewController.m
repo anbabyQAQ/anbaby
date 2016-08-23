@@ -108,14 +108,14 @@
     [self.radarChartView animateWithYAxisDuration:0.1f];
     
     //改变数据button
-    UIButton *updateDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    updateDataBtn.frame = CGRectMake(20, 330, SCR_W-40, 40);
-    [updateDataBtn setTitle:@"改变数据" forState:UIControlStateNormal];
-    [updateDataBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [updateDataBtn setBackgroundColor:normolColor];
-    updateDataBtn.layer.cornerRadius = 5;
-    [self.view addSubview:updateDataBtn];
-    [updateDataBtn addTarget:self action:@selector(updateDataBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *updateDataBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    updateDataBtn.frame = CGRectMake(20, 330, SCR_W-40, 40);
+//    [updateDataBtn setTitle:@"改变数据" forState:UIControlStateNormal];
+//    [updateDataBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [updateDataBtn setBackgroundColor:normolColor];
+//    updateDataBtn.layer.cornerRadius = 5;
+//    [self.view addSubview:updateDataBtn];
+//    [updateDataBtn addTarget:self action:@selector(updateDataBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
     
     _btn1 =[UIButton buttonWithType:UIButtonTypeCustom];
