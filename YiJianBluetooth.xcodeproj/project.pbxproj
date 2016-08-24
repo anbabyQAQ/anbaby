@@ -199,6 +199,12 @@
 		3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77A1D51F3B9003CAC87 /* SBJsonStreamWriterState.m */; };
 		3CC7A78A1D51F3B9003CAC87 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77C1D51F3B9003CAC87 /* SBJsonTokeniser.m */; };
 		3CC7A78B1D51F3B9003CAC87 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A77E1D51F3B9003CAC87 /* SBJsonUTF8Stream.m */; };
+		3CCA815A1D6D92A5006F7FF9 /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA81591D6D92A5006F7FF9 /* UIColor+Extensions.m */; };
+		3CCA815D1D6D92D3006F7FF9 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA815C1D6D92D3006F7FF9 /* UIView+Extensions.m */; };
+		3CCA81601D6D932D006F7FF9 /* DailAnimationview.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA815F1D6D932D006F7FF9 /* DailAnimationview.m */; };
+		3CCA81621D6D93EA006F7FF9 /* backgroundImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA81611D6D93EA006F7FF9 /* backgroundImage@2x.png */; };
+		3CCA81661D6D9487006F7FF9 /* TYLBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA81651D6D9487006F7FF9 /* TYLBezier.m */; };
+		3CCA81691D6D9507006F7FF9 /* UILabel+BezierAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA81681D6D9507006F7FF9 /* UILabel+BezierAnimation.m */; };
 		3CCEBC311D5B0857007A852D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CCEBC2A1D5B07FA007A852D /* Charts.framework */; };
 		3CCEBC321D5B0857007A852D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CCEBC2A1D5B07FA007A852D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3CCEBC381D5B08D5007A852D /* Bridge ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEBC371D5B08D5007A852D /* Bridge ViewController.swift */; };
@@ -602,6 +608,17 @@
 		3CC7A77E1D51F3B9003CAC87 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		3CC7A77F1D51F3B9003CAC87 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		3CC7A7801D51F3B9003CAC87 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		3CCA81581D6D92A5006F7FF9 /* UIColor+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extensions.h"; sourceTree = "<group>"; };
+		3CCA81591D6D92A5006F7FF9 /* UIColor+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extensions.m"; sourceTree = "<group>"; };
+		3CCA815B1D6D92D3006F7FF9 /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
+		3CCA815C1D6D92D3006F7FF9 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
+		3CCA815E1D6D932D006F7FF9 /* DailAnimationview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailAnimationview.h; sourceTree = "<group>"; };
+		3CCA815F1D6D932D006F7FF9 /* DailAnimationview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailAnimationview.m; sourceTree = "<group>"; };
+		3CCA81611D6D93EA006F7FF9 /* backgroundImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backgroundImage@2x.png"; path = "Category/backgroundImage@2x.png"; sourceTree = "<group>"; };
+		3CCA81641D6D9487006F7FF9 /* TYLBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLBezier.h; sourceTree = "<group>"; };
+		3CCA81651D6D9487006F7FF9 /* TYLBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYLBezier.m; sourceTree = "<group>"; };
+		3CCA81671D6D9507006F7FF9 /* UILabel+BezierAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BezierAnimation.h"; sourceTree = "<group>"; };
+		3CCA81681D6D9507006F7FF9 /* UILabel+BezierAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BezierAnimation.m"; sourceTree = "<group>"; };
 		3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3CCEBC361D5B08D5007A852D /* YiJianBluetooth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YiJianBluetooth-Bridging-Header.h"; sourceTree = "<group>"; };
 		3CCEBC371D5B08D5007A852D /* Bridge ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bridge ViewController.swift"; sourceTree = "<group>"; };
@@ -1598,6 +1615,8 @@
 		3CC7A6A71D51DF72003CAC87 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3CCA81631D6D946E006F7FF9 /* TYLBezier */,
+				3CCA81531D6D91DD006F7FF9 /* DialAnimation */,
 				3C796BAD1D5C50AD00862460 /* UIViewController+BackButtonHandler */,
 				3C221AE01D59B4C20000EE18 /* Global */,
 				3C9205931D59940A00781D3D /* LKDBHelper */,
@@ -1758,6 +1777,39 @@
 				3CC7A7801D51F3B9003CAC87 /* SBJsonWriter.m */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		3CCA81531D6D91DD006F7FF9 /* DialAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				3CCA81611D6D93EA006F7FF9 /* backgroundImage@2x.png */,
+				3CCA81571D6D91FE006F7FF9 /* Category */,
+				3CCA815E1D6D932D006F7FF9 /* DailAnimationview.h */,
+				3CCA815F1D6D932D006F7FF9 /* DailAnimationview.m */,
+			);
+			path = DialAnimation;
+			sourceTree = "<group>";
+		};
+		3CCA81571D6D91FE006F7FF9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3CCA81581D6D92A5006F7FF9 /* UIColor+Extensions.h */,
+				3CCA81591D6D92A5006F7FF9 /* UIColor+Extensions.m */,
+				3CCA815B1D6D92D3006F7FF9 /* UIView+Extensions.h */,
+				3CCA815C1D6D92D3006F7FF9 /* UIView+Extensions.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		3CCA81631D6D946E006F7FF9 /* TYLBezier */ = {
+			isa = PBXGroup;
+			children = (
+				3CCA81641D6D9487006F7FF9 /* TYLBezier.h */,
+				3CCA81651D6D9487006F7FF9 /* TYLBezier.m */,
+				3CCA81671D6D9507006F7FF9 /* UILabel+BezierAnimation.h */,
+				3CCA81681D6D9507006F7FF9 /* UILabel+BezierAnimation.m */,
+			);
+			path = TYLBezier;
 			sourceTree = "<group>";
 		};
 		3CCEBC231D5B07FA007A852D /* Products */ = {
@@ -2017,7 +2069,7 @@
 				TargetAttributes = {
 					18B4C9F51D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = VMP22QHMQ4;
+						DevelopmentTeam = DGKWFHS998;
 					};
 					18B4CA0E1D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -2177,6 +2229,7 @@
 				3C5675831D62D361008B964D /* 血糖.png in Resources */,
 				3CC7A67E1D51DCC2003CAC87 /* tabbar-light@2x.png in Resources */,
 				3C5675701D62BFFD008B964D /* other_1@2x.png in Resources */,
+				3CCA81621D6D93EA006F7FF9 /* backgroundImage@2x.png in Resources */,
 				3CC7A6831D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CF367FF1D548E6800726B20 /* RegisterViewController.xib in Resources */,
 				3CC7A6F11D51E0B7003CAC87 /* close-button-3.png in Resources */,
@@ -2377,6 +2430,7 @@
 				3CF2F6601D596CD7002D5682 /* JGProgressHUDRingIndicatorView.m in Sources */,
 				3C113E161D588440004099BB /* MyCustomButton.m in Sources */,
 				3CC7A6F71D51E0B7003CAC87 /* PostJsonHttpThread.m in Sources */,
+				3CCA81601D6D932D006F7FF9 /* DailAnimationview.m in Sources */,
 				3C796BAB1D5C466800862460 /* BloodOxygenViewController.m in Sources */,
 				3C5675921D62F09B008B964D /* ChooseUser.m in Sources */,
 				3C9E27E81D6422CB00DC60B5 /* ConnectedViewController.m in Sources */,
@@ -2396,6 +2450,8 @@
 				3C221AFA1D59B4C20000EE18 /* CTSIGlobalUserDefault.m in Sources */,
 				18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */,
 				3C221B081D59B9480000EE18 /* ReportViewController.m in Sources */,
+				3CCA81661D6D9487006F7FF9 /* TYLBezier.m in Sources */,
+				3CCA81691D6D9507006F7FF9 /* UILabel+BezierAnimation.m in Sources */,
 				3CC7A6EA1D51E0B7003CAC87 /* TSFileCache.m in Sources */,
 				3CC7A7821D51F3B9003CAC87 /* SBJsonParser.m in Sources */,
 				3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */,
@@ -2404,6 +2460,8 @@
 				3CF3680E1D548EFB00726B20 /* TypeCollectionViewCell.m in Sources */,
 				3C9205A51D5994DE00781D3D /* UsersDao.m in Sources */,
 				3C56759B1D62F1B6008B964D /* LineLayout.m in Sources */,
+				3CCA815A1D6D92A5006F7FF9 /* UIColor+Extensions.m in Sources */,
+				3CCA815D1D6D92D3006F7FF9 /* UIView+Extensions.m in Sources */,
 				3CF2F66F1D597F86002D5682 /* User.m in Sources */,
 				1855A4851D659A2500B03B5A /* BPDetailViewController.m in Sources */,
 				3C8D3B3D1D5433110061997F /* TabbarExtension.m in Sources */,
@@ -2509,8 +2567,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2553,8 +2611,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 玉龙 田 (NU9GQQ9JKF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
