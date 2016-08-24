@@ -109,8 +109,8 @@
     self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
     
-    self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
-    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite01.jpg"];
+    self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCR_W / 2 - 100, 60, 200, 200)];
+    self.pictureImageView.image = [UIImage imageNamed:@"blood_press.png"];
     [self.view addSubview:self.pictureImageView];
     
     

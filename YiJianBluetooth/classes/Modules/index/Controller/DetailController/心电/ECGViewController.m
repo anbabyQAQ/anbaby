@@ -115,7 +115,7 @@
 
 
     self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
-    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite04.jpg"];
+    self.pictureImageView.image = [UIImage imageNamed:@"ecg.png"];
     [self.view addSubview:self.pictureImageView];
     
     

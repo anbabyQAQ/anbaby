@@ -20,7 +20,7 @@
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
 
-@property (nonatomic, strong) UILabel *stateLabel;//状态
+
 @property (nonatomic, strong) UILabel *electricityLabel;//电量
 
 @property (nonatomic, strong) UILabel *resultLabel;
@@ -80,26 +80,17 @@
     self.temp_lab.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
     self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
-
-
-    self.stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCR_W - 115, 20, 100, 20)];
-    self.stateLabel.textAlignment=NSTextAlignmentRight;
-    self.stateLabel.text=@"状态";
-    self.stateLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    self.stateLabel.textColor = [UIColor blackColor];
-    [self.view addSubview: self.stateLabel];
     
-    
-    self.electricityLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCR_W/2 - 75, 20, 150, 20)];
-    self.electricityLabel.textAlignment=NSTextAlignmentCenter;
-    self.electricityLabel.text=@"仪器用电量";
-    self.electricityLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    self.electricityLabel.textColor = [UIColor blackColor];
-    [self.view addSubview: self.electricityLabel];
+//    self.electricityLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCR_W - 165, 20, 150, 20)];
+//    self.electricityLabel.textAlignment=NSTextAlignmentCenter;
+//    self.electricityLabel.text=@"仪器用电量";
+//    self.electricityLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
+//    self.electricityLabel.textColor = [UIColor blackColor];
+//    [self.view addSubview: self.electricityLabel];
     
 
     self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
-    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite00.jpg"];
+    self.pictureImageView.image = [UIImage imageNamed:@"blood_sugar.png"];
     [self.view addSubview:self.pictureImageView];
     
     

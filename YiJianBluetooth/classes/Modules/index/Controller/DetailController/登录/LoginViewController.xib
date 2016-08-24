@@ -199,7 +199,7 @@
                         </mask>
                     </variation>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FeatureHRS" translatesAutoresizingMaskIntoConstraints="NO" id="1Or-Gf-FDH">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="心率.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Or-Gf-FDH">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="soZ-75-SYj"/>
@@ -221,7 +221,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWr-qt-Dbq">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W9l-vq-tbQ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="心率.png" translatesAutoresizingMaskIntoConstraints="NO" id="W9l-vq-tbQ">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="240" id="a20-bD-e9P">
@@ -433,6 +433,6 @@
         </view>
     </objects>
     <resources>
-        <image name="FeatureHRS" width="78" height="78"/>
+        <image name="心率.png" width="128" height="128"/>
     </resources>
 </document>

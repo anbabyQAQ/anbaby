@@ -106,15 +106,9 @@
     self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
     
-    
-
-    
-    
     self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
-    self.pictureImageView.image = [UIImage imageNamed:@"Yosemite00.jpg"];
+    self.pictureImageView.image = [UIImage imageNamed:@"blood_sugar.png"];
     [self.view addSubview:self.pictureImageView];
-   
-    
     
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
