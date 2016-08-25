@@ -19,6 +19,8 @@
 #import "BSViewController.h"//血糖
 #import "BPViewController.h"//血压
 #import "BOViewController.h"//血氧
+#import "LoginViewController.h"
+#import "NewFeatureViewController.h"
 
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -66,6 +68,15 @@ static NSString *cellInte = @"typeCell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Login"] isEqualToString:@"yes"]) {
+        
+        LoginViewController *login = [[LoginViewController alloc] init];
+        [self presentViewController:login animated:YES completion:nil];
+    }
+    
+
+  
+  
 }
 
 - (void)viewDidLoad {

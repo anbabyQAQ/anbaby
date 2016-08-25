@@ -9,6 +9,7 @@
 #import "DailAnimationview.h"
 #import "UIColor+Extensions.h"
 #import "UIView+Extensions.h"
+#import "UILabel+BezierAnimation.h"
 
 
 
@@ -186,6 +187,8 @@ static const CGFloat kAnimationTime = 2.f;
     
     _text = text;
     self.commentLabel.text = text;
+    [self.commentLabel animationFromnum:350 toNum:text.floatValue duration:2.f ConnectText:@""];
+
 }
 
 - (UIImageView *)markerImageView {
@@ -219,6 +222,7 @@ static const CGFloat kAnimationTime = 2.f;
         _commentLabel.textAlignment = NSTextAlignmentCenter;
         _commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
         _commentLabel.numberOfLines = 0;
+        _commentLabel.backgroundColor = [UIColor whiteColor];
     }
     return _commentLabel;
 }

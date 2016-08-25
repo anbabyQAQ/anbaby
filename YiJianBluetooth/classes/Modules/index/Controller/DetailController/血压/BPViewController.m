@@ -10,6 +10,8 @@
 #import "ScannerViewController.h"
 #import "BPDetailViewController.h"
 #import "BloodPressureViewController.h"
+#import "DailAnimationview.h"
+
 @interface BPViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UILabel  *temp_lab;
@@ -109,10 +111,18 @@
     self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
     
-    self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCR_W / 2 - 100, 60, 200, 200)];
-    self.pictureImageView.image = [UIImage imageNamed:@"blood_press.png"];
-    [self.view addSubview:self.pictureImageView];
+//    self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCR_W / 2 - 100, 60, 200, 200)];
+//    self.pictureImageView.image = [UIImage imageNamed:@"blood_press.png"];
+//    [self.view addSubview:self.pictureImageView];
+
+    DailAnimationview *view = [[DailAnimationview alloc] initWithFrame:CGRectMake(40.f, 70.f, SCR_W - 80.f, SCR_W - 80.f)];
+    view.bgImage = [UIImage imageNamed:@"backgroundImage"];
+    view.percent = 0.f;
     
+    view.percent = 60.f;
+    view.text = [NSString stringWithFormat:@"%@",@"120"];
+    
+    [self.view addSubview:view];
     
     
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];

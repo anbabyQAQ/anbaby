@@ -8,6 +8,7 @@
 
 #import "NewFeatureViewController.h"
 #import "LoginViewController.h"
+#import "MainTabBarController.h"
 
 #define WMColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
@@ -147,12 +148,14 @@
 {
     //显示状态栏
     [UIApplication sharedApplication].statusBarHidden = NO;
-    [[NSUserDefaults standardUserDefaults] setObject:@"y" forKey:@"first"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"first"];
     //切换窗口的根控制器
-    LoginViewController *main = [[LoginViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:main];
-    [self presentViewController:nav animated:YES completion:nil];
     
+    MainTabBarController *main = [[MainTabBarController alloc] init];
+    //重新制定根控制器
+    [[UIApplication sharedApplication].keyWindow setRootViewController:main];
+
+//    [UIApplication sharedApplication].keyWindow.rootViewController
 }
 
 

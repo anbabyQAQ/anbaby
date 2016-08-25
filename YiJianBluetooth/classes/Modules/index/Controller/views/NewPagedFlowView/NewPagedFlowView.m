@@ -321,7 +321,7 @@
         }
         
         //重置pageWidth
-        if (_delegate && [_delegate respondsToSelector:@selector(sizeForPageInFlowView:)]) {
+        if (self.delegate && [_delegate respondsToSelector:@selector(sizeForPageInFlowView:)]) {
             _pageSize = [_delegate sizeForPageInFlowView:self];
         }
         
@@ -436,7 +436,7 @@
     
     //    NSLog(@"%f",scrollView.contentOffset.x / _pageSize.width);
     
-    NSInteger pageIndex;
+    NSInteger pageIndex = 0;
     
     switch (self.orientation) {
         case NewPagedFlowViewOrientationHorizontal:
@@ -482,7 +482,7 @@
         [self.pageControl setCurrentPage:pageIndex];
     }
     
-    if ([_delegate respondsToSelector:@selector(didScrollToPage:inFlowView:)] && _currentPageIndex != pageIndex) {
+    if ([self.delegate respondsToSelector:@selector(didScrollToPage:inFlowView:)] && _currentPageIndex != pageIndex) {
         [_delegate didScrollToPage:pageIndex inFlowView:self];
     }
     
