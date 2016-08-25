@@ -139,8 +139,7 @@
     if (alertView.tag == 1006) {
         if (buttonIndex == 1) {
             LoginViewController *login = [LoginViewController new];
-            login.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:login animated:YES];
+            [self presentViewController:login animated:YES completion:nil];
         }
     }
 }

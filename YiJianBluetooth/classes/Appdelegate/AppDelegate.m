@@ -30,26 +30,21 @@
     application.applicationIconBadgeNumber = 0;
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
 
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"first"]) {
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"first"]) {
         
-        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Login"] isEqualToString:@"yes"]) {
         
-            MainTabBarController *main = [[MainTabBarController alloc] init];
-            //重新制定根控制器
-            self.window.rootViewController = main;
-        }else{
-        
-            LoginViewController *login = [[LoginViewController alloc] init];
-            self.window.rootViewController = login;
-        }
-    }else{
         NewFeatureViewController *new = [[NewFeatureViewController alloc] init];
         self.window.rootViewController = new;
-    
+
+    }else{
+        MainTabBarController *main = [[MainTabBarController alloc] init];
+        //重新制定根控制器
+        self.window.rootViewController = main;
+        
     }
-    
-    
     
     [self.window makeKeyAndVisible];
     return YES;

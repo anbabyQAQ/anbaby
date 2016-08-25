@@ -71,7 +71,6 @@
 		3C221B081D59B9480000EE18 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C221B071D59B9480000EE18 /* ReportViewController.m */; };
 		3C2790DF1D6ABA2300EF2578 /* printer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C2790DE1D6ABA2300EF2578 /* printer.png */; };
 		3C4817101D5DA79A001BCB8F /* ScannedPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C48170C1D5DA79A001BCB8F /* ScannedPeripheral.m */; };
-		3C4817111D5DA79A001BCB8F /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C48170F1D5DA79A001BCB8F /* ScannerViewController.m */; };
 		3C4817151D5DA7E9001BCB8F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C4817141D5DA7E9001BCB8F /* Utility.m */; };
 		3C4817171D5DABEE001BCB8F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4817161D5DABEE001BCB8F /* CoreBluetooth.framework */; };
 		3C56756E1D62BFFD008B964D /* mine_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C5675651D62BFFD008B964D /* mine_1@2x.png */; };
@@ -130,7 +129,6 @@
 		3C9205B71D599CC500781D3D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9205B61D599CC500781D3D /* libsqlite3.0.tbd */; };
 		3C9205BA1D599DEB00781D3D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9205B81D599DEB00781D3D /* libsqlite3.dylib */; };
 		3C9205BB1D599DEB00781D3D /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9205B91D599DEB00781D3D /* libz.1.dylib */; };
-		3C9E27D81D63F8F100DC60B5 /* libSDKHealthMoniter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9E27D61D63F8F100DC60B5 /* libSDKHealthMoniter.a */; };
 		3C9E27E41D64050800DC60B5 /* CBPeripheral+category.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9E27E31D64050800DC60B5 /* CBPeripheral+category.m */; };
 		3C9E27E81D6422CB00DC60B5 /* ConnectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9E27E71D6422CB00DC60B5 /* ConnectedViewController.m */; };
 		3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6401D51DBD0003CAC87 /* ServiceViewController.m */; };
@@ -209,6 +207,8 @@
 		3CCA81621D6D93EA006F7FF9 /* backgroundImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA81611D6D93EA006F7FF9 /* backgroundImage@2x.png */; };
 		3CCA81661D6D9487006F7FF9 /* TYLBezier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA81651D6D9487006F7FF9 /* TYLBezier.m */; };
 		3CCA81691D6D9507006F7FF9 /* UILabel+BezierAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA81681D6D9507006F7FF9 /* UILabel+BezierAnimation.m */; };
+		3CCA816E1D6D9D1F006F7FF9 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C48170F1D5DA79A001BCB8F /* ScannerViewController.m */; };
+		3CCA81711D6D9FB1006F7FF9 /* libSDKHealthMoniter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CCA816F1D6D9FB1006F7FF9 /* libSDKHealthMoniter.a */; };
 		3CCEBC311D5B0857007A852D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CCEBC2A1D5B07FA007A852D /* Charts.framework */; };
 		3CCEBC321D5B0857007A852D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3CCEBC2A1D5B07FA007A852D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3CCEBC381D5B08D5007A852D /* Bridge ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCEBC371D5B08D5007A852D /* Bridge ViewController.swift */; };
@@ -503,8 +503,6 @@
 		3C9205B61D599CC500781D3D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		3C9205B81D599DEB00781D3D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		3C9205B91D599DEB00781D3D /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
-		3C9E27D61D63F8F100DC60B5 /* libSDKHealthMoniter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDKHealthMoniter.a; sourceTree = "<group>"; };
-		3C9E27D71D63F8F100DC60B5 /* SDKHealthMoniter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKHealthMoniter.h; sourceTree = "<group>"; };
 		3C9E27E21D64050800DC60B5 /* CBPeripheral+category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBPeripheral+category.h"; sourceTree = "<group>"; };
 		3C9E27E31D64050800DC60B5 /* CBPeripheral+category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheral+category.m"; sourceTree = "<group>"; };
 		3C9E27E61D6422CB00DC60B5 /* ConnectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectedViewController.h; sourceTree = "<group>"; };
@@ -627,6 +625,8 @@
 		3CCA81651D6D9487006F7FF9 /* TYLBezier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYLBezier.m; sourceTree = "<group>"; };
 		3CCA81671D6D9507006F7FF9 /* UILabel+BezierAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BezierAnimation.h"; sourceTree = "<group>"; };
 		3CCA81681D6D9507006F7FF9 /* UILabel+BezierAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BezierAnimation.m"; sourceTree = "<group>"; };
+		3CCA816F1D6D9FB1006F7FF9 /* libSDKHealthMoniter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSDKHealthMoniter.a; sourceTree = "<group>"; };
+		3CCA81701D6D9FB1006F7FF9 /* SDKHealthMoniter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKHealthMoniter.h; sourceTree = "<group>"; };
 		3CCEBC221D5B07FA007A852D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3CCEBC361D5B08D5007A852D /* YiJianBluetooth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YiJianBluetooth-Bridging-Header.h"; sourceTree = "<group>"; };
 		3CCEBC371D5B08D5007A852D /* Bridge ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bridge ViewController.swift"; sourceTree = "<group>"; };
@@ -686,7 +686,7 @@
 				3C9205B71D599CC500781D3D /* libsqlite3.0.tbd in Frameworks */,
 				3C9205B51D599C7400781D3D /* Foundation.framework in Frameworks */,
 				3C9205B31D599C6E00781D3D /* UIKit.framework in Frameworks */,
-				3C9E27D81D63F8F100DC60B5 /* libSDKHealthMoniter.a in Frameworks */,
+				3CCA81711D6D9FB1006F7FF9 /* libSDKHealthMoniter.a in Frameworks */,
 				3C9205B11D599BD500781D3D /* libsqlite3.tbd in Frameworks */,
 				8FAE3859BD4252ED2061B44E /* libPods-YiJianBluetooth.a in Frameworks */,
 			);
@@ -1424,8 +1424,8 @@
 		3C9E27D51D63F7FC00DC60B5 /* LinkTop */ = {
 			isa = PBXGroup;
 			children = (
-				3C9E27D61D63F8F100DC60B5 /* libSDKHealthMoniter.a */,
-				3C9E27D71D63F8F100DC60B5 /* SDKHealthMoniter.h */,
+				3CCA816F1D6D9FB1006F7FF9 /* libSDKHealthMoniter.a */,
+				3CCA81701D6D9FB1006F7FF9 /* SDKHealthMoniter.h */,
 				3C9E27E21D64050800DC60B5 /* CBPeripheral+category.h */,
 				3C9E27E31D64050800DC60B5 /* CBPeripheral+category.m */,
 			);
@@ -2410,6 +2410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CCA816E1D6D9D1F006F7FF9 /* ScannerViewController.m in Sources */,
 				3C221B001D59B4C20000EE18 /* FileUtil.m in Sources */,
 				3C796BCD1D5C6D3200862460 /* HeartRateSetDetailViewController.m in Sources */,
 				1855A47A1D65802000B03B5A /* BSDetailViewController.m in Sources */,
@@ -2480,7 +2481,6 @@
 				3CC7A7821D51F3B9003CAC87 /* SBJsonParser.m in Sources */,
 				3CF367FE1D548E6800726B20 /* RegisterViewController.m in Sources */,
 				3CC7A7831D51F3B9003CAC87 /* SBJsonStreamParser.m in Sources */,
-				3C4817111D5DA79A001BCB8F /* ScannerViewController.m in Sources */,
 				3CF3680E1D548EFB00726B20 /* TypeCollectionViewCell.m in Sources */,
 				3C9205A51D5994DE00781D3D /* UsersDao.m in Sources */,
 				3C56759B1D62F1B6008B964D /* LineLayout.m in Sources */,

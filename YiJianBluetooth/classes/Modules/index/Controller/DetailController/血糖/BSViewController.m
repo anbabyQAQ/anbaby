@@ -10,6 +10,9 @@
 #import "ScannerViewController.h"
 #import "BSDetailViewController.h"
 #import "BloodSugarViewController.h"
+
+#import "DailAnimationview.h"
+
 @interface BSViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UILabel  *temp_lab;
 @property (nonatomic, strong) UIButton *startTest_btn;
@@ -106,9 +109,21 @@
     self.temp_lab.textColor = [UIColor blackColor];
     [self.view addSubview: self.temp_lab];
     
-    self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
-    self.pictureImageView.image = [UIImage imageNamed:@"blood_sugar.png"];
-    [self.view addSubview:self.pictureImageView];
+//    self.pictureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, SCR_W - 40, SCR_H/667 *150)];
+//    self.pictureImageView.image = [UIImage imageNamed:@"blood_sugar.png"];
+//    [self.view addSubview:self.pictureImageView];
+    
+    DailAnimationview *view = [[DailAnimationview alloc] initWithFrame:CGRectMake(40.f, 70.f, SCR_W - 80.f, SCR_W - 80.f)];
+    view.bgImage = [UIImage imageNamed:@"backgroundImage"];
+    view.percent = 0.f;
+    
+    view.percent = 50.f;
+    view.text = [NSString stringWithFormat:@"%@",@"475"];
+    
+    [self.view addSubview:view];
+    
+    
+    
     
     _startTest_btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _startTest_btn.frame = CGRectMake(20, SCR_H-NAVIGATION_HEIGHT-70, SCR_W-40, 50);
