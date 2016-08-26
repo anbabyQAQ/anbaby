@@ -15,6 +15,10 @@
 		1826996D1D6D90F30037FB26 /* blood_bo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1826996C1D6D90F30037FB26 /* blood_bo.jpg */; };
 		1826996F1D6D92EA0037FB26 /* blood_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 1826996E1D6D92EA0037FB26 /* blood_press.png */; };
 		182699711D6D94C00037FB26 /* blood_sugar.png in Resources */ = {isa = PBXBuildFile; fileRef = 182699701D6D94C00037FB26 /* blood_sugar.png */; };
+		184D5F261D7024C20055FDBA /* 828.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D5F221D7024C20055FDBA /* 828.jpg */; };
+		184D5F271D7024C20055FDBA /* wd_ditu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D5F231D7024C20055FDBA /* wd_ditu.jpg */; };
+		184D5F281D7024C20055FDBA /* wd_ditu640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D5F241D7024C20055FDBA /* wd_ditu640.jpg */; };
+		184D5F291D7024C20055FDBA /* wd_ditu1080.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D5F251D7024C20055FDBA /* wd_ditu1080.jpg */; };
 		1855A47A1D65802000B03B5A /* BSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855A4791D65802000B03B5A /* BSDetailViewController.m */; };
 		1855A4821D65970900B03B5A /* BPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855A4811D65970900B03B5A /* BPViewController.m */; };
 		1855A4851D659A2500B03B5A /* BPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855A4841D659A2500B03B5A /* BPDetailViewController.m */; };
@@ -316,6 +320,10 @@
 		1826996C1D6D90F30037FB26 /* blood_bo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blood_bo.jpg; sourceTree = "<group>"; };
 		1826996E1D6D92EA0037FB26 /* blood_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blood_press.png; sourceTree = "<group>"; };
 		182699701D6D94C00037FB26 /* blood_sugar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blood_sugar.png; sourceTree = "<group>"; };
+		184D5F221D7024C20055FDBA /* 828.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 828.jpg; sourceTree = "<group>"; };
+		184D5F231D7024C20055FDBA /* wd_ditu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wd_ditu.jpg; sourceTree = "<group>"; };
+		184D5F241D7024C20055FDBA /* wd_ditu640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wd_ditu640.jpg; sourceTree = "<group>"; };
+		184D5F251D7024C20055FDBA /* wd_ditu1080.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wd_ditu1080.jpg; sourceTree = "<group>"; };
 		1855A4781D65802000B03B5A /* BSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDetailViewController.h; sourceTree = "<group>"; };
 		1855A4791D65802000B03B5A /* BSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDetailViewController.m; sourceTree = "<group>"; };
 		1855A4801D65970900B03B5A /* BPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPViewController.h; sourceTree = "<group>"; };
@@ -805,6 +813,17 @@
 			name = "image站位";
 			sourceTree = "<group>";
 		};
+		184D5F1E1D70247A0055FDBA /* headImage */ = {
+			isa = PBXGroup;
+			children = (
+				184D5F221D7024C20055FDBA /* 828.jpg */,
+				184D5F231D7024C20055FDBA /* wd_ditu.jpg */,
+				184D5F241D7024C20055FDBA /* wd_ditu640.jpg */,
+				184D5F251D7024C20055FDBA /* wd_ditu1080.jpg */,
+			);
+			name = headImage;
+			sourceTree = "<group>";
+		};
 		1855A47E1D65969800B03B5A /* 血压 */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,6 +893,7 @@
 		187406E31D598F1C0091C30C /* 个人信息 */ = {
 			isa = PBXGroup;
 			children = (
+				184D5F1E1D70247A0055FDBA /* headImage */,
 				18E94B311D5AB3CF00F865FF /* PersonalInformationViewController.h */,
 				18E94B321D5AB3CF00F865FF /* PersonalInformationViewController.m */,
 				18E94B331D5AB3CF00F865FF /* PersonalInformationViewController.xib */,
@@ -2175,15 +2195,18 @@
 				182699691D6D8DAB0037FB26 /* ecg.png in Resources */,
 				185A5C301D6AD2EE009A09E3 /* welcome.png in Resources */,
 				3CC7A6961D51DCC2003CAC87 /* tabBar_me_icon@3x.png in Resources */,
+				184D5F271D7024C20055FDBA /* wd_ditu.jpg in Resources */,
 				3CC7A69C1D51DCC2003CAC87 /* tabBar_new_icon.png in Resources */,
 				3C9205AD1D59988A00781D3D /* tabBar_publish_icon.png in Resources */,
 				185A5C371D6AD64D009A09E3 /* guide_2.png in Resources */,
 				3CC7A6941D51DCC2003CAC87 /* tabBar_me_icon.png in Resources */,
 				18B4CA091D47393A00E65C63 /* LaunchScreen.storyboard in Resources */,
 				3CC7A68F1D51DCC2003CAC87 /* Contents.json in Resources */,
+				184D5F281D7024C20055FDBA /* wd_ditu640.jpg in Resources */,
 				3CC7A69B1D51DCC2003CAC87 /* Contents.json in Resources */,
 				3CC7A6951D51DCC2003CAC87 /* tabBar_me_icon@2x.png in Resources */,
 				3CC7A6A61D51DCC2003CAC87 /* tabBar_publish_icon@3x.png in Resources */,
+				184D5F291D7024C20055FDBA /* wd_ditu1080.jpg in Resources */,
 				3CC7A6911D51DCC2003CAC87 /* tabBar_me_click_icon@2x.png in Resources */,
 				3C9205AE1D59988A00781D3D /* tabBar_publish_icon@2x.png in Resources */,
 				18E94B3B1D5ACE7F00F865FF /* FamilyViewController.xib in Resources */,
@@ -2251,6 +2274,7 @@
 				3C9205AF1D59988A00781D3D /* tabBar_publish_icon@3x.png in Resources */,
 				3C5675831D62D361008B964D /* 血糖.png in Resources */,
 				3CC7A67E1D51DCC2003CAC87 /* tabbar-light@2x.png in Resources */,
+				184D5F261D7024C20055FDBA /* 828.jpg in Resources */,
 				182699711D6D94C00037FB26 /* blood_sugar.png in Resources */,
 				3C5675701D62BFFD008B964D /* other_1@2x.png in Resources */,
 				3CCA81621D6D93EA006F7FF9 /* backgroundImage@2x.png in Resources */,

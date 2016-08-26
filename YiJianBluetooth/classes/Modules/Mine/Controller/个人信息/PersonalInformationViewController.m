@@ -14,12 +14,14 @@
 {
 
     UIPickerView *_PickerView;
+    UIDatePicker *datePic;
     NSInteger pickInterger;
     
     NSString *heightString;
     NSString *weightString;
     NSString *ageString;
     NSString *sexString;
+
     
     User *_singleuser;
 }
@@ -27,6 +29,9 @@
 @property(nonatomic, strong)UIView *writeView;
 @property(nonatomic, strong)UIView *toumingView;
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *beiJingImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *touXiangImageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 
@@ -59,6 +64,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nextButtonTopBoy;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
+
+
+@property(nonatomic, strong)NSString *dateString;
 @end
 
 @implementation PersonalInformationViewController
@@ -96,6 +104,21 @@
             sexString=@"男";
         }
     }
+    
+    
+    if ([UIScreen mainScreen].bounds.size.width == 320) {
+        self.beiJingImageView.image = [UIImage imageNamed:@"wd_ditu640.jpg"];
+    }else if ([UIScreen mainScreen].bounds.size.width == 375){
+        
+        self.beiJingImageView.image = [UIImage imageNamed:@"wd_ditu.jpg"];
+    }else if (SCR_H == 736){
+        
+        self.beiJingImageView.image = [UIImage imageNamed:@"828.jpg"];
+    }
+    _touXiangImageView.layer.masksToBounds = YES;
+    //    cell.touXiangImageView.layer.cornerRadius = 42;
+    //
+    self.touXiangImageView.layer.cornerRadius = 42;
     
 }
 
@@ -194,36 +217,16 @@
     
     
 }
-- (IBAction)nextButtonAction:(id)sender {
-    
-    
-    if ([sexString isEqualToString:@""]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有选择性别，放弃修改点击左上角关闭按钮" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert show];
-    }else{
-        [self.sexButton setTitle:sexString forState:(UIControlStateNormal)];
-        
-        self.sexView.hidden = YES;
-        [self.grilButton setImage:[UIImage imageNamed:@"person_gril2.png"] forState:(UIControlStateNormal)];
-        [self.boyButton setImage:[UIImage imageNamed:@"person_boy4.png"] forState:(UIControlStateNormal)];
-        sexString = @"";
-        
-        self.navigationController.navigationBarHidden = NO;
-    }
-}
-- (IBAction)guanbiButtonAction:(id)sender {
-    self.navigationController.navigationBarHidden = NO;
-    sexString = @"";
-    self.sexView.hidden = YES;
-    [self.grilButton setImage:[UIImage imageNamed:@"person_gril2.png"] forState:(UIControlStateNormal)];
-    [self.boyButton setImage:[UIImage imageNamed:@"person_boy4.png"] forState:(UIControlStateNormal)];
-}
+
+
 
 #pragma mark ======身高按钮点击事件
 - (IBAction)heightButtonAction:(id)sender {
     
     pickInterger = 1;
     [self addPickView];
+    [_PickerView selectRow:90 inComponent:0 animated:NO];
+    
 }
 
 #pragma mark ======体重按钮点击事件
@@ -231,6 +234,7 @@
     
     pickInterger = 2;
     [self addPickView];
+    [_PickerView selectRow:45 inComponent:0 animated:NO];
 
 }
 #pragma mark ======年龄按钮点击事件
@@ -269,25 +273,36 @@
     [_writeView addSubview:danweiLabel];
     
     //添加取消按钮
-    UIButton *quxiaoButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 40, 30)];
+    UIButton *quxiaoButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 5, 60, 30)];
     [quxiaoButton setTitle:@"取消" forState:UIControlStateNormal];
     [quxiaoButton setTitleColor:[UIColor blueColor] forState:(UIControlStateNormal)];
     [quxiaoButton addTarget:self action:@selector(pickerViewQuXiaoAction:) forControlEvents:UIControlEventTouchUpInside];
     [_writeView addSubview:quxiaoButton];
     
     //添加确定按钮
-    UIButton *quedingButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 40 , 5, 40, 30)];
+    UIButton *quedingButton = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 60 , 5, 60, 30)];
     [quedingButton setTitle:@"确定" forState:UIControlStateNormal];
     [quedingButton setTitleColor:[UIColor blueColor] forState:(UIControlStateNormal)];
     [quedingButton addTarget:self action:@selector(pickerViewQueDingAction:) forControlEvents:UIControlEventTouchUpInside];
     [_writeView addSubview:quedingButton];
     
     //添加pickView
-    _PickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 180)];
-    _PickerView.backgroundColor = UIColorFromRGB(0xeeeeee);
-    _PickerView.delegate = self;
-    _PickerView.dataSource = self;
-    [_writeView addSubview:_PickerView];
+    
+    if (pickInterger != 3) {
+        _PickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 180)];
+        _PickerView.backgroundColor = UIColorFromRGB(0xeeeeee);
+        _PickerView.delegate = self;
+        _PickerView.dataSource = self;
+        [_writeView addSubview:_PickerView];
+    }else{
+    
+        datePic = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, SCR_W - 20, 180)];
+        datePic.backgroundColor = [UIColor whiteColor];
+        datePic.datePickerMode = UIDatePickerModeDate;
+        [datePic addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+        [_writeView addSubview:datePic];
+    }
+   
     
 }
 
@@ -308,7 +323,11 @@
         
         [self.weightButton setTitle:weightString forState:(UIControlStateNormal)] ;
     }else{
-        [self.ageButton setTitle:ageString forState:(UIControlStateNormal)] ;
+        
+        if (self.dateString == nil) {
+            self.dateString = @"未填写";
+        }
+        [self.ageButton setTitle:self.dateString forState:(UIControlStateNormal)] ;
     }
 
     [_toumingView removeFromSuperview];
@@ -321,6 +340,26 @@
     [_writeView removeFromSuperview];
     
 }
+
+
+// datePicker日期改变会调用此方法
+-(void)dateChanged:(id)sender
+{
+    
+    
+    UIDatePicker *datePicker = (UIDatePicker *)sender;
+    NSDate *selected = [datePicker date];
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式,这里可以设置成自己需要的格式
+    [dateFormatter setDateFormat:@"yyyy.MM.dd"];
+    
+    
+    self.dateString  = [dateFormatter stringFromDate:selected];
+    
+    
+}
+
 #pragma mark - UIPickerViewDelegate
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -334,9 +373,6 @@
     }else if (pickInterger == 2){
     
         return self.weightArray.count;
-    }else if (pickInterger == 3){
-    
-        return self.ageArray.count;
     }
     return 1;
 }
