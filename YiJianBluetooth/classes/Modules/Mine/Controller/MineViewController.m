@@ -107,11 +107,13 @@
 }
 #pragma mark =======点击个人信息
 - (IBAction)personButtonAction:(id)sender {
-    PersonalInformationViewController *person = [PersonalInformationViewController new];
-    person.user = _user;
+   // PersonalInformationViewController *person = [PersonalInformationViewController new];
     
-    person.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:person animated:YES];
+    
+    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user andEditable:YES];
+
+    guanyuVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:guanyuVC animated:YES];
 }
 
 #pragma mark =======点击我的亲友
@@ -123,8 +125,8 @@
 
 #pragma mark ===========关于我们==============
 - (IBAction)guanYuWoMenButtonAction:(id)sender {
-//    GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
-    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] init];
+   GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
+//    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] init];
 
     guanyuVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:guanyuVC animated:YES];

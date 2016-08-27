@@ -115,13 +115,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiJianBluetooth/classes/Modules/Mine/Controller/MineViewController.m"
-            timestampString = "493892358.902525"
+            filePath = "YiJianBluetooth/classes/Modules/Mine/Controller/&#x4e2a;&#x4eba;&#x4fe1;&#x606f;/PersonalInformationViewController.m"
+            timestampString = "493551521.376595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -131,13 +131,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YiJianBluetooth/classes/Modules/Mine/Controller/&#x4e2a;&#x4eba;&#x4fe1;&#x606f;/PersonalInformationViewController.m"
-            timestampString = "493551521.376595"
+            filePath = "YiJianBluetooth/classes/Modules/Mine/Controller/MineViewController.m"
+            timestampString = "493988455.036548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-personButtonAction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

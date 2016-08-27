@@ -32,6 +32,9 @@
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _nameTextField.textAlignment = NSTextAlignmentRight;
         _nameTextField.placeholder = @"请输入姓名";
+        if (username) {
+            _nameTextField.text = username;
+        }
         _nameTextField.returnKeyType = UIReturnKeyDone;
         _nameTextField.delegate = self;
         _nameTextField.userInteractionEnabled=YES;

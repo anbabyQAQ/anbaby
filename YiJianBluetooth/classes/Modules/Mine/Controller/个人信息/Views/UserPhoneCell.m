@@ -36,6 +36,9 @@
         _nameTextField.returnKeyType = UIReturnKeyDone;
         _nameTextField.keyboardType = UIKeyboardTypeNumberPad;
         _nameTextField.delegate = self;
+        if (phone) {
+            _nameTextField.text = phone;
+        }
         _nameTextField.userInteractionEnabled=YES;
         [self.contentView addSubview:_nameTextField];
         

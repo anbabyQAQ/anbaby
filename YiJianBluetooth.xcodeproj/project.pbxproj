@@ -136,6 +136,8 @@
 		3C9E27E41D64050800DC60B5 /* CBPeripheral+category.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9E27E31D64050800DC60B5 /* CBPeripheral+category.m */; };
 		3C9E27E81D6422CB00DC60B5 /* ConnectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9E27E71D6422CB00DC60B5 /* ConnectedViewController.m */; };
 		3CA323491D7186A200738B5E /* UserPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA323481D7186A200738B5E /* UserPhoneCell.m */; };
+		3CA3234C1D7189B900738B5E /* UserSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA3234B1D7189B900738B5E /* UserSexCell.m */; };
+		3CA3234F1D718FA600738B5E /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA3234E1D718FA600738B5E /* UserInfoCell.m */; };
 		3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6401D51DBD0003CAC87 /* ServiceViewController.m */; };
 		3CC7A67B1D51DCC2003CAC87 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CC7A6441D51DCC2003CAC87 /* Contents.json */; };
 		3CC7A67C1D51DCC2003CAC87 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CC7A6461D51DCC2003CAC87 /* Contents.json */; };
@@ -529,6 +531,10 @@
 		3C9E27E71D6422CB00DC60B5 /* ConnectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectedViewController.m; sourceTree = "<group>"; };
 		3CA323471D7186A200738B5E /* UserPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhoneCell.h; sourceTree = "<group>"; };
 		3CA323481D7186A200738B5E /* UserPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhoneCell.m; sourceTree = "<group>"; };
+		3CA3234A1D7189B900738B5E /* UserSexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSexCell.h; sourceTree = "<group>"; };
+		3CA3234B1D7189B900738B5E /* UserSexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSexCell.m; sourceTree = "<group>"; };
+		3CA3234D1D718FA600738B5E /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		3CA3234E1D718FA600738B5E /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
 		3CC7A63F1D51DBD0003CAC87 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		3CC7A6401D51DBD0003CAC87 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		3CC7A6441D51DCC2003CAC87 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
@@ -1892,6 +1898,10 @@
 				3CF8EFF91D71535D00ECD725 /* UserNameCell.m */,
 				3CA323471D7186A200738B5E /* UserPhoneCell.h */,
 				3CA323481D7186A200738B5E /* UserPhoneCell.m */,
+				3CA3234A1D7189B900738B5E /* UserSexCell.h */,
+				3CA3234B1D7189B900738B5E /* UserSexCell.m */,
+				3CA3234D1D718FA600738B5E /* UserInfoCell.h */,
+				3CA3234E1D718FA600738B5E /* UserInfoCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2538,6 +2548,7 @@
 				3C56759F1D630B4D008B964D /* AddCell.m in Sources */,
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
 				3C4817101D5DA79A001BCB8F /* ScannedPeripheral.m in Sources */,
+				3CA3234F1D718FA600738B5E /* UserInfoCell.m in Sources */,
 				3CC7A7891D51F3B9003CAC87 /* SBJsonStreamWriterState.m in Sources */,
 				3CCEBC3E1D5B1124007A852D /* TempChartViewController.m in Sources */,
 				3CC7A6C41D51E065003CAC87 /* CtsiUserDefaults.m in Sources */,
@@ -2555,6 +2566,7 @@
 				3C113E161D588440004099BB /* MyCustomButton.m in Sources */,
 				3CC7A6F71D51E0B7003CAC87 /* PostJsonHttpThread.m in Sources */,
 				3CCA81601D6D932D006F7FF9 /* DailAnimationview.m in Sources */,
+				3CA3234C1D7189B900738B5E /* UserSexCell.m in Sources */,
 				3C796BAB1D5C466800862460 /* BloodOxygenViewController.m in Sources */,
 				3C5675921D62F09B008B964D /* ChooseUser.m in Sources */,
 				3C9E27E81D6422CB00DC60B5 /* ConnectedViewController.m in Sources */,

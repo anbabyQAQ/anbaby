@@ -7,26 +7,51 @@
 //
 
 #import "FamilyViewController.h"
+#import "PersonalInfoViewController.h"
+#import "UsersDao.h"
+#import "User.h"
 
-@interface FamilyViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface FamilyViewController ()<UITableViewDataSource, UITableViewDelegate>{
+    User *_user;
+}
 
-@property(nonatomic, strong)NSArray *familyArray;
+@property(nonatomic, strong)NSMutableArray *familyArray;
 @property (weak, nonatomic) IBOutlet UITableView *familyTableView;
 
 @end
 
 @implementation FamilyViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //    self.tabBarController.tabBar.hidden=YES;
+    self.navigationController.navigationBar.translucent=NO;
+    self.tabBarController.tabBar.translucent=NO;
+    
+    self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+    [self.familyTableView reloadData];
+                        
+}
+- (NSArray *)familyArray{
+    if (_familyArray==nil) {
+        _familyArray = [[NSMutableArray alloc]init];
+    }
+    return _familyArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的亲友";
-    self.familyArray = @[@"我",@"老爸",@"老妈"];
     
     [self setExtraCellLineHidden:self.familyTableView];
     [self initLeftBarButtonItem];
 
+    [self initrightBarButtonItem:@"添加" action:@selector(measureTemp)];
 }
+-(void)measureTemp{
 
+    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:nil andEditable:YES];
+    [self.navigationController pushViewController:person animated:YES];
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 1;
@@ -43,8 +68,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    
-    cell.textLabel.text = self.familyArray[indexPath.row];
+    User *user = self.familyArray[indexPath.row];
+    cell.textLabel.text = user.name;
     cell.textLabel.textAlignment = NSTextAlignmentLeft;
     cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
     cell.textLabel.textColor = [UIColor darkTextColor];
@@ -55,7 +80,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    User *user = self.familyArray[indexPath.row];
+
     
+    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:user andEditable:YES];
+    [self.navigationController pushViewController:person animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

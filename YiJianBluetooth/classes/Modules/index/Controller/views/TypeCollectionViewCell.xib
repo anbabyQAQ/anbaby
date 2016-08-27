@@ -15,14 +15,14 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sDK-qe-Xf2">
                         <rect key="frame" x="0.0" y="50" width="50" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bwt-Yu-cvg">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
@@ -34,7 +34,7 @@
                 <outlet property="icon_imgview" destination="bwt-Yu-cvg" id="kWA-1G-wMN"/>
                 <outlet property="typeLabel" destination="sDK-qe-Xf2" id="7EY-KO-Djs"/>
             </connections>
-            <point key="canvasLocation" x="476" y="243.5"/>
+            <point key="canvasLocation" x="7" y="223"/>
         </collectionViewCell>
     </objects>
 </document>

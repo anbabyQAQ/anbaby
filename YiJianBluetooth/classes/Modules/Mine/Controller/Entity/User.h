@@ -34,9 +34,9 @@ typedef enum
 @property (nonatomic,retain) NSDate *date;
 @property (nonatomic,retain) UIImage *headIcon;
 
-@property (nonatomic,assign) double weight;
+@property (nonatomic,assign) NSInteger weight;
 
-@property (nonatomic,assign) double height;
+@property (nonatomic,assign) NSInteger height;
 
 @property (nonatomic,copy) NSString *name;
 
@@ -47,6 +47,10 @@ typedef enum
 
 
 @property (nonatomic, copy) NSString *phone;
+
+@property (nonatomic, copy) NSDate *birthdate;
+
+
 
 /**
  *   array contains the items which is the subclass of 'DailyCheckItem'
