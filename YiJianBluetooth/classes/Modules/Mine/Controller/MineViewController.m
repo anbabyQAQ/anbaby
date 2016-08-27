@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "UsersDao.h"
 #import "User.h"
+#import "PersonalInfoViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -122,7 +123,9 @@
 
 #pragma mark ===========关于我们==============
 - (IBAction)guanYuWoMenButtonAction:(id)sender {
-    GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
+//    GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
+    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] init];
+
     guanyuVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:guanyuVC animated:YES];
 }

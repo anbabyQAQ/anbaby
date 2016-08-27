@@ -113,14 +113,14 @@
 //    self.pictureImageView.image = [UIImage imageNamed:@"blood_sugar.png"];
 //    [self.view addSubview:self.pictureImageView];
     
-    DailAnimationview *view = [[DailAnimationview alloc] initWithFrame:CGRectMake(40.f, 70.f, SCR_W - 80.f, SCR_W - 80.f)];
-    view.bgImage = [UIImage imageNamed:@"backgroundImage"];
-    view.percent = 0.f;
-    
-    view.percent = 50.f;
-    view.text = [NSString stringWithFormat:@"%@",@"475"];
-    
-    [self.view addSubview:view];
+//    DailAnimationview *view = [[DailAnimationview alloc] initWithFrame:CGRectMake(40.f, 70.f, SCR_W - 80.f, SCR_W - 80.f)];
+//    view.bgImage = [UIImage imageNamed:@"backgroundImage"];
+//    view.percent = 0.f;
+//    
+//    view.percent = 50.f;
+//    view.text = [NSString stringWithFormat:@"%@",@"475"];
+//    
+//    [self.view addSubview:view];
     
     
     

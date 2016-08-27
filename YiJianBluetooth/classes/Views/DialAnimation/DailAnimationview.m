@@ -9,7 +9,6 @@
 #import "DailAnimationview.h"
 #import "UIColor+Extensions.h"
 #import "UIView+Extensions.h"
-#import "UILabel+BezierAnimation.h"
 
 
 
@@ -187,7 +186,7 @@ static const CGFloat kAnimationTime = 2.f;
     
     _text = text;
     self.commentLabel.text = text;
-    [self.commentLabel animationFromnum:350 toNum:text.floatValue duration:2.f ConnectText:@""];
+//    [self.commentLabel animationFromnum:350 toNum:text.floatValue duration:2.f ConnectText:@""];
 
 }
 
