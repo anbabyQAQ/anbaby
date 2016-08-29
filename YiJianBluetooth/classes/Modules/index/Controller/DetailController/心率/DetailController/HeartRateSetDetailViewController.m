@@ -11,6 +11,7 @@
 #import "ChooseUser.h"
 #import "User.h"
 #import "UsersDao.h"
+#import "PersonalInfoViewController.h"
 @interface HeartRateSetDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>
 {
     NSInteger _type;
@@ -157,9 +158,11 @@
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
-    
-    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
-    [self.navigationController pushViewController:pserson animated:YES];
+    PersonalInfoViewController *info = [[PersonalInfoViewController alloc] initWithUser:nil andEditable:YES];
+    [self.navigationController pushViewController:info animated:YES];
+
+//    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
+//    [self.navigationController pushViewController:pserson animated:YES];
 }
 - (NSMutableArray *)users {
     if (_users == nil) {
