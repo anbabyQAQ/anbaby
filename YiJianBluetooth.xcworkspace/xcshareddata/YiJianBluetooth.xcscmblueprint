@@ -1,22 +1,22 @@
 {
   "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0DFAC35A9F516E3BFEB871F501C784FB35DC396A",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
-    "7df669e7-6124-4add-b441-6bc3694ddd48++7050" : {
+    "7df669e7-6124-4add-b441-6bc3694ddd48++6492" : {
 
     },
-    "7df669e7-6124-4add-b441-6bc3694ddd48++6492" : {
+    "7df669e7-6124-4add-b441-6bc3694ddd48++7050" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "7df669e7-6124-4add-b441-6bc3694ddd48++6492" : 0,
     "7df669e7-6124-4add-b441-6bc3694ddd48++7050" : 0,
+    "7df669e7-6124-4add-b441-6bc3694ddd48++6492" : 0,
     "0DFAC35A9F516E3BFEB871F501C784FB35DC396A" : 0
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "049E31CF-5AED-41BF-9134-0234ADDEBFFD",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "917739D8-C725-4088-807C-32BAE6403DC8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "7df669e7-6124-4add-b441-6bc3694ddd48++6492" : "YiJianBluetooth\/YiJianBluetooth\/classes\/Modules\/Mine\/Controller\/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF\/txcur_v_1.imageset\/",
     "7df669e7-6124-4add-b441-6bc3694ddd48++7050" : "YiJianBluetooth\/YiJianBluetooth\/classes\/Modules\/Mine\/Controller\/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF\/txbg_v_1.imageset\/",
+    "7df669e7-6124-4add-b441-6bc3694ddd48++6492" : "YiJianBluetooth\/YiJianBluetooth\/classes\/Modules\/Mine\/Controller\/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF\/txcur_v_1.imageset\/",
     "0DFAC35A9F516E3BFEB871F501C784FB35DC396A" : "YiJianBluetooth\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "YiJianBluetooth",

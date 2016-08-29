@@ -11,11 +11,16 @@
 #import "JGProgressHUDIndicatorView.h"
 #import "JGProgressHUDPieIndicatorView.h"
 #import "JGProgressHUDFadeZoomAnimation.h"
+#import "MBProgressHUD.h"
 
 
-@interface BaseViewController : UIViewController<JGProgressHUDDelegate>{
+@interface BaseViewController : UIViewController<JGProgressHUDDelegate,MBProgressHUDDelegate>{
     BOOL _blockUserInteraction;
 }
+
+@property (strong, nonatomic) MBProgressHUD *progressHUD;
+
+
 -(void)initLeftBarButtonItem ;
 - (void)backToSuper ;
 
@@ -45,5 +50,11 @@
 
 
 -(void)showToast:(NSString*) toast;
+
+-(void)showHud:(NSString *)text onView:(UIView*)view;
+-(void)showHud:(NSString *)text;
+-(void)showHud;
+-(void)hideHud;
+
 
 @end

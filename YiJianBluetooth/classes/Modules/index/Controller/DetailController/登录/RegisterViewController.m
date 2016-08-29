@@ -8,6 +8,8 @@
 
 #import "RegisterViewController.h"
 #import "MainTabBarController.h"
+#import "GetRegisterThred.h"
+
 @interface RegisterViewController ()<UITextFieldDelegate>
 {
     
@@ -108,8 +110,32 @@
         [self addAlert:@"请输入密码"];
         return;
     }
-    MainTabBarController *main = [MainTabBarController new];
-    [[UIApplication sharedApplication].keyWindow setRootViewController:main];
+    
+    GetRegisterThred *thred = [[GetRegisterThred alloc] initWithUserName:self.NumberTextField.text withPassword:self.passwordTextField.text withType:@"-1"];
+    [thred requireonPrev:^{
+        [self showHud:@"注册中..."];
+
+    } success:^(NSDictionary *response) {
+        [self hideHud];
+
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
+
+    
 }
 
 -(void)addAlert:(NSString *)alert{

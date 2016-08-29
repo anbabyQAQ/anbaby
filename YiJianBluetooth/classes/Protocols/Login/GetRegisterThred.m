@@ -14,17 +14,13 @@
 -(instancetype) initWithUserName:(NSString *)mdn withPassword:(NSString *)password withType:(NSString *)type{
     
     
-        [self setUrl:@"http://192.9.100.76:60001/mts-ci/v199/template/feed/13311097869" andTimeout:defaultTimeout];
+    [self setUrl:@"http://192.9.100.76:60001/mts-ci/v199/template/feed/13311097869" andTimeout:defaultTimeout];
        
         
         NSMutableDictionary* params=[NSMutableDictionary dictionary];
-        [params setValue:@"0" forKey:@"minTime"];
-        [params setValue:@"0" forKey:@"maxTime"];
-        [params setValue:@"20" forKey:@"limit"];
-        [params setValue:@"2" forKey:@"type"];
-        
-    
-
+        [params setValue:mdn forKey:@"username"];
+        [params setValue:password forKey:@"password"];
+        [params setValue:type forKey:@"type"];
         
         self.params=params;
     

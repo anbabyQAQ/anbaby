@@ -271,6 +271,45 @@
 }
 
 
+
+
+
+-(void)showHud:(NSString *)text onView:(UIView*)view{
+    [self hideHud];
+    self.progressHUD = [[MBProgressHUD alloc] initWithView:view];
+    [view addSubview:self.progressHUD];
+    
+    self.progressHUD.delegate = self;
+    self.progressHUD.labelText = text;
+    self.progressHUD.removeFromSuperViewOnHide = YES;
+    
+    [self.progressHUD show:YES];
+}
+
+-(void)showHud:(NSString *)text{
+//    UIViewController *viewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).navController.visibleViewController;
+    
+    [self showHud:text onView:self.navigationController.view];
+    //    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    //	[self.navigationController.view addSubview:self.progressHUD];
+    //
+    //	self.progressHUD.delegate = self;
+    //	self.progressHUD.labelText = text;
+    //    self.progressHUD.removeFromSuperViewOnHide = YES;
+    //
+    //    [self.progressHUD show:YES];
+}
+-(void)hideHud{
+    if (![self.progressHUD isHidden]) {
+        [self.progressHUD hide:YES];
+    }
+}
+-(void)showHud{
+    if ([self.progressHUD isHidden]) {
+        [self.progressHUD show:YES];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
