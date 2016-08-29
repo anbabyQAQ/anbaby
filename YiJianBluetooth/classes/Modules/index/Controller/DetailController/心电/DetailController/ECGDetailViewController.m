@@ -12,7 +12,7 @@
 #import "User.h"
 #import "UsersDao.h"
 #import "Helper.h"
-
+#import "PersonalInfoViewController.h"
 @interface ECGDetailViewController ()<UIScrollViewDelegate,chooseUserDelegate>{
     NSInteger _type;
     User *_user;
@@ -192,8 +192,11 @@ float pixelPerUV = 5 * 10.0 / 1000;
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
-    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
-    [self.navigationController pushViewController:pserson animated:YES];
+//    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
+//    [self.navigationController pushViewController:pserson animated:YES];
+    
+    PersonalInfoViewController *info = [[PersonalInfoViewController alloc] initWithUser:nil andEditable:YES];
+    [self.navigationController pushViewController:info animated:YES];
 }
 
 -(void)callBackUser:(User *)user{
@@ -260,12 +263,6 @@ float pixelPerUV = 5 * 10.0 / 1000;
     
     
 }
-
-
-
-
-
-
 
 - (void)viewDidAppear:(BOOL)animated
 {

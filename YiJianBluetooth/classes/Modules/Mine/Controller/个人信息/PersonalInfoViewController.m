@@ -12,7 +12,7 @@
 #import "UsersDao.h"
 #import "BlockUIAlertView.h"
 
-@interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
     User *_user;
     User *_oldUser;
@@ -102,9 +102,20 @@
 }
 
 - (void)deleteUser{
-    [UsersDao clearUserInfoByName:_oldUser.name];
-    [self showToast:@"删除成功"];
-    [self.navigationController popViewControllerAnimated:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否删除此人" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = 100;
+    [alert show];
+    
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+
+    if (alertView.tag == 100) {
+        if (buttonIndex == 1) {
+            [UsersDao clearUserInfoByName:_oldUser.name];
+            [self showToast:@"删除成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 -(void)addArray{

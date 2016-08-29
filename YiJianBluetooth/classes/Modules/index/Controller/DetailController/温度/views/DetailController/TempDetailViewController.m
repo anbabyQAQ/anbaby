@@ -13,7 +13,7 @@
 #import "PersonalInformationViewController.h"
 #import "ChooseUser.h"
 #import "BlockUIAlertView.h"
-
+#import "PersonalInfoViewController.h"
 #define Kuser_imgW 60;
 @interface TempDetailViewController ()<UITextFieldDelegate,UIScrollViewDelegate,chooseUserDelegate>{
     UILabel *_temp;
@@ -140,8 +140,11 @@
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
-    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
-    [self.navigationController pushViewController:pserson animated:YES];
+    PersonalInfoViewController *info = [[PersonalInfoViewController alloc] initWithUser:nil andEditable:YES];
+    [self.navigationController pushViewController:info animated:YES];
+
+//    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
+//    [self.navigationController pushViewController:pserson animated:YES];
 }
 
 -(void)callBackUser:(User *)user{
