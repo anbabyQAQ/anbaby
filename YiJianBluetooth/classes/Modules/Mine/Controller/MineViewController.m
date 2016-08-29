@@ -144,7 +144,8 @@
     if (alertView.tag == 1006) {
         if (buttonIndex == 1) {
             LoginViewController *login = [LoginViewController new];
-            [self presentViewController:login animated:YES completion:nil];
+            SBNvc *nav = [[SBNvc alloc] initWithRootViewController:login];
+            [self presentViewController:nav animated:YES completion:nil];
         }
     }
 }

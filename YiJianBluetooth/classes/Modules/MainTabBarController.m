@@ -106,10 +106,12 @@
 
 - (void)setUpChildControllerWith:(UIViewController *)childVc norImage:(UIImage *)norImage selImage:(UIImage *)selImage title:(NSString *)title
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:childVc];
+    SBNvc *nav = [[SBNvc alloc]initWithRootViewController:childVc];
+
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:childVc];
+    
     nav.title=title;
 
-    
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] init];
     tabBarItem.image = norImage;
     tabBarItem.selectedImage = selImage;

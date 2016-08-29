@@ -125,7 +125,9 @@
     
     RegisterViewController *regVC = [[RegisterViewController alloc] init];
     //[self.navigationController pushViewController:regVC animated:YES];
-    [self presentViewController:regVC animated:YES completion:nil];
+    SBNvc *nav = [[SBNvc alloc] initWithRootViewController:regVC];
+    [self presentViewController:nav animated:YES completion:nil];
+    
 }
 #pragma mark =========重试按钮点击事件
 - (IBAction)chongshiButtonAction:(id)sender {

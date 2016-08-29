@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@interface SBNvc : UINavigationController
+
+@end
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 
 @property (strong, nonatomic) UIViewController *viewController;
 

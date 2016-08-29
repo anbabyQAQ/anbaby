@@ -11,6 +11,33 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "NewFeatureViewController.h"
 #import "LoginViewController.h"
+
+
+
+@implementation SBNvc
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return NO;
+}
+
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+@end
+
 @interface AppDelegate ()
 {
     SystemSoundID soundID;
