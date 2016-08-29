@@ -11,6 +11,7 @@
 #import "DateUtil.h"
 #import "UsersDao.h"
 #import "BlockUIAlertView.h"
+#import "GetRegisterThred.h"
 
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate>
 {
@@ -72,6 +73,19 @@
     // Do any additional setup after loading the view.
     
     self.title = @"个人信息";
+    
+    GetRegisterThred *thred = [[GetRegisterThred alloc] initWithUserName:nil withPassword:nil withType:nil];
+    [thred requireonPrev:^{
+        
+    } success:^(NSDictionary *response) {
+        
+    } unavaliableNetwork:^{
+        
+    } timeout:^{
+        
+    } exception:^(NSString *message) {
+        
+    }];
     
     self.infotableview.delegate=self;
     self.infotableview.dataSource=self;

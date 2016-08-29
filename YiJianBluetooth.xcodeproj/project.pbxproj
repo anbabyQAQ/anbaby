@@ -138,6 +138,7 @@
 		3CA323491D7186A200738B5E /* UserPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA323481D7186A200738B5E /* UserPhoneCell.m */; };
 		3CA3234C1D7189B900738B5E /* UserSexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA3234B1D7189B900738B5E /* UserSexCell.m */; };
 		3CA3234F1D718FA600738B5E /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA3234E1D718FA600738B5E /* UserInfoCell.m */; };
+		3CC334A01D73F4C100432404 /* GetRegisterThred.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC3349F1D73F4C100432404 /* GetRegisterThred.m */; };
 		3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6401D51DBD0003CAC87 /* ServiceViewController.m */; };
 		3CC7A67B1D51DCC2003CAC87 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CC7A6441D51DCC2003CAC87 /* Contents.json */; };
 		3CC7A67C1D51DCC2003CAC87 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CC7A6461D51DCC2003CAC87 /* Contents.json */; };
@@ -535,6 +536,8 @@
 		3CA3234B1D7189B900738B5E /* UserSexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSexCell.m; sourceTree = "<group>"; };
 		3CA3234D1D718FA600738B5E /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
 		3CA3234E1D718FA600738B5E /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		3CC3349E1D73F4C100432404 /* GetRegisterThred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRegisterThred.h; sourceTree = "<group>"; };
+		3CC3349F1D73F4C100432404 /* GetRegisterThred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetRegisterThred.m; sourceTree = "<group>"; };
 		3CC7A63F1D51DBD0003CAC87 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
 		3CC7A6401D51DBD0003CAC87 /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		3CC7A6441D51DCC2003CAC87 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
@@ -1814,6 +1817,8 @@
 			children = (
 				3CC7A7291D51E1C7003CAC87 /* PostLoginThread.h */,
 				3CC7A72A1D51E1C7003CAC87 /* PostLoginThread.m */,
+				3CC3349E1D73F4C100432404 /* GetRegisterThred.h */,
+				3CC3349F1D73F4C100432404 /* GetRegisterThred.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2535,6 +2540,7 @@
 				3C9205A11D59940A00781D3D /* NSObject+LKDBHelper.m in Sources */,
 				3C113E101D587C05004099BB /* MAThermometer.m in Sources */,
 				3CC7A6F91D51E0B7003CAC87 /* PutJsonHttpThread.m in Sources */,
+				3CC334A01D73F4C100432404 /* GetRegisterThred.m in Sources */,
 				1855A48A1D65A8B700B03B5A /* BOViewController.m in Sources */,
 				3CD804621D70307E00E04192 /* PersonalInfoViewController.m in Sources */,
 				18E94B341D5AB3CF00F865FF /* PersonalInformationViewController.m in Sources */,
