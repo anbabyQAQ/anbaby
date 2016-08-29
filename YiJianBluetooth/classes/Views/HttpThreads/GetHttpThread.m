@@ -83,7 +83,7 @@
         
         NSHTTPURLResponse* response=task.response;
         NSString* str_error=[NSString stringWithFormat:@"%@",error];
-        [LogUtil write:@"exception" value:str_error];
+//        [LogUtil write:@"exception" value:str_error];
         
         if(error.code==-ErrorCodeForRequestTimeout)
         {
@@ -100,25 +100,25 @@
 }
 
 -(void)onPrev{
-    [LogUtil write:@"url" value:self.url];
-    [LogUtil write:@"params" value:[self.params JSONRepresentation]];
+//    [LogUtil write:@"url" value:self.url];
+//    [LogUtil write:@"params" value:[self.params JSONRepresentation]];
     
 }
 
 -(void)onUnavaliableNetwork{
-    [LogUtil write:@"excption" value:@"unavaliableNetwork"];
+//    [LogUtil write:@"excption" value:@"unavaliableNetwork"];
 }
 
 -(void)onSuccess:(NSString *)result{
-  [LogUtil write:@"result" value:result];
+//  [LogUtil write:@"result" value:result];
 }
 
 -(void)onTimeout{
- [LogUtil write:@"excption" value:@"timeout"];
+// [LogUtil write:@"excption" value:@"timeout"];
 }
 
 -(void)exception:(NSInteger) code message:(NSString *) message{
-[LogUtil write:@"excption" value:message];
+//[LogUtil write:@"excption" value:message];
 
 }
 
