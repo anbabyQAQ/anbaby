@@ -65,12 +65,16 @@ static NSNumber *kNegativeInfinity;
 - (id)init {
 	self = [super init];
 	if (self) {
-		maxDepth = UINT8_MAX;
+		maxDepth = 32u;
         stateStack = [[NSMutableArray alloc] initWithCapacity:maxDepth];
         state = [SBJsonStreamWriterStateStart sharedInstance];
         cache = [[NSMutableDictionary alloc] initWithCapacity:32];
     }
 	return self;
+}
+
+- (void)dealloc {
+    self.state = nil;
 }
 
 #pragma mark Methods

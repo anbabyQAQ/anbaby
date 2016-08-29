@@ -155,7 +155,6 @@
     //重新制定根控制器
     [[UIApplication sharedApplication].keyWindow setRootViewController:main];
 
-//    [UIApplication sharedApplication].keyWindow.rootViewController
 }
 
 

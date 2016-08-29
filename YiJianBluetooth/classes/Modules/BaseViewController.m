@@ -287,7 +287,7 @@
 }
 
 -(void)showHud:(NSString *)text{
-//    UIViewController *viewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).navController.visibleViewController;
+//    UIViewController *viewController = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
     
     [self showHud:text onView:self.navigationController.view];
     //    self.progressHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];

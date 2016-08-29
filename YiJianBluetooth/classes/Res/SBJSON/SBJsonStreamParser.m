@@ -49,7 +49,7 @@
 - (id)init {
 	self = [super init];
 	if (self) {
-		maxDepth = UINT8_MAX;
+		maxDepth = 32u;
         stateStack = [[NSMutableArray alloc] initWithCapacity:maxDepth];
         state = [SBJsonStreamParserStateStart sharedInstance];
 		tokeniser = [[SBJsonTokeniser alloc] init];
@@ -57,6 +57,9 @@
 	return self;
 }
 
+- (void)dealloc {
+    self.state = nil;
+}
 
 #pragma mark Methods
 
@@ -112,7 +115,7 @@
 }
 
 - (void)maxDepthError {
-    self.error = [NSString stringWithFormat:@"Input depth exceeds max depth of %lu", (unsigned long)maxDepth];
+    self.error = [NSString stringWithFormat:@"Input depth exceeds max depth of %lu", maxDepth];
     self.state = [SBJsonStreamParserStateError sharedInstance];
 }
 

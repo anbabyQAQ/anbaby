@@ -36,21 +36,10 @@
 #define SBStringIsSurrogateLowCharacter(character) ((character >= 0xDC00UL) && (character <= 0xDFFFUL))
 #define SBStringIsSurrogateHighCharacter(character) ((character >= 0xD800UL) && (character <= 0xDBFFUL))
 
-static int const DECIMAL_MAX_PRECISION = 38;
-static int const DECIMAL_EXPONENT_MAX = 127;
-static short const DECIMAL_EXPONENT_MIN = -128;
-static int const LONG_LONG_DIGITS = 19;
-
-static NSCharacterSet *kDecimalDigitCharacterSet;
-
 @implementation SBJsonTokeniser
 
 @synthesize error = _error;
 @synthesize stream = _stream;
-
-+ (void)initialize {
-    kDecimalDigitCharacterSet = [NSCharacterSet decimalDigitCharacterSet];
-}
 
 - (id)init {
     self = [super init];
@@ -252,6 +241,7 @@ static NSCharacterSet *kDecimalDigitCharacterSet;
 - (sbjson_token_t)getNumberToken:(NSObject**)token {
 
     NSUInteger numberStart = _stream.index;
+    NSCharacterSet *digits = [NSCharacterSet decimalDigitCharacterSet];
 
     unichar ch;
     if (![_stream getUnichar:&ch])
@@ -272,13 +262,13 @@ static NSCharacterSet *kDecimalDigitCharacterSet;
         if (![_stream getNextUnichar:&ch])
             return sbjson_token_eof;
 
-        if ([kDecimalDigitCharacterSet characterIsMember:ch]) {
+        if ([digits characterIsMember:ch]) {
             self.error = @"Leading zero is illegal in number";
             return sbjson_token_error;
         }
     }
 
-    while ([kDecimalDigitCharacterSet characterIsMember:ch]) {
+    while ([digits characterIsMember:ch]) {
         mantissa *= 10;
         mantissa += (ch - '0');
         mantissa_length++;
@@ -295,7 +285,7 @@ static NSCharacterSet *kDecimalDigitCharacterSet;
         if (![_stream getNextUnichar:&ch])
             return sbjson_token_eof;
 
-        while ([kDecimalDigitCharacterSet characterIsMember:ch]) {
+        while ([digits characterIsMember:ch]) {
             mantissa *= 10;
             mantissa += (ch - '0');
             mantissa_length++;
@@ -331,7 +321,7 @@ static NSCharacterSet *kDecimalDigitCharacterSet;
 
         short explicit_exponent = 0;
         short explicit_exponent_length = 0;
-        while ([kDecimalDigitCharacterSet characterIsMember:ch]) {
+        while ([digits characterIsMember:ch]) {
             explicit_exponent *= 10;
             explicit_exponent += (ch - '0');
             explicit_exponent_length++;
@@ -355,29 +345,20 @@ static NSCharacterSet *kDecimalDigitCharacterSet;
         self.error = @"No digits after initial minus";
         return sbjson_token_error;
 
-    } else if (mantissa_length > DECIMAL_MAX_PRECISION) {
-        self.error = @"Precision is too high";
-        return sbjson_token_error;
-
-    } else if (exponent > DECIMAL_EXPONENT_MAX || exponent < DECIMAL_EXPONENT_MIN) {
-        self.error = @"Exponent out of range";
-        return sbjson_token_error;
-    }
-
-    if (mantissa_length <= LONG_LONG_DIGITS) {
-        if (!isFloat && !hasExponent) {
-            *token = [NSNumber numberWithLongLong: isNegative ? -mantissa : mantissa];
-
-        } else {
-            *token = [NSDecimalNumber decimalNumberWithMantissa:mantissa
-                                                       exponent:exponent
-                                                     isNegative:isNegative];
-        }
-
-    } else {
+    } else if (mantissa_length >= 19) {
+        
         NSString *number = [_stream stringWithRange:NSMakeRange(numberStart, _stream.index - numberStart)];
         *token = [NSDecimalNumber decimalNumberWithString:number];
 
+    } else if (!isFloat && !hasExponent) {
+        if (!isNegative)
+            *token = [NSNumber numberWithUnsignedLongLong:mantissa];
+        else
+            *token = [NSNumber numberWithLongLong:-mantissa];
+    } else {
+        *token = [NSDecimalNumber decimalNumberWithMantissa:mantissa
+                                                   exponent:exponent
+                                                 isNegative:isNegative];
     }
 
     return sbjson_token_number;

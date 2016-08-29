@@ -6,13 +6,13 @@
 //  Copyright © 2016年 LEI. All rights reserved.
 //
 
-#import "GetHttpThread.h"
+#import "PostJsonHttpThread.h"
 
 #define kRegisterString @"mts-ci/v210/isregister"
 
 #define kPostLoginUrl [[NSString stringWithFormat:@"%@",kRegisterString]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 
-@interface GetRegisterThred : GetHttpThread
+@interface GetRegisterThred : PostJsonHttpThread
 
 
 

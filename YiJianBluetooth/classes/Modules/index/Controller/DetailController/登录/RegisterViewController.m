@@ -113,21 +113,21 @@
     
     GetRegisterThred *thred = [[GetRegisterThred alloc] initWithUserName:self.NumberTextField.text withPassword:self.passwordTextField.text withType:@"-1"];
     [thred requireonPrev:^{
-        [self showHud:@"注册中..."];
+//        [self showHud:@"注册中..."];
 
     } success:^(NSDictionary *response) {
-        [self hideHud];
+//        [self hideHud];
 
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         
     } unavaliableNetwork:^{
-        [self hideHud];
+//        [self hideHud];
         [self showToast:@"网络未连接"];
     } timeout:^{
-        [self hideHud];
+//        [self hideHud];
         [self showToast:@"网络连接超时"];
     } exception:^(NSString *message) {
-        [self hideHud];
+//        [self hideHud];
         if (message) {
             [self showToast:message];
         }else{

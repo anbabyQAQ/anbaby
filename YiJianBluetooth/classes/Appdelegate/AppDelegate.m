@@ -32,19 +32,23 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
 
+    
+
 //    
-//    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"first"]) {
-//        
-//        
-//        NewFeatureViewController *new = [[NewFeatureViewController alloc] init];
-//        self.window.rootViewController = new;
-//
-//    }else{
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"first"]) {
+        
+        
+        NewFeatureViewController *new = [[NewFeatureViewController alloc] init];
+        self.window.rootViewController = new;
+
+    }else{
         MainTabBarController *main = [[MainTabBarController alloc] init];
         //重新制定根控制器
+
         self.window.rootViewController = main;
         
-//    }
+    }
+   
     
     [self.window makeKeyAndVisible];
     return YES;

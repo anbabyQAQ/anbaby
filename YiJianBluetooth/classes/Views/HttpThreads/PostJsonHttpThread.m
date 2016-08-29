@@ -7,6 +7,7 @@
 //
 
 #import "PostJsonHttpThread.h"
+#import "NSObject+SBJson.h"
 
 @implementation PostJsonHttpThread
 

@@ -40,7 +40,7 @@
 - (id)init {
     self = [super init];
     if (self)
-        self.maxDepth = UINT8_MAX;
+        self.maxDepth = 32u;
     return self;
 }
 

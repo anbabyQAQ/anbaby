@@ -9,20 +9,27 @@
 
 #import "GetRegisterThred.h"
 #import "SBJsonParser.h"
+#import "SBJsonWriter.h"
 
 @implementation GetRegisterThred
 -(instancetype) initWithUserName:(NSString *)mdn withPassword:(NSString *)password withType:(NSString *)type{
     
     
-    [self setUrl:@"http://192.9.100.76:60001/mts-ci/v199/template/feed/13311097869" andTimeout:defaultTimeout];
-       
-        
+    [self setUrl:@"http://dev.ezjian.com/login/register" andTimeout:defaultTimeout];
+    
+        NSMutableDictionary* data=[NSMutableDictionary dictionary];
+
+    
         NSMutableDictionary* params=[NSMutableDictionary dictionary];
         [params setValue:mdn forKey:@"username"];
         [params setValue:password forKey:@"password"];
         [params setValue:type forKey:@"type"];
-        
-        self.params=params;
+    
+    
+
+        [data setValue:[params JSONRepresentation] forKey:@"data"];
+    
+        self.params=data;
     
     
     return self;
@@ -56,7 +63,7 @@
     [super onSuccess:result];
     if(self.success)
     {
-        NSDictionary *dic = [[[SBJsonParser alloc]init] objectWithString:result];
+        NSDictionary *dic = [result JSONValue];
         
         NSNumber* num_code=[DataUtil numberForKey:@"code" inDictionary:dic];
         NSInteger code=[num_code integerValue];
