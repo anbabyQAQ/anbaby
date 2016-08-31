@@ -11,7 +11,7 @@
 @implementation PostLoginThread
 -(instancetype) initWithMdn:(NSString *)mdn withPassword:(NSString *)password{
    
-    [self setUrl:@"http://dev.ezjian.com/login/register" andTimeout:defaultTimeout];
+    [self setUrl:@"http://dev.ezjian.com/login/token" andTimeout:defaultTimeout];
     
     NSMutableDictionary* data=[NSMutableDictionary dictionary];
     
@@ -59,11 +59,11 @@
         NSDictionary * responseDic=[NSDictionary dictionary];
         responseDic = [DataUtil dictionaryForKey:@"response" inDictionary:dic];
         if(code==200){
-            
-            [self exception:0 message:message];
-        }else{
-        
             self.success(responseDic);
+
+        }else{
+            [self exception:0 message:message];
+
         }
         
     }
