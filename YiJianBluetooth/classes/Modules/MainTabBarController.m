@@ -77,29 +77,6 @@
     [self setUpChildControllerWith:[[MineViewController alloc] init] norImage:[UIImage imageNamed:@"mine_1"] selImage:[UIImage imageNamed:@"mine_2"] title:@"我的"];
 
     
-    //    /** 配置中间按钮 */
-    //    [self.tabBar setUpTabBarCenterButton:^(UIButton *centerButton) {
-    //        [centerButton setBackgroundImage:[UIImage imageNamed:@"camera_button_take"] forState:UIControlStateNormal];
-    //
-    //        [centerButton setBackgroundImage:[UIImage imageNamed:@"tabBar_cameraButton_ready_matte"] forState:UIControlStateSelected];
-    //
-    //        [centerButton addTarget:self action:@selector(chickCenterButton) forControlEvents:UIControlEventTouchUpInside];
-    //    }];
-    
-    /** 设置tabar工具条 */
-    //    self.tabBar.items = self.itemArray;
-    //    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar-light"]];
-    
-//    [self.tabBar setBackgroundColor:[UIColor whiteColor]];
-    
-    //    UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar-light.png"]; //需要的图片
-    //
-    //    UIImage* tabBarShadow = [UIImage imageNamed:@"tabbar-light.png"]; //需要的图片
-    //
-    //    [[UITabBar appearance] setShadowImage:tabBarBackground];
-    //
-    //    [[UITabBar appearance] setBackgroundImage:tabBarShadow];
-    
     self.selectedIndex = 2;
     
 }

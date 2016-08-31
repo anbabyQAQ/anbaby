@@ -15,7 +15,7 @@
     NSString *dicName=[NSString stringWithFormat:@"/%@",[DateUtil DateFormatToString:[NSDate date] WithFormat:@"yyyy-MM-dd"]];
     NSString *fileName = [NSString stringWithFormat:@"%@/log.txt",dicName] ;
 //    [CTSIGlobalUtil checkDirectory:dicName]
-    if (0)
+    if (/* DISABLES CODE */ (0))
     {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
         NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:fileName];

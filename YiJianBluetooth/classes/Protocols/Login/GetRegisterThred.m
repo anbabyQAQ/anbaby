@@ -15,21 +15,21 @@
 -(instancetype) initWithUserName:(NSString *)mdn withPassword:(NSString *)password withType:(NSString *)type{
     
     
-    [self setUrl:@"http://dev.ezjian.com/login/register" andTimeout:defaultTimeout];
+    [self setUrl:kRegisterString andTimeout:defaultTimeout];
     
-        NSMutableDictionary* data=[NSMutableDictionary dictionary];
-
-    
-        NSMutableDictionary* params=[NSMutableDictionary dictionary];
-        [params setValue:mdn forKey:@"username"];
-        [params setValue:password forKey:@"password"];
-        [params setValue:type forKey:@"type"];
+    NSMutableDictionary* data=[NSMutableDictionary dictionary];
     
     
-
-        [data setValue:[params JSONRepresentation] forKey:@"data"];
+    NSMutableDictionary* params=[NSMutableDictionary dictionary];
+    [params setValue:mdn forKey:@"username"];
+    [params setValue:password forKey:@"password"];
+    [params setValue:type forKey:@"type"];
     
-        self.params=data;
+    
+    
+    [data setValue:[params JSONRepresentation] forKey:@"data"];
+    
+    self.params=data;
     
     
     return self;

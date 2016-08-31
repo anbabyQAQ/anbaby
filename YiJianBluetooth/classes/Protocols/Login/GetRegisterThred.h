@@ -8,9 +8,8 @@
 
 #import "PostJsonHttpThread.h"
 
-#define kRegisterString @"mts-ci/v210/isregister"
+#define kRegisterString @"http://dev.ezjian.com/login/register"
 
-#define kPostLoginUrl [[NSString stringWithFormat:@"%@",kRegisterString]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
 
 @interface GetRegisterThred : PostJsonHttpThread
 
