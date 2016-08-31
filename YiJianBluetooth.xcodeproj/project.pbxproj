@@ -24,6 +24,7 @@
 		1855A4851D659A2500B03B5A /* BPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855A4841D659A2500B03B5A /* BPDetailViewController.m */; };
 		1855A48A1D65A8B700B03B5A /* BOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855A4891D65A8B700B03B5A /* BOViewController.m */; };
 		1855A48D1D65A8CC00B03B5A /* BODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855A48C1D65A8CC00B03B5A /* BODetailViewController.m */; };
+		1856161D1D758E460052976D /* CurentLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1856161C1D758E460052976D /* CurentLocation.m */; };
 		185A5C301D6AD2EE009A09E3 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 185A5C2F1D6AD2EE009A09E3 /* welcome.png */; };
 		185A5C351D6AD647009A09E3 /* guide_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 185A5C341D6AD647009A09E3 /* guide_1.png */; };
 		185A5C371D6AD64D009A09E3 /* guide_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 185A5C361D6AD64D009A09E3 /* guide_2.png */; };
@@ -150,6 +151,7 @@
 		3CB521371D742BE400A9F367 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB521291D742BE400A9F367 /* SBJsonTokeniser.m */; };
 		3CB521381D742BE400A9F367 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5212B1D742BE400A9F367 /* SBJsonUTF8Stream.m */; };
 		3CB521391D742BE400A9F367 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5212D1D742BE400A9F367 /* SBJsonWriter.m */; };
+		3CC04BEF1D7675F700971801 /* PostLoginThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A72A1D51E1C7003CAC87 /* PostLoginThread.m */; };
 		3CC334A01D73F4C100432404 /* GetRegisterThred.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC3349F1D73F4C100432404 /* GetRegisterThred.m */; };
 		3CC334B11D740A2E00432404 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC334B01D740A2E00432404 /* MBProgressHUD.m */; };
 		3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6401D51DBD0003CAC87 /* ServiceViewController.m */; };
@@ -353,6 +355,8 @@
 		1855A4891D65A8B700B03B5A /* BOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOViewController.m; sourceTree = "<group>"; };
 		1855A48B1D65A8CC00B03B5A /* BODetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BODetailViewController.h; sourceTree = "<group>"; };
 		1855A48C1D65A8CC00B03B5A /* BODetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BODetailViewController.m; sourceTree = "<group>"; };
+		1856161B1D758E460052976D /* CurentLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurentLocation.h; sourceTree = "<group>"; };
+		1856161C1D758E460052976D /* CurentLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurentLocation.m; sourceTree = "<group>"; };
 		185A5C2F1D6AD2EE009A09E3 /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = "<group>"; };
 		185A5C341D6AD647009A09E3 /* guide_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_1.png; sourceTree = "<group>"; };
 		185A5C361D6AD64D009A09E3 /* guide_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_2.png; sourceTree = "<group>"; };
@@ -904,6 +908,15 @@
 				1855A48C1D65A8CC00B03B5A /* BODetailViewController.m */,
 			);
 			path = DetailController;
+			sourceTree = "<group>";
+		};
+		1856161A1D758E3A0052976D /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				1856161B1D758E460052976D /* CurentLocation.h */,
+				1856161C1D758E460052976D /* CurentLocation.m */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		185A5C311D6AD5DD009A09E3 /* GuidePage */ = {
@@ -2045,6 +2058,7 @@
 			children = (
 				3CF367EC1D548D6900726B20 /* AppDelegate.h */,
 				3CF367ED1D548D6900726B20 /* AppDelegate.m */,
+				1856161A1D758E3A0052976D /* Location */,
 			);
 			name = "App delegate";
 			path = Appdelegate;
@@ -2539,7 +2553,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CC04BEF1D7675F700971801 /* PostLoginThread.m in Sources */,
 				3CB521361D742BE400A9F367 /* SBJsonStreamWriterState.m in Sources */,
+				1856161D1D758E460052976D /* CurentLocation.m in Sources */,
 				3CCA816E1D6D9D1F006F7FF9 /* ScannerViewController.m in Sources */,
 				3C221B001D59B4C20000EE18 /* FileUtil.m in Sources */,
 				3C796BCD1D5C6D3200862460 /* HeartRateSetDetailViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "MainTabBarController.h"
 #import "GetRegisterThred.h"
+#import "LoginViewController.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>
 {
@@ -28,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"注册";
+    
+    self.view.backgroundColor = [UIColor whiteColor];
      self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:nil style:(UIBarButtonItemStylePlain) target:self action:@selector(BackAc)];
     
     self.registerButton.layer.cornerRadius = 5;
@@ -119,11 +122,13 @@
     
     GetRegisterThred *thred = [[GetRegisterThred alloc] initWithUserName:self.NumberTextField.text withPassword:self.passwordTextField.text withType:@"-1"];
     [thred requireonPrev:^{
-        [self showHud:@"注册中..."];
+        [self showHud:@"注册中.." onView:self.view];
 
     } success:^(NSDictionary *response) {
         [self hideHud];
 
+        [self showToast:@"注册成功"];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
         
     } unavaliableNetwork:^{

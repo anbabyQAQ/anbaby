@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "MainTabBarController.h"
+#import "PostLoginThread.h"
+
 @interface LoginViewController ()<UITextFieldDelegate>
 {
 
@@ -39,6 +41,8 @@
     self.chongshiButton.layer.cornerRadius = 5;
     self.loginButton.layer.cornerRadius = 5;
     
+    self.view.backgroundColor = [UIColor whiteColor];
+
     
     [self addTextField:self.NumberTextField];
     [self addTextField:self.passwordTextField];
@@ -89,9 +93,6 @@
 
 - (void)keyboardWillBeHidden{
     
-    
-    
-    
     self.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
     JianPanNum = @"1";
@@ -101,15 +102,40 @@
 
 #pragma mark ======登录按钮点击事件
 - (IBAction)loginButtonAction:(id)sender {
-    //if ([self.NumberTextField.text isEqualToString:@"1"] && [self.passwordTextField.text isEqualToString:@"1"]) {
-    [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
+    
+    if ([self.NumberTextField.text isEqualToString:@""]) {
+        
+        [self showToast:@"请输入账号"];
+        return;
+    }
+    if ([self.passwordTextField.text isEqualToString:@""]) {
+    
+        [self showToast:@"请输入密码"];
+        return;
+    }
 
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    }else{
-//
-//        self.navigationController.navigationBarHidden = YES;
-//        self.chongshiView.hidden = NO;
-//    }
+    PostLoginThread *login = [[PostLoginThread alloc] initWithMdn:self.NumberTextField.text withPassword:self.passwordTextField.text];
+    [login requireonPrev:^{
+        [self showHud:@"登录中..." onView:self.view];
+    } success:^(NSDictionary *response) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
+    
+  
     
 }
 
@@ -124,9 +150,8 @@
    
     
     RegisterViewController *regVC = [[RegisterViewController alloc] init];
-    //[self.navigationController pushViewController:regVC animated:YES];
-    SBNvc *nav = [[SBNvc alloc] initWithRootViewController:regVC];
-    [self presentViewController:nav animated:YES completion:nil];
+    UINavigationController *addNavController = [[UINavigationController alloc] initWithRootViewController:regVC];
+    [self presentViewController:addNavController animated:YES completion:nil];
     
 }
 #pragma mark =========重试按钮点击事件
