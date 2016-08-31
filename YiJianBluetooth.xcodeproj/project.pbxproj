@@ -31,6 +31,8 @@
 		185A5C391D6AD653009A09E3 /* guide_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 185A5C381D6AD653009A09E3 /* guide_3.png */; };
 		185A5C3C1D6AD6D2009A09E3 /* NewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A5C3B1D6AD6D2009A09E3 /* NewFeatureViewController.m */; };
 		185F3EDA1D767DAC008F3390 /* PostLoginThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A72A1D51E1C7003CAC87 /* PostLoginThread.m */; };
+		185F3EEA1D768E91008F3390 /* PostUserAccountThred.m in Sources */ = {isa = PBXBuildFile; fileRef = 185F3EE91D768E91008F3390 /* PostUserAccountThred.m */; };
+		185F3EED1D76B8A0008F3390 /* GetUserFamilyThred.m in Sources */ = {isa = PBXBuildFile; fileRef = 185F3EEC1D76B8A0008F3390 /* GetUserFamilyThred.m */; };
 		187406ED1D598F460091C30C /* GuanYuWoMenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187406EB1D598F460091C30C /* GuanYuWoMenViewController.m */; };
 		187406EE1D598F460091C30C /* GuanYuWoMenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187406EC1D598F460091C30C /* GuanYuWoMenViewController.xib */; };
 		188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D3F041D4EF57600C01A94 /* AlarmViewController.m */; };
@@ -152,7 +154,6 @@
 		3CB521371D742BE400A9F367 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB521291D742BE400A9F367 /* SBJsonTokeniser.m */; };
 		3CB521381D742BE400A9F367 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5212B1D742BE400A9F367 /* SBJsonUTF8Stream.m */; };
 		3CB521391D742BE400A9F367 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5212D1D742BE400A9F367 /* SBJsonWriter.m */; };
-		3CC04BEF1D7675F700971801 /* PostLoginThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A72A1D51E1C7003CAC87 /* PostLoginThread.m */; };
 		3CC334A01D73F4C100432404 /* GetRegisterThred.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC3349F1D73F4C100432404 /* GetRegisterThred.m */; };
 		3CC334B11D740A2E00432404 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC334B01D740A2E00432404 /* MBProgressHUD.m */; };
 		3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A6401D51DBD0003CAC87 /* ServiceViewController.m */; };
@@ -364,6 +365,10 @@
 		185A5C381D6AD653009A09E3 /* guide_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_3.png; sourceTree = "<group>"; };
 		185A5C3A1D6AD6D2009A09E3 /* NewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeatureViewController.h; sourceTree = "<group>"; };
 		185A5C3B1D6AD6D2009A09E3 /* NewFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeatureViewController.m; sourceTree = "<group>"; };
+		185F3EE81D768E91008F3390 /* PostUserAccountThred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostUserAccountThred.h; sourceTree = "<group>"; };
+		185F3EE91D768E91008F3390 /* PostUserAccountThred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostUserAccountThred.m; sourceTree = "<group>"; };
+		185F3EEB1D76B8A0008F3390 /* GetUserFamilyThred.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserFamilyThred.h; sourceTree = "<group>"; };
+		185F3EEC1D76B8A0008F3390 /* GetUserFamilyThred.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserFamilyThred.m; sourceTree = "<group>"; };
 		187406EA1D598F460091C30C /* GuanYuWoMenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuanYuWoMenViewController.h; sourceTree = "<group>"; };
 		187406EB1D598F460091C30C /* GuanYuWoMenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuanYuWoMenViewController.m; sourceTree = "<group>"; };
 		187406EC1D598F460091C30C /* GuanYuWoMenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuanYuWoMenViewController.xib; sourceTree = "<group>"; };
@@ -946,6 +951,25 @@
 				185A5C381D6AD653009A09E3 /* guide_3.png */,
 			);
 			path = image;
+			sourceTree = "<group>";
+		};
+		185F3EE61D76858E008F3390 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				185F3EE71D76858E008F3390 /* user */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		185F3EE71D76858E008F3390 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				185F3EE81D768E91008F3390 /* PostUserAccountThred.h */,
+				185F3EE91D768E91008F3390 /* PostUserAccountThred.m */,
+				185F3EEB1D76B8A0008F3390 /* GetUserFamilyThred.h */,
+				185F3EEC1D76B8A0008F3390 /* GetUserFamilyThred.m */,
+			);
+			path = user;
 			sourceTree = "<group>";
 		};
 		187406E31D598F1C0091C30C /* 个人信息 */ = {
@@ -1869,6 +1893,7 @@
 			isa = PBXGroup;
 			children = (
 				3CC7A7281D51E192003CAC87 /* Login */,
+				185F3EE61D76858E008F3390 /* Mine */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2219,7 +2244,7 @@
 				TargetAttributes = {
 					18B4C9F51D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = DGKWFHS998;
+						DevelopmentTeam = VMP22QHMQ4;
 					};
 					18B4CA0E1D47393A00E65C63 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -2554,8 +2579,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-
 				185F3EDA1D767DAC008F3390 /* PostLoginThread.m in Sources */,
 				3CB521361D742BE400A9F367 /* SBJsonStreamWriterState.m in Sources */,
 				1856161D1D758E460052976D /* CurentLocation.m in Sources */,
@@ -2644,6 +2667,8 @@
 				3CCEBC451D5B1BC7007A852D /* HeartRateViewController.m in Sources */,
 				3C9205A21D59940A00781D3D /* NSObject+LKModel.m in Sources */,
 				3CC7A6F31D51E0B7003CAC87 /* SimpleGUIFactory.m in Sources */,
+				185F3EEA1D768E91008F3390 /* PostUserAccountThred.m in Sources */,
+				185F3EED1D76B8A0008F3390 /* GetUserFamilyThred.m in Sources */,
 				3CF2F65D1D596CD7002D5682 /* JGProgressHUDIndeterminateIndicatorView.m in Sources */,
 				3C56759A1D62F1B6008B964D /* Cell.m in Sources */,
 				3CF2F6661D5972E3002D5682 /* TempDetailViewController.m in Sources */,

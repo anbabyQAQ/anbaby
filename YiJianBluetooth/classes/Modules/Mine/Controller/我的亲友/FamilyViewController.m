@@ -10,7 +10,7 @@
 #import "PersonalInfoViewController.h"
 #import "UsersDao.h"
 #import "User.h"
-
+#import "GetUserFamilyThred.h"
 @interface FamilyViewController ()<UITableViewDataSource, UITableViewDelegate>{
     User *_user;
 }
@@ -27,6 +27,7 @@
     //    self.tabBarController.tabBar.hidden=YES;
     self.navigationController.navigationBar.translucent=NO;
     self.tabBarController.tabBar.translucent=NO;
+ 
     
     self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
     [self.familyTableView reloadData];
@@ -92,6 +93,7 @@
     return 58;
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

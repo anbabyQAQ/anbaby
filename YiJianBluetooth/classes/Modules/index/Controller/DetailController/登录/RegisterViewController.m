@@ -127,6 +127,7 @@
     } success:^(NSDictionary *response) {
         [self hideHud];
 
+        NSLog(@"===%@",response);
         [self showToast:@"注册成功"];
         
         [self dismissViewControllerAnimated:YES completion:nil];
