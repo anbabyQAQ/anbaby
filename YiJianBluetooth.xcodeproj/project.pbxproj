@@ -30,6 +30,7 @@
 		185A5C371D6AD64D009A09E3 /* guide_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 185A5C361D6AD64D009A09E3 /* guide_2.png */; };
 		185A5C391D6AD653009A09E3 /* guide_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 185A5C381D6AD653009A09E3 /* guide_3.png */; };
 		185A5C3C1D6AD6D2009A09E3 /* NewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185A5C3B1D6AD6D2009A09E3 /* NewFeatureViewController.m */; };
+		185F3EDA1D767DAC008F3390 /* PostLoginThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7A72A1D51E1C7003CAC87 /* PostLoginThread.m */; };
 		187406ED1D598F460091C30C /* GuanYuWoMenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187406EB1D598F460091C30C /* GuanYuWoMenViewController.m */; };
 		187406EE1D598F460091C30C /* GuanYuWoMenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187406EC1D598F460091C30C /* GuanYuWoMenViewController.xib */; };
 		188D3F051D4EF57600C01A94 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D3F041D4EF57600C01A94 /* AlarmViewController.m */; };
@@ -2552,6 +2553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185F3EDA1D767DAC008F3390 /* PostLoginThread.m in Sources */,
 				3CB521361D742BE400A9F367 /* SBJsonStreamWriterState.m in Sources */,
 				1856161D1D758E460052976D /* CurentLocation.m in Sources */,
 				3CCA816E1D6D9D1F006F7FF9 /* ScannerViewController.m in Sources */,

@@ -12,7 +12,7 @@
 @implementation PostLoginThread
 -(instancetype) initWithMdn:(NSString *)mdn withPassword:(NSString *)password{
    
-    [self setUrl:@"http://dev.ezjian.com/login/register" andTimeout:defaultTimeout];
+    [self setUrl:@"http://dev.ezjian.com/login/token" andTimeout:defaultTimeout];
     
     NSMutableDictionary* data=[NSMutableDictionary dictionary];
     

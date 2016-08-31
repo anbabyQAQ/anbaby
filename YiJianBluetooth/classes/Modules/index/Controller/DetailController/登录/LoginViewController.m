@@ -115,6 +115,7 @@
     [login requireonPrev:^{
         [self showHud:@"登录中..."];
     } success:^(NSDictionary *response) {
+        NSLog(@"%@", response);
         [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
         [self dismissViewControllerAnimated:YES completion:nil];
     } unavaliableNetwork:^{
