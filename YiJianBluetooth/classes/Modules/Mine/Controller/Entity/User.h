@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "NewFile.h"
 
 typedef enum
 {
@@ -33,6 +33,8 @@ typedef enum
 @property (nonatomic,assign) unsigned char ICO_ID;
 @property (nonatomic,retain) NSDate *date;
 @property (nonatomic,retain) UIImage *headIcon;
+//头像本地路径
+@property (nonatomic, strong) NewFile *headIcon_file;
 
 @property (nonatomic,assign) NSInteger weight;
 
@@ -49,6 +51,8 @@ typedef enum
 @property (nonatomic, copy) NSString *phone;
 
 @property (nonatomic, copy) NSDate *birthdate;
+
+
 
 
 
