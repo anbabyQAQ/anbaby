@@ -10,6 +10,9 @@
 #import "RegisterViewController.h"
 #import "MainTabBarController.h"
 #import "PostLoginThread.h"
+#import "Master.h"
+#import "MasterDao.h"
+
 
 @interface LoginViewController ()<UITextFieldDelegate>
 {
@@ -117,9 +120,29 @@
     PostLoginThread *login = [[PostLoginThread alloc] initWithMdn:self.NumberTextField.text withPassword:self.passwordTextField.text];
     [login requireonPrev:^{
         [self showHud:@"登录中..." onView:self.view];
-    } success:^(NSDictionary *response) {
+    } success:^(NSDictionary *response,NSString *token) {
         NSLog(@"%@", response);
         [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
+        
+        Master *master = [[Master alloc] init];
+        master.token = token;
+        master.aid   = [[DataUtil numberForKey:@"aid" inDictionary:response] integerValue];
+        master.username = [DataUtil stringForKey:@"userName" inDictionary:response];
+        master.pass  = [DataUtil stringForKey:@"pass" inDictionary:response];
+        master.registerType = [[response objectForKey:@"registerType"] integerValue];
+        master.isbanned = [[response objectForKey:@"isbanned"] integerValue];
+        
+        if ([MasterDao getMaster]) {
+            Master *model = [MasterDao getMaster];
+            if (master.aid != model.aid) {
+                [MasterDao clearMaster];
+                [MasterDao saveMasterInfo:master];
+            }
+        }else{
+            [MasterDao saveMasterInfo:master];
+        }
+        
+        
         [self dismissViewControllerAnimated:YES completion:nil];
     } unavaliableNetwork:^{
         [self hideHud];

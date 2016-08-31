@@ -195,7 +195,7 @@ float pixelPerUV = 5 * 10.0 / 1000;
 //    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
 //    [self.navigationController pushViewController:pserson animated:YES];
     
-    PersonalInfoViewController *info = [[PersonalInfoViewController alloc] initWithUser:nil andEditable:YES];
+    PersonalInfoViewController *info = [[PersonalInfoViewController alloc] initWithUser:nil WithMaster:nil andEditable:YES];
     [self.navigationController pushViewController:info animated:YES];
 }
 

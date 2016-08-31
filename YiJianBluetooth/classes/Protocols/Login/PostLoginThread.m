@@ -25,7 +25,7 @@
     return self;
 }
 
--(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception{
+-(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response,NSString *token))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception{
     self.prev=prev;
     self.unavaliableNetwork=unavaliableNetwork;
     self.timout=timeout;
@@ -56,10 +56,19 @@
         NSNumber* num_code=[DataUtil numberForKey:@"code" inDictionary:dic];
         NSInteger code=[num_code integerValue];
         NSString* message=[dic valueForKey:@"message"];
+        
         NSDictionary * responseDic=[NSDictionary dictionary];
-        responseDic = [DataUtil dictionaryForKey:@"response" inDictionary:dic];
+        NSMutableArray *data_arr  = [dic valueForKey:@"data"];
+        
+        responseDic = [data_arr lastObject];
+        NSLog(@"%@",responseDic);
+        
+        NSString *token = [dic valueForKey:@"token"];
         if(code==200){
-            self.success(responseDic);
+
+            self.success(responseDic,token);
+
+
         }else{
             [self exception:0 message:message];
 

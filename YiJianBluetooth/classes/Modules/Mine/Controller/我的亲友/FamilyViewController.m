@@ -50,7 +50,7 @@
 }
 -(void)measureTemp{
 
-    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:nil andEditable:YES];
+    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:nil WithMaster:nil andEditable:YES];
     [self.navigationController pushViewController:person animated:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -84,7 +84,7 @@
     User *user = self.familyArray[indexPath.row];
 
     
-    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:user andEditable:YES];
+    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:user WithMaster:nil andEditable:YES];
     [self.navigationController pushViewController:person animated:YES];
 }
 
