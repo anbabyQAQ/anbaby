@@ -47,6 +47,8 @@
     [self initLeftBarButtonItem];
 
     [self initrightBarButtonItem:@"添加" action:@selector(measureTemp)];
+    
+    [self getData];
 }
 -(void)measureTemp{
 
@@ -94,6 +96,33 @@
     
 }
 
+#pragma mark ========我的亲友列表请求
+-(void)getData{
+
+    GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:@"" withToken:@""];
+    [family requireonPrev:^{
+         [self showHud:@"请求中..." onView:self.view];
+    } success:^(NSDictionary *response) {
+        NSLog(@"%@", response);
+        [self hideHud];
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
+    
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

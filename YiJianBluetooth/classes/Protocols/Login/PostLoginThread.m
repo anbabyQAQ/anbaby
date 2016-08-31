@@ -65,9 +65,7 @@
         
         NSString *token = [dic valueForKey:@"token"];
         if(code==200){
-
             self.success(responseDic,token);
-
 
         }else{
             [self exception:0 message:message];
