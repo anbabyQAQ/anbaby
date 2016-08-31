@@ -31,7 +31,7 @@
         _sex_bool = usersex;
         
         self.grilButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        self.grilButton.frame = CGRectMake(SCR_W - 120, 0, 40, 40);
+        self.grilButton.frame = CGRectMake(SCR_W - 60, 0, 40, 40);
         self.grilButton.titleLabel.font = [UIFont systemFontOfSize:15];
         [self.grilButton addTarget:self action:@selector(grilButtonAction:) forControlEvents:(UIControlEventTouchUpInside)];
 
@@ -40,7 +40,7 @@
         
         
         self.boyButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        self.boyButton.frame = CGRectMake(SCR_W - 60, 0, 40, 40);
+        self.boyButton.frame = CGRectMake(SCR_W - 120, 0, 40, 40);
         self.boyButton.titleLabel.font = [UIFont systemFontOfSize:15];
         [self.boyButton addTarget:self action:@selector(boyButtonAction:) forControlEvents:(UIControlEventTouchUpInside)];
 

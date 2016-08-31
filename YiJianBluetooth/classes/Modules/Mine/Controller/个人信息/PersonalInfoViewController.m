@@ -13,6 +13,7 @@
 #import "BlockUIAlertView.h"
 #import "NewFile.h"
 
+#import "PostUserAccountThred.h"
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
     User *_user;
@@ -192,10 +193,15 @@
     //    _infocell.delegate = self;
 }
 - (void)saveUser{
+
+    
+    [self getData];
+
 //    if (_oldUser) {
 //        [UsersDao clearUserInfoByName:_oldUser.name];
 //    }
 //    
+
     [UsersDao saveUserInfo:_user];
     
     [self showToast:@"保存成功"];
@@ -664,6 +670,42 @@
         _weightArray = [NSMutableArray array];
     }
     return _weightArray;
+}
+
+#pragma mark ========================保存个人信息网络请求
+-(void)getData{
+
+    
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    [data setObject:@"" forKey:@"uid"];
+    [data setObject:_user.name forKey:@"aliasName"];
+    [data setObject:_user.phone forKey:@"phone"];
+    [data setObject:@(_user.gender) forKey:@"sex"];
+    [data setObject:@(_user.height) forKey:@"height"];
+    [data setObject:@(_user.weight) forKey:@"weight"];
+    NSString *date = [DateUtil DateFormatToString:_user.birthdate WithFormat:@"yyyy-MM-dd"];
+    [data setObject:date forKey:@"age"];
+    
+    PostUserAccountThred *account = [[PostUserAccountThred alloc] initWithAid:@"" withToken:@"" widthData:data];
+    [account requireonPrev:^{
+        [self showHud:@"正在保存中..." onView:self.view];
+    } success:^(NSDictionary *response) {
+        [self hideHud];
+        [self.navigationController popViewControllerAnimated:YES];
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
 }
 
 /*
