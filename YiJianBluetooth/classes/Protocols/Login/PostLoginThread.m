@@ -7,27 +7,23 @@
 //
 
 #import "PostLoginThread.h"
+#import "SBJsonWriter.h"
 
 @implementation PostLoginThread
 -(instancetype) initWithMdn:(NSString *)mdn withPassword:(NSString *)password{
-    if (self = [super init]) {
-        [self setUrl:kPostLoginUrl andTimeout:defaultTimeout];
-        NSMutableDictionary *keyValuePair = [[NSMutableDictionary alloc] init];
-        if (mdn) {
-            [keyValuePair setValue: mdn forKey:@"mdn"];
-        }
-        if (password) {
-            [keyValuePair setValue:password forKey:@"password"];
-        }
-        [keyValuePair setValue:@"1" forKey:@"devType"];
-        [keyValuePair setValue:@"0" forKey:@"configStamp"];
-
-        self.params=keyValuePair;
-        NSLog(@"%@",self.params.JSONRepresentation);
-        return self;
-    }else{
-        return nil;
-    }
+   
+    [self setUrl:@"http://dev.ezjian.com/login/register" andTimeout:defaultTimeout];
+    
+    NSMutableDictionary* data=[NSMutableDictionary dictionary];
+    
+    NSMutableDictionary* params=[NSMutableDictionary dictionary];
+    [params setValue:mdn forKey:@"username"];
+    [params setValue:password forKey:@"password"];
+   
+    [data setValue:[params JSONRepresentation] forKey:@"data"];
+    
+    self.params=data;
+    return self;
 }
 
 -(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception{

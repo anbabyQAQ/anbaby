@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "MainTabBarController.h"
+#import "PostLoginThread.h"
 @interface LoginViewController ()<UITextFieldDelegate>
 {
 
@@ -89,9 +90,6 @@
 
 - (void)keyboardWillBeHidden{
     
-    
-    
-    
     self.view.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
     JianPanNum = @"1";
@@ -101,15 +99,40 @@
 
 #pragma mark ======登录按钮点击事件
 - (IBAction)loginButtonAction:(id)sender {
-    //if ([self.NumberTextField.text isEqualToString:@"1"] && [self.passwordTextField.text isEqualToString:@"1"]) {
-    [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
+    
+    if ([self.NumberTextField.text isEqualToString:@""]) {
+        
+        [self showToast:@"请输入账号"];
+        return;
+    }
+    if ([self.passwordTextField.text isEqualToString:@""]) {
+    
+        [self showToast:@"请输入密码"];
+        return;
+    }
 
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    }else{
-//
-//        self.navigationController.navigationBarHidden = YES;
-//        self.chongshiView.hidden = NO;
-//    }
+    PostLoginThread *login = [[PostLoginThread alloc] initWithMdn:self.NumberTextField.text withPassword:self.passwordTextField.text];
+    [login requireonPrev:^{
+        [self showHud:@"登录中..."];
+    } success:^(NSDictionary *response) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
+    
+  
     
 }
 

@@ -11,7 +11,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "NewFeatureViewController.h"
 #import "LoginViewController.h"
-
+#import "CurentLocation.h"
 
 
 @implementation SBNvc
@@ -38,7 +38,7 @@
 
 @end
 
-@interface AppDelegate ()
+@interface AppDelegate ()<CurrentLocationDelegate>
 {
     SystemSoundID soundID;
 }
@@ -60,11 +60,10 @@
     
 
     
-
-//    
+    [[CurentLocation sharedManager] setDelegate:self];
+    [[CurentLocation sharedManager] getUSerLocation];
+    
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"first"]) {
-        
-        
         NewFeatureViewController *new = [[NewFeatureViewController alloc] init];
         self.window.rootViewController = new;
 

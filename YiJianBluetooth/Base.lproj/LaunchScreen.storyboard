@@ -36,11 +36,11 @@
                                 <exclude reference="hfl-X8-YPe"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="lgC-xe-hVa"/>
                                 <exclude reference="QWI-A9-pRd"/>
                                 <exclude reference="axL-0Y-AB5"/>
                                 <exclude reference="dmy-aa-Mft"/>
                                 <exclude reference="qsv-Zt-LMT"/>
-                                <exclude reference="lgC-xe-hVa"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -48,11 +48,11 @@
                                 <include reference="hfl-X8-YPe"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="lgC-xe-hVa"/>
                                 <include reference="QWI-A9-pRd"/>
                                 <include reference="axL-0Y-AB5"/>
                                 <exclude reference="dmy-aa-Mft"/>
                                 <include reference="qsv-Zt-LMT"/>
-                                <include reference="lgC-xe-hVa"/>
                             </mask>
                         </variation>
                     </view>

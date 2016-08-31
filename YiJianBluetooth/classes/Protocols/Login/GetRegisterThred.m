@@ -18,20 +18,15 @@
     [self setUrl:@"http://dev.ezjian.com/login/register" andTimeout:defaultTimeout];
     
         NSMutableDictionary* data=[NSMutableDictionary dictionary];
-
     
         NSMutableDictionary* params=[NSMutableDictionary dictionary];
         [params setValue:mdn forKey:@"username"];
         [params setValue:password forKey:@"password"];
         [params setValue:type forKey:@"type"];
     
-    
-
         [data setValue:[params JSONRepresentation] forKey:@"data"];
     
         self.params=data;
-    
-    
     return self;
 
 }
