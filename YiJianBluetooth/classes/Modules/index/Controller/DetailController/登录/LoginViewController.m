@@ -10,6 +10,7 @@
 #import "RegisterViewController.h"
 #import "MainTabBarController.h"
 #import "PostLoginThread.h"
+
 @interface LoginViewController ()<UITextFieldDelegate>
 {
 
@@ -40,6 +41,8 @@
     self.chongshiButton.layer.cornerRadius = 5;
     self.loginButton.layer.cornerRadius = 5;
     
+    self.view.backgroundColor = [UIColor whiteColor];
+
     
     [self addTextField:self.NumberTextField];
     [self addTextField:self.passwordTextField];
@@ -113,7 +116,7 @@
 
     PostLoginThread *login = [[PostLoginThread alloc] initWithMdn:self.NumberTextField.text withPassword:self.passwordTextField.text];
     [login requireonPrev:^{
-        [self showHud:@"登录中..."];
+        [self showHud:@"登录中..." onView:self.view];
     } success:^(NSDictionary *response) {
         NSLog(@"%@", response);
         [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
@@ -148,9 +151,8 @@
    
     
     RegisterViewController *regVC = [[RegisterViewController alloc] init];
-    //[self.navigationController pushViewController:regVC animated:YES];
-    SBNvc *nav = [[SBNvc alloc] initWithRootViewController:regVC];
-    [self presentViewController:nav animated:YES completion:nil];
+    UINavigationController *addNavController = [[UINavigationController alloc] initWithRootViewController:regVC];
+    [self presentViewController:addNavController animated:YES completion:nil];
     
 }
 #pragma mark =========重试按钮点击事件

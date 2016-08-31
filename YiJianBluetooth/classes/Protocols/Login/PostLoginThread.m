@@ -7,7 +7,6 @@
 //
 
 #import "PostLoginThread.h"
-#import "SBJsonWriter.h"
 
 @implementation PostLoginThread
 -(instancetype) initWithMdn:(NSString *)mdn withPassword:(NSString *)password{
@@ -53,19 +52,18 @@
     if(self.success)
     {
         NSDictionary * dic=[result JSONValue];
-        
+      
         NSNumber* num_code=[DataUtil numberForKey:@"code" inDictionary:dic];
         NSInteger code=[num_code integerValue];
         NSString* message=[dic valueForKey:@"message"];
         NSDictionary * responseDic=[NSDictionary dictionary];
         responseDic = [DataUtil dictionaryForKey:@"response" inDictionary:dic];
-//        Configuration * config=[[Configuration alloc]initWithDictionary:responseDic];
-////        long long serverTime=[dic valueForKey:@"serverTime"];
-        if(code==0){
-            [self exception:0 message:message];
-        }else{
-        
+        if(code==200){
             self.success(responseDic);
+
+        }else{
+            [self exception:0 message:message];
+
         }
         
     }

@@ -15,18 +15,21 @@
 -(instancetype) initWithUserName:(NSString *)mdn withPassword:(NSString *)password withType:(NSString *)type{
     
     
-    [self setUrl:@"http://dev.ezjian.com/login/register" andTimeout:defaultTimeout];
+    [self setUrl:kRegisterString andTimeout:defaultTimeout];
     
-        NSMutableDictionary* data=[NSMutableDictionary dictionary];
+    NSMutableDictionary* data=[NSMutableDictionary dictionary];
+
+    NSMutableDictionary* params=[NSMutableDictionary dictionary];
+    [params setValue:mdn forKey:@"username"];
+    [params setValue:password forKey:@"password"];
+    [params setValue:type forKey:@"type"];
     
-        NSMutableDictionary* params=[NSMutableDictionary dictionary];
-        [params setValue:mdn forKey:@"username"];
-        [params setValue:password forKey:@"password"];
-        [params setValue:type forKey:@"type"];
     
-        [data setValue:[params JSONRepresentation] forKey:@"data"];
     
-        self.params=data;
+    [data setValue:[params JSONRepresentation] forKey:@"data"];
+    
+    self.params=data;
+    
     return self;
 
 }
@@ -64,14 +67,17 @@
         NSInteger code=[num_code integerValue];
         NSString* message=[dic valueForKey:@"message"];
         NSDictionary * responseDic=[NSDictionary dictionary];
-        responseDic = [DataUtil dictionaryForKey:@"response" inDictionary:dic];
         //        Configuration * config=[[Configuration alloc]initWithDictionary:responseDic];
         ////        long long serverTime=[dic valueForKey:@"serverTime"];
-        if(code==0){
-            [self exception:0 message:message];
-        }else{
-            
+        if(code==200){
             self.success(responseDic);
+
+        }else if(code == 201){
+            [self exception:0 message:@"用户已存在"];
+            
+        }else{
+            [self exception:0 message:message];
+
         }
         
     }
