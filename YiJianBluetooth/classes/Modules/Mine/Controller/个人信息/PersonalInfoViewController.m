@@ -15,7 +15,7 @@
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
     User *_user;
-    User *_oldUser;
+    Master *_master;
     BOOL _edit;
     UITextField *_nameTextField;
     NSInteger pickInterger;
@@ -48,17 +48,17 @@
 
 
 
--(instancetype)initWithUser:(User *)user andEditable:(BOOL)editable{
+-(instancetype)initWithUser:(User *)user WithMaster:(Master *)master andEditable:(BOOL)editable{
 //    self = [super init];
     self=[super initWithNibName:@"PersonalInfoViewController" bundle:nil];
 
     if (self) {
+        _master = master;
         if (user==nil) {
             _user = [[User alloc] init];
             
         }else{
             _user = user;
-            _oldUser = user;
 
         }
         _edit = editable;
@@ -96,9 +96,10 @@
     [self initwithweightcell];
     [self initwithbirthdatecell];
     
-    if (_oldUser) {
+    if (_user) {
         [self initrightBarButtonItem:@"删除" action:@selector(deleteUser)];
     }
+    
     
     [self addArray];
 }
@@ -113,7 +114,6 @@
 
     if (alertView.tag == 100) {
         if (buttonIndex == 1) {
-            [UsersDao clearUserInfoByName:_oldUser.name];
             [self showToast:@"删除成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }
@@ -191,10 +191,10 @@
     //    _infocell.delegate = self;
 }
 - (void)saveUser{
-    if (_oldUser) {
-        [UsersDao clearUserInfoByName:_oldUser.name];
-    }
-    
+//    if (_oldUser) {
+//        [UsersDao clearUserInfoByName:_oldUser.name];
+//    }
+//    
     [UsersDao saveUserInfo:_user];
     
     [self showToast:@"保存成功"];

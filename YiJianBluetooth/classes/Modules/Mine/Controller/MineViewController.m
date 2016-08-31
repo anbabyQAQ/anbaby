@@ -15,9 +15,14 @@
 #import "User.h"
 #import "PersonalInfoViewController.h"
 
+#import "MasterDao.h"
+#import "Master.h"
+
+
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     User *_user;
+    Master *_master;
     NSInteger titleButtonInteger;//用来记录导航栏button点击次数
 }
 //导航栏下拉弹出tableView
@@ -43,12 +48,26 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+//    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+//    
+//    if (!_user && self.dropDownArray.count>0) {
+//        _user = [self.dropDownArray objectAtIndex:0];
+//    }
+//    [self.dropDownTableView reloadData];
     
-    if (!_user && self.dropDownArray.count>0) {
-        _user = [self.dropDownArray objectAtIndex:0];
+    _master = [MasterDao getMaster];
+    if (_master) {
+        if (_master.users.count>0) {
+            _user = [_master.users firstObject];
+        }else{
+            
+            [self showToast:@"请您先完善个人信息!"];
+            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
+            
+            guanyuVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:guanyuVC animated:YES];
+        }
     }
-    [self.dropDownTableView reloadData];
     
 }
 - (void)viewDidLoad {
@@ -110,7 +129,8 @@
    // PersonalInformationViewController *person = [PersonalInformationViewController new];
     
     
-    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user andEditable:YES];
+    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
+
 
     guanyuVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:guanyuVC animated:YES];

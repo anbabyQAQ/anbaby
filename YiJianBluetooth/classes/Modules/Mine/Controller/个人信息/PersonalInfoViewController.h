@@ -12,6 +12,7 @@
 #import "UserPhoneCell.h"
 #import "UserSexCell.h"
 #import "UserInfoCell.h"
+#import "Master.h"
 
 @interface PersonalInfoViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UserNameCellDelegate,UserPhoneCellDelegate,UserSexCellDelegate>
 
@@ -28,7 +29,7 @@
 @property (strong , nonatomic) UserInfoCell *agecell;
 
 
--(instancetype)initWithUser:(User *)user andEditable:(BOOL)editable;
+-(instancetype)initWithUser:(User *)user WithMaster:(Master *)master andEditable:(BOOL)editable;
 
 
 @end

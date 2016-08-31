@@ -140,7 +140,7 @@
 #pragma mark ChooseUser代理
 
 - (void)callBaceAddUser{
-    PersonalInfoViewController *info = [[PersonalInfoViewController alloc] initWithUser:nil andEditable:YES];
+    PersonalInfoViewController *info = [[PersonalInfoViewController alloc] initWithUser:nil WithMaster:nil andEditable:YES];
     [self.navigationController pushViewController:info animated:YES];
 
 //    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];

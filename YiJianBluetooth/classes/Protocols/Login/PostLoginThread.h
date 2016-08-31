@@ -17,12 +17,12 @@
 @property (nonatomic, copy) void (^prev)();
 @property (nonatomic, copy) void (^unavaliableNetwork)();
 @property (nonatomic, copy) void (^timout)();
-@property (nonatomic, copy) void (^success)(NSDictionary* response);
+@property (nonatomic, copy) void (^success)(NSDictionary* response ,NSString *token);
 @property (nonatomic, copy) void (^exception)(NSString* message);
 
 -(instancetype) initWithMdn:(NSString *)mdn withPassword:(NSString *)password;
 
--(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception;
+-(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response,NSString *token))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception;
 
 
 @end
