@@ -11,6 +11,7 @@
 #import "DateUtil.h"
 #import "UsersDao.h"
 #import "BlockUIAlertView.h"
+#import "NewFile.h"
 
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
@@ -322,16 +323,25 @@
         UIGraphicsEndImageContext();
         // 调整图片角度完毕
     }
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"xiaoxixi.png"]];   // 保存文件的名称
-    //UIGraphicsBeginImageContext(CGSizeMake(0, 630));
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+//    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"xiaoxixi.png"]];   // 保存文件的名称
+//    //UIGraphicsBeginImageContext(CGSizeMake(0, 630));
+
     self.picture.image = originalImage;
     NSData *imageData = UIImageJPEGRepresentation(self.picture.image, 0.5);
-    [imageData writeToFile: filePath    atomically:YES];
-//    [self uploadPic:filePath];
     
+    NSString* fileName=[NSString stringWithFormat:@"%@_%@",[DateUtil DateFormatToString:[NSDate date] WithFormat:@"yyyyMMdd_HHmmss"],_master.username];
+    NSString * localName=[NSString stringWithFormat:@"%@.png",fileName];
     
+    NSString * key = [NSString stringWithFormat:@"client/work/%@/%@/%@",_master.username,[DateUtil DateFormatToString:[NSDate date] WithFormat:@"yyyy-MM-dd"],localName];
+    NewFile* pic=[[NewFile alloc]init];
+    pic.key=key;
+    pic.name=localName;
     //保存
+    [pic saveDataToCache:imageData];
+    
+    _user.headIcon_file = pic;
+
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
