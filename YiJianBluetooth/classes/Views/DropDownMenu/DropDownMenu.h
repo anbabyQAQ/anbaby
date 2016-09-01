@@ -1,0 +1,146 @@
+//
+//  DropDownMenu.h
+//  YiJianBluetooth
+//
+//  Created by tyl on 16/9/1.
+//  Copyright © 2016年 LEI. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface DOPIndexPath : NSObject
+
+@property (nonatomic, assign) NSInteger column;
+@property (nonatomic, assign) NSInteger row;
+
+@property (nonatomic, assign) NSInteger item;
+
+
+- (instancetype)initWithColumn:(NSInteger)column row:(NSInteger)row;
+//item = -1
++ (instancetype)indexPathWithCol:(NSInteger)col row:(NSInteger)row;
++ (instancetype)indexPathWithCol:(NSInteger)col row:(NSInteger)row item:(NSInteger)item;
+@end
+
+
+
+@interface DOPBackgroundCellView : UIView
+
+@end
+
+
+
+
+#pragma mark - data source protocol
+@class DOPDropDownMenu;
+
+@protocol DOPDropDownMenuDataSource <NSObject>
+
+@required
+
+/**
+ *  返回 menu 第column列有多少行
+ */
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column;
+
+/**
+ *  返回 menu 第column列 每行title
+ */
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+@optional
+/**
+ *  返回 menu 有多少列 ，默认1列
+ */
+- (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu;
+
+//  返回 menu 第column列 每行image
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+//  detailText ,right text
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+/**
+ *  当有column列 row 行 返回有多少个item ，如果>0，说明有二级列表 ，=0 没有二级列表
+ *
+ */
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column;
+
+/**
+ *  当有column列 row 行 item项 title
+ *
+ */
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+//  当有column列 row 行 item项 image
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath;
+//
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+@end
+
+
+
+
+#pragma mark - delegate
+@protocol DOPDropDownMenuDelegate <NSObject>
+@optional
+/**
+ *  点击代理，点击了第column 第row 或者item项，如果 item >=0
+ */
+- (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+/**
+ *  return nil
+ *  optional  daili
+ */
+- (NSIndexPath *)menu:(DOPDropDownMenu *)menu willSelectRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+@end
+
+#pragma mark - interface
+@interface DOPDropDownMenu : UIView <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, weak) id <DOPDropDownMenuDataSource> dataSource;
+@property (nonatomic, weak) id <DOPDropDownMenuDelegate> delegate;
+
+@property (nonatomic, assign) UITableViewCellStyle cellStyle; // default value1
+@property (nonatomic, strong) UIColor *indicatorColor;      // 三角指示器颜色
+@property (nonatomic, strong) UIColor *textColor;           // 文字title颜色
+@property (nonatomic, strong) UIColor *textSelectedColor;   // 文字title选中颜色
+@property (nonatomic, strong) UIColor *detailTextColor;     // detailText文字颜色
+@property (nonatomic, strong) UIFont *detailTextFont;       // font
+@property (nonatomic, strong) UIColor *separatorColor;      // 分割线颜色
+@property (nonatomic, assign) NSInteger fontSize;           // 字体大小
+
+
+
+
+// 当有二级列表item时，点击row 是否调用点击代理方法
+@property (nonatomic, assign) BOOL isClickHaveItemValid;
+
+@property (nonatomic, getter  =isRemainMenuTitle) BOOL remainMenuTitle; // 切换时是否更改menu title
+@property (nonatomic, strong) NSMutableArray  *currentSelectRowArray;
+
+@property (nonatomic, strong) UIView *superview;
+
+
+
+- (instancetype)initWithOrigin:(CGPoint)origin andHeight:(CGFloat)height andSuperView:(UIView *)view;
+
+// 获取title
+- (NSString *)titleForRowAtIndexPath:(DOPIndexPath *)indexPath;
+
+
+- (void)reloadData;
+
+
+
+///   moren xianshi  默认显示 哪行 那列
+- (void)selectDefalutIndexPath;
+
+- (void)selectIndexPath:(DOPIndexPath *)indexPath; // 默认 delegate
+
+- (void)selectIndexPath:(DOPIndexPath *)indexPath triggerDelegate:(BOOL)trigger; // 调用代理
+
+@end

@@ -1,37 +1,48 @@
 //
-//  PostLoginThread.m
-//  mts-iphone
+//  GetExaminationHistoriesThread.m
+//  YiJianBluetooth
 //
-//  Created by 刘超 on 15/11/18.
-//  Copyright © 2015年 中国电信. All rights reserved.
+//  Created by tyl on 16/9/1.
+//  Copyright © 2016年 LEI. All rights reserved.
 //
 
-#import "PostLoginThread.h"
+#import "GetExaminationHistoriesThread.h"
 
-@implementation PostLoginThread
--(instancetype) initWithMdn:(NSString *)mdn withPassword:(NSString *)password{
-   
-    [self setUrl:@"http://dev.ezjian.com/login/token" andTimeout:defaultTimeout];
+@implementation GetExaminationHistoriesThread
+
+
+-(instancetype) initWithaid:(NSString *)aid withuid:(NSString *)uid withType:(NSString *)type withToken:(NSString *)token timestart:(NSString *)timestart  timeend:(NSString *)timeend{
+
+    
+    [self setUrl:kGetExaminationHistoriesThreadUrl andTimeout:defaultTimeout];
     
     NSMutableDictionary* data=[NSMutableDictionary dictionary];
     
     NSMutableDictionary* params=[NSMutableDictionary dictionary];
-    [params setValue:mdn forKey:@"username"];
-    [params setValue:password forKey:@"password"];
-   
+    [params setValue:aid forKey:@"aid"];
+    [params setValue:uid forKey:@"uid"];
+    [params setValue:type forKey:@"type"];
+    [params setValue:token forKey:@"token"];
+    [params setValue:timestart forKey:@"timestart"];
+    [params setValue:timeend forKey:@"timeend"];
+
+
     [data setValue:[params JSONRepresentation] forKey:@"data"];
     
     self.params=data;
+    
     return self;
+    
 }
 
--(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response,NSString *token))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception{
+-(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception{
     self.prev=prev;
     self.unavaliableNetwork=unavaliableNetwork;
     self.timout=timeout;
     self.success=success;
     self.exception=exception;
     [self require];
+    
 }
 -(void)onPrev{
     [super onPrev];
@@ -51,29 +62,24 @@
     [super onSuccess:result];
     if(self.success)
     {
-        NSDictionary * dic=[result JSONValue];
-      
+        NSDictionary *dic = [result JSONValue];
+        
         NSNumber* num_code=[DataUtil numberForKey:@"code" inDictionary:dic];
         NSInteger code=[num_code integerValue];
         NSString* message=[dic valueForKey:@"message"];
+        NSDictionary * responseDic=[NSDictionary dictionary];
+        responseDic = [dic objectForKey:@"data"];
         
-
         
-        NSString *token = [dic valueForKey:@"token"];
         if(code==200){
+            self.success(responseDic);
             
-            NSDictionary * responseDic=[NSDictionary dictionary];
-            NSMutableArray *data_arr  = [dic valueForKey:@"data"];
+        }else if(code == 201){
+            [self exception:0 message:@"用户已存在"];
             
-            responseDic = [data_arr firstObject];
-            
-            self.success(responseDic,token);
-            responseDic = [data_arr lastObject];
-            NSLog(@"%@",responseDic);
-
         }else{
             [self exception:0 message:message];
-
+            
         }
         
     }
@@ -98,5 +104,7 @@
 -(void)onCancelled{
     [super onCancelled];
 }
+
+
 
 @end
