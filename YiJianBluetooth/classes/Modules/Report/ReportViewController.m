@@ -18,7 +18,10 @@
 
 #import "UsersDao.h"
 #import "User.h"
-@interface ReportViewController ()<ChartViewDelegate,ChartXAxisValueFormatter,UITableViewDataSource,UITableViewDelegate>
+
+#import "DropDownMenu.h"
+
+@interface ReportViewController ()<ChartViewDelegate,ChartXAxisValueFormatter,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
 
 @property (nonatomic, strong) RadarChartView *radarChartView;
 @property (nonatomic, strong) RadarChartData *data;
@@ -34,21 +37,24 @@
 @property (nonatomic, strong) NSArray *title_arr;
 
 
-@property(nonatomic, strong)UIButton *titleButton;
-@property(nonatomic, strong)UITableView *dropDownTableView;
-@property(nonatomic, strong)NSMutableArray *dropDownArray;
+@property (nonatomic, strong) NSArray *user_classifys;
+@property (nonatomic, strong) NSArray *user_cates;
+
+
+@property (nonatomic, strong) NSArray *sorts;
+@property (nonatomic, weak) DOPDropDownMenu *menu;
 
 
 @end
 
 @implementation ReportViewController
 
--(void)viewWillAppear:(BOOL)animated{
-
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-     self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+    //    self.tabBarController.tabBar.hidden=YES;
+    self.navigationController.navigationBar.translucent=NO;
+    self.tabBarController.tabBar.translucent=NO;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -173,49 +179,36 @@
     [self.radarChartView addSubview:self.btn5];
     [self.radarChartView addSubview:self.btn6];
     
-    [self addTablView];
     [self addTitleButton];
    
 }
 
-#pragma mark ===========导航栏中间title按钮
+#pragma mark 导航栏中间title按钮
 -(void)addTitleButton{
+    self.user_classifys = @[@"我的家人",@"田玉龙",@"孙成雷",@"安小平",@"田玉龙",@"孙成雷",@"安小平"];
+    self.user_cates = @[@"田玉龙",@"孙成雷",@"安小平",@"田玉龙"];
+  
     
-    self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.titleButton.frame = CGRectMake(0, 0, 100, 44);
-    [self.titleButton setTitle:@"我的" forState:UIControlStateNormal];
-    [self.titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [[self.titleButton titleLabel] setFont:[UIFont systemFontOfSize:52/3]];
-    [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.titleButton setImage:[UIImage imageNamed:@"xialaImage"] forState:UIControlStateNormal];
-    [self.titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
-    [self.titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, 60, 0, 0)];
-    self.navigationItem.titleView = _titleButton;
-}
+    // 添加下拉菜单
+    DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:44 andSuperView:self.view];
+    menu.delegate = self;
+    menu.dataSource = self;
 
--(void)titleButtonClick:(UIButton *)sender{
-
+    _menu = menu;
     
-    if (self.titleButton.selected) {
-        self.dropDownTableView.hidden = YES;
-        self.titleButton.selected = NO;
-    }else{
-        self.titleButton.selected = YES;
-        self.dropDownTableView.hidden = NO;
-        self.dropDownTableView.frame =CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40);
-    }
+    self.navigationItem.titleView = _menu;
+    
+    // 创建menu 第一次显示 不会调用点击代理，可以用这个手动调用
+    [menu selectDefalutIndexPath];
+
 }
 
--(void)addTablView{
-
-    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-    self.dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40) style:(UITableViewStylePlain)];
-    self.dropDownTableView.showsVerticalScrollIndicator = NO;
-    self.dropDownTableView.delegate =self;
-    self.dropDownTableView.dataSource = self;
-    [self.view addSubview:self.dropDownTableView];
-    self.dropDownTableView.hidden = YES;
+- (void)menuReloadData
+{
+    [_menu reloadData];
 }
+
+
 
 - (void)pushBtn:(id)sender{
     UIButton *button = (UIButton *)sender;
@@ -465,52 +458,93 @@
 }
 
 
--(NSMutableArray *)dropDownArray{
-    if (_dropDownArray==nil) {
-        _dropDownArray = [[NSMutableArray alloc] init];
-    }
-    return _dropDownArray;
-}
 
 
-#pragma mark =============tableView代理
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
+#pragma mark 下拉抽屉代理实现
+
+
+- (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu
+{
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return _dropDownArray.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    static NSString *cellID = @"cellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column
+{
+    if (column == 0) {
+        return self.user_classifys.count;
+    }else {
+        return 0;
     }
-    User *user = self.dropDownArray[indexPath.row];
-    cell.textLabel.text = user.name;
-    cell.textLabel.textAlignment = NSTextAlignmentLeft;
-    cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    cell.textLabel.textColor = [UIColor darkTextColor];
-    
-    return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    
-    self.dropDownTableView.hidden = YES;
-    self.titleButton.selected = NO;
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0) {
+        return self.user_classifys[indexPath.row];
+    }  else {
+        return 0;
+    }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+// new datasource
+
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0 || indexPath.column == 1) {
+        return [NSString stringWithFormat:@"我的－头像"];
+    }
+    return nil;
 }
 
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0 && indexPath.item >= 0) {
+        return [NSString stringWithFormat:@"我的－头像"];
+    }
+    return nil;
+}
+
+// new datasource
+
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    
+    return nil;
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    return  nil;
+}
+
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column
+{
+        if (column == 0) {
+            if (row == 0) {
+               return self.user_cates.count;
+            }
+        }
+    return 0;
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0) {
+        if (indexPath.row == 0) {
+            return self.user_cates[indexPath.item];
+        }
+    }
+    return nil;
+}
+
+- (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.item >= 0) {
+        NSLog(@"点击了 %ld - %ld - %ld 项目",indexPath.column,indexPath.row,indexPath.item);
+    }else {
+        NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
+    }
+}
 
 
 - (void)didReceiveMemoryWarning {

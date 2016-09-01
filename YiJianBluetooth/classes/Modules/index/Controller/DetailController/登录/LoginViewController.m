@@ -128,9 +128,9 @@
         master.token = token;
         master.aid   = [[DataUtil numberForKey:@"aid" inDictionary:response] integerValue];
         
-        master.username = [NSString stringWithFormat:@"%@",[DataUtil stringForKey:@"userName" inDictionary:response]];
+        master.username = [DataUtil stringForKey:@"userName" inDictionary:response];
         
-        master.pass = [NSString stringWithFormat:@"%@",[DataUtil stringForKey:@"pass" inDictionary:response]];
+        master.pass = [DataUtil stringForKey:@"pass" inDictionary:response];
         
         master.registerType = [[response objectForKey:@"registerType"] integerValue];
         master.isbanned = [[response objectForKey:@"isbanned"] integerValue];

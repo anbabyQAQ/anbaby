@@ -1,25 +1,27 @@
 //
-//  PostLoginThread.m
-//  mts-iphone
+//  PostExaminationThread.m
+//  YiJianBluetooth
 //
-//  Created by 刘超 on 15/11/18.
-//  Copyright © 2015年 中国电信. All rights reserved.
+//  Created by tyl on 16/9/1.
+//  Copyright © 2016年 LEI. All rights reserved.
 //
 
-#import "PostLoginThread.h"
+#import "PostExaminationThread.h"
 
-@implementation PostLoginThread
--(instancetype) initWithMdn:(NSString *)mdn withPassword:(NSString *)password{
-   
-    [self setUrl:@"http://dev.ezjian.com/login/token" andTimeout:defaultTimeout];
+@implementation PostExaminationThread
+-(instancetype) initWithToken:(NSString *)token type:(NSString *)type  withdata:(NSDictionary *)data{
+
+    [self setUrl:kPostExaminationThreadUrl andTimeout:defaultTimeout];
     
-    NSMutableDictionary* data=[NSMutableDictionary dictionary];
+    NSMutableDictionary* param_data=[NSMutableDictionary dictionary];
+    
     
     NSMutableDictionary* params=[NSMutableDictionary dictionary];
-    [params setValue:mdn forKey:@"username"];
-    [params setValue:password forKey:@"password"];
-   
-    [data setValue:[params JSONRepresentation] forKey:@"data"];
+    [params setValue:type forKey:@"type"];
+    [params setValue:token forKey:@"token"];
+    [params setValue:data forKey:@"data"];
+    
+    [param_data setValue:[params JSONRepresentation] forKey:@"data"];
     
     self.params=data;
     return self;
@@ -52,29 +54,16 @@
     if(self.success)
     {
         NSDictionary * dic=[result JSONValue];
-      
+        
         NSNumber* num_code=[DataUtil numberForKey:@"code" inDictionary:dic];
         NSInteger code=[num_code integerValue];
         NSString* message=[dic valueForKey:@"message"];
         
-
-
-        
-        NSString *token = [dic valueForKey:@"token"];
-
         if(code==200){
-            NSDictionary * responseDic=[NSDictionary dictionary];
-            NSMutableArray *data_arr  = [dic valueForKey:@"data"];
-            responseDic = [data_arr firstObject];
-
-            self.success(responseDic,token);
-            NSLog(@"%@",responseDic);
-
+            self.success();
         }else{
             [self exception:0 message:message];
-
         }
-        
     }
 }
 
