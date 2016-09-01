@@ -31,7 +31,7 @@
     self.navigationController.navigationBar.translucent=NO;
     self.tabBarController.tabBar.translucent=NO;
  
-    
+    [self getData];
     self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
     [self.familyTableView reloadData];
                         
@@ -110,6 +110,8 @@
     } success:^(NSDictionary *response) {
         NSLog(@"%@", response);
         [self hideHud];
+    
+        
     } unavaliableNetwork:^{
         [self hideHud];
         [self showToast:@"网络未连接"];

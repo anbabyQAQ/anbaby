@@ -61,12 +61,15 @@
         }else{
             
             [self showToast:@"请您先完善个人信息!"];
-//            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-//            
-//            guanyuVC.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:guanyuVC animated:YES];
+
+            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
+            
+            guanyuVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:guanyuVC animated:YES];
+
         }
     }
+
     
 }
 - (void)viewDidLoad {
