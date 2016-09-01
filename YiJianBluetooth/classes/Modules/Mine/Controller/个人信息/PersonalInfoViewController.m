@@ -15,10 +15,13 @@
 
 #import "PostUserAccountThred.h"
 #import "Master.h"
+#import "MasterDao.h"
+#import "mUser.h"
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
     User *_user;
     Master *_master;
+    mUser *_mUser;
     BOOL _edit;
     UITextField *_nameTextField;
     NSInteger pickInterger;
@@ -196,8 +199,13 @@
 - (void)saveUser{
 
     
+    
     [self getData];
     
+    //[self showToast:@"保存成功"];
+    
+    //[self.navigationController popViewControllerAnimated:YES];
+
 }
 // header设置
 - (void)headerCreate
@@ -668,23 +676,27 @@
 
     
     NSMutableDictionary *data = [NSMutableDictionary dictionary];
-    [data setObject:@"" forKey:@"uid"];
+   //[data setObject:@"" forKey:@"uid"];
     [data setObject:_user.name forKey:@"aliasName"];
     [data setObject:_user.phone forKey:@"phone"];
     [data setObject:@(_user.gender) forKey:@"gender"];
     [data setObject:@(_user.height) forKey:@"height"];
     [data setObject:@(_user.weight) forKey:@"weight"];
     NSString *date = [DateUtil DateFormatToString:_user.birthdate WithFormat:@"yyyy-MM-dd"];
-//    [data setObject:date forKey:@"age"];
+    [data setObject:date forKey:@"age"];
     
     PostUserAccountThred *account = [[PostUserAccountThred alloc] initWithAid:[NSString stringWithFormat:@"%ld",_master.aid] withToken:_master.token widthData:data];
-    
+
     [account requireonPrev:^{
+        
         [self showHud:@"正在保存中..." onView:self.view];
     } success:^(NSDictionary *response) {
         [self hideHud];
         [self showToast:@"保存成功"];
-        
+        _mUser = [[mUser alloc] init];
+        _mUser.name = _user.name;
+        [_master.users addObject:_mUser];
+        [MasterDao saveMasterInfo:_master];
         [self.navigationController popViewControllerAnimated:YES];
     } unavaliableNetwork:^{
         [self hideHud];

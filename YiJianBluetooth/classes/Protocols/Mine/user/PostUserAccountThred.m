@@ -8,18 +8,26 @@
 
 #import "PostUserAccountThred.h"
 #import "SBJsonWriter.h"
-@implementation PostUserAccountThred
+#import "Master.h"
+#import "MasterDao.h"
 
+@implementation PostUserAccountThred
+{
+
+    Master * _master;
+}
 -(instancetype)initWithAid:(NSString *)aid withToken:(NSString *)token widthData:(NSMutableDictionary *)dataDic{
 
     [self setUrl:@"http://dev.ezjian.com/user/account" andTimeout:defaultTimeout];
     
     NSMutableDictionary* data=[NSMutableDictionary dictionary];
-    
     NSMutableDictionary* params=[NSMutableDictionary dictionary];
+    
     [params setValue:aid forKey:@"aid"];
     [params setValue:token forKey:@"token"];
-    [params setValue:dataDic forKey:@"data"];
+    
+    NSArray *arr = @[dataDic];
+    [params setValue:arr forKey:@"data"];
     
     [data setValue:[params JSONRepresentation] forKey:@"data"];
     
