@@ -60,12 +60,11 @@
         NSDictionary * responseDic=[NSDictionary dictionary];
         NSMutableArray *data_arr  = [dic valueForKey:@"data"];
         
-        responseDic = [data_arr lastObject];
-        NSLog(@"%@",responseDic);
-        
         NSString *token = [dic valueForKey:@"token"];
         if(code==200){
             self.success(responseDic,token);
+            responseDic = [data_arr lastObject];
+            NSLog(@"%@",responseDic);
 
         }else{
             [self exception:0 message:message];
