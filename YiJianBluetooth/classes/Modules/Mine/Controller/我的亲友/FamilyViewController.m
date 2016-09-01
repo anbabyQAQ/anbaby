@@ -11,8 +11,11 @@
 #import "UsersDao.h"
 #import "User.h"
 #import "GetUserFamilyThred.h"
+#import "Master.h"
+#import "MasterDao.h"
 @interface FamilyViewController ()<UITableViewDataSource, UITableViewDelegate>{
     User *_user;
+    Master *_master;
 }
 
 @property(nonatomic, strong)NSMutableArray *familyArray;
@@ -99,7 +102,9 @@
 #pragma mark ========我的亲友列表请求
 -(void)getData{
 
-    GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:@"" withToken:@""];
+    _master = [MasterDao getMaster];
+    NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
+    GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
     [family requireonPrev:^{
          [self showHud:@"请求中..." onView:self.view];
     } success:^(NSDictionary *response) {
