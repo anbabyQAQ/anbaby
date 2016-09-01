@@ -57,13 +57,12 @@
         NSInteger code=[num_code integerValue];
         NSString* message=[dic valueForKey:@"message"];
         
-        NSDictionary * responseDic=[NSDictionary dictionary];
-        NSMutableArray *data_arr  = [dic valueForKey:@"data"];
-        
         NSString *token = [dic valueForKey:@"token"];
         if(code==200){
+            NSDictionary * responseDic=[NSDictionary dictionary];
+            NSMutableArray *data_arr  = [dic valueForKey:@"data"];
+            responseDic = [data_arr firstObject];
             self.success(responseDic,token);
-            responseDic = [data_arr lastObject];
             NSLog(@"%@",responseDic);
 
         }else{
