@@ -28,6 +28,9 @@
 @property (strong , nonatomic) UserInfoCell *heihgtcell;
 @property (strong , nonatomic) UserInfoCell *agecell;
 
+@property (strong , nonatomic) NSString *uid;
+@property (strong , nonatomic) NSString *mineString;//用来区分是从我的 个人信息进来还是从我的亲友进来
+
 
 -(instancetype)initWithUser:(User *)user WithMaster:(Master *)master andEditable:(BOOL)editable;
 

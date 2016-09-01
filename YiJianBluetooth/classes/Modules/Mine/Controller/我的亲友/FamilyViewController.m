@@ -92,6 +92,8 @@
 
     
     PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:user WithMaster:nil andEditable:YES];
+    person.mineString = @"亲友";
+    person.uid = user.uid;
     [self.navigationController pushViewController:person animated:YES];
 }
 

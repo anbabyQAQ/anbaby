@@ -57,18 +57,21 @@
     NSMutableArray *arr =  [NSMutableArray arrayWithArray:[MasterDao getMaster]];
     if (arr) {
         _master = [arr lastObject];
-        if (_master.users.count>0) {
-            mUser *muser = [_master.users firstObject];
-            _user = [UsersDao getUserInfoByName:muser.name Byuid:muser.uid];
-        }else{
+    
+        if (_master) {
+            if (_master.users.count>0) {
+                mUser *muser = [_master.users firstObject];
+                _user = [UsersDao getUserInfoByName:muser.name Byuid:muser.uid];
+            }else{
+                
+                [self showToast:@"请您先完善个人信息!"];
+                
+            }
+            //            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
+            //            guanyuVC.mineString = @"我的";
+            //            guanyuVC.hidesBottomBarWhenPushed = YES;
+            //            [self.navigationController pushViewController:guanyuVC animated:YES];
             
-            [self showToast:@"请您先完善个人信息!"];
-
-//            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-//            
-//            guanyuVC.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:guanyuVC animated:YES];
-
         }
     }
 
@@ -134,8 +137,8 @@
     
     
     PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-
-
+    guanyuVC.uid = _user.uid;
+    guanyuVC.mineString = @"我的";
     guanyuVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:guanyuVC animated:YES];
 }
