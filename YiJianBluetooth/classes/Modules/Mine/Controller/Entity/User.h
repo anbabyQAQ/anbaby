@@ -30,7 +30,7 @@ typedef enum
 /**
  *  ID for icon
  */
-@property (nonatomic,assign) unsigned char ICO_ID;
+@property (nonatomic,strong) NSString  *uid;
 @property (nonatomic,retain) NSDate *date;
 @property (nonatomic,retain) UIImage *headIcon;
 //头像本地路径

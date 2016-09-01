@@ -7,7 +7,6 @@
 //
 
 #import "BODetailViewController.h"
-#import "PersonalInformationViewController.h"
 #import "ChooseUser.h"
 #import "User.h"
 #import "UsersDao.h"
@@ -157,8 +156,7 @@
     [self.navigationController pushViewController:info animated:YES];
 
     
-//    PersonalInformationViewController *pserson  = [[PersonalInformationViewController alloc] init];
-//    [self.navigationController pushViewController:pserson animated:YES];
+
 }
 
 -(void)callBackUser:(User *)user{

@@ -7,7 +7,6 @@
 //
 
 #import "HeartRateSetDetailViewController.h"
-#import "PersonalInformationViewController.h"
 #import "ChooseUser.h"
 #import "User.h"
 #import "UsersDao.h"

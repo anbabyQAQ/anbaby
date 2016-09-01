@@ -200,17 +200,11 @@
     
     
     [self getData];
-
-//    if (_oldUser) {
-//        [UsersDao clearUserInfoByName:_oldUser.name];
-//    }
-//    
-
-    [UsersDao saveUserInfo:_user];
     
     //[self showToast:@"保存成功"];
     
     //[self.navigationController popViewControllerAnimated:YES];
+
 }
 // header设置
 - (void)headerCreate
@@ -688,16 +682,20 @@
     [data setObject:@(_user.height) forKey:@"height"];
     [data setObject:@(_user.weight) forKey:@"weight"];
     NSString *date = [DateUtil DateFormatToString:_user.birthdate WithFormat:@"yyyy-MM-dd"];
-    [data setObject:date forKey:@"age"];
+//    [data setObject:date forKey:@"age"];
     
+    PostUserAccountThred *account = [[PostUserAccountThred alloc] initWithAid:[NSString stringWithFormat:@"%ld",_master.aid] withToken:_master.token widthData:data];
     
      _master = [MasterDao getMaster];
     NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
     PostUserAccountThred *account = [[PostUserAccountThred alloc] initWithAid:aid withToken:_master.token widthData:data];
+
     [account requireonPrev:^{
         [self showHud:@"正在保存中..." onView:self.view];
     } success:^(NSDictionary *response) {
         [self hideHud];
+        [self showToast:@"保存成功"];
+        
         [self.navigationController popViewControllerAnimated:YES];
     } unavaliableNetwork:^{
         [self hideHud];
@@ -710,7 +708,7 @@
         if (message) {
             [self showToast:message];
         }else{
-            [self showToast:@"位置错误"];
+            [self showToast:@"网络连接错误"];
         }
     }];
 }
