@@ -693,6 +693,7 @@
     } success:^(NSDictionary *response) {
         [self hideHud];
         [self showToast:@"保存成功"];
+
         _mUser = [[mUser alloc] init];
         _mUser.name = _user.name;
         [_master.users addObject:_mUser];
