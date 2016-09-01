@@ -54,6 +54,8 @@
 //    }
 //    [self.dropDownTableView reloadData];
     
+    
+    
     _master = [MasterDao getMaster];
     if (_master) {
         if (_master.users.count>0) {
@@ -63,7 +65,7 @@
             [self showToast:@"请您先完善个人信息!"];
 
             PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-            
+            guanyuVC.mineString = @"我的";
             guanyuVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:guanyuVC animated:YES];
 
@@ -132,8 +134,8 @@
     
     
     PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-
-
+    guanyuVC.uid = _user.uid;
+    guanyuVC.mineString = @"我的";
     guanyuVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:guanyuVC animated:YES];
 }

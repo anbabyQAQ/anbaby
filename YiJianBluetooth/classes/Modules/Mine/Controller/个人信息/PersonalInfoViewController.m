@@ -17,6 +17,8 @@
 #import "Master.h"
 #import "MasterDao.h"
 #import "mUser.h"
+#import "DeleteUserAccountThread.h"
+
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
     User *_user;
@@ -101,12 +103,13 @@
     [self initwithheihgtcell];
     [self initwithweightcell];
     [self initwithbirthdatecell];
-    
-    if (_user) {
-        [self initrightBarButtonItem:@"删除" action:@selector(deleteUser)];
+
+    //从我的亲友界面过来才有删除按钮
+    if ([self.mineString isEqualToString:@"亲友"]) {
+        if (_user) {
+            [self initrightBarButtonItem:@"删除" action:@selector(deleteUser)];
+        }
     }
-    
-    
     [self addArray];
 }
 
@@ -120,8 +123,7 @@
 
     if (alertView.tag == 100) {
         if (buttonIndex == 1) {
-            [self showToast:@"删除成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self deleteData];
         }
     }
 }
@@ -676,7 +678,10 @@
 
     
     NSMutableDictionary *data = [NSMutableDictionary dictionary];
-   //[data setObject:@"" forKey:@"uid"];
+    
+    if (self.uid  != nil && ![self.uid isEqualToString:@""]) {
+         [data setObject:self.uid forKey:@"uid"];
+    }
     [data setObject:_user.name forKey:@"aliasName"];
     [data setObject:_user.phone forKey:@"phone"];
     [data setObject:@(_user.gender) forKey:@"gender"];
@@ -713,6 +718,33 @@
         }
     }];
 }
+
+#pragma mark ================删除个人信息
+-(void)deleteData{
+
+    DeleteUserAccountThread *delete = [[DeleteUserAccountThread alloc] initWithAid:[NSString stringWithFormat:@"%ld",_master.aid] withuid:self.uid withToken:_master.token];
+    [delete requireonPrev:^{
+        [self showHud:@"正在删除中..." onView:self.view];
+    } success:^(NSDictionary *response) {
+        [self hideHud];
+        [self showToast:@"删除成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"网络连接错误"];
+        }
+    }];
+}
+
 
 /*
 #pragma mark - Navigation
