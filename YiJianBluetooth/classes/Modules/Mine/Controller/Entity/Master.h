@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "User.h"
+#import "mUser.h"
+
 
 @interface Master : NSObject
 
@@ -19,7 +20,7 @@
 @property (assign, nonatomic) NSInteger isbanned;
 @property (assign, nonatomic) NSInteger registerType;
 
-@property (strong, nonatomic) NSMutableArray<User*> *users;
+@property (strong, nonatomic) NSMutableArray<mUser*> *users;
 
 @property (strong, nonatomic) NSString *uid;
 

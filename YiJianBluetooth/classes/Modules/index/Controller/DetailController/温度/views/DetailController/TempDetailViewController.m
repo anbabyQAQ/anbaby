@@ -10,7 +10,6 @@
 #import "MAThermometer.h"
 #import "User.h"
 #import "UsersDao.h"
-#import "PersonalInformationViewController.h"
 #import "ChooseUser.h"
 #import "BlockUIAlertView.h"
 #import "PersonalInfoViewController.h"

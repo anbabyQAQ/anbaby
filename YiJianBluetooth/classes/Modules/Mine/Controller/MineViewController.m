@@ -8,7 +8,6 @@
 
 #import "MineViewController.h"
 #import "GuanYuWoMenViewController.h"
-#import "PersonalInformationViewController.h"
 #import "FamilyViewController.h"
 #import "LoginViewController.h"
 #import "UsersDao.h"
