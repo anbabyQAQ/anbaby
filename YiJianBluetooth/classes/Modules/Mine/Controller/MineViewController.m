@@ -54,19 +54,19 @@
 //    }
 //    [self.dropDownTableView reloadData];
     
-    _master = [MasterDao getMaster];
-    if (_master) {
-        if (_master.users.count>0) {
-            _user = [_master.users firstObject];
-        }else{
-            
-            [self showToast:@"请您先完善个人信息!"];
-            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-            
-            guanyuVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:guanyuVC animated:YES];
-        }
-    }
+//    _master = [MasterDao getMaster];
+//    if (_master) {
+//        if (_master.users.count>0) {
+//            _user = [_master.users firstObject];
+//        }else{
+//            
+//            [self showToast:@"请您先完善个人信息!"];
+//            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
+//            
+//            guanyuVC.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:guanyuVC animated:YES];
+//        }
+//    }
     
 }
 - (void)viewDidLoad {

@@ -52,6 +52,8 @@
 		18FF13031D4AFFA700DC380B /* CharacteristicReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13021D4AFFA700DC380B /* CharacteristicReader.m */; };
 		18FF13081D4B467F00DC380B /* AlarmClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF13061D4B467F00DC380B /* AlarmClockViewController.m */; };
 		18FF13091D4B467F00DC380B /* AlarmClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FF13071D4B467F00DC380B /* AlarmClockViewController.xib */; };
+		18FF9A831D78049100F16918 /* DeleteHttpThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF9A821D78049100F16918 /* DeleteHttpThread.m */; };
+		18FF9A861D78065100F16918 /* DeleteUserAccountThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FF9A851D78065100F16918 /* DeleteUserAccountThread.m */; };
 		3C113DE81D5869DF004099BB /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113DE41D5869DF004099BB /* PGIndexBannerSubiew.m */; };
 		3C113DE91D5869DF004099BB /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C113DE71D5869DF004099BB /* NewPagedFlowView.m */; };
 		3C113DFB1D586AEF004099BB /* Yosemite00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C113DED1D586AEF004099BB /* Yosemite00.jpg */; };
@@ -404,6 +406,10 @@
 		18FF13051D4B467F00DC380B /* AlarmClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClockViewController.h; sourceTree = "<group>"; };
 		18FF13061D4B467F00DC380B /* AlarmClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmClockViewController.m; sourceTree = "<group>"; };
 		18FF13071D4B467F00DC380B /* AlarmClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmClockViewController.xib; sourceTree = "<group>"; };
+		18FF9A811D78049100F16918 /* DeleteHttpThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteHttpThread.h; sourceTree = "<group>"; };
+		18FF9A821D78049100F16918 /* DeleteHttpThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteHttpThread.m; sourceTree = "<group>"; };
+		18FF9A841D78065100F16918 /* DeleteUserAccountThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteUserAccountThread.h; sourceTree = "<group>"; };
+		18FF9A851D78065100F16918 /* DeleteUserAccountThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteUserAccountThread.m; sourceTree = "<group>"; };
 		36C8B96958F8D12F0475B8DC /* libPods-YiJianBluetoothUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YiJianBluetoothUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA64D84A97A4AD75C3C9880 /* Pods-YiJianBluetooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiJianBluetooth.release.xcconfig"; path = "Pods/Target Support Files/Pods-YiJianBluetooth/Pods-YiJianBluetooth.release.xcconfig"; sourceTree = "<group>"; };
 		3C113DE31D5869DF004099BB /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
@@ -972,6 +978,8 @@
 				185F3EE91D768E91008F3390 /* PostUserAccountThred.m */,
 				185F3EEB1D76B8A0008F3390 /* GetUserFamilyThred.h */,
 				185F3EEC1D76B8A0008F3390 /* GetUserFamilyThred.m */,
+				18FF9A841D78065100F16918 /* DeleteUserAccountThread.h */,
+				18FF9A851D78065100F16918 /* DeleteUserAccountThread.m */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -1865,6 +1873,8 @@
 				3CC7A6E71D51E0B7003CAC87 /* PutBodyHttpThread.m */,
 				3CC7A6E81D51E0B7003CAC87 /* PutJsonHttpThread.h */,
 				3CC7A6E91D51E0B7003CAC87 /* PutJsonHttpThread.m */,
+				18FF9A811D78049100F16918 /* DeleteHttpThread.h */,
+				18FF9A821D78049100F16918 /* DeleteHttpThread.m */,
 			);
 			path = HttpThreads;
 			sourceTree = "<group>";
@@ -2628,6 +2638,7 @@
 				3CC7A6411D51DBD0003CAC87 /* ServiceViewController.m in Sources */,
 				3C4817101D5DA79A001BCB8F /* ScannedPeripheral.m in Sources */,
 				3CA3234F1D718FA600738B5E /* UserInfoCell.m in Sources */,
+				18FF9A861D78065100F16918 /* DeleteUserAccountThread.m in Sources */,
 				3CDDFEC51D76C63A00B48BD5 /* MasterDao.m in Sources */,
 				3CCEBC3E1D5B1124007A852D /* TempChartViewController.m in Sources */,
 				3CC7A6C41D51E065003CAC87 /* CtsiUserDefaults.m in Sources */,
@@ -2694,6 +2705,7 @@
 				3C9205A01D59940A00781D3D /* LKDBUtils.m in Sources */,
 				3CB521381D742BE400A9F367 /* SBJsonUTF8Stream.m in Sources */,
 				3C221B011D59B4C20000EE18 /* GEOUtil.m in Sources */,
+				18FF9A831D78049100F16918 /* DeleteHttpThread.m in Sources */,
 				3C113DE91D5869DF004099BB /* NewPagedFlowView.m in Sources */,
 				3C796B951D5C188800862460 /* LeadPlayer.m in Sources */,
 				3CA323491D7186A200738B5E /* UserPhoneCell.m in Sources */,
