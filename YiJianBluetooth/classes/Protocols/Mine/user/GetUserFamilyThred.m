@@ -27,7 +27,7 @@
 
 }
 
--(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception{
+-(void)requireonPrev:(void (^)())prev success:(void (^)(NSMutableArray* response))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception{
     self.prev=prev;
     self.unavaliableNetwork=unavaliableNetwork;
     self.timout=timeout;
@@ -59,11 +59,12 @@
         NSNumber* num_code=[DataUtil numberForKey:@"code" inDictionary:dic];
         NSInteger code=[num_code integerValue];
         NSString* message=[dic valueForKey:@"message"];
-        NSDictionary * responseDic=[NSDictionary dictionary];
-        //        Configuration * config=[[Configuration alloc]initWithDictionary:responseDic];
-        ////        long long serverTime=[dic valueForKey:@"serverTime"];
+
         if(code==200){
-            self.success(responseDic);
+
+            NSMutableArray *data_arr  = [dic valueForKey:@"data"];
+            
+            self.success(data_arr);
             
         }else{
             [self exception:0 message:message];

@@ -135,15 +135,15 @@
         master.registerType = [[response objectForKey:@"registerType"] integerValue];
         master.isbanned = [[response objectForKey:@"isbanned"] integerValue];
         
-        if ([MasterDao getMaster]) {
-            Master *model = [MasterDao getMaster];
-            if (master.aid != model.aid) {
-                [MasterDao clearMaster];
-                [MasterDao saveMasterInfo:master];
-            }
-        }else{
+//        if ([MasterDao getMaster]) {
+//            Master *model = [MasterDao getMaster];
+//            if (master.aid != model.aid) {
+//                [MasterDao clearMaster];
+//                [MasterDao saveMasterInfo:master];
+//            }
+//        }else{
             [MasterDao saveMasterInfo:master];
-        }
+//        }
         
         
         [self dismissViewControllerAnimated:YES completion:nil];

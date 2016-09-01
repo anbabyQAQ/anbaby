@@ -13,6 +13,8 @@
 #import "GetUserFamilyThred.h"
 #import "Master.h"
 #import "MasterDao.h"
+#import "mUser.h"
+
 @interface FamilyViewController ()<UITableViewDataSource, UITableViewDelegate>{
     User *_user;
     Master *_master;
@@ -102,14 +104,41 @@
 #pragma mark ========我的亲友列表请求
 -(void)getData{
 
-    _master = [MasterDao getMaster];
+    NSMutableArray *arr =  [NSMutableArray arrayWithArray:[MasterDao getMaster]];
+    if (arr) {
+        _master = [arr lastObject];
+    }
     NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
     GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
     [family requireonPrev:^{
          [self showHud:@"请求中..." onView:self.view];
-    } success:^(NSDictionary *response) {
+    } success:^(NSMutableArray *response) {
         NSLog(@"%@", response);
         [self hideHud];
+
+        if (response.count>0) {
+            [self.familyArray removeAllObjects];
+            [UsersDao clearUsers];
+            
+            NSMutableArray *muser_arr = [[NSMutableArray alloc]init];
+            for (NSDictionary *dic in response) {
+                User *user = [[User alloc] initWith:dic];
+                
+                mUser *muser = [[mUser alloc] init];
+                muser.name = user.name;
+                muser.uid = user.uid;
+                [muser_arr addObject:muser];
+                
+                [self.familyArray addObject:user];
+                [UsersDao saveUserInfo:user];
+            }
+            
+            _master.users = muser_arr;
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            
+
+        }
+        [self.familyTableView reloadData];
     
         
     } unavaliableNetwork:^{

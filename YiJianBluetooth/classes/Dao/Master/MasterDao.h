@@ -13,10 +13,13 @@
 
 +(BOOL)saveMasterInfo:(Master *)master;
 
-+(Master *)getMaster;
++(NSArray *)getMaster;
+
++(Master*)getMasterByAid:(NSNumber *)aid;
 
 +(BOOL)clearMaster;
 
++(BOOL)updateMaster:(Master *)master Byaid:(NSNumber * )aid;
 
 
 

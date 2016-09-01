@@ -19,8 +19,18 @@
     
 }
 
-+(Master *)getMaster{
++(NSArray *)getMaster{
     NSMutableArray *data_array = [Master searchWithWhere:nil orderBy:nil offset:0 count:9999];
+    if (data_array.count>0) {
+        return data_array;
+    }
+    return nil;
+}
+
++(Master *)getMasterByAid:(NSNumber *)aid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
+    [dic setObject:aid forKey:@"aid"];
+    NSMutableArray *data_array = [Master searchWithWhere:dic orderBy:nil offset:0 count:9999];
     if (data_array.count>0) {
         Master *master = [data_array lastObject];
         return master;
@@ -34,7 +44,12 @@
     
 }
 
-
++(BOOL)updateMaster:(Master *)master Byaid:(NSNumber *)aid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
+    [dic setObject:aid forKey:@"aid"];
+    BOOL success = [Master updateToDB:master where:dic];
+    return success;
+}
 
 
 @end

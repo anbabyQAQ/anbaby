@@ -45,7 +45,7 @@
     //    sessionManager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     //    [sessionManager.requestSerializer setValue:[self getHelpToken] forHTTPHeaderField:@"Authorization"];
     
-    sessionManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     //设置超时时间
