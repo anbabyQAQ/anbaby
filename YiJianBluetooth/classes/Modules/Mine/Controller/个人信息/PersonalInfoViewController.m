@@ -14,6 +14,7 @@
 #import "NewFile.h"
 
 #import "PostUserAccountThred.h"
+#import "Master.h"
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
     User *_user;
@@ -677,6 +678,7 @@
 //    [data setObject:date forKey:@"age"];
     
     PostUserAccountThred *account = [[PostUserAccountThred alloc] initWithAid:[NSString stringWithFormat:@"%ld",_master.aid] withToken:_master.token widthData:data];
+    
     [account requireonPrev:^{
         [self showHud:@"正在保存中..." onView:self.view];
     } success:^(NSDictionary *response) {

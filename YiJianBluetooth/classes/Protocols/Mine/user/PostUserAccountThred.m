@@ -21,8 +21,6 @@
     [params setValue:token forKey:@"token"];
     [params setValue:dataDic forKey:@"data"];
     
-    
-    
     [data setValue:[params JSONRepresentation] forKey:@"data"];
     
     self.params=data;

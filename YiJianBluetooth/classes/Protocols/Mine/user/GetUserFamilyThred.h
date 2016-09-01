@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GetUserFamilyThred : NSObject
+#import "GetHttpThread.h"
 
+@interface GetUserFamilyThred : GetHttpThread
+
+@property (nonatomic, copy) void (^prev)();
+@property (nonatomic, copy) void (^unavaliableNetwork)();
+@property (nonatomic, copy) void (^timout)();
+@property (nonatomic, copy) void (^success)(NSDictionary* response);
+@property (nonatomic, copy) void (^exception)(NSString* message);
+
+
+-(instancetype)initWithAid:(NSString *)aid withToken:(NSString *)token;
+
+-(void)requireonPrev:(void (^)())prev success:(void (^)(NSDictionary* response))success unavaliableNetwork:(void (^)())unavaliableNetwork timeout:(void (^)())timeout exception:(void (^)(NSString* message))exception;
 @end
