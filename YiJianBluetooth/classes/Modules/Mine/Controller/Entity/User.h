@@ -7,19 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NewFile.h"
 
-typedef enum
-{
-    kGender_FeMale,
-    kGender_Male
-}Gender_t;
 
-typedef enum
-{
-    kAgeType_Children,
-    kAgeType_Adult
-}AgeType_t;
 
 
 @interface User : NSObject
@@ -31,26 +20,11 @@ typedef enum
  *  ID for icon
  */
 @property (nonatomic,strong) NSString  *uid;
-@property (nonatomic,retain) NSDate *date;
-@property (nonatomic,retain) UIImage *headIcon;
-//头像本地路径
-@property (nonatomic, strong) NewFile *headIcon_file;
-
-@property (nonatomic,assign) NSInteger weight;
-
-@property (nonatomic,assign) NSInteger height;
-
 @property (nonatomic,copy) NSString *name;
 
-@property (nonatomic,assign) NSNumber *number ;
-
-@property (nonatomic,strong) NSString* age;
-@property (nonatomic,assign) Gender_t gender;
+@property (nonatomic,retain) NSDate *date;
 
 
-@property (nonatomic, copy) NSString *phone;
-
-@property (nonatomic, copy) NSDate *birthdate;
 
 
 
@@ -108,9 +82,6 @@ typedef enum
 
 
 
--(instancetype)initWith:(NSDictionary*) dic;
 
-
--(NSDictionary*)dictionary;
 
 @end

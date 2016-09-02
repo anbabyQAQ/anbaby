@@ -35,7 +35,9 @@
 +(User *)getUserInfoByName:(NSString *)name Byuid:(NSString *)uid{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
     [dic setObject:name forKey:@"name"];
-    [dic setObject:uid forKey:@"uid"];
+    if (uid) {
+        [dic setObject:uid forKey:@"uid"];
+    }
 
     NSMutableArray *data_array = [User searchWithWhere:dic orderBy:nil offset:0 count:1];
     
