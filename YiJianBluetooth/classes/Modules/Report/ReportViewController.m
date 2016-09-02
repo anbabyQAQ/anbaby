@@ -15,13 +15,17 @@
 #import "BloodSugarViewController.h"
 #import "BloodPressureViewController.h"
 #import "BloodOxygenViewController.h"
-
+#import "GetUserFamilyThred.h"
 #import "UsersDao.h"
 #import "User.h"
-
+#import "MasterDao.h"
 #import "DropDownMenu.h"
 
-@interface ReportViewController ()<ChartViewDelegate,ChartXAxisValueFormatter,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
+@interface ReportViewController ()<ChartViewDelegate,ChartXAxisValueFormatter,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>{
+       Master *_master;
+        mUser *_muser;
+
+}
 
 @property (nonatomic, strong) RadarChartView *radarChartView;
 @property (nonatomic, strong) RadarChartData *data;
@@ -49,11 +53,102 @@
 
 @implementation ReportViewController
 
--(void)viewWillAppear:(BOOL)animated {
+
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //    self.tabBarController.tabBar.hidden=YES;
     self.navigationController.navigationBar.translucent=NO;
     self.tabBarController.tabBar.translucent=NO;
+    
+    _master = [MasterDao getMasterByAid:[[NSUserDefaults standardUserDefaults] objectForKey:@"master_aid"]];
+    
+    if (_master) {
+        if (_master.users.count>0) {
+            _muser = [_master.users firstObject];
+            NSMutableArray *user_arr = [[NSMutableArray alloc]init];
+            for (mUser *m in _master.users) {
+                [user_arr addObject:m.name];
+            }
+            self.user_classifys = [NSArray arrayWithArray:user_arr];
+            [self menuReloadData];
+            
+            
+            [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                mUser *m = (mUser*)obj;
+                if ([m.name isEqualToString:_master.showName]) {
+                    [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:idx]];
+                    _muser=m;
+                }
+            }];
+            
+        }else{
+            [self getData];
+        }
+    }
+    
+    
+    
+    
+}
+#pragma mark ========我的亲友列表请求
+-(void)getData{
+    
+    
+    NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
+    GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
+    [family requireonPrev:^{
+        [self showHud:@"请求中..." onView:self.view];
+    } success:^(NSMutableArray *response) {
+        NSLog(@"%@", response);
+        [self hideHud];
+        
+        if (response.count>0) {
+            NSMutableArray *muser_arr = [[NSMutableArray alloc]init];
+            for (NSDictionary *dic in response) {
+                mUser *muser = [[mUser alloc] initWith:dic];
+                [muser_arr addObject:muser];
+            }
+            _master.users = muser_arr;
+            
+            _muser = [_master.users firstObject];
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            
+            //抽屉刷新
+            NSMutableArray *user_arr = [[NSMutableArray alloc]init];
+            for (mUser *m in _master.users) {
+                [user_arr addObject:m.name];
+            }
+            self.user_classifys = [NSArray arrayWithArray:user_arr];
+            [self menuReloadData];
+            
+            [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:0]];
+            
+            
+        }else{
+            [_master.users removeAllObjects];
+            _muser = nil;
+            [self showToast:@"请添加个人信息~"];
+            
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            
+        }
+        
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
+    
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -545,6 +640,20 @@
     }else {
         NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
     }
+    
+    if (_user_classifys.count>indexPath.row) {
+        NSString *name = [_user_classifys objectAtIndex:indexPath.row];
+        _master.showName = name;
+        [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+    }
+    
+    
+    [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        mUser *m = (mUser*)obj;
+        if ([m.name isEqualToString:_master.showName]) {
+            _muser = m;
+        }
+    }];
 }
 
 

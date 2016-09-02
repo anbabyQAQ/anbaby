@@ -220,7 +220,7 @@
     NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
     GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
     [family requireonPrev:^{
-        [self showHud:@"请求中..." onView:self.view];
+        [self showHud:@"数据请求中..."];
     } success:^(NSMutableArray *response) {
         NSLog(@"%@", response);
         [self hideHud];
@@ -237,14 +237,15 @@
             [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
 
             //抽屉刷新
-            self.user_classifys = [NSArray arrayWithArray:_master.users];
-            [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                mUser *m = (mUser*)obj;
-                if ([m.name isEqualToString:_master.showName]) {
-                    [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:idx item:0]];
-                    [self menuReloadData];
-                }
-            }];
+            NSMutableArray *user_arr = [[NSMutableArray alloc]init];
+            for (mUser *m in _master.users) {
+                [user_arr addObject:m.name];
+            }
+            self.user_classifys = [NSArray arrayWithArray:user_arr];
+            [self menuReloadData];
+
+            [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:0]];
+            
             
         }else{
             [_master.users removeAllObjects];
