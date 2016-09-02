@@ -231,8 +231,19 @@
     self.picture = [[UIImageView alloc]initWithFrame:CGRectMake(SCR_W/2 - 30, 42, 60, 60)];
     [self.picture.layer setMasksToBounds:YES];
     [self.picture.layer setCornerRadius:29];
-//    [self.picture sd_setImageWithURL:[NSURL URLWithString:[UserManager shareManager].user.picUrlMid] placeholderImage:[UIImage imageNamed:@"txcur_v_1"]];
-    [self.picture setImage:[UIImage imageNamed:@"txcur_v_1"]];
+    
+    if([DataUtil isEmptyString:_mUser.headIcon_file.name]){
+        [self.picture setImage:[UIImage imageNamed:@"txcur_v_1"]];
+    }else {
+        NSData* data_cache=[_mUser.headIcon_file getFileData];
+        UIImage * image;
+        if(data_cache){
+            image=[UIImage imageWithData:data_cache];
+            [self.picture setImage:image];
+        }else{
+            [self.picture setImage:[UIImage imageNamed:@"txcur_v_1"]];
+        }
+    }
     [self.view addSubview:self.picture];
     
     UIButton *changeImg = [UIButton buttonWithType:UIButtonTypeCustom];
