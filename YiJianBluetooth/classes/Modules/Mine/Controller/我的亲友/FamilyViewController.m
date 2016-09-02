@@ -32,10 +32,6 @@
     //    self.tabBarController.tabBar.hidden=YES;
     self.navigationController.navigationBar.translucent=NO;
     self.tabBarController.tabBar.translucent=NO;
- 
-    [self getData];
-    self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-    [self.familyTableView reloadData];
                         
 }
 - (NSArray *)familyArray{
@@ -54,10 +50,19 @@
     [self initrightBarButtonItem:@"添加" action:@selector(measureTemp)];
     
     [self getData];
+    
+    self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+    [self.familyTableView reloadData];
 }
 -(void)measureTemp{
 
-    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:nil WithMaster:nil andEditable:YES];
+    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:nil WithMaster:_master andEditable:YES];
+    person.block = ^(){
+        
+        [self getData];
+        self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+        [self.familyTableView reloadData];
+    };
     [self.navigationController pushViewController:person animated:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -91,7 +96,13 @@
     User *user = self.familyArray[indexPath.row];
 
     
-    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:user WithMaster:nil andEditable:YES];
+    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:user WithMaster:_master andEditable:YES];
+    person.block = ^(){
+    
+        [self getData];
+        self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+        [self.familyTableView reloadData];
+    };
     person.mineString = @"亲友";
     person.uid = user.uid;
     [self.navigationController pushViewController:person animated:YES];

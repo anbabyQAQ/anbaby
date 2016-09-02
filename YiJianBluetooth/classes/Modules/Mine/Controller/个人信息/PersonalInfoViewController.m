@@ -700,6 +700,8 @@
     [data setObject:_user.phone forKey:@"phone"];
     if (_user.gender) {
         [data setObject:@(_user.gender) forKey:@"gender"];
+    }else{
+        [data setObject:@"0" forKey:@"gender"];
     }
     if (_user.height) {
         [data setObject:@(_user.height) forKey:@"height"];
@@ -720,11 +722,17 @@
         [self hideHud];
         [self showToast:@"保存成功"];
 
-        if ([UsersDao getUserInfoByName:_user.name Byuid:_user.uid]) {
-            [UsersDao updateUser:_user ByName:_user.name Byuid:_user.uid];
+        if (self.uid  != nil && ![self.uid isEqualToString:@""]) {
+            
+            if ([UsersDao getUserInfoByName:_user.name Byuid:_user.uid]) {
+                [UsersDao updateUser:_user ByName:_user.name Byuid:_user.uid];
+            }else{
+                [UsersDao saveUserInfo:_user];
+            }
         }else{
             [UsersDao saveUserInfo:_user];
         }
+        
         
         _mUser = [[mUser alloc] init];
         _mUser.name = _user.name;
@@ -738,7 +746,10 @@
         }
 
         [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
-        
+        if (![self.mineString isEqualToString:@"我的"]) {
+             self.block();
+        }
+       
         [self.navigationController popViewControllerAnimated:YES];
     } unavaliableNetwork:^{
         [self hideHud];
@@ -765,6 +776,7 @@
     } success:^(NSDictionary *response) {
         [self hideHud];
         [self showToast:@"删除成功"];
+        self.block();
         [self.navigationController popViewControllerAnimated:YES];
     } unavaliableNetwork:^{
         [self hideHud];

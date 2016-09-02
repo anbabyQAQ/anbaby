@@ -14,6 +14,8 @@
 #import "UserInfoCell.h"
 #import "Master.h"
 
+typedef void(^PersonalInfoViewControllerBlock)(void);
+
 @interface PersonalInfoViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UserNameCellDelegate,UserPhoneCellDelegate,UserSexCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *stretchView;
@@ -31,6 +33,8 @@
 @property (strong , nonatomic) NSString *uid;
 @property (strong , nonatomic) NSString *mineString;//用来区分是从我的 个人信息进来还是从我的亲友进来
 
+
+@property (copy , nonatomic)PersonalInfoViewControllerBlock block;
 
 -(instancetype)initWithUser:(User *)user WithMaster:(Master *)master andEditable:(BOOL)editable;
 
