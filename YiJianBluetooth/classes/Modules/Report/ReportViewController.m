@@ -475,6 +475,7 @@
     }else {
         return 0;
     }
+   
 }
 
 - (NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath
@@ -519,11 +520,11 @@
 
 - (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column
 {
-        if (column == 0) {
-            if (row == 0) {
-               return self.user_cates.count;
-            }
-        }
+//        if (column == 0) {
+//            if (row == 0) {
+//               return self.user_cates.count;
+//            }
+//        }
     return 0;
 }
 
