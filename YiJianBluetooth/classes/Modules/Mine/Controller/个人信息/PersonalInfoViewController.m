@@ -186,9 +186,8 @@
     static NSString * cellIde=@"workingTitle";
 
     
-    NSString *date = [DateUtil DateFormatToString:_user.birthdate WithFormat:@"yyyy-MM-dd"];
-    if (date) {
-        _agecell = [[UserInfoCell alloc]initWithUserTitle:@"出生日期" andUserinfo:date andreuseIdentifier:nil] ;
+    if (_user.age) {
+        _agecell = [[UserInfoCell alloc]initWithUserTitle:@"出生日期" andUserinfo:_user.age  andreuseIdentifier:nil] ;
 
     }else{
         _agecell = [[UserInfoCell alloc]initWithUserTitle:@"出生日期" andUserinfo:nil andreuseIdentifier:nil] ;
@@ -592,11 +591,10 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
     
-    _user.birthdate = selected;
 
     
     self.dateString  = [dateFormatter stringFromDate:selected];
-    
+    _user.age = self.dateString;
     
 }
 
@@ -673,9 +671,25 @@
     return _weightArray;
 }
 
+- (BOOL)issave{
+    if ([DataUtil isEmptyString:_user.name]) {
+        [self showToast:@"请填写姓名"];
+        return NO;
+    }
+    
+    if ([DataUtil isEmptyString:_user.phone]) {
+        [self showToast:@"请填写电话"];
+        return NO;
+    }
+  
+    return YES;
+    
+}
 #pragma mark ========================保存个人信息网络请求
 -(void)getData{
-
+    if (![self issave]) {
+        return;
+    }
     
     NSMutableDictionary *data = [NSMutableDictionary dictionary];
     
@@ -684,11 +698,18 @@
     }
     [data setObject:_user.name forKey:@"aliasName"];
     [data setObject:_user.phone forKey:@"phone"];
-    [data setObject:@(_user.gender) forKey:@"gender"];
-    [data setObject:@(_user.height) forKey:@"height"];
-    [data setObject:@(_user.weight) forKey:@"weight"];
-    NSString *date = [DateUtil DateFormatToString:_user.birthdate WithFormat:@"yyyy-MM-dd"];
-    [data setObject:date forKey:@"age"];
+    if (_user.gender) {
+        [data setObject:@(_user.gender) forKey:@"gender"];
+    }
+    if (_user.height) {
+        [data setObject:@(_user.height) forKey:@"height"];
+    }
+    if (_user.weight) {
+        [data setObject:@(_user.weight) forKey:@"weight"];
+    }
+    if (_user.age) {
+        [data setObject:_user.age forKey:@"age"];
+    }
     
     PostUserAccountThred *account = [[PostUserAccountThred alloc] initWithAid:[NSString stringWithFormat:@"%ld",_master.aid] withToken:_master.token widthData:data];
 
@@ -699,10 +720,25 @@
         [self hideHud];
         [self showToast:@"保存成功"];
 
+        if ([UsersDao getUserInfoByName:_user.name Byuid:_user.uid]) {
+            [UsersDao updateUser:_user ByName:_user.name Byuid:_user.uid];
+        }else{
+            [UsersDao saveUserInfo:_user];
+        }
+        
         _mUser = [[mUser alloc] init];
         _mUser.name = _user.name;
-        [_master.users addObject:_mUser];
-        [MasterDao saveMasterInfo:_master];
+        
+        if (_master.users.count>0) {
+            [_master.users addObject:_mUser];
+        }else{
+            NSMutableArray *users = [[NSMutableArray alloc]init];
+            [users addObject:_mUser];
+            _master.users = users;
+        }
+
+        [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+        
         [self.navigationController popViewControllerAnimated:YES];
     } unavaliableNetwork:^{
         [self hideHud];

@@ -44,7 +44,7 @@ typedef enum
 
 @property (nonatomic,assign) NSNumber *number ;
 
-@property (nonatomic,assign) NSInteger age;
+@property (nonatomic,strong) NSString* age;
 @property (nonatomic,assign) Gender_t gender;
 
 
@@ -105,5 +105,12 @@ typedef enum
  *  Unknown
  */
 @property (nonatomic,retain) NSMutableArray *detailSPO2Array;
+
+
+
+-(instancetype)initWith:(NSDictionary*) dic;
+
+
+-(NSDictionary*)dictionary;
 
 @end

@@ -32,7 +32,19 @@
     return nil;
 }
 
++(User *)getUserInfoByName:(NSString *)name Byuid:(NSString *)uid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
+    [dic setObject:name forKey:@"name"];
+    [dic setObject:uid forKey:@"uid"];
 
+    NSMutableArray *data_array = [User searchWithWhere:dic orderBy:nil offset:0 count:1];
+    
+    if (data_array) {
+        User *result = [data_array lastObject];
+        return result;
+    }
+    return nil;
+}
 
 +(NSArray *)getAllUsers{
     NSMutableArray *data_array = [User searchWithWhere:nil orderBy:nil offset:0 count:9999];
@@ -49,6 +61,21 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
     [dic setObject:name forKey:@"name"];
     BOOL success = [User deleteWithWhere:dic];
+    return success;
+}
+
++(BOOL)updateUser:(User *)user ByName:(NSString *)name{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
+    [dic setObject:name forKey:@"name"];
+    BOOL success = [User updateToDB:user where:dic];
+    return success;
+}
++(BOOL)updateUser:(User *)user ByName:(NSString *)name Byuid:(NSString *)uid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
+    [dic setObject:name forKey:@"name"];
+    [dic setObject:uid forKey:@"uid"];
+
+    BOOL success = [User updateToDB:user where:dic];
     return success;
 }
 

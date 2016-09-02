@@ -15,11 +15,18 @@
 
 +(User *)getUserInfoByName:(NSString *)name;
 
++(User *)getUserInfoByName:(NSString *)name Byuid:(NSString *)uid;
+
+
 +(NSArray *)getAllUsers;
 
 +(BOOL)clearUsers;
 
 +(BOOL)clearUserInfoByName:(NSString *)name;
+
++(BOOL)updateUser:(User *)user ByName:(NSString *)name;
+
++(BOOL)updateUser:(User *)user ByName:(NSString *)name Byuid:(NSString *)uid;
 
 
 @end
