@@ -122,7 +122,6 @@
         [self showHud:@"登录中..." onView:self.view];
     } success:^(NSDictionary *response,NSString *token) {
         NSLog(@"%@", response);
-        [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"Login"];
         
         Master *master = [[Master alloc] init];
         master.token = token;
@@ -143,6 +142,8 @@
         }else{
             [MasterDao saveMasterInfo:master];
         }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:master.aid] forKey:@"master_aid"];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     } unavaliableNetwork:^{

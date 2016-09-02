@@ -17,9 +17,9 @@
 
 #import "MasterDao.h"
 #import "Master.h"
+#import "DropDownMenu.h"
 
-
-@interface MineViewController ()<UIAlertViewDelegate>
+@interface MineViewController ()<UIAlertViewDelegate,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
 {
     mUser *_muser;
     Master *_master;
@@ -30,6 +30,14 @@
 @property(nonatomic, strong)UIButton *titleButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dropDownTopView;
+
+
+
+@property (nonatomic, strong) NSArray *user_classifys;
+@property (nonatomic, strong) NSArray *user_cates;
+
+@property (nonatomic, strong) NSArray *sorts;
+@property (nonatomic, weak) DOPDropDownMenu *menu;
 
 @end
 
@@ -45,17 +53,31 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
-    NSMutableArray *arr =  [NSMutableArray arrayWithArray:[MasterDao getMaster]];
-    if (arr) {
-        _master = [arr lastObject];
+    _master = [MasterDao getMasterByAid:[[NSUserDefaults standardUserDefaults] objectForKey:@"master_aid"]];
+    if (_master) {
         
         if (_master) {
             if (_master.users.count>0) {
                 _muser = [_master.users firstObject];
+                NSMutableArray *user_arr = [[NSMutableArray alloc]init];
+                for (mUser *m in _master.users) {
+                    [user_arr addObject:m.name];
+                }
+                self.user_classifys = [NSArray arrayWithArray:user_arr];
+                [self menuReloadData];
+
+                
+                [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    mUser *m = (mUser*)obj;
+                    if ([m.name isEqualToString:_master.showName]) {
+                        [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:idx]];
+                        _muser=m;
+                    }
+                }];
+                
             }else{
                 [self getData];
             }
-            
         }
     }
 
@@ -68,7 +90,136 @@
     
     self.mineArray = @[@"个人信息",@"我的亲友",@"设置"];
 
+    [self addTitleButton];
 }
+
+#pragma mark 导航栏中间title按钮
+-(void)addTitleButton{
+    self.user_classifys = @[@"我的"];
+    
+    
+    // 添加下拉菜单
+    DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:44 andSuperView:self.view];
+    menu.delegate = self;
+    menu.dataSource = self;
+    
+    _menu = menu;
+    
+    self.navigationItem.titleView = _menu;
+
+}
+
+
+- (void)menuReloadData
+{
+    [_menu reloadData];
+}
+
+#pragma mark 下拉抽屉代理实现
+
+
+- (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu
+{
+    return 1;
+}
+
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column
+{
+    if (column == 0) {
+        return self.user_classifys.count;
+    }else {
+        return 0;
+    }
+    
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0) {
+        return self.user_classifys[indexPath.row];
+    }  else {
+        return 0;
+    }
+}
+
+// new datasource
+
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0 || indexPath.column == 1) {
+        return [NSString stringWithFormat:@"我的－头像"];
+    }
+    return nil;
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0 && indexPath.item >= 0) {
+        return [NSString stringWithFormat:@"我的－头像"];
+    }
+    return nil;
+}
+
+// new datasource
+
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    
+    return nil;
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    return  nil;
+}
+
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column
+{
+    //        if (column == 0) {
+    //            if (row == 0) {
+    //               return self.user_cates.count;
+    //            }
+    //        }
+    return 0;
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0) {
+        if (indexPath.row == 0) {
+            return self.user_cates[indexPath.item];
+        }
+    }
+    return nil;
+}
+
+- (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.item >= 0) {
+        NSLog(@"点击了 %ld - %ld - %ld 项目",indexPath.column,indexPath.row,indexPath.item);
+    }else {
+        NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
+    }
+    
+    if (_user_classifys.count>indexPath.row) {
+        NSString *name = [_user_classifys objectAtIndex:indexPath.row];
+        _master.showName = name;
+        [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+    }
+    
+    
+    [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        mUser *m = (mUser*)obj;
+        if ([m.name isEqualToString:_master.showName]) {
+            _muser = m;
+        }
+    }];
+
+}
+
+
+
+
 
 #pragma mark ========我的亲友列表请求
 -(void)getData{
@@ -89,11 +240,20 @@
                 [muser_arr addObject:muser];
             }
             _master.users = muser_arr;
+
             _muser = [_master.users firstObject];
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
 
             //抽屉刷新
+            self.user_classifys = [NSArray arrayWithArray:_master.users];
+            [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                mUser *m = (mUser*)obj;
+                if ([m.name isEqualToString:_master.showName]) {
+                    [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:idx item:0]];
+                    [self menuReloadData];
+                }
+            }];
             
-            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
         }else{
             [_master.users removeAllObjects];
             _muser = nil;
@@ -168,6 +328,9 @@
 
     if (alertView.tag == 1006) {
         if (buttonIndex == 1) {
+            
+            [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"master_aid"];
+            
             LoginViewController *login = [LoginViewController new];
             SBNvc *nav = [[SBNvc alloc] initWithRootViewController:login];
             [self presentViewController:nav animated:YES completion:nil];

@@ -117,57 +117,57 @@
 #pragma mark ========我的亲友列表请求
 -(void)getData{
 
-    NSMutableArray *arr =  [NSMutableArray arrayWithArray:[MasterDao getMaster]];
-    if (arr) {
-        _master = [arr lastObject];
-    }
-    NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
-    GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
-    [family requireonPrev:^{
-         [self showHud:@"请求列表中..." onView:self.view];
-    } success:^(NSMutableArray *response) {
-        NSLog(@"%@", response);
-        [self hideHud];
-        
-        if (response.count>0) {
-            NSMutableArray *muser_arr = [[NSMutableArray alloc]init];
-            for (NSDictionary *dic in response) {
-                mUser *muser = [[mUser alloc] initWith:dic];
-                [muser_arr addObject:muser];
-            }
-            _master.users = muser_arr;
-            _muser = [_master.users firstObject];
+    if (_master) {
+    
+        NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
+        GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
+        [family requireonPrev:^{
+            [self showHud:@"请求列表中..." onView:self.view];
+        } success:^(NSMutableArray *response) {
+            NSLog(@"%@", response);
+            [self hideHud];
             
-            //抽屉刷新
-            self.familyArray = _master.users;;
-            [self.familyTableView reloadData];
-            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
-        }else{
-            [_master.users removeAllObjects];
-            self.familyArray = _master.users;;
-            [self.familyTableView reloadData];
-            [self showToast:@"暂无亲友信息,快去添加吧~"];
-
-            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
-
-        }
-
-    } unavaliableNetwork:^{
-        [self hideHud];
-        [self showToast:@"网络未连接"];
-    } timeout:^{
-        [self hideHud];
-        [self showToast:@"网络连接超时"];
-    } exception:^(NSString *message) {
-        [self hideHud];
-        if (message) {
-            [self showToast:message];
-        }else{
-            [self showToast:@"位置错误"];
-        }
-    }];
+            if (response.count>0) {
+                NSMutableArray *muser_arr = [[NSMutableArray alloc]init];
+                for (NSDictionary *dic in response) {
+                    mUser *muser = [[mUser alloc] initWith:dic];
+                    [muser_arr addObject:muser];
+                }
+                _master.users = muser_arr;
+                _muser = [_master.users firstObject];
+                
+                //抽屉刷新
+                self.familyArray = _master.users;;
+                [self.familyTableView reloadData];
+                [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            }else{
+                [_master.users removeAllObjects];
+                self.familyArray = _master.users;;
+                [self.familyTableView reloadData];
+                [self showToast:@"暂无亲友信息,快去添加吧~"];
+                
+                [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+                
+            }
+            
+        } unavaliableNetwork:^{
+            [self hideHud];
+            [self showToast:@"网络未连接"];
+        } timeout:^{
+            [self hideHud];
+            [self showToast:@"网络连接超时"];
+        } exception:^(NSString *message) {
+            [self hideHud];
+            if (message) {
+                [self showToast:message];
+            }else{
+                [self showToast:@"位置错误"];
+            }
+        }];
     
-    
+    }else{
+        
+    }
     
 }
 

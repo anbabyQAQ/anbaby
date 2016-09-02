@@ -68,7 +68,7 @@ static NSString *cellInte = @"typeCell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"Login"] isEqualToString:@"yes"]) {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"master_aid"]) {
         
         LoginViewController *login = [[LoginViewController alloc] init];
         [self presentViewController:login animated:YES completion:nil];

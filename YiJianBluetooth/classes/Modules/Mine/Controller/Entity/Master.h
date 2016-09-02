@@ -24,5 +24,8 @@
 
 @property (strong, nonatomic) NSString *uid;
 
+//标记当前  显示用户的名字 or 亲友的名字；
+@property (strong, nonatomic) NSString *showName;
+
 
 @end
