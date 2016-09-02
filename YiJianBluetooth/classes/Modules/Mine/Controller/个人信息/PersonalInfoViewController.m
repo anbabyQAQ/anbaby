@@ -533,6 +533,11 @@
         datePic = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, SCR_W - 20, 180)];
         datePic.backgroundColor = [UIColor whiteColor];
         datePic.datePickerMode = UIDatePickerModeDate;
+        self.dateString = @"1980-01-01";
+        NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+        [formater setDateFormat:@"yyyy-MM-dd"];
+        datePic.date  = [formater dateFromString:self.dateString];
+         _mUser.age = self.dateString;
         [datePic addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
         [_writeView addSubview:datePic];
     }
@@ -682,7 +687,20 @@
         [self showToast:@"请填写电话"];
         return NO;
     }
-  
+    
+    if (heightString == nil) {
+        [self showToast:@"请选择身高"];
+        return NO;
+    }
+    if (weightString == nil) {
+        [self showToast:@"请选择体重"];
+        return NO;
+    }
+    
+    if (self.dateString == nil || [self.dateString isEqualToString:@""]) {
+        [self showToast:@"请选择出生日期"];
+        return NO;
+    }
     return YES;
     
 }
@@ -704,6 +722,7 @@
     }else{
         [data setObject:@(_mUser.gender) forKey:@"gender"];
     }
+    
     if (_mUser.height) {
         [data setObject:@(_mUser.height) forKey:@"height"];
     }
