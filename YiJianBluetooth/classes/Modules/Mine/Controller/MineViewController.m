@@ -54,32 +54,32 @@
     [super viewWillAppear:animated];
 
     _master = [MasterDao getMasterByAid:[[NSUserDefaults standardUserDefaults] objectForKey:@"master_aid"]];
+   
     if (_master) {
-        
-        if (_master) {
-            if (_master.users.count>0) {
-                _muser = [_master.users firstObject];
-                NSMutableArray *user_arr = [[NSMutableArray alloc]init];
-                for (mUser *m in _master.users) {
-                    [user_arr addObject:m.name];
-                }
-                self.user_classifys = [NSArray arrayWithArray:user_arr];
-                [self menuReloadData];
-
-                
-                [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    mUser *m = (mUser*)obj;
-                    if ([m.name isEqualToString:_master.showName]) {
-                        [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:idx]];
-                        _muser=m;
-                    }
-                }];
-                
-            }else{
-                [self getData];
+        if (_master.users.count>0) {
+            _muser = [_master.users firstObject];
+            NSMutableArray *user_arr = [[NSMutableArray alloc]init];
+            for (mUser *m in _master.users) {
+                [user_arr addObject:m.name];
             }
+            self.user_classifys = [NSArray arrayWithArray:user_arr];
+            [self menuReloadData];
+            
+            
+            [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                mUser *m = (mUser*)obj;
+                if ([m.name isEqualToString:_master.showName]) {
+                    [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:idx]];
+                    _muser=m;
+                }
+            }];
+            
+        }else{
+            [self getData];
         }
     }
+    
+    
 
     
 }
@@ -175,11 +175,7 @@
 
 - (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column
 {
-    //        if (column == 0) {
-    //            if (row == 0) {
-    //               return self.user_cates.count;
-    //            }
-    //        }
+    
     return 0;
 }
 
@@ -216,10 +212,6 @@
     }];
 
 }
-
-
-
-
 
 #pragma mark ========我的亲友列表请求
 -(void)getData{
