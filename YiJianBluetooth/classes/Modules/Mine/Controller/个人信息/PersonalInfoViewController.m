@@ -21,9 +21,10 @@
 
 @interface PersonalInfoViewController ()<UIPickerViewDataSource, UIPickerViewDelegate,UIAlertViewDelegate>
 {
-    User *_user;
     Master *_master;
     mUser *_mUser;
+    mUser *_oldmUser;
+
     BOOL _edit;
     UITextField *_nameTextField;
     NSInteger pickInterger;
@@ -56,18 +57,18 @@
 
 
 
--(instancetype)initWithUser:(User *)user WithMaster:(Master *)master andEditable:(BOOL)editable{
+-(instancetype)initWithUser:(mUser *)muser WithMaster:(Master *)master andEditable:(BOOL)editable{
 //    self = [super init];
     self=[super initWithNibName:@"PersonalInfoViewController" bundle:nil];
 
     if (self) {
         _master = master;
-        if (user==nil) {
-            _user = [[User alloc] init];
+        if (muser==nil) {
+            _mUser = [[mUser alloc] init];
             
         }else{
-            _user = user;
-
+            _mUser = muser;
+            _oldmUser = muser;
         }
         _edit = editable;
     }
@@ -106,7 +107,7 @@
 
     //从我的亲友界面过来才有删除按钮
     if ([self.mineString isEqualToString:@"亲友"]) {
-        if (_user) {
+        if (_mUser) {
             [self initrightBarButtonItem:@"删除" action:@selector(deleteUser)];
         }
     }
@@ -142,17 +143,17 @@
     
 }
 -(void) initwithnamecell{
-    _namecell = [[UserNameCell alloc] initWithUsername:_user.name];
+    _namecell = [[UserNameCell alloc] initWithUsername:_mUser.name];
     _namecell.delegate = self;
 }
 
 -(void) initwithPhonecell{
-    _phonecell = [[UserPhoneCell alloc] initWithUserPhone:_user.phone];
+    _phonecell = [[UserPhoneCell alloc] initWithUserPhone:_mUser.phone];
     _phonecell.delegate = self;
 }
 
 -(void)initwithsexcell{
-    _sexcell = [[UserSexCell alloc]initWithUserSex:_user.gender];
+    _sexcell = [[UserSexCell alloc]initWithUserSex:_mUser.gender];
     _sexcell.delegate = self;
 }
 
@@ -160,8 +161,8 @@
     static NSString * cellIde=@"workingTitle";
 
 
-    if (_user.weight) {
-        _weightcell = [[UserInfoCell alloc]initWithUserTitle:@"体重" andUserinfo:[NSString stringWithFormat:@"%d",_user.weight] andreuseIdentifier:nil];
+    if (_mUser.weight) {
+        _weightcell = [[UserInfoCell alloc]initWithUserTitle:@"体重" andUserinfo:[NSString stringWithFormat:@"%ld",(long)_mUser.weight] andreuseIdentifier:nil];
     }else{
         _weightcell = [[UserInfoCell alloc]initWithUserTitle:@"体重" andUserinfo:nil andreuseIdentifier:nil];
     }
@@ -172,8 +173,8 @@
 -(void)initwithheihgtcell{
     static NSString * cellIde=@"workingTitle";
     
-    if (_user.height) {
-        _heihgtcell = [[UserInfoCell alloc]initWithUserTitle:@"身高" andUserinfo:[NSString stringWithFormat:@"%d",_user.height] andreuseIdentifier:nil];
+    if (_mUser.height) {
+        _heihgtcell = [[UserInfoCell alloc]initWithUserTitle:@"身高" andUserinfo:[NSString stringWithFormat:@"%ld",(long)_mUser.height] andreuseIdentifier:nil];
     }else{
         _heihgtcell = [[UserInfoCell alloc]initWithUserTitle:@"身高" andUserinfo:nil andreuseIdentifier:nil];
     }
@@ -186,8 +187,8 @@
     static NSString * cellIde=@"workingTitle";
 
     
-    if (_user.age) {
-        _agecell = [[UserInfoCell alloc]initWithUserTitle:@"出生日期" andUserinfo:_user.age  andreuseIdentifier:nil] ;
+    if (_mUser.age) {
+        _agecell = [[UserInfoCell alloc]initWithUserTitle:@"出生日期" andUserinfo:_mUser.age  andreuseIdentifier:nil] ;
 
     }else{
         _agecell = [[UserInfoCell alloc]initWithUserTitle:@"出生日期" andUserinfo:nil andreuseIdentifier:nil] ;
@@ -346,7 +347,7 @@
     //保存
     [pic saveDataToCache:imageData];
     
-    _user.headIcon_file = pic;
+    _mUser.headIcon_file = pic;
 
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
@@ -412,7 +413,7 @@
         case 4:
             pickInterger = 4;
             [self addPickView:4];
-            if (_user.gender) {
+            if (_mUser.gender) {
                  [_PickerView selectRow:45 inComponent:0 animated:NO];
                  weightString = [NSString stringWithFormat:@"%@", self.weightArray[45]];
             }else{
@@ -442,7 +443,7 @@
 #pragma mark  -UserNameCellDelegate -
 - (void)callbackUserName:(NSString *)name{
     NSLog(@"%@",name);
-    _user.name = name;
+    _mUser.name = name;
 }
 
 - (void)callbackUserPhone:(NSString *)phone{
@@ -451,7 +452,7 @@
     if (![self isMobileNumber:phone]) {
         [self showToast:@"电话号码格式错误!"];
     }else{
-        _user.phone = phone;
+        _mUser.phone = phone;
     }
 
 }
@@ -469,7 +470,7 @@
 
 - (void)callbackusersex:(BOOL)usersex{
     NSLog(@"%d",usersex);
-    _user.gender = usersex;
+    _mUser.gender = usersex;
 }
 
 
@@ -551,11 +552,11 @@
     self.navigationController.navigationBarHidden = NO;
     if (sender.tag == 3) {
         [_heihgtcell setuserInfo:heightString];
-        _user.height = [heightString integerValue];
+        _mUser.height = [heightString integerValue];
         
     }else if (sender.tag == 4){
         [_weightcell setuserInfo:weightString];
-        _user.weight = [weightString integerValue];
+        _mUser.weight = [weightString integerValue];
         
     }else if(sender.tag == 5){
         
@@ -594,7 +595,7 @@
 
     
     self.dateString  = [dateFormatter stringFromDate:selected];
-    _user.age = self.dateString;
+    _mUser.age = self.dateString;
     
 }
 
@@ -672,12 +673,12 @@
 }
 
 - (BOOL)issave{
-    if ([DataUtil isEmptyString:_user.name]) {
+    if ([DataUtil isEmptyString:_mUser.name]) {
         [self showToast:@"请填写姓名"];
         return NO;
     }
     
-    if ([DataUtil isEmptyString:_user.phone]) {
+    if ([DataUtil isEmptyString:_mUser.phone]) {
         [self showToast:@"请填写电话"];
         return NO;
     }
@@ -696,21 +697,21 @@
     if (self.uid  != nil && ![self.uid isEqualToString:@""]) {
          [data setObject:self.uid forKey:@"uid"];
     }
-    [data setObject:_user.name forKey:@"aliasName"];
-    [data setObject:_user.phone forKey:@"phone"];
-    if (_user.gender) {
-        [data setObject:@(_user.gender) forKey:@"gender"];
-    }else{
+    [data setObject:_mUser.name forKey:@"aliasName"];
+    [data setObject:_mUser.phone forKey:@"phone"];
+    if (_mUser.gender) {
         [data setObject:@"0" forKey:@"gender"];
+    }else{
+        [data setObject:@(_mUser.gender) forKey:@"gender"];
     }
-    if (_user.height) {
-        [data setObject:@(_user.height) forKey:@"height"];
+    if (_mUser.height) {
+        [data setObject:@(_mUser.height) forKey:@"height"];
     }
-    if (_user.weight) {
-        [data setObject:@(_user.weight) forKey:@"weight"];
+    if (_mUser.weight) {
+        [data setObject:@(_mUser.weight) forKey:@"weight"];
     }
-    if (_user.age) {
-        [data setObject:_user.age forKey:@"age"];
+    if (_mUser.age) {
+        [data setObject:_mUser.age forKey:@"age"];
     }
     
     PostUserAccountThred *account = [[PostUserAccountThred alloc] initWithAid:[NSString stringWithFormat:@"%ld",_master.aid] withToken:_master.token widthData:data];
@@ -722,22 +723,9 @@
         [self hideHud];
         [self showToast:@"保存成功"];
 
-        if (self.uid  != nil && ![self.uid isEqualToString:@""]) {
-            
-            if ([UsersDao getUserInfoByName:_user.name Byuid:_user.uid]) {
-                [UsersDao updateUser:_user ByName:_user.name Byuid:_user.uid];
-            }else{
-                [UsersDao saveUserInfo:_user];
-            }
-        }else{
-            [UsersDao saveUserInfo:_user];
-        }
-        
-        
-        _mUser = [[mUser alloc] init];
-        _mUser.name = _user.name;
         
         if (_master.users.count>0) {
+            [_master.users removeObject:_oldmUser];
             [_master.users addObject:_mUser];
         }else{
             NSMutableArray *users = [[NSMutableArray alloc]init];
@@ -746,7 +734,8 @@
         }
 
         [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
-        if (![self.mineString isEqualToString:@"我的"]) {
+        if (![self.mineString isEqualToString:@"我的"] && self.block) {
+            
              self.block();
         }
        
@@ -776,7 +765,9 @@
     } success:^(NSDictionary *response) {
         [self hideHud];
         [self showToast:@"删除成功"];
-        self.block();
+        if (self.block) {
+            self.block();
+        }
         [self.navigationController popViewControllerAnimated:YES];
     } unavaliableNetwork:^{
         [self hideHud];

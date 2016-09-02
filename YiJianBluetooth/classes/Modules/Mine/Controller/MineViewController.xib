@@ -7,8 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineViewController">
             <connections>
-                <outlet property="dropDownTableView" destination="gl2-Df-pMu" id="nNN-wS-f53"/>
-                <outlet property="dropDownTopView" destination="Bth-VD-NFe" id="z90-Hb-UUC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -563,30 +561,6 @@
                         </mask>
                     </variation>
                 </scrollView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gl2-Df-pMu">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="128" id="1KY-Bl-z0O"/>
-                        <constraint firstAttribute="width" constant="100" id="rPH-lP-reD"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="1KY-Bl-z0O"/>
-                            <exclude reference="rPH-lP-reD"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="1KY-Bl-z0O"/>
-                            <include reference="rPH-lP-reD"/>
-                        </mask>
-                    </variation>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="T8s-FD-kXR"/>
-                        <outlet property="delegate" destination="-1" id="xRa-DX-Euz"/>
-                    </connections>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -594,41 +568,28 @@
                     <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="tDW-LU-A9c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AWR-A1-gXN"/>
-                <constraint firstItem="gl2-Df-pMu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="Bth-VD-NFe">
-                    <variation key="heightClass=regular-widthClass=compact" constant="-1000"/>
-                </constraint>
-                <constraint firstItem="gl2-Df-pMu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Rd0-Rs-QcN"/>
                 <constraint firstAttribute="bottom" secondItem="tDW-LU-A9c" secondAttribute="bottom" id="aBI-NS-htT"/>
-                <constraint firstItem="tDW-LU-A9c" firstAttribute="top" secondItem="gl2-Df-pMu" secondAttribute="bottom" id="bRF-Do-Hbh"/>
                 <constraint firstAttribute="trailing" secondItem="tDW-LU-A9c" secondAttribute="trailing" id="hAp-XK-1TM"/>
             </constraints>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="tDW-LU-A9c"/>
-                    <exclude reference="gl2-Df-pMu"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="Bth-VD-NFe"/>
-                    <exclude reference="Rd0-Rs-QcN"/>
                     <exclude reference="7dq-KM-DVd"/>
                     <exclude reference="AWR-A1-gXN"/>
                     <exclude reference="aBI-NS-htT"/>
-                    <exclude reference="bRF-Do-Hbh"/>
                     <exclude reference="hAp-XK-1TM"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
                     <include reference="tDW-LU-A9c"/>
-                    <include reference="gl2-Df-pMu"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="Bth-VD-NFe"/>
-                    <include reference="Rd0-Rs-QcN"/>
                     <include reference="7dq-KM-DVd"/>
                     <include reference="AWR-A1-gXN"/>
                     <include reference="aBI-NS-htT"/>
-                    <exclude reference="bRF-Do-Hbh"/>
                     <include reference="hAp-XK-1TM"/>
                 </mask>
             </variation>

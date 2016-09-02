@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Master.h"
 
 @interface FamilyViewController : BaseViewController
 
+@property (nonatomic, strong) Master *master;
 @end

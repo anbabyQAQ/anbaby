@@ -19,6 +19,9 @@
 
 +(BOOL)clearMaster;
 
++(BOOL)deleteMasterByAid:(NSNumber *)aid;
+
+
 +(BOOL)updateMaster:(Master *)master Byaid:(NSNumber * )aid;
 
 

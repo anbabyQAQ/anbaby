@@ -11,21 +11,19 @@
 #import "FamilyViewController.h"
 #import "LoginViewController.h"
 #import "UsersDao.h"
-#import "User.h"
+#import "mUser.h"
+#import "GetUserFamilyThred.h"
 #import "PersonalInfoViewController.h"
 
 #import "MasterDao.h"
 #import "Master.h"
 
 
-@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+@interface MineViewController ()<UIAlertViewDelegate>
 {
-    User *_user;
+    mUser *_muser;
     Master *_master;
-    NSInteger titleButtonInteger;//用来记录导航栏button点击次数
 }
-//导航栏下拉弹出tableView
-@property (weak, nonatomic) IBOutlet UITableView *dropDownTableView;
 
 @property(nonatomic, strong)NSArray *mineArray;
 @property(nonatomic, strong)NSMutableArray *dropDownArray;
@@ -46,31 +44,17 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-//    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-//    
-//    if (!_user && self.dropDownArray.count>0) {
-//        _user = [self.dropDownArray objectAtIndex:0];
-//    }
-//    [self.dropDownTableView reloadData];
-    
+
     NSMutableArray *arr =  [NSMutableArray arrayWithArray:[MasterDao getMaster]];
     if (arr) {
         _master = [arr lastObject];
-    
+        
         if (_master) {
             if (_master.users.count>0) {
-                mUser *muser = [_master.users firstObject];
-                _user = [UsersDao getUserInfoByName:muser.name Byuid:muser.uid];
+                _muser = [_master.users firstObject];
             }else{
-                
-                [self showToast:@"请您先完善个人信息!"];
-                
+                [self getData];
             }
-            //            PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-            //            guanyuVC.mineString = @"我的";
-            //            guanyuVC.hidesBottomBarWhenPushed = YES;
-            //            [self.navigationController pushViewController:guanyuVC animated:YES];
             
         }
     }
@@ -82,49 +66,62 @@
     
     self.view.backgroundColor = UIColorFromRGB(0x62828);
     
-
     self.mineArray = @[@"个人信息",@"我的亲友",@"设置"];
 
-    
-    self.dropDownTableView.separatorStyle =UITableViewCellSelectionStyleNone;
-    self.dropDownTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    
-    [self setExtraCellLineHidden:self.dropDownTableView];
-    [self addTitleButton];
-    titleButtonInteger = 0;
 }
 
--(void)addTitleButton{
-
+#pragma mark ========我的亲友列表请求
+-(void)getData{
     
-    self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.titleButton.frame = CGRectMake(0, 0, 100, 44);
-    [self.titleButton setTitle:@"用户" forState:UIControlStateNormal];
-    [self.titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [[self.titleButton titleLabel] setFont:[UIFont systemFontOfSize:52/3]];
-    [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.titleButton setImage:[UIImage imageNamed:@"xialaImage"] forState:UIControlStateNormal];
-    [self.titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
-    [self.titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, 60, 0, 0)];
-    self.navigationItem.titleView = _titleButton;
-}
-
--(void)titleButtonClick:(UIButton *)sender{
-
-    titleButtonInteger++;
-    
-    if (titleButtonInteger % 2 == 0) {
-        titleButtonInteger = 0;
-         self.dropDownTableView.hidden = NO;
-        self.dropDownTableView.frame = CGRectMake(kScreenWidth / 2 - 50, -1000, 100, 200);
-    }else{
+ 
+    NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
+    GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
+    [family requireonPrev:^{
+        [self showHud:@"请求中..." onView:self.view];
+    } success:^(NSMutableArray *response) {
+        NSLog(@"%@", response);
+        [self hideHud];
         
-        self.dropDownTableView.hidden = NO;
-       
-        self.dropDownTableView.frame = CGRectMake(kScreenWidth / 2 - 50, 0, 100, self.dropDownArray.count * 40);
+        if (response.count>0) {
+            NSMutableArray *muser_arr = [[NSMutableArray alloc]init];
+            for (NSDictionary *dic in response) {
+                mUser *muser = [[mUser alloc] initWith:dic];
+                [muser_arr addObject:muser];
+            }
+            _master.users = muser_arr;
+            _muser = [_master.users firstObject];
+
+            //抽屉刷新
+            
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+        }else{
+            [_master.users removeAllObjects];
+            _muser = nil;
+            [self showToast:@"请添加个人信息~"];
+            
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            
+        }
         
-    }
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
+    
+    
+    
 }
+
 
 -(void)viewWillLayoutSubviews{
 
@@ -136,8 +133,8 @@
    // PersonalInformationViewController *person = [PersonalInformationViewController new];
     
     
-    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_user WithMaster:_master andEditable:YES];
-    guanyuVC.uid = _user.uid;
+    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] initWithUser:_muser WithMaster:_master andEditable:YES];
+    guanyuVC.uid = _muser.uid;
     guanyuVC.mineString = @"我的";
     guanyuVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:guanyuVC animated:YES];
@@ -146,6 +143,7 @@
 #pragma mark =======点击我的亲友
 - (IBAction)FamilyButtonAction:(id)sender {
     FamilyViewController *family = [FamilyViewController new];
+    family.master = _master;
     family.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:family animated:YES];
 }
@@ -176,49 +174,7 @@
         }
     }
 }
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
-    return _dropDownArray.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    static NSString *cellID = @"cellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-    }
-    User *user = self.dropDownArray[indexPath.row];
-    cell.textLabel.text = user.name;
-    cell.textLabel.textAlignment = NSTextAlignmentLeft;
-    cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    cell.textLabel.textColor = [UIColor darkTextColor];
-    
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    
-    if ([tableView isEqual:self.dropDownTableView]) {
-        self.dropDownTableView.hidden = YES;
-        titleButtonInteger++;
-        
-        _user = self.dropDownArray[indexPath.row];
-        
-    }else{
-        
-    }
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

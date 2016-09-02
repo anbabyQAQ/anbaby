@@ -44,6 +44,13 @@
     
 }
 
++(BOOL)deleteMasterByAid:(NSNumber *)aid{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
+    [dic setObject:aid forKey:@"aid"];
+    BOOL success = [Master deleteWithWhere:dic];
+    return success;
+}
+
 +(BOOL)updateMaster:(Master *)master Byaid:(NSNumber *)aid{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithCapacity:1];
     [dic setObject:aid forKey:@"aid"];

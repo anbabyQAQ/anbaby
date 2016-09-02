@@ -137,14 +137,12 @@
         
         if ([MasterDao getMasterByAid:[NSNumber numberWithInteger:master.aid]]) {
             Master *model = [MasterDao getMasterByAid:[NSNumber numberWithInteger:master.aid]];
-            if (master.aid != model.aid) {
-                [MasterDao clearMaster];
-                [MasterDao saveMasterInfo:master];
+            if (master.aid == model.aid) {
+                [MasterDao updateMaster:model Byaid:[NSNumber numberWithInteger:model.aid]];
             }
         }else{
             [MasterDao saveMasterInfo:master];
         }
-     
         
         [self dismissViewControllerAnimated:YES completion:nil];
     } unavaliableNetwork:^{

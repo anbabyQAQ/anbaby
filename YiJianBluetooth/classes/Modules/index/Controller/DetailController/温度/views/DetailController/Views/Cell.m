@@ -133,7 +133,7 @@
     return self;
 }
 
-- (void)setUser:(User *)user{
+- (void)setUser:(mUser *)user{
     _imageview.image = user.headIcon;
     _lable.text=user.name;
 

@@ -20,7 +20,7 @@
         self.height=[[DataUtil numberForKey:@"height" inDictionary:dic] integerValue];
         self.uid=[[DataUtil numberForKey:@"uid" inDictionary:dic] stringValue];
         
-        if ([[DataUtil numberForKey:@"uid" inDictionary:dic] integerValue]) {
+        if ([[DataUtil numberForKey:@"gender" inDictionary:dic] integerValue]) {
             self.gender=1;
         }else{
             self.gender=0;

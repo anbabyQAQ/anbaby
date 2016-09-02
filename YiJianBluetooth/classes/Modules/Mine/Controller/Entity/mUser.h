@@ -28,6 +28,10 @@ typedef enum
 @property (nonatomic,strong) NSString  *uid;
 
 
+//区分是否 是 『『我的』』
+@property (nonatomic,strong) NSString *isMine;
+
+
 @property (nonatomic,retain) UIImage *headIcon;
 //头像本地路径
 @property (nonatomic, strong) NewFile *headIcon_file;
@@ -37,15 +41,12 @@ typedef enum
 @property (nonatomic,assign) NSInteger height;
 
 
-@property (nonatomic,assign) NSNumber *number ;
-
 @property (nonatomic,strong) NSString* age;
 @property (nonatomic,assign) Gender_t gender;
 
 
 @property (nonatomic, copy) NSString *phone;
 
-@property (nonatomic, copy) NSDate *birthdate;
 
 -(instancetype)initWith:(NSDictionary*) dic;
 

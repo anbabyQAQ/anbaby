@@ -16,7 +16,7 @@
 #import "mUser.h"
 
 @interface FamilyViewController ()<UITableViewDataSource, UITableViewDelegate>{
-    User *_user;
+    mUser *_muser;
     Master *_master;
 }
 
@@ -51,7 +51,10 @@
     
     [self getData];
     
-    self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
+}
+- (void)setMaster:(Master *)master{
+    _master = master;
+    self.familyArray = _master.users;;
     [self.familyTableView reloadData];
 }
 -(void)measureTemp{
@@ -60,8 +63,6 @@
     person.block = ^(){
         
         [self getData];
-        self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-        [self.familyTableView reloadData];
     };
     [self.navigationController pushViewController:person animated:YES];
 }
@@ -93,18 +94,17 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    User *user = self.familyArray[indexPath.row];
+    mUser *muser = self.familyArray[indexPath.row];
 
     
-    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:user WithMaster:_master andEditable:YES];
+    PersonalInfoViewController *person = [[PersonalInfoViewController alloc] initWithUser:muser WithMaster:_master andEditable:YES];
     person.block = ^(){
     
         [self getData];
-        self.familyArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-        [self.familyTableView reloadData];
+   
     };
     person.mineString = @"亲友";
-    person.uid = user.uid;
+    person.uid = muser.uid;
     [self.navigationController pushViewController:person animated:YES];
 }
 
@@ -124,36 +124,34 @@
     NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
     GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
     [family requireonPrev:^{
-         [self showHud:@"请求中..." onView:self.view];
+         [self showHud:@"请求列表中..." onView:self.view];
     } success:^(NSMutableArray *response) {
         NSLog(@"%@", response);
         [self hideHud];
-
+        
         if (response.count>0) {
-            [self.familyArray removeAllObjects];
-            [UsersDao clearUsers];
-            
             NSMutableArray *muser_arr = [[NSMutableArray alloc]init];
             for (NSDictionary *dic in response) {
-                User *user = [[User alloc] initWith:dic];
-                
-                mUser *muser = [[mUser alloc] init];
-                muser.name = user.name;
-                muser.uid = user.uid;
+                mUser *muser = [[mUser alloc] initWith:dic];
                 [muser_arr addObject:muser];
-                
-                [self.familyArray addObject:user];
-                [UsersDao saveUserInfo:user];
             }
-            
             _master.users = muser_arr;
-            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            _muser = [_master.users firstObject];
             
+            //抽屉刷新
+            self.familyArray = _master.users;;
+            [self.familyTableView reloadData];
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+        }else{
+            [_master.users removeAllObjects];
+            self.familyArray = _master.users;;
+            [self.familyTableView reloadData];
+            [self showToast:@"暂无亲友信息,快去添加吧~"];
+
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
 
         }
-        [self.familyTableView reloadData];
-    
-        
+
     } unavaliableNetwork:^{
         [self hideHud];
         [self showToast:@"网络未连接"];

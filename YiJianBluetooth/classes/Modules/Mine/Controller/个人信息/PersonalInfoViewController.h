@@ -36,7 +36,7 @@ typedef void(^PersonalInfoViewControllerBlock)(void);
 
 @property (copy , nonatomic)PersonalInfoViewControllerBlock block;
 
--(instancetype)initWithUser:(User *)user WithMaster:(Master *)master andEditable:(BOOL)editable;
+-(instancetype)initWithUser:(mUser *)user WithMaster:(Master *)master andEditable:(BOOL)editable;
 
 
 @end
