@@ -74,6 +74,12 @@
         self.window.rootViewController = main;
         
     }
+    
+    //init file cache
+    TSFileCache *cache = [TSFileCache cacheInTemporaryDirectoryWithRelativeURL:[NSURL URLWithString:@"/CtsiFileCache"]];
+    [cache prepare:nil];
+    [TSFileCache setSharedInstance:cache];
+    
    
     
     [self.window makeKeyAndVisible];
