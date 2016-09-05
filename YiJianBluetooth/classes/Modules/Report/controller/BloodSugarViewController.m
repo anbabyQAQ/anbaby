@@ -244,7 +244,7 @@
     if (_user_classifys.count>indexPath.row) {
         NSString *name = [_user_classifys objectAtIndex:indexPath.row];
         _master.showName = name;
-        [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+//        [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
     }
     
     
