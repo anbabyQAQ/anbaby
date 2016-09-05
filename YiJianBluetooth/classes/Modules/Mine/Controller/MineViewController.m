@@ -15,6 +15,8 @@
 #import "GetUserFamilyThred.h"
 #import "PersonalInfoViewController.h"
 
+#import "SetViewController.h"
+
 #import "MasterDao.h"
 #import "Master.h"
 #import "DropDownMenu.h"
@@ -303,7 +305,7 @@
 
 #pragma mark ===========关于我们==============
 - (IBAction)guanYuWoMenButtonAction:(id)sender {
-   GuanYuWoMenViewController *guanyuVC = [[GuanYuWoMenViewController alloc] init];
+   SetViewController *guanyuVC = [[SetViewController alloc] init];
 //    PersonalInfoViewController *guanyuVC = [[PersonalInfoViewController alloc] init];
 
     guanyuVC.hidesBottomBarWhenPushed = YES;

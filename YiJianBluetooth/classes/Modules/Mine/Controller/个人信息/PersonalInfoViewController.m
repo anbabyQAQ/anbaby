@@ -549,6 +549,7 @@
         [formater setDateFormat:@"yyyy-MM-dd"];
         datePic.date  = [formater dateFromString:self.dateString];
          _mUser.age = self.dateString;
+         [_agecell  setuserInfo:self.dateString];
         [datePic addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
         [_writeView addSubview:datePic];
     }
@@ -699,16 +700,20 @@
         return NO;
     }
     
-    if (heightString == nil) {
+  
+    NSString *height =[NSString stringWithFormat:@"%ld",_mUser.height];
+    
+    if ([DataUtil isEmptyString:height] || height == nil || [height isEqualToString:@"0"]) {
         [self showToast:@"请选择身高"];
         return NO;
     }
-    if (weightString == nil) {
+    NSString *weight = [NSString stringWithFormat:@"%ld",_mUser.weight];
+    if ([DataUtil isEmptyString:weight] || weight == nil  || [weight isEqualToString:@"0"]) {
         [self showToast:@"请选择体重"];
         return NO;
     }
     
-    if (self.dateString == nil || [self.dateString isEqualToString:@""]) {
+    if ([DataUtil isEmptyString:_mUser.age]) {
         [self showToast:@"请选择出生日期"];
         return NO;
     }

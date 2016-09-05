@@ -12,25 +12,55 @@
 
 #import "UsersDao.h"
 #import "User.h"
-@interface TempChartViewController ()<ChartViewDelegate,UITableViewDataSource,UITableViewDelegate>
+#import "MasterDao.h"
+#import "DropDownMenu.h"
+#import "GetUserFamilyThred.h"
+@interface TempChartViewController ()<ChartViewDelegate,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate>
+{
 
+    Master *_master;
+    mUser *_muser;
+}
 @property (nonatomic, strong) BarChartView *barChartView;
 @property (nonatomic, strong) BarChartData *data;
 
+@property (nonatomic, strong) NSArray *user_classifys;
+@property (nonatomic, strong) NSArray *user_cates;
 
-
-@property(nonatomic, strong)UIButton *titleButton;
-@property(nonatomic, strong)UITableView *dropDownTableView;
-@property(nonatomic, strong)NSMutableArray *dropDownArray;
+@property (nonatomic, weak) DOPDropDownMenu *menu;
 @end
 
 @implementation TempChartViewController
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-}
+   
+     _master = [MasterDao getMasterByAid:[[NSUserDefaults standardUserDefaults] objectForKey:@"master_aid"]];
+    if (_master) {
+        if (_master.users.count>0) {
+            _muser = [_master.users firstObject];
+            NSMutableArray *user_arr = [[NSMutableArray alloc]init];
+            for (mUser *m in _master.users) {
+                [user_arr addObject:m.name];
+            }
+            self.user_classifys = [NSArray arrayWithArray:user_arr];
+            [self menuReloadData];
+            
+            
+            [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                mUser *m = (mUser*)obj;
+                if ([m.name isEqualToString:_master.showName]) {
+                    [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:idx]];
+                    _muser=m;
+                }
+            }];
+            
+        }else{
+            [self getData];
+        }
+    }
 
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +69,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self addchartView];
     //添加tableView
-    [self addTablView];
+    
     [self addTitleButton];
 }
 -(void)addchartView{
@@ -226,86 +256,188 @@
 #pragma mark ===========导航栏中间title按钮
 -(void)addTitleButton{
     
-    self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.titleButton.frame = CGRectMake(0, 0, 100, 44);
-    [self.titleButton setTitle:@"我的" forState:UIControlStateNormal];
-    [self.titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [[self.titleButton titleLabel] setFont:[UIFont systemFontOfSize:52/3]];
-    [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.titleButton setImage:[UIImage imageNamed:@"xialaImage"] forState:UIControlStateNormal];
-    [self.titleButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0)];
-    [self.titleButton setImageEdgeInsets:UIEdgeInsetsMake(0, 60, 0, 0)];
-    self.navigationItem.titleView = _titleButton;
+    // 添加下拉菜单
+    DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0, 0) andHeight:44 andSuperView:self.view];
+    menu.delegate = self;
+    menu.dataSource = self;
+    
+    _menu = menu;
+    
+    self.navigationItem.titleView = _menu;
+    
+    // 创建menu 第一次显示 不会调用点击代理，可以用这个手动调用
+    [menu selectDefalutIndexPath];
+}
+- (void)menuReloadData
+{
+    [_menu reloadData];
 }
 
--(void)titleButtonClick:(UIButton *)sender{
-    
-    
-    if (self.titleButton.selected) {
-        self.dropDownTableView.hidden = YES;
-        self.titleButton.selected = NO;
-    }else{
-        self.titleButton.selected = YES;
-        self.dropDownTableView.hidden = NO;
-        self.dropDownTableView.frame =CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40);
-    }
-}
-
--(void)addTablView{
-    
-    self.dropDownArray = [NSMutableArray arrayWithArray:[UsersDao getAllUsers]];
-    self.dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth / 2 - 50, 0,100, self.dropDownArray.count * 40) style:(UITableViewStylePlain)];
-    self.dropDownTableView.showsVerticalScrollIndicator = NO;
-    self.dropDownTableView.delegate =self;
-    self.dropDownTableView.dataSource = self;
-    [self.view addSubview:self.dropDownTableView];
-    self.dropDownTableView.hidden = YES;
-}
--(NSMutableArray *)dropDownArray{
-    if (_dropDownArray==nil) {
-        _dropDownArray = [[NSMutableArray alloc] init];
-    }
-    return _dropDownArray;
-}
+#pragma mark 下拉抽屉代理实现
 
 
-#pragma mark =============tableView代理
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
+- (NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu
+{
     return 1;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return _dropDownArray.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    static NSString *cellID = @"cellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column
+{
+    if (column == 0) {
+        return self.user_classifys.count;
+    }else {
+        return 0;
     }
-    User *user = self.dropDownArray[indexPath.row];
-    cell.textLabel.text = user.name;
-    cell.textLabel.textAlignment = NSTextAlignmentLeft;
-    cell.textLabel.font = [UIFont systemFontOfSize:text_size_between_normalAndSmall];
-    cell.textLabel.textColor = [UIColor darkTextColor];
     
-    return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    
-    self.dropDownTableView.hidden = YES;
-    self.titleButton.selected = NO;
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0) {
+        return self.user_classifys[indexPath.row];
+    }  else {
+        return 0;
+    }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+// new datasource
+
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0 || indexPath.column == 1) {
+        return [NSString stringWithFormat:@"我的－头像"];
+    }
+    return nil;
 }
+
+- (NSString *)menu:(DOPDropDownMenu *)menu imageNameForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0 && indexPath.item >= 0) {
+        return [NSString stringWithFormat:@"我的－头像"];
+    }
+    return nil;
+}
+
+// new datasource
+
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    
+    return nil;
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu detailTextForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    return  nil;
+}
+
+- (NSInteger)menu:(DOPDropDownMenu *)menu numberOfItemsInRow:(NSInteger)row column:(NSInteger)column
+{
+    //        if (column == 0) {
+    //            if (row == 0) {
+    //               return self.user_cates.count;
+    //            }
+    //        }
+    return 0;
+}
+
+- (NSString *)menu:(DOPDropDownMenu *)menu titleForItemsInRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.column == 0) {
+        if (indexPath.row == 0) {
+            return self.user_cates[indexPath.item];
+        }
+    }
+    return nil;
+}
+
+- (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath
+{
+    if (indexPath.item >= 0) {
+        NSLog(@"点击了 %ld - %ld - %ld 项目",indexPath.column,indexPath.row,indexPath.item);
+    }else {
+        NSLog(@"点击了 %ld - %ld 项目",indexPath.column,indexPath.row);
+    }
+    
+    if (_user_classifys.count>indexPath.row) {
+        NSString *name = [_user_classifys objectAtIndex:indexPath.row];
+        _master.showName = name;
+        [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+    }
+    
+    
+    [_master.users enumerateObjectsUsingBlock:^(mUser * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        mUser *m = (mUser*)obj;
+        if ([m.name isEqualToString:_master.showName]) {
+            _muser = m;
+        }
+    }];
+}
+
+
+#pragma mark ========我的亲友列表请求
+-(void)getData{
+    
+    
+    NSString *aid = [NSString stringWithFormat:@"%ld", (long)_master.aid];
+    GetUserFamilyThred *family = [[GetUserFamilyThred alloc] initWithAid:aid withToken:_master.token];
+    [family requireonPrev:^{
+        [self showHud:@"请求中..." onView:self.view];
+    } success:^(NSMutableArray *response) {
+        NSLog(@"%@", response);
+        [self hideHud];
+        
+        if (response.count>0) {
+            NSMutableArray *muser_arr = [[NSMutableArray alloc]init];
+            for (NSDictionary *dic in response) {
+                mUser *muser = [[mUser alloc] initWith:dic];
+                [muser_arr addObject:muser];
+            }
+            _master.users = muser_arr;
+            
+            _muser = [_master.users firstObject];
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            
+            //抽屉刷新
+            NSMutableArray *user_arr = [[NSMutableArray alloc]init];
+            for (mUser *m in _master.users) {
+                [user_arr addObject:m.name];
+            }
+            self.user_classifys = [NSArray arrayWithArray:user_arr];
+            [self menuReloadData];
+            
+            [_menu selectIndexPath:[DOPIndexPath indexPathWithCol:0 row:0]];
+            
+            
+        }else{
+            [_master.users removeAllObjects];
+            _muser = nil;
+            [self showToast:@"请添加个人信息~"];
+            
+            [MasterDao updateMaster:_master Byaid:[NSNumber numberWithInteger:_master.aid]];
+            
+        }
+        
+    } unavaliableNetwork:^{
+        [self hideHud];
+        [self showToast:@"网络未连接"];
+    } timeout:^{
+        [self hideHud];
+        [self showToast:@"网络连接超时"];
+    } exception:^(NSString *message) {
+        [self hideHud];
+        if (message) {
+            [self showToast:message];
+        }else{
+            [self showToast:@"位置错误"];
+        }
+    }];
+    
+    
+    
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {
